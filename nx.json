@@ -52,17 +52,22 @@
   },
   "generators": {
     "@nx/angular:application": {
-      "style": "css",
+      "style": "scss",
       "linter": "eslint",
       "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
+      "e2eTestRunner": "playwright"
     },
     "@nx/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "style": "scss",
+      "buildable": true,
+      "directory": "libs",
+      "changeDetection": "OnPush"
     },
     "@nx/angular:component": {
-      "style": "css"
+      "style": "scss",
+      "changeDetection": "OnPush"
     }
   }
 }
