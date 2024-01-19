@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2
+      - uses: nrwl/nx-set-shas@v3
+      - run: pnpm i
+      - run: pnpm exec nx format:check
+      - run: pnpm exec nx affected -t lint --parallel=3 --max-warnings=0
+      - run: pnpm exec nx affected -t test --parallel=3 --configuration=ci
+      - run: pnpm exec nx affected -t build --parallel=3
