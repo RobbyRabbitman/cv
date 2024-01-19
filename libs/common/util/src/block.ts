@@ -1,29 +1,32 @@
-import { Signal, Type, forwardRef, inject, signal } from '@angular/core';
-import { Field, SimpleField } from '@cv/common-types';
-import {
-  createInjectionToken,
-  createNoopInjectionToken,
-} from 'ngxtension/create-injection-token';
+import { Injector, Pipe, PipeTransform, Signal, signal } from '@angular/core';
+import { Block, SimpleField } from '@cv/common-types';
+import { assertInjector } from 'ngxtension/assert-injector';
 
+/**
+ *
+ * @param field
+ * @param value
+ * @returns a shallow copy of the field with the new value.
+ */
 export function setValueOfSimpleField<T>(
-  target: SimpleField<T>,
+  field: SimpleField<T>,
   value: T,
 ): SimpleField<T> {
-  return { ...target, value };
+  return { ...field, value };
 }
 
-const [, _provideField] = createNoopInjectionToken<{
-  field: Signal<Field>;
-}>('FIELD');
-
-export function provideField(value: Type<{ field: Signal<Field> }>) {
-  return _provideField(() => inject(forwardRef(() => value)));
+export function injectBlockLabel(injector?: Injector) {
+  assertInjector(injectBlockLabel, injector);
+  // TODO real impl
+  return function (block: Signal<Block>): Signal<string> {
+    return signal(block().prototypeId).asReadonly();
+  };
 }
 
-export const [injectBlockLabel, provideBlockLabel] = createInjectionToken(
-  () => {
-    // const prototype = injectPrototype({ self: true });
-    // const translation = injectTranslation();
-    return signal('<<label>>').asReadonly();
-  },
-);
+@Pipe({
+  name: 'cvBlockLabel',
+  standalone: true,
+})
+export class BlockLabelPipe implements PipeTransform {
+  transform = injectBlockLabel();
+}

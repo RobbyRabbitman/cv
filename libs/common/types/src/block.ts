@@ -47,7 +47,7 @@ export interface Paragraph extends Block, HasChildren<Section> {
 /**
  * A field in a paragraph.
  */
-export interface Field extends Block, Deletable {
+export interface Field extends Block {
   type: 'field';
 }
 

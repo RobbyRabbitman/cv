@@ -13,8 +13,22 @@
             "allow": [],
             "depConstraints": [
               {
+                "sourceTag": "scope:web",
+                "onlyDependOnLibsWithTags": ["scope:web", "scope:shared"]
+              },
+              {
                 "sourceTag": "scope:shared",
                 "onlyDependOnLibsWithTags": ["scope:shared"]
+              },
+              {
+                "sourceTag": "type:app",
+                "onlyDependOnLibsWithTags": [
+                  "type:ui",
+                  "type:util",
+                  "type:types",
+                  "type:feature",
+                  "type:data"
+                ]
               },
               {
                 "sourceTag": "type:types",

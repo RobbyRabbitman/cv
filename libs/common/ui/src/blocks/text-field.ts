@@ -9,32 +9,26 @@ import {
 } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { TextField } from '@cv/common-types';
-import {
-  injectBlockLabel,
-  provideField,
-  setValueOfSimpleField,
-} from '@cv/common-util';
+import { BlockLabelPipe, setValueOfSimpleField } from '@cv/common-util';
 import { EMPTY, fromEvent, map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'cv-common-ui-text-field',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [provideField(TextFieldComponent)],
+  imports: [BlockLabelPipe],
   template: `<label>
-    {{ label() }}
+    {{ (field | cvBlockLabel)() }}
     <input type="text" [value]="field().value" />
   </label>`,
 })
 export class TextFieldComponent {
   @ViewChild('input', { read: ElementRef })
-  protected set _input(input: ElementRef) {
-    this.input.set(input.nativeElement);
+  protected set _input(input: ElementRef | undefined) {
+    this.input.set(input?.nativeElement);
   }
 
   protected input = signal<HTMLInputElement | undefined>(undefined);
-
-  protected label = injectBlockLabel();
 
   field = input.required<TextField>();
 

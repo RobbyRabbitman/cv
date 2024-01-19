@@ -5,5 +5,8 @@
 .eslintignore
 .prettierignore
 .gitignore
+.gitkeep
+*.ico
 
 .angular
+
