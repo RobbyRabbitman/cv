@@ -4,3 +4,6 @@
 /.nx/cache
 .eslintignore
 .prettierignore
+.gitignore
+
+.angular
