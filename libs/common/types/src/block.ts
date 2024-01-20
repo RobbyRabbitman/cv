@@ -71,8 +71,8 @@ export interface CompositeField<F extends readonly Field[] = Field[]>
 /** A field which has a text `value`. */
 export type TextField = SimpleField<string>;
 
-/** A slider which has a `value` in an integer range between `min` and `max` */
-export interface SliderField extends SimpleField<number> {
+/** A field which has a `value` in an integer range between `min` and `max` */
+export interface RangeField extends SimpleField<number> {
   /** Lower bound of this range. */
   min: number;
 
