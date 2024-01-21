@@ -68,6 +68,11 @@
     "@nx/angular:component": {
       "style": "scss",
       "changeDetection": "OnPush"
+    },
+    "@nx/js:library": {
+      "unitTestRunner": "jest",
+      "directory": "libs",
+      "minimal": true
     }
   }
 }

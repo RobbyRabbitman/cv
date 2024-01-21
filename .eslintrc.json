@@ -35,6 +35,14 @@
                 "onlyDependOnLibsWithTags": ["type:types"]
               },
               {
+                "sourceTag": "type:data",
+                "onlyDependOnLibsWithTags": [
+                  "type:data",
+                  "type:util",
+                  "type:types"
+                ]
+              },
+              {
                 "sourceTag": "type:util",
                 "onlyDependOnLibsWithTags": ["type:util", "type:types"]
               },

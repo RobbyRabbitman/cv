@@ -22,7 +22,7 @@ jobs:
       - uses: pnpm/action-setup@v2
       - uses: nrwl/nx-set-shas@v3
       - run: pnpm i
-      - run: pnpm exec nx format:check
-      - run: pnpm exec nx affected -t lint --parallel=3 --max-warnings=0
-      - run: pnpm exec nx affected -t test --parallel=3 --configuration=ci
-      - run: pnpm exec nx affected -t build --parallel=3
+      - run: pnpm run format:check
+      - run: pnpm run lint:affected:ci
+      - run: pnpm run test:affected:ci
+      - run: pnpm run build:affected:ci

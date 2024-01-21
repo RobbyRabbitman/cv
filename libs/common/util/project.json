@@ -2,22 +2,25 @@
   "name": "common-util",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/common/util/src",
-  "projectType": "library",
+  "prefix": "cv-common-util",
   "tags": ["scope:shared", "type:util"],
+  "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "outputPath": "dist/libs/common/util",
-        "main": "libs/common/util/src/index.ts",
-        "tsConfig": "libs/common/util/tsconfig.lib.json",
-        "assets": ["libs/common/util/*.md"]
-      }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+        "project": "libs/common/util/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/common/util/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/common/util/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -25,6 +28,10 @@
       "options": {
         "jestConfig": "libs/common/util/jest.config.ts"
       }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     }
   }
 }

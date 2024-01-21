@@ -26,6 +26,12 @@ export interface HasChildren<T> {
 export interface Cv extends Block, HasChildren<Section> {
   type: 'cv';
 
+  /** ISO 8601 */
+  createdAt: string;
+
+  /** ISO 8601 */
+  lastModifiedAt: string;
+
   /** The associated user id of this CV  */
   userId: UUID;
 }
@@ -100,8 +106,9 @@ export interface Movable {
   canBeMoved: boolean;
 }
 
-export interface BlockPrototype<T extends Block>
-  extends Labeled,
+export interface BlockPrototype<T extends Block = Block>
+  extends Identifiable,
+    Labeled,
     Deletable,
     Movable {
   /** A template for creating a block. */

@@ -3,7 +3,16 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "simple-git-hooks"
+    "postinstall": "simple-git-hooks",
+    "format:check": "pnpm exec nx format:check",
+    "lint:affected": "pnpm exec nx affected --target lint --max-warnings=0",
+    "test:affected": "pnpm exec nx affected --target test",
+    "build:affected": "pnpm exec nx affected --target build",
+    "lint:affected:ci": "pnpm run lint:affected --configuration=ci --parallel=3",
+    "test:affected:ci": "pnpm run lint:affected --configuration=ci --parallel=3",
+    "build:affected:ci": "pnpm run lint:affected --configuration=ci --parallel=3",
+    "ci": "pnpm run lint:affected:ci && pnpm run test:affected:ci && pnpm run build:affected:ci",
+    "ci:local": "pnpm run lint:affected && pnpm run test:affected && pnpm run build:affected"
   },
   "private": true,
   "engines": {
@@ -15,10 +24,14 @@
     "@angular/common": "17.1.0",
     "@angular/compiler": "17.1.0",
     "@angular/core": "17.1.0",
+    "@angular/fire": "17.0.1",
     "@angular/forms": "17.1.0",
     "@angular/platform-browser": "17.1.0",
     "@angular/platform-browser-dynamic": "17.1.0",
     "@angular/router": "17.1.0",
+    "@ngrx/operators": "17.1.0",
+    "@ngrx/signals": "17.1.0",
+    "firebase": "10.7.2",
     "ngxtension": "1.9.9",
     "rxjs": "7.8.0",
     "tslib": "2.3.0",
