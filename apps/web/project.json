@@ -39,7 +39,24 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/web/src/environments/environment.ts",
+              "with": "apps/web/src/environments/environment.development.ts"
+            }
+          ]
+        },
+        "local": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/web/src/environments/environment.ts",
+              "with": "apps/web/src/environments/environment.local.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -52,9 +69,12 @@
         },
         "development": {
           "buildTarget": "web:build:development"
+        },
+        "local": {
+          "buildTarget": "web:build:local"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "local"
     },
     "lint": {
       "executor": "@nx/eslint:lint",

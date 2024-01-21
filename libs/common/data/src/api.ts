@@ -83,7 +83,7 @@ export class Api {
   ): Promise<{ cv: Cv; prototypes: BlockPrototype[] }> {
     const cv = await this.getCv(cvId);
 
-    const prototypeIds = this.getPrototypeUuids(cvId);
+    const prototypeIds = await this.getPrototypeUuids(cvId);
 
     const prototypes = (
       await getDocs(

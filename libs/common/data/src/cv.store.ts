@@ -1,5 +1,9 @@
-import { inject } from '@angular/core';
-import { BlockPrototype, Cv } from '@cv/common-types';
+import {
+  EnvironmentProviders,
+  inject,
+  makeEnvironmentProviders,
+} from '@angular/core';
+import { BlockPrototype, Cv, UUID } from '@cv/common-types';
 import { tapResponse } from '@ngrx/operators';
 import {
   patchState,
@@ -10,9 +14,12 @@ import {
 } from '@ngrx/signals';
 import { setEntities, setEntity, withEntities } from '@ngrx/signals/entities';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { UUID } from 'crypto';
 import { filter, pipe, switchMap, tap } from 'rxjs';
 import { Api } from './api';
+
+export function provideCvStore(): EnvironmentProviders {
+  return makeEnvironmentProviders([CvStore]);
+}
 
 interface State {
   loading: boolean;

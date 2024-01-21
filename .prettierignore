@@ -2,6 +2,7 @@
 /dist
 /coverage
 /.nx/cache
+.firebaserc
 .eslintignore
 .prettierignore
 .gitignore

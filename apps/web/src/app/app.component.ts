@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RangeField, TextField } from '@cv/common-types';
+import { Component, inject } from '@angular/core';
+import { CvStore } from '@cv/common-data';
 import { COMMON_UI } from '@cv/common-ui';
 
 @Component({
@@ -10,19 +10,9 @@ import { COMMON_UI } from '@cv/common-ui';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  textField: TextField = {
-    value: 'foo',
-    type: 'field',
-    id: 'foo id',
-    prototypeId: 'foo proto id',
-  };
+  cvStore = inject(CvStore);
 
-  rangeField: RangeField = {
-    value: 0,
-    min: 0,
-    max: 10,
-    type: 'field',
-    id: 'range id',
-    prototypeId: 'range proto id',
-  };
+  constructor() {
+    this.cvStore.getCv('123');
+  }
 }

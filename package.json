@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "firebase": "pnpm exec firebase",
     "postinstall": "simple-git-hooks",
     "format:check": "pnpm exec nx format:check",
     "lint:affected": "pnpm exec nx affected --target lint --max-warnings=0",
@@ -12,7 +13,8 @@
     "test:affected:ci": "pnpm run lint:affected --configuration=ci --parallel=3",
     "build:affected:ci": "pnpm run lint:affected --configuration=ci --parallel=3",
     "ci": "pnpm run lint:affected:ci && pnpm run test:affected:ci && pnpm run build:affected:ci",
-    "ci:local": "pnpm run lint:affected && pnpm run test:affected && pnpm run build:affected"
+    "ci:local": "pnpm run lint:affected && pnpm run test:affected && pnpm run build:affected",
+    "web:serve:local": "pnpm exec nx serve web --configuration=local"
   },
   "private": true,
   "engines": {
@@ -68,6 +70,7 @@
     "eslint": "8.48.0",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-playwright": "0.15.3",
+    "firebase-tools": "13.0.3",
     "jest": "29.5.0",
     "jest-environment-jsdom": "29.5.0",
     "jest-environment-node": "29.5.0",
