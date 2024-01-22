@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": "17.1.0",
-    "@cv/auth-data": "workspace:*"
+    "@ngx-translate/core": "15.0.0",
+    "@cv/auth-data": "workspace:*",
+    "@cv/i18n-smart": "workspace:*"
   },
   "sideEffects": false
 }

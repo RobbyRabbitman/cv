@@ -1,0 +1,14 @@
+{
+  "AUTH": {
+    "SIGN_IN": {
+      "BUTTON": {
+        "LABEL": "Anmelden"
+      }
+    },
+    "SIGN_OUT": {
+      "BUTTON": {
+        "LABEL": "Abmelden"
+      }
+    }
+  }
+}

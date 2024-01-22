@@ -1,0 +1,10 @@
+{
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": {
+        "@angular-eslint/component-class-suffix": 0
+      }
+    }
+  ]
+}

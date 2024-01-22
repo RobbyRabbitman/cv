@@ -1,18 +1,13 @@
-import { JsonPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { UserStore } from '@cv/auth-data';
+import { Component } from '@angular/core';
 import { AUTH_SMART } from '@cv/auth-smart';
-import { CvStore } from '@cv/common-data';
 import { COMMON_UI } from '@cv/common-ui';
+import { I18N_SMART } from '@cv/i18n-smart';
 
 @Component({
   standalone: true,
-  imports: [COMMON_UI, AUTH_SMART, JsonPipe],
+  imports: [COMMON_UI, AUTH_SMART, I18N_SMART],
   selector: 'cv-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  cvStore = inject(CvStore);
-  userStore = inject(UserStore);
-}
+export class AppComponent {}

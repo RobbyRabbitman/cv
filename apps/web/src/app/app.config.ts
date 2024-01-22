@@ -1,3 +1,4 @@
+import { provideHttpClient } from '@angular/common/http';
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -13,6 +14,7 @@ import {
 import { provideRouter } from '@angular/router';
 import { provideAuthData } from '@cv/auth-data';
 import { provideCommonData } from '@cv/common-data';
+import { provideI18nData } from '@cv/i18n-data';
 import { environment } from '../environments/environment';
 import { appRoutes } from './app.routes';
 
@@ -59,5 +61,7 @@ export const appConfig: ApplicationConfig = {
     provideFirebase(),
     provideCommonData(),
     provideAuthData(),
+    provideI18nData(),
+    provideHttpClient(),
   ],
 };

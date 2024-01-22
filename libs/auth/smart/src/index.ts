@@ -1,7 +1,7 @@
-import { SigninComponent } from './signin/signin.component';
-import { SignoutComponent } from './signout/signout.component';
+import { SignInButton } from './sign-in/sign-in';
+import { SignOutButton } from './sign-out/sign-out';
 
-export * from './signin/signin.component';
-export * from './signout/signout.component';
+export * from './sign-in/sign-in';
+export * from './sign-out/sign-out';
 
-export const AUTH_SMART = [SigninComponent, SignoutComponent] as const;
+export const AUTH_SMART = [SignInButton, SignOutButton] as const;

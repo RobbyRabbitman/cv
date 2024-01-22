@@ -18,12 +18,12 @@ export class Auth {
   });
 
   /** Signs out the current user. */
-  async signout() {
+  async signOut() {
     await this.auth.signOut();
   }
 
   /** Sign in the user with google. */
-  async signin() {
+  async signIn() {
     await signInWithRedirect(this.auth, new GoogleAuthProvider());
     await getRedirectResult(this.auth);
   }

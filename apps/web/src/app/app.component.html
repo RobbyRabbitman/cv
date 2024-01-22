@@ -1,5 +1,5 @@
-{{ cvStore.cvEntities() }}
-{{ cvStore.prototypesEntities() }}
-{{ userStore.user() | json }}
-<cv-auth-signin />
-<cv-auth-signout />
+<div class="flex flex-col">
+  <cv-auth-sign-in-button />
+  <cv-auth-sign-out-button />
+  <cv-i18n-locale-select />
+</div>
