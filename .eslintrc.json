@@ -24,9 +24,20 @@
                 "sourceTag": "type:app",
                 "onlyDependOnLibsWithTags": [
                   "type:ui",
+                  "type:smart",
                   "type:util",
                   "type:types",
                   "type:feature",
+                  "type:data"
+                ]
+              },
+              {
+                "sourceTag": "type:smart",
+                "onlyDependOnLibsWithTags": [
+                  "type:smart",
+                  "type:ui",
+                  "type:util",
+                  "type:types",
                   "type:data"
                 ]
               },

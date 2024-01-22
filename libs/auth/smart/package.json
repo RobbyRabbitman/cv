@@ -1,0 +1,9 @@
+{
+  "name": "@cv/auth-smart",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/core": "17.1.0",
+    "@cv/auth-data": "workspace:*"
+  },
+  "sideEffects": false
+}
