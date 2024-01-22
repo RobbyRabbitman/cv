@@ -6,9 +6,15 @@ import { Translate } from '@cv/i18n-smart';
   selector: 'cv-auth--sign-out-button',
   standalone: true,
   imports: [Translate],
-  template: `<button (click)="store.signOut()">
-    {{ 'AUTH.SIGN_OUT.BUTTON.LABEL' | translate }}
+  template: `<button class="inline-flex" (click)="store.signOut()">
+    <span aria-hidden="true" class="material-symbols-outlined">logout</span>
+    <span class="sr-only">{{ 'AUTH.SIGN_OUT.BUTTON.LABEL' | translate }}</span>
   </button>`,
+  styles: `
+  :host {
+    @apply inline-flex;
+  }
+`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignOutButton {

@@ -1,6 +1,11 @@
-<header class="flex p-4 items-center container">
+<header class="flex p-4 gap-4 items-center container">
   <cv-common-feature--shell-logo />
   <cv-i18n--locale-select class="ml-auto" />
+  @if (user.value()) {
+  <cv-auth--sign-out-button />
+  } @else {
+  <cv-auth--sign-in-button />
+  }
 </header>
 <main class="container">
   <router-outlet />
