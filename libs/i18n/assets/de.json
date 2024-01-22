@@ -10,5 +10,12 @@
         "LABEL": "Abmelden"
       }
     }
+  },
+  "I18N": {
+    "LOCALE": {
+      "SELECT": {
+        "LABEL": "Sprache wählen"
+      }
+    }
   }
 }

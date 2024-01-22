@@ -10,5 +10,12 @@
         "LABEL": "Sign out"
       }
     }
+  },
+  "I18N": {
+    "LOCALE": {
+      "SELECT": {
+        "LABEL": "Select locale"
+      }
+    }
   }
 }
