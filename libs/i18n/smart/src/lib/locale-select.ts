@@ -3,7 +3,7 @@ import { I18nStore } from '@cv/i18n-data';
 import { Translate } from './translate';
 
 @Component({
-  selector: 'cv-i18n-locale-select',
+  selector: 'cv-i18n--locale-select',
   standalone: true,
   imports: [Translate],
   template: `<label>

@@ -7,7 +7,7 @@ import {
   input,
   signal,
 } from '@angular/core';
-import { RangeField } from '@cv/common-types';
+import { TextField } from '@cv/common-types';
 import {
   BlockLabelPipe,
   fromSignalEvent,
@@ -16,21 +16,16 @@ import {
 import { map } from 'rxjs';
 
 @Component({
-  selector: 'cv-common-ui-range-field',
+  selector: 'cv-common-ui--text-field',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [BlockLabelPipe],
   template: `<label>
     {{ (field | cvBlockLabel)() }}
-    <input
-      type="range"
-      [value]="field().value"
-      [min]="field().min"
-      [max]="field().max"
-    />
+    <input type="text" [value]="field().value" />
   </label>`,
 })
-export class RangeFieldComponent {
+export class TextFieldComponent {
   @ViewChild('input', { read: ElementRef })
   protected set _input(input: ElementRef | undefined) {
     this.input.set(input?.nativeElement);
@@ -38,12 +33,10 @@ export class RangeFieldComponent {
 
   protected input = signal<HTMLInputElement | undefined>(undefined);
 
-  field = input.required<RangeField>();
+  field = input.required<TextField>();
 
   @Output()
   fieldChange = fromSignalEvent(this.input, 'input').pipe(
-    map(({ target }) =>
-      setValueOfSimpleField(this.field(), Number(target.value)),
-    ),
+    map(({ target }) => setValueOfSimpleField(this.field(), target.value)),
   );
 }

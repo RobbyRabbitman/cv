@@ -1,2 +1,2 @@
-export * from './config';
-export * from './i18n.store';
+export * from './lib/config';
+export * from './lib/i18n.store';

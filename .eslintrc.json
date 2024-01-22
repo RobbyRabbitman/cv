@@ -23,11 +23,20 @@
               {
                 "sourceTag": "type:app",
                 "onlyDependOnLibsWithTags": [
-                  "type:ui",
+                  "type:feature",
+                  "type:types",
+                  "type:util",
+                  "type:data"
+                ]
+              },
+              {
+                "sourceTag": "type:feature",
+                "onlyDependOnLibsWithTags": [
+                  "type:feature",
                   "type:smart",
+                  "type:ui",
                   "type:util",
                   "type:types",
-                  "type:feature",
                   "type:data"
                 ]
               },

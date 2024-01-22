@@ -1,4 +1,4 @@
-import { Identifiable, UUID } from './identifiable';
+import { Identifiable, UUID } from '../lib/identifiable';
 
 /** All block types. */
 export const BLOCKS = ['cv', 'section', 'paragraph', 'field'] as const;

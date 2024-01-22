@@ -1,2 +1,2 @@
-export * from './config';
-export * from './user.store';
+export * from './lib/config';
+export * from './lib/user.store';

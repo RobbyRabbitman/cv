@@ -1,5 +1,5 @@
 import { makeEnvironmentProviders } from '@angular/core';
-import { Auth } from './auth';
+import { Auth } from '../lib/auth';
 import { provideUserStore } from './user.store';
 
 export function provideAuthData() {

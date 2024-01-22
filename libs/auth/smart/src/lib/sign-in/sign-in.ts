@@ -3,7 +3,7 @@ import { UserStore } from '@cv/auth-data';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'cv-auth-sign-in-button',
+  selector: 'cv-auth--sign-in-button',
   standalone: true,
   imports: [TranslateModule],
   template: `<button (click)="store.signIn()">

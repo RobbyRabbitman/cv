@@ -1,2 +1,2 @@
-export * from './config';
-export * from './cv.store';
+export * from './lib/config';
+export * from './lib/cv.store';

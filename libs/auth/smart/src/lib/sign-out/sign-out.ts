@@ -3,7 +3,7 @@ import { UserStore } from '@cv/auth-data';
 import { Translate } from '@cv/i18n-smart';
 
 @Component({
-  selector: 'cv-auth-sign-out-button',
+  selector: 'cv-auth--sign-out-button',
   standalone: true,
   imports: [Translate],
   template: `<button (click)="store.signOut()">

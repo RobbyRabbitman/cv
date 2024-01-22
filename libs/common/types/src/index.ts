@@ -1,2 +1,2 @@
-export * from './block';
-export * from './identifiable';
+export * from './lib/block';
+export * from './lib/identifiable';
