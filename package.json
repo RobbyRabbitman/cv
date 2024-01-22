@@ -15,7 +15,8 @@
     "build:affected:ci": "pnpm run lint:affected --configuration=ci --parallel=3",
     "ci": "pnpm run lint:affected:ci && pnpm run test:affected:ci && pnpm run build:affected:ci",
     "ci:local": "pnpm run lint:affected && pnpm run test:affected && pnpm run build:affected",
-    "web:serve:local": "pnpm exec nx serve web --configuration=local"
+    "web:serve:local": "pnpm exec nx serve web --configuration=local",
+    "web:dev": "pnpm run '/(web:serve:local|firebase:emulators:local)/'"
   },
   "private": true,
   "engines": {
