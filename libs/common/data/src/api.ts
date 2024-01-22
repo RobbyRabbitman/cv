@@ -90,20 +90,20 @@ const field_1_prototype: BlockPrototype<TextField> = {
 
 @Injectable()
 export class Api {
-  CV = 'cv';
-  BLOCK_PROTOTYPES = 'blockPrototypes';
-  CV_BLOCK_PROTOTYPES = 'cvBlockPrototypes';
+  protected CV = 'cv';
+  protected BLOCK_PROTOTYPES = 'blockPrototypes';
+  protected CV_BLOCK_PROTOTYPES = 'cvBlockPrototypes';
 
-  firestore = inject(Firestore);
+  protected firestore = inject(Firestore);
 
-  cv = collection(this.firestore, this.CV) as unknown as CvCollection;
+  protected cv = collection(this.firestore, this.CV) as unknown as CvCollection;
 
-  blockPrototypes = collection(
+  protected blockPrototypes = collection(
     this.firestore,
     this.BLOCK_PROTOTYPES,
   ) as unknown as BlockPrototypesCollection;
 
-  cvBlockPrototypes = collection(
+  protected cvBlockPrototypes = collection(
     this.firestore,
     this.CV_BLOCK_PROTOTYPES,
   ) as unknown as CvBlockPrototypesCollection;

@@ -11,6 +11,7 @@ import {
   provideFirestore,
 } from '@angular/fire/firestore';
 import { provideRouter } from '@angular/router';
+import { provideAuthData } from '@cv/auth-data';
 import { provideCommonData } from '@cv/common-data';
 import { environment } from '../environments/environment';
 import { appRoutes } from './app.routes';
@@ -53,5 +54,10 @@ function provideFirebase() {
 }
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(appRoutes), provideFirebase(), provideCommonData()],
+  providers: [
+    provideRouter(appRoutes),
+    provideFirebase(),
+    provideCommonData(),
+    provideAuthData(),
+  ],
 };

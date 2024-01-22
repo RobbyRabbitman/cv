@@ -1,2 +1,6 @@
 {{ cvStore.cvEntities() }}
 {{ cvStore.prototypesEntities() }}
+
+<button (click)="userStore.signout()">Signout</button>
+<button (click)="userStore.signin()">Signin</button>
+{{ userStore.user() | json }}
