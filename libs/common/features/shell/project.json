@@ -2,7 +2,7 @@
   "name": "common-feature--shell",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/common/features/shell/src",
-  "prefix": "cv-common-feature-shell",
+  "prefix": "cv-common-feature--shell",
   "tags": ["scope:shared", "type:feature"],
   "projectType": "library",
   "targets": {

@@ -7,7 +7,9 @@ import { Translate } from './translate';
   standalone: true,
   imports: [Translate],
   template: `<label>
-    {{ 'I18N.LOCALE.SELECT.LABEL' | translate }}
+    <span class="sr-only">
+      {{ 'I18N.LOCALE.SELECT.LABEL' | translate }}
+    </span>
     <select (change)="i18n.setLocale($any($event.target).value)">
       @for (locale of i18n.locales(); track locale) {
         <!-- TODO display locale in locale (?) -->
