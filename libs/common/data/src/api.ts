@@ -8,9 +8,19 @@ import {
   getDoc,
   getDocs,
   query,
+  serverTimestamp,
+  setDoc,
   where,
 } from '@angular/fire/firestore';
-import { BlockPrototype, Cv, UUID } from '@cv/common-types';
+import {
+  BlockPrototype,
+  Cv,
+  Paragraph,
+  Section,
+  TextField,
+  UUID,
+} from '@cv/common-types';
+import { createBlock, uuid } from '@cv/common-util';
 
 type InferCollectionModel<C> =
   C extends CollectionReference<DocumentData, infer T> ? keyof T : never;
@@ -20,15 +30,63 @@ type CvBlockPrototypesCollection = CollectionReference<
   { cvId: UUID; prototypeId: UUID }
 >;
 
-type CvCollection = CollectionReference<
-  Omit<Cv, 'createdAt' | 'lastModifiedAt'>,
-  Cv
->;
+type CvCollection = CollectionReference<Cv, Cv>;
 
 type BlockPrototypesCollection = CollectionReference<
   BlockPrototype,
   BlockPrototype
 >;
+
+const cv_1_prototype: BlockPrototype<Cv> = {
+  canBeDeleted: true,
+  canBeMoved: true,
+  id: 'cv_1_prototype',
+  label: 'CV',
+  multiple: true,
+  type: 'cv',
+  template: {
+    childPrototypeIds: ['section_1_prototype'],
+    createdAt: '',
+    lastModifiedAt: '',
+    userId: '',
+  },
+};
+
+const section_1_prototype: BlockPrototype<Section> = {
+  canBeDeleted: true,
+  canBeMoved: true,
+  id: 'section_1_prototype',
+  label: 'section 1',
+  multiple: true,
+  type: 'section',
+  template: {
+    childPrototypeIds: ['paragraph_1_prototype'],
+  },
+};
+
+const paragraph_1_prototype: BlockPrototype<Paragraph> = {
+  canBeDeleted: true,
+  canBeMoved: true,
+  id: 'paragraph_1_prototype',
+  label: 'paragraph 1',
+  multiple: true,
+  type: 'paragraph',
+  template: {
+    childPrototypeIds: ['field_1_prototype'],
+  },
+};
+
+const field_1_prototype: BlockPrototype<TextField> = {
+  canBeDeleted: true,
+  canBeMoved: true,
+  id: 'field_1_prototype',
+  label: 'field 1',
+  multiple: true,
+  type: 'field',
+  template: {
+    value: 'field 1',
+  },
+};
 
 @Injectable()
 export class Api {
@@ -56,11 +114,27 @@ export class Api {
 
     if (!snap.exists()) throw new Error(`[Api]: no cv found for id '${cvId}'.`);
 
-    return {
-      ...snap.data(),
-      createdAt: '',
-      lastModifiedAt: '',
-    };
+    return snap.data();
+  }
+
+  async createCv(): Promise<UUID> {
+    // TODO real impl
+    const _cv = createBlock(cv_1_prototype, uuid, {
+      section_1_prototype,
+      paragraph_1_prototype,
+      field_1_prototype,
+    });
+
+    const docRef = doc(this.cv);
+
+    await setDoc(docRef, {
+      ..._cv,
+      userId: '',
+      createdAt: serverTimestamp(),
+      lastModifiedAt: serverTimestamp(),
+    });
+
+    return docRef.id;
   }
 
   async getPrototypeUuids(cvId: UUID): Promise<UUID[]> {

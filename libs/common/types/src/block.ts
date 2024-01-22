@@ -16,8 +16,8 @@ export interface Block extends Identifiable {
   prototypeId: UUID;
 }
 
-export interface HasChildren<T> {
-  children: T[];
+export interface HasChildren<TChildren> {
+  children: TChildren[];
 }
 
 /**
@@ -60,18 +60,18 @@ export interface Field extends Block {
 /**
  * A field. It has a value of type `T`.
  */
-export interface SimpleField<T> extends Field {
+export interface SimpleField<TValue> extends Field {
   /** The value of this field */
-  value: T;
+  value: TValue;
 }
 
 /**
  * A field which is a _composition_ of multiple fields.
  */
-export interface CompositeField<F extends readonly Field[] = Field[]>
+export interface CompositeField<TField extends readonly Field[] = Field[]>
   extends Field {
   /** The fields this is composed of. */
-  children: F;
+  children: TField;
 }
 
 /** A field which has a text `value`. */
@@ -106,19 +106,45 @@ export interface Movable {
   canBeMoved: boolean;
 }
 
-export interface BlockPrototype<T extends Block = Block>
+export interface BlockPrototype<TBlock extends Block = Block>
   extends Identifiable,
     Labeled,
     Deletable,
     Movable {
   /** A template for creating a block. */
-  template: Omit<
-    T extends HasChildren<unknown>
-      ? Omit<T, 'children'> & { childPrototypeIds: UUID[] }
-      : T,
-    'id'
+  template: BlockPrototypeTemplate<
+    TBlock extends HasChildren<TBlock extends HasChildren<infer C> ? C : never>
+      ? BlockPrototypeTemplateWithChildren<TBlock>
+      : TBlock
   >;
+
+  /** The type of this block */
+  type: TBlock extends { type: infer B } ? B : never;
 
   /** Whether multiple blocks can be created. */
   multiple: boolean;
+}
+
+export type BlockPrototypeTemplate<TBlock extends Block = Block> = Omit<
+  TBlock,
+  'id' | 'type' | 'prototypeId'
+>;
+
+export type BlockPrototypeTemplateWithChildren<TBlock extends Block = Block> =
+  Omit<TBlock, 'children'> & {
+    childPrototypeIds: UUID[];
+  };
+
+export function hasBlockChildren<TChild extends Block, TBlock extends Block>(
+  block: TBlock | (TBlock & HasChildren<TChild>),
+): block is TBlock & HasChildren<TChild> {
+  return 'children' in block;
+}
+
+export function hasTemplateChildren<TBlock extends Block>(
+  template:
+    | BlockPrototypeTemplate<TBlock>
+    | BlockPrototypeTemplateWithChildren<TBlock>,
+): template is BlockPrototypeTemplateWithChildren<TBlock> {
+  return 'childPrototypeIds' in template;
 }
