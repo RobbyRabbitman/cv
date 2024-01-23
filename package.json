@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "lint-staged": "lint-staged",
     "firebase": "pnpm exec firebase",
     "firebase:emulators:local": "pnpm run firebase --project=local emulators:start",
     "postinstall": "simple-git-hooks",
