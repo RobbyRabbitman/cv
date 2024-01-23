@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { I18nStore } from '@cv/i18n-data';
+import { I18nStore } from '@cv/i18n/data';
 import { Translate } from './translate';
 
 @Component({

@@ -1,9 +1,9 @@
 {
-  "name": "@cv/i18n-smart",
+  "name": "@cv/i18n/smart",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": "17.1.0",
-    "@cv/i18n-data": "workspace:*"
+    "@cv/i18n/data": "workspace:*"
   },
   "sideEffects": false
 }

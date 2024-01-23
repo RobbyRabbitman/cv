@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { UserStore } from '@cv/auth-data';
+import { UserStore } from '@cv/auth/data';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

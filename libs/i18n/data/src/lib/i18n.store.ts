@@ -5,7 +5,7 @@ import {
   inject,
   makeEnvironmentProviders,
 } from '@angular/core';
-import { injectDocumentLocale } from '@cv/i18n-util';
+import { injectDocumentLocale } from '@cv/i18n/util';
 import {
   patchState,
   signalStore,

@@ -1,15 +1,10 @@
 {
-  "name": "@cv/common-data",
+  "name": "@cv/common/data",
   "version": "0.0.1",
   "peerDependencies": {
-    "@ngrx/operators": "17.1.0",
     "@ngrx/signals": "17.1.0",
     "@angular/core": "17.1.0",
-    "@angular/fire": "17.0.1",
-    "rxjs": "7.8.0",
-    "tslib": "2.3.0",
-    "@cv/common-types": "workspace:*",
-    "@cv/common-util": "workspace:*"
+    "tslib": "2.3.0"
   },
   "type": "commonjs",
   "main": "./src/index.js",

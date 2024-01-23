@@ -5,7 +5,7 @@ import {
   effect,
   inject,
 } from '@angular/core';
-import { I18nStore } from '@cv/i18n-data';
+import { I18nStore } from '@cv/i18n/data';
 
 @Pipe({
   name: 'translate',

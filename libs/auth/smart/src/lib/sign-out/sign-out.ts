@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { UserStore } from '@cv/auth-data';
-import { Translate } from '@cv/i18n-smart';
+import { UserStore } from '@cv/auth/data';
+import { Translate } from '@cv/i18n/smart';
 
 @Component({
   selector: 'cv-auth--sign-out-button',

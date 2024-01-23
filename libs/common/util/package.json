@@ -1,12 +1,12 @@
 {
-  "name": "@cv/common-util",
+  "name": "@cv/common/util",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": "17.1.0",
     "rxjs": "7.8.0",
     "uuid": "9.0.1",
     "ngxtension": "1.9.9",
-    "@cv/common-types": "workspace:*"
+    "tslib": "2.3.0"
   },
   "type": "commonjs",
   "main": "./src/index.js",

@@ -2,25 +2,22 @@
   "name": "i18n-util",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/i18n/util/src",
-  "prefix": "cv-i18n",
-  "tags": ["scope:shared", "type:util"],
   "projectType": "library",
+  "tags": ["scope:shared", "type:util"],
   "targets": {
     "build": {
-      "executor": "@nx/angular:ng-packagr-lite",
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "project": "libs/i18n/util/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/i18n/util/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/i18n/util/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
+        "outputPath": "dist/libs/i18n/util",
+        "main": "libs/i18n/util/src/index.ts",
+        "tsConfig": "libs/i18n/util/tsconfig.lib.json",
+        "assets": []
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -28,10 +25,6 @@
       "options": {
         "jestConfig": "libs/i18n/util/jest.config.ts"
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
     }
   }
 }

@@ -1,10 +1,13 @@
 {
-  "name": "@cv/i18n-util",
+  "name": "@cv/i18n/util",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "17.1.0",
     "@angular/core": "17.1.0",
-    "ngxtension": "1.9.9"
+    "ngxtension": "1.9.9",
+    "tslib": "2.3.0"
   },
-  "sideEffects": false
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
 }

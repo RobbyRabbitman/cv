@@ -1,5 +1,5 @@
 {
-  "name": "@cv/auth-data",
+  "name": "@cv/auth/data",
   "version": "0.0.1",
   "dependencies": {
     "@ngrx/signals": "17.1.0",

@@ -12,9 +12,10 @@ import {
   provideFirestore,
 } from '@angular/fire/firestore';
 import { provideRouter } from '@angular/router';
-import { provideAuthData } from '@cv/auth-data';
-import { provideCommonData } from '@cv/common-data';
-import { provideI18nData } from '@cv/i18n-data';
+import { provideAuthData } from '@cv/auth/data';
+import { provideCommonData } from '@cv/common/data';
+import { provideCvData } from '@cv/data';
+import { provideI18nData } from '@cv/i18n/data';
 import { environment } from '../environments/environment';
 import { appRoutes } from './app.routes';
 
@@ -60,6 +61,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     provideFirebase(),
     provideCommonData(),
+    provideCvData(),
     provideAuthData(),
     provideI18nData(),
     provideHttpClient(),
