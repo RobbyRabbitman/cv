@@ -4,7 +4,7 @@ import { UserStore } from '@cv/auth/data';
 import { AUTH_SMART } from '@cv/auth/smart';
 import { CommonStore } from '@cv/common/data';
 import { I18N_SMART } from '@cv/i18n/smart';
-import { Logo } from '../logo/logo';
+import { Logo } from './logo';
 
 @Component({
   selector: 'cv-common--shell',
