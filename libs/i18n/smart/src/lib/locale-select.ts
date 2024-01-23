@@ -8,7 +8,7 @@ import { I18nStore } from '@cv/i18n/data';
 import { Translate, provideTranslatePrefix } from './translate';
 
 @Component({
-  selector: 'cv-i18n--locale-select',
+  selector: 'cv-i18n-smart--locale-select',
   standalone: true,
   imports: [Translate],
   viewProviders: [provideTranslatePrefix('I18N.LOCALE.SELECT')],

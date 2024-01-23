@@ -14,7 +14,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "cvI18n",
+            "prefix": "cvI18nSmart",
             "style": "camelCase"
           }
         ],
@@ -22,7 +22,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "cv-i18n",
+            "prefix": "cv-i18n-smart",
             "style": "kebab-case"
           }
         ]
