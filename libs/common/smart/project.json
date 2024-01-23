@@ -2,7 +2,7 @@
   "name": "common-smart",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/common/smart/src",
-  "prefix": "cv-common",
+  "prefix": "cv-common-smart",
   "tags": ["scope:shared", "type:smart"],
   "projectType": "library",
   "targets": {

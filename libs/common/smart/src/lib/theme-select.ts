@@ -11,7 +11,7 @@ import { Theme } from '@cv/common/types';
 import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
 
 @Component({
-  selector: 'cv-common--theme-select',
+  selector: 'cv-common-smart--theme-select',
   standalone: true,
   imports: [Translate, UpperCasePipe],
   viewProviders: [provideTranslatePrefix('COMMON.THEME.SELECT')],

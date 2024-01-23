@@ -14,7 +14,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "cvCommon",
+            "prefix": "cvCommonSmart",
             "style": "camelCase"
           }
         ],
@@ -22,7 +22,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "cv-common",
+            "prefix": "cv-common-smart",
             "style": "kebab-case"
           }
         ]
