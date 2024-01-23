@@ -7,7 +7,7 @@ import { Translate } from '@cv/i18n/smart';
   selector: 'cv-common--shell-logo',
   standalone: true,
   imports: [RouterLink, Translate],
-  template: `<a routerLink="/" class="font-bold text-4xl focus-ring">
+  template: `<a routerLink="/" class="font-bold text-4xl">
     <span class="sr-only">
       {{
         'COMMON.FEATURES.SHELL.LOGO.LABEL'

@@ -27,6 +27,10 @@ module.exports = {
           fontWeight: '100 700',
           src: "url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v156/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsLjBuVY.woff2) format('woff2')",
         },
+
+        'a, button': {
+          '@apply focus-ring': {},
+        },
       });
 
       addUtilities({
