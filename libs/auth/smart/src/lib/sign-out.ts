@@ -8,7 +8,7 @@ import { UserStore } from '@cv/auth/data';
 import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
 
 @Component({
-  selector: 'cv-auth--sign-out-button',
+  selector: 'cv-auth-smart--sign-out-button',
   standalone: true,
   viewProviders: [provideTranslatePrefix('AUTH.SIGN_OUT.BUTTON')],
   imports: [Translate],

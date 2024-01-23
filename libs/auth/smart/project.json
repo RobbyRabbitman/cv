@@ -2,7 +2,7 @@
   "name": "auth-smart",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/auth/smart/src",
-  "prefix": "cv-auth",
+  "prefix": "cv-auth-smart",
   "tags": ["scope:shared", "type:smart"],
   "projectType": "library",
   "targets": {

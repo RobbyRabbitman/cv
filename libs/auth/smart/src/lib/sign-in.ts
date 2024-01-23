@@ -9,7 +9,7 @@ import { provideTranslatePrefix } from '@cv/i18n/smart';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'cv-auth--sign-in-button',
+  selector: 'cv-auth-smart--sign-in-button',
   standalone: true,
   viewProviders: [provideTranslatePrefix('AUTH.SIGN_IN.BUTTON')],
   imports: [TranslateModule],
