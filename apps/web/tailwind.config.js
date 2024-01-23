@@ -9,6 +9,7 @@ module.exports = {
     join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
+  darkMode: 'class',
   theme: {
     colors: {
       transparent: 'transparent',
@@ -52,7 +53,7 @@ module.exports = {
           direction: 'ltr',
         },
         '.control': {
-          '@apply outline-none appearance-none border-opacity-25 border-solid border-2 border-primary-500 rounded-md hover:bg-primary-200 hover:dark:bg-primary-800 dark:focus-within:border-white':
+          '@apply outline-none appearance-none border-opacity-25 border-solid border-2 border-primary-500 rounded-md hover:bg-primary-200 hover:dark:bg-primary-800 focus-within:border-primary-900 dark:focus-within:border-white':
             {},
         },
         '.select-with-icon': {

@@ -4,10 +4,11 @@ import {
   ElementRef,
   Output,
   ViewChild,
+  ViewEncapsulation,
   input,
   signal,
 } from '@angular/core';
-import { fromSignalEvent } from '@cv/common/util';
+import { fromEvent } from '@cv/common/util';
 import { RangeField as RangeFieldType } from '@cv/types';
 import { setValueOfSimpleField } from '@cv/util';
 import { map } from 'rxjs';
@@ -15,6 +16,7 @@ import { map } from 'rxjs';
 @Component({
   selector: 'cv-ui--range-field',
   standalone: true,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
   template: `<label>
@@ -38,7 +40,7 @@ export class RangeField {
   field = input.required<RangeFieldType>();
 
   @Output()
-  fieldChange = fromSignalEvent(this.input, 'input').pipe(
+  fieldChange = fromEvent(this.input, 'input').pipe(
     map(({ target }) =>
       setValueOfSimpleField(this.field(), Number(target.value)),
     ),

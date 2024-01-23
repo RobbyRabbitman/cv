@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+  inject,
+} from '@angular/core';
 import { I18nStore } from '@cv/i18n/data';
 import { Translate } from './translate';
 
@@ -24,11 +29,8 @@ import { Translate } from './translate';
       }
     </select>
   </label>`,
-  styles: `
-  :host {
-    @apply inline-flex;
-  }
-  `,
+  styleUrl: './locale-select.scss',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LocaleSelect {

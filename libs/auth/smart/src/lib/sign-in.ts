@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+  inject,
+} from '@angular/core';
 import { UserStore } from '@cv/auth/data';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -10,11 +15,8 @@ import { TranslateModule } from '@ngx-translate/core';
     <span aria-hidden="true" class="icon">login</span>
     <span class="sr-only">{{ 'AUTH.SIGN_IN.BUTTON.LABEL' | translate }}</span>
   </button>`,
-  styles: `
-  :host {
-    @apply inline-flex;
-  }
-  `,
+  styleUrl: './sign-in.scss',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInButton {

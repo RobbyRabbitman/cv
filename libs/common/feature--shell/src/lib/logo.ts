@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+  inject,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonStore } from '@cv/common/data';
 import { Translate } from '@cv/i18n/smart';
@@ -18,6 +23,7 @@ import { Translate } from '@cv/i18n/smart';
       {{ common.appName() }}
     </span>
   </a>`,
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Logo {

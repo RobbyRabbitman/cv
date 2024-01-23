@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+  inject,
+} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { UserStore } from '@cv/auth/data';
 import { AUTH_SMART } from '@cv/auth/smart';
@@ -11,11 +16,8 @@ import { Logo } from './logo';
   standalone: true,
   imports: [RouterOutlet, I18N_SMART, AUTH_SMART, Logo],
   templateUrl: './shell.html',
-  styles: `
-    :host {
-      @apply antialiased flex flex-col items-center absolute inset-0 bg-white text-primary-500 dark:bg-primary-900 dark:text-primary-400;
-    }
-  `,
+  styleUrl: './shell.scss',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Shell {

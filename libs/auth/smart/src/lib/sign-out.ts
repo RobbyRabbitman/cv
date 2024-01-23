@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+  inject,
+} from '@angular/core';
 import { UserStore } from '@cv/auth/data';
 import { Translate } from '@cv/i18n/smart';
 
@@ -10,11 +15,8 @@ import { Translate } from '@cv/i18n/smart';
     <span aria-hidden="true" class="icon">logout</span>
     <span class="sr-only">{{ 'AUTH.SIGN_OUT.BUTTON.LABEL' | translate }}</span>
   </button>`,
-  styles: `
-  :host {
-    @apply inline-flex;
-  }
-  `,
+  styleUrl: './sign-out.scss',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignOutButton {
