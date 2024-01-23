@@ -5,15 +5,16 @@ import {
   inject,
 } from '@angular/core';
 import { I18nStore } from '@cv/i18n/data';
-import { Translate } from './translate';
+import { Translate, provideTranslatePrefix } from './translate';
 
 @Component({
   selector: 'cv-i18n--locale-select',
   standalone: true,
   imports: [Translate],
+  viewProviders: [provideTranslatePrefix('I18N.LOCALE.SELECT')],
   template: `<label class="inline-flex control relative">
     <span class="sr-only">
-      {{ 'I18N.LOCALE.SELECT.LABEL' | translate }}
+      {{ 'LABEL' | translate }}
     </span>
     <span aria-hidden="true" class="select-icon"> translate </span>
     <span aria-hidden="true" class="select-arrow-icon"> arrow_drop_down </span>

@@ -5,15 +5,16 @@ import {
   inject,
 } from '@angular/core';
 import { UserStore } from '@cv/auth/data';
-import { Translate } from '@cv/i18n/smart';
+import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
 
 @Component({
   selector: 'cv-auth--sign-out-button',
   standalone: true,
+  viewProviders: [provideTranslatePrefix('AUTH.SIGN_OUT.BUTTON')],
   imports: [Translate],
   template: `<button class="inline-flex" (click)="store.signOut()">
     <span aria-hidden="true" class="icon">logout</span>
-    <span class="sr-only">{{ 'AUTH.SIGN_OUT.BUTTON.LABEL' | translate }}</span>
+    <span class="sr-only">{{ 'LABEL' | translate }}</span>
   </button>`,
   styleUrl: './sign-out.scss',
   encapsulation: ViewEncapsulation.None,

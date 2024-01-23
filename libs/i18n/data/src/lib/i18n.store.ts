@@ -15,7 +15,7 @@ import {
 } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
-import { pipe, switchMap, tap } from 'rxjs';
+import { delay, pipe, switchMap, tap } from 'rxjs';
 
 export function provideI18nStore(): EnvironmentProviders {
   return makeEnvironmentProviders([I18nStore]);
@@ -49,6 +49,7 @@ export const I18nStore = signalStore(
         tap((locale) => {
           patchState(store, { locale, loading: true });
         }),
+        delay(0), // trigger change detection so that the loading state can actually be read.
         switchMap((locale) => translateService.use(locale)),
         tap(() => {
           patchState(store, { loading: false });
