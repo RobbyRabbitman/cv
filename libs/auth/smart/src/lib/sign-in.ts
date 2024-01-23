@@ -14,7 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
   :host {
     @apply inline-flex;
   }
-`,
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInButton {

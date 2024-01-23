@@ -14,7 +14,7 @@ import { Translate } from '@cv/i18n/smart';
   :host {
     @apply inline-flex;
   }
-`,
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignOutButton {

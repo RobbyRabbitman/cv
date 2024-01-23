@@ -13,7 +13,7 @@ import { Logo } from './logo';
   templateUrl: './shell.html',
   styles: `
     :host {
-      @apply antialiased flex flex-col items-center absolute inset-0 bg-white text-slate-500 dark:bg-slate-900 dark:text-slate-400;
+      @apply antialiased flex flex-col items-center absolute inset-0 bg-white text-primary-500 dark:bg-primary-900 dark:text-primary-400;
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
