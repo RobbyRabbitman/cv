@@ -15,7 +15,7 @@ import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
   standalone: true,
   imports: [Translate, UpperCasePipe],
   viewProviders: [provideTranslatePrefix('COMMON.THEME.SELECT')],
-  template: `<label class="inline-flex control relative">
+  template: `<label class="select-label">
     <span class="sr-only">
       {{ 'LABEL' | translate }}
     </span>

@@ -1,0 +1,10 @@
+{
+  "name": "@cv/smart",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/core": "^17.1.0",
+    "@cv/data": "*",
+    "@cv/i18n/smart": "*"
+  },
+  "sideEffects": false
+}

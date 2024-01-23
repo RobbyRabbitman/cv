@@ -26,6 +26,7 @@
       "@cv/i18n/data": ["libs/i18n/data/src/index.ts"],
       "@cv/i18n/smart": ["libs/i18n/smart/src/index.ts"],
       "@cv/i18n/util": ["libs/i18n/util/src/index.ts"],
+      "@cv/smart": ["libs/cv/smart/src/index.ts"],
       "@cv/types": ["libs/cv/types/src/index.ts"],
       "@cv/ui": ["libs/cv/ui/src/index.ts"],
       "@cv/util": ["libs/cv/util/src/index.ts"]

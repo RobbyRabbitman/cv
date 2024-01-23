@@ -36,5 +36,10 @@
         }
       }
     }
+  },
+  "CV": {
+    "CREATE_BUTTON": {
+      "LABEL": "Erstellen"
+    }
   }
 }

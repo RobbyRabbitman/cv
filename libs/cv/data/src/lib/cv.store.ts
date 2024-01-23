@@ -37,45 +37,74 @@ export const CvStore = signalStore(
   withMethods((store) => {
     const api = inject(Api);
 
+    /** Gets a cv and its prototypes by its id. */
+    const get = rxMethod<UUID>(
+      pipe(
+        // noop when cv is already in store.
+        filter((id) => !store.cvEntityMap()[id]),
+        // indicate loading
+        tap(() => patchState(store, { loading: true })),
+        // call api
+        switchMap((id) => api.getCvWithBlockPrototypes(id)),
+        // handle response
+        tapResponse({
+          // success
+          next: ({ cv, prototypes }) => {
+            patchState(
+              store,
+              { loading: false },
+              setEntity(cv, { collection: 'cv' }),
+              setEntities(prototypes, {
+                collection: 'prototypes',
+              }),
+            );
+          },
+          // error
+          error: () => {
+            // TODO
+          },
+          // success or error
+          finalize: () => {
+            patchState(store, { loading: false });
+          },
+        }),
+      ),
+    );
+
+    const create = rxMethod<void>(
+      pipe(
+        // noop when loading
+        filter(() => !store.loading()),
+        // indicate loading
+        tap(() => patchState(store, { loading: true })),
+        // call api
+        switchMap(() => api.createCv()),
+        // handle response
+        tapResponse({
+          // success
+          next: (id) => {
+            patchState(store, { loading: false });
+            get(id);
+          },
+          // error
+          error: () => {
+            // TODO
+          },
+          // success or error
+          finalize: () => {
+            patchState(store, { loading: false });
+          },
+        }),
+      ),
+    );
+
     return {
       /** Gets a block prototype by its id. */
       getPrototype: function (prototypeId: UUID) {
         return store.prototypesEntityMap()[prototypeId];
       },
-
-      /** Gets a cv and its prototypes by its id. */
-      getCv: rxMethod<UUID>(
-        pipe(
-          // noop when cv is already in store.
-          filter((id) => !store.cvEntityMap()[id]),
-          // indicate loading
-          tap(() => patchState(store, { loading: true })),
-          // call api
-          switchMap((id) => api.getCvWithBlockPrototypes(id)),
-          // handle response
-          tapResponse({
-            // success
-            next: ({ cv, prototypes }) => {
-              patchState(
-                store,
-                { loading: false },
-                setEntity(cv, { collection: 'cv' }),
-                setEntities(prototypes, {
-                  collection: 'prototypes',
-                }),
-              );
-            },
-            // error
-            error: () => {
-              // TODO
-            },
-            // success or error
-            finalize: () => {
-              patchState(store, { loading: false });
-            },
-          }),
-        ),
-      ),
+      create,
+      get,
     };
   }),
 );

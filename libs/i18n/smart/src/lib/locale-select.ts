@@ -12,7 +12,7 @@ import { Translate, provideTranslatePrefix } from './translate';
   standalone: true,
   imports: [Translate],
   viewProviders: [provideTranslatePrefix('I18N.LOCALE.SELECT')],
-  template: `<label class="inline-flex control relative">
+  template: `<label class="select-label">
     <span class="sr-only">
       {{ 'LABEL' | translate }}
     </span>

@@ -8,7 +8,8 @@
     "@cv/auth/smart": "*",
     "@cv/auth/data": "*",
     "@cv/common/data": "*",
-    "@cv/common/smart": "*"
+    "@cv/common/smart": "*",
+    "@cv/smart": "*"
   },
   "sideEffects": false
 }
