@@ -25,6 +25,15 @@ module.exports = {
           '@apply border-opacity-25 border-solid border-2 border-primary-500 rounded-md focus-within:border-opacity-100 focus-within:border-white':
             {},
         },
+        '.select-with-icon': {
+          '@apply outline-none appearance-none py-2 pl-10 pr-8': {},
+        },
+        '.select-icon': {
+          '@apply absolute top-2 left-2 pointer-events-none': {},
+        },
+        '.select-arrow-icon': {
+          '@apply absolute top-2 right-2 pointer-events-none': {},
+        },
       });
     }),
   ],
