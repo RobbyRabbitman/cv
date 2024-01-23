@@ -7,7 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule],
   template: `<button class="inline-flex" (click)="store.signIn()">
-    <span aria-hidden="true" class="material-symbols-outlined">login</span>
+    <span aria-hidden="true" class="icon">login</span>
     <span class="sr-only">{{ 'AUTH.SIGN_IN.BUTTON.LABEL' | translate }}</span>
   </button>`,
   styles: `

@@ -7,7 +7,7 @@ import { Translate } from '@cv/i18n/smart';
   standalone: true,
   imports: [Translate],
   template: `<button class="inline-flex" (click)="store.signOut()">
-    <span aria-hidden="true" class="material-symbols-outlined">logout</span>
+    <span aria-hidden="true" class="icon">logout</span>
     <span class="sr-only">{{ 'AUTH.SIGN_OUT.BUTTON.LABEL' | translate }}</span>
   </button>`,
   styles: `

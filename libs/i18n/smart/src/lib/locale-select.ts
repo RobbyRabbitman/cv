@@ -6,19 +6,12 @@ import { Translate } from './translate';
   selector: 'cv-i18n--locale-select',
   standalone: true,
   imports: [Translate],
-  template: `<label class="inline-flex control-border relative">
+  template: `<label class="inline-flex control relative">
     <span class="sr-only">
       {{ 'I18N.LOCALE.SELECT.LABEL' | translate }}
     </span>
-    <span aria-hidden="true" class="material-symbols-outlined select-icon">
-      translate
-    </span>
-    <span
-      aria-hidden="true"
-      class="material-symbols-outlined select-arrow-icon"
-    >
-      arrow_drop_down
-    </span>
+    <span aria-hidden="true" class="select-icon"> translate </span>
+    <span aria-hidden="true" class="select-arrow-icon"> arrow_drop_down </span>
     <select
       class="select-with-icon"
       (change)="i18n.setLocale($any($event.target).value)"

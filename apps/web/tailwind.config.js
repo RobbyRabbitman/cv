@@ -19,20 +19,46 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(function ({ addUtilities }) {
+    plugin(function ({ addUtilities, addBase }) {
+      addBase({
+        '@font-face': {
+          fontFamily: 'Material Symbols Outlined',
+          fontStyle: 'normal',
+          fontWeight: '100 700',
+          src: "url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v156/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsLjBuVY.woff2) format('woff2')",
+        },
+      });
+
       addUtilities({
-        '.control-border': {
-          '@apply border-opacity-25 border-solid border-2 border-primary-500 rounded-md focus-within:border-opacity-100 focus-within:border-white':
+        '.focus-ring': {
+          '@apply focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-900 focus-visible:dark:outline-white':
+            {},
+        },
+        '.icon': {
+          fontFamily: 'Material Symbols Outlined',
+          fontWeight: 'normal',
+          fontStyle: 'normal',
+          fontSize: '1.5rem',
+          lineHeight: '1',
+          letterSpacing: 'normal',
+          textTransform: 'none',
+          display: 'inlineBlock',
+          whiteSpace: 'nowrap',
+          wordWrap: 'normal',
+          direction: 'ltr',
+        },
+        '.control': {
+          '@apply outline-none appearance-none border-opacity-25 border-solid border-2 border-primary-500 rounded-md hover:bg-primary-200 hover:dark:bg-primary-800 dark:focus-within:border-white':
             {},
         },
         '.select-with-icon': {
           '@apply outline-none appearance-none py-2 pl-10 pr-8': {},
         },
         '.select-icon': {
-          '@apply absolute top-2 left-2 pointer-events-none': {},
+          '@apply icon absolute top-2 left-2 pointer-events-none': {},
         },
         '.select-arrow-icon': {
-          '@apply absolute top-2 right-2 pointer-events-none': {},
+          '@apply icon absolute top-2 right-2 pointer-events-none': {},
         },
       });
     }),
