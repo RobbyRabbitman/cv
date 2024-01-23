@@ -5,7 +5,8 @@
     "@angular/core": "^17.1.0",
     "@cv/common/data": "*",
     "@cv/common/types": "*",
-    "@cv/i18n/smart": "*"
+    "@cv/i18n/smart": "*",
+    "@angular/common": "17.1.0"
   },
   "dependencies": {},
   "sideEffects": false

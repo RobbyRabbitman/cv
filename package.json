@@ -7,6 +7,7 @@
     "firebase:emulators:local": "pnpm run firebase --project=local emulators:start",
     "postinstall": "simple-git-hooks",
     "format:check": "pnpm exec nx format:check",
+    "lint:fix:dependencies": "pnpm exec nx run-many --target=lint --all=true --fix --rule '@nx/dependency-checks'",
     "lint:affected": "pnpm exec nx affected --target lint --max-warnings=0",
     "lint:affected:fix:dependencies": "pnpm run lint:affected --fix --rule '@nx/dependency-checks'",
     "test:affected": "pnpm exec nx affected --target test",
