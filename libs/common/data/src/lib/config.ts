@@ -1,9 +1,10 @@
 import {
   ENVIRONMENT_INITIALIZER,
+  computed,
   inject,
   makeEnvironmentProviders,
 } from '@angular/core';
-import { applyTheme } from '@cv/common/util';
+import { applyTheme, injectDocumentTheme } from '@cv/common/util';
 import { CommonStore, provideCommonStore } from './common.store';
 
 export function provideCommonData() {
@@ -14,7 +15,18 @@ export function provideCommonData() {
       multi: true,
       useFactory: () => {
         const common = inject(CommonStore);
-        return () => applyTheme(common.theme);
+        const documentTheme = injectDocumentTheme();
+
+        return () =>
+          applyTheme(
+            computed(() => {
+              const theme = common.theme();
+
+              if (theme === 'system') return documentTheme();
+
+              return theme;
+            }),
+          );
       },
     },
   ]);

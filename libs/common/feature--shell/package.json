@@ -4,10 +4,11 @@
   "peerDependencies": {
     "@angular/core": "17.1.0",
     "@angular/router": "17.1.0",
-    "@cv/i18n/smart": "workspace:*",
-    "@cv/auth/smart": "workspace:*",
-    "@cv/auth/data": "workspace:*",
-    "@cv/common/data": "workspace:*"
+    "@cv/i18n/smart": "*",
+    "@cv/auth/smart": "*",
+    "@cv/auth/data": "*",
+    "@cv/common/data": "*",
+    "@cv/common/smart": "*"
   },
   "sideEffects": false
 }

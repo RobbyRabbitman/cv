@@ -17,5 +17,24 @@
         "LABEL": "Sprache wählen"
       }
     }
+  },
+  "COMMON": {
+    "FEATURES": {
+      "SHELL": {
+        "LOGO": {
+          "LABEL": "{{ appName }} Startseite"
+        }
+      }
+    },
+    "THEME": {
+      "SELECT": {
+        "LABEL": "Theme",
+        "OPTIONS": {
+          "LIGHT": "Hell",
+          "DARK": "Dunkel",
+          "SYSTEM": "System"
+        }
+      }
+    }
   }
 }

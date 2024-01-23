@@ -4,9 +4,9 @@
   "peerDependencies": {
     "@angular/core": "17.1.0",
     "rxjs": "7.8.0",
-    "@cv/common/util": "workspace:*",
-    "@cv/types": "workspace:*",
-    "@cv/util": "workspace:*"
+    "@cv/common/util": "*",
+    "@cv/types": "*",
+    "@cv/util": "*"
   },
   "sideEffects": false
 }

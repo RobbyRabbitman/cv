@@ -8,6 +8,7 @@
     "postinstall": "simple-git-hooks",
     "format:check": "pnpm exec nx format:check",
     "lint:affected": "pnpm exec nx affected --target lint --max-warnings=0",
+    "lint:affected:fix": "pnpm run lint:affected --fix",
     "test:affected": "pnpm exec nx affected --target test",
     "build:affected": "pnpm exec nx affected --target build",
     "lint:affected:ci": "pnpm run lint:affected --configuration=ci --parallel=3",

@@ -1,10 +1,5 @@
-import {
-  EnvironmentProviders,
-  computed,
-  makeEnvironmentProviders,
-} from '@angular/core';
-import { Theme } from '@cv/common/types';
-import { injectDocumentTheme } from '@cv/common/util';
+import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
+import { THEMES, Theme } from '@cv/common/types';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 
 export function provideCommonStore(): EnvironmentProviders {
@@ -13,23 +8,22 @@ export function provideCommonStore(): EnvironmentProviders {
 
 interface State {
   appName: string;
-  theme: Theme | undefined;
+  theme: Theme;
+  themes: typeof THEMES;
 }
 
 export const CommonStore = signalStore(
   withState(() => {
     const initialState: State = {
       appName: 'CV',
-      theme: undefined,
+      theme: 'system',
+      themes: THEMES,
     };
 
     return initialState;
   }),
   withMethods((store) => {
-    const documentTheme = injectDocumentTheme();
-
     return {
-      theme: computed(() => store.theme() ?? documentTheme()),
       setTheme: function (theme: Theme) {
         patchState(store, { theme });
       },

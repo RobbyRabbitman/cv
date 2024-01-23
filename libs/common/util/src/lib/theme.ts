@@ -18,10 +18,12 @@ export function applyTheme(theme: Signal<Theme>, injector?: Injector): void {
 }
 
 /** Injects the theme from the document. Returns `light` when the theme cannot be read. */
-export function injectDocumentTheme(injector?: Injector): Signal<Theme> {
+export function injectDocumentTheme(
+  injector?: Injector,
+): Signal<Exclude<Theme, 'system'>> {
   injector = assertInjector(injectDocumentTheme, injector);
 
-  const theme = signal<Theme>('light');
+  const theme = signal<Exclude<Theme, 'system'>>('light');
 
   const matchMedia = injector.get(DOCUMENT).defaultView?.matchMedia;
 

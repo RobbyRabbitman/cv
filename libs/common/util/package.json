@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": "17.1.0",
-    "rxjs": "7.8.0",
-    "uuid": "9.0.1",
     "ngxtension": "1.9.9",
+    "rxjs": "7.8.0",
+    "@angular/common": "17.1.0",
+    "@cv/common/types": "*",
+    "uuid": "9.0.1",
     "tslib": "2.3.0"
   },
   "type": "commonjs",

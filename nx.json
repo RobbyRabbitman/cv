@@ -68,7 +68,8 @@
     "@nx/angular:component": {
       "style": "scss",
       "changeDetection": "OnPush",
-      "type": ""
+      "type": "",
+      "viewEncapsulation": "None"
     },
     "@nx/js:library": {
       "unitTestRunner": "jest",

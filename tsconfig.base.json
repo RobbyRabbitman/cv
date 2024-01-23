@@ -19,6 +19,7 @@
       "@cv/auth/smart": ["libs/auth/smart/src/index.ts"],
       "@cv/common--shell": ["libs/common/feature--shell/src/index.ts"],
       "@cv/common/data": ["libs/common/data/src/index.ts"],
+      "@cv/common/smart": ["libs/common/smart/src/index.ts"],
       "@cv/common/types": ["libs/common/types/src/index.ts"],
       "@cv/common/util": ["libs/common/util/src/index.ts"],
       "@cv/data": ["libs/cv/data/src/index.ts"],

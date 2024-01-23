@@ -8,10 +8,10 @@
     "@angular/fire": "17.0.1",
     "@ngrx/operators": "17.1.0",
     "@ngrx/signals": "17.1.0",
-    "@cv/common/types": "workspace:*",
-    "@cv/common/util": "workspace:*",
-    "@cv/types": "workspace:*",
-    "@cv/util": "workspace:*"
+    "@cv/common/types": "*",
+    "@cv/common/util": "*",
+    "@cv/types": "*",
+    "@cv/util": "*"
   },
   "sideEffects": false
 }
