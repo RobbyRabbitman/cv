@@ -13,8 +13,8 @@ import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
   viewProviders: [provideTranslatePrefix('AUTH.SIGN_OUT.BUTTON')],
   imports: [Translate],
   template: `<button class="button" (click)="store.signOut()">
+    <span>{{ 'LABEL' | translate }}</span>
     <span aria-hidden="true" class="icon">logout</span>
-    <span class="sr-only">{{ 'LABEL' | translate }}</span>
   </button>`,
   styleUrl: './sign-out.scss',
   encapsulation: ViewEncapsulation.None,
