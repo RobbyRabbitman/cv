@@ -26,7 +26,8 @@
                   "type:feature",
                   "type:types",
                   "type:util",
-                  "type:data"
+                  "type:data",
+                  "type:smart"
                 ]
               },
               {

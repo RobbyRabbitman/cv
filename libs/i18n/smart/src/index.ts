@@ -2,6 +2,7 @@ import { I18nDate } from './lib/date';
 import { LocaleSelect } from './lib/locale-select';
 import { Translate } from './lib/translate';
 
+export * from './lib/config';
 export * from './lib/date';
 export * from './lib/locale-select';
 export * from './lib/translate';

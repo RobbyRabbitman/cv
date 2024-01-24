@@ -28,7 +28,7 @@
     },
     "THEME": {
       "SELECT": {
-        "LABEL": "Theme",
+        "LABEL": "Design",
         "OPTIONS": {
           "LIGHT": "Hell",
           "DARK": "Dunkel",

@@ -10,6 +10,7 @@ import { provideCommonData } from '@cv/common/data';
 import { provideFirebase } from '@cv/common/util';
 import { provideCvData } from '@cv/data';
 import { provideI18nData } from '@cv/i18n/data';
+import { provideI18nSmart } from '@cv/i18n/smart';
 import { environment } from '../environments/environment';
 import { appRoutes } from './app.routes';
 
@@ -21,6 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideCvData(),
     provideAuthData(),
     provideI18nData(),
+    provideI18nSmart(),
     provideHttpClient(),
     ɵprovideZonelessChangeDetection(),
   ],
