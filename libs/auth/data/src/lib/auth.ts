@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { DestroyRef, Injectable, inject, signal } from '@angular/core';
 import { firebaseAuth } from '@cv/common/util';
 import {
   GoogleAuthProvider,
@@ -10,9 +10,10 @@ import {
 @Injectable()
 export class Auth {
   protected auth = firebaseAuth();
+  protected destroyRef = inject(DestroyRef);
 
   constructor() {
-    onAuthStateChanged(this.auth, (user) => this.user.set(user));
+    this.destroyRef.onDestroy(onAuthStateChanged(this.auth, this.user.set));
   }
 
   /** The user if logged in, else null. */
