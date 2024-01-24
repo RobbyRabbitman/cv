@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { UserStore } from '@cv/auth/data';
-import { UUID } from '@cv/common/types';
+import { Identifiable, UUID } from '@cv/common/types';
 import { firestore, uuid } from '@cv/common/util';
 import { BlockPrototype, Cv, Paragraph, Section, TextField } from '@cv/types';
 import { createBlock } from '@cv/util';
@@ -12,8 +12,8 @@ import {
   getDoc,
   getDocs,
   query,
-  serverTimestamp,
   setDoc,
+  updateDoc,
   where,
 } from 'firebase/firestore';
 
@@ -41,8 +41,8 @@ const cv_1_prototype: BlockPrototype<Cv> = {
   type: 'cv',
   template: {
     childPrototypeIds: ['section_1_prototype'],
-    createdAt: '',
-    lastModifiedAt: '',
+    createdAt: 0,
+    lastModifiedAt: 0,
     userId: '',
   },
 };
@@ -85,13 +85,18 @@ const field_1_prototype: BlockPrototype<TextField> = {
 
 @Injectable()
 export class Api {
-  protected CV = 'cv';
-  protected BLOCK_PROTOTYPES = 'blockPrototypes';
-  protected CV_BLOCK_PROTOTYPES = 'cvBlockPrototypes';
-
   protected firestore = firestore();
+
   protected user = inject(UserStore);
 
+  // collection names
+  protected CV = 'cv';
+
+  protected BLOCK_PROTOTYPES = 'blockPrototypes';
+
+  protected CV_BLOCK_PROTOTYPES = 'cvBlockPrototypes';
+
+  // collections
   protected cv = collection(this.firestore, this.CV) as unknown as CvCollection;
 
   protected blockPrototypes = collection(
@@ -104,7 +109,7 @@ export class Api {
     this.CV_BLOCK_PROTOTYPES,
   ) as unknown as CvBlockPrototypesCollection;
 
-  async getCv(cvId: UUID): Promise<Cv> {
+  async getOne(cvId: UUID): Promise<Cv> {
     const ref = doc(this.cv, cvId);
     const snap = await getDoc(ref);
 
@@ -128,15 +133,13 @@ export class Api {
     ).docs.map((snap) => snap.data());
   }
 
-  protected userId() {
-    const user = this.user.value();
+  async update(cv: Partial<Cv> & Identifiable): Promise<void> {
+    const cvRef = doc(this.cv, cv.id);
 
-    if (!user) throw new Error(`[Api]: no user.`);
-
-    return user.uid;
+    await updateDoc(cvRef, { ...cv, lastModifiedAt: Date.now() });
   }
 
-  async createCv(): Promise<UUID> {
+  async create(): Promise<UUID> {
     const userId = this.userId();
 
     // TODO real impl
@@ -146,16 +149,17 @@ export class Api {
       field_1_prototype,
     });
 
-    const docRef = doc(this.cv);
+    const cvRef = doc(this.cv);
 
-    await setDoc(docRef, {
+    await setDoc(cvRef, {
       ..._cv,
+      id: cvRef.id,
       userId,
-      createdAt: serverTimestamp(),
-      lastModifiedAt: serverTimestamp(),
+      createdAt: Date.now(),
+      lastModifiedAt: Date.now(),
     });
 
-    return docRef.id;
+    return cvRef.id;
   }
 
   async getPrototypeUuids(cvId: UUID): Promise<UUID[]> {
@@ -173,10 +177,10 @@ export class Api {
     ).docs.map((snap) => snap.data().prototypeId);
   }
 
-  async getCvWithBlockPrototypes(
+  async getOneWithPrototypes(
     cvId: UUID,
   ): Promise<{ cv: Cv; prototypes: BlockPrototype[] }> {
-    const cv = await this.getCv(cvId);
+    const cv = await this.getOne(cvId);
 
     const prototypeIds = await this.getPrototypeUuids(cvId);
 
@@ -194,5 +198,13 @@ export class Api {
     ).docs.map((snap) => snap.data());
 
     return { cv, prototypes };
+  }
+
+  protected userId() {
+    const user = this.user.value();
+
+    if (!user) throw new Error(`[Api]: no user.`);
+
+    return user.uid;
   }
 }

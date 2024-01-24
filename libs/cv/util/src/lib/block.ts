@@ -1,9 +1,10 @@
-import { UUID } from '@cv/common/types';
+import { Identifiable, UUID } from '@cv/common/types';
 import {
   Block,
   BlockPrototype,
   BlockPrototypeTemplate,
-  SimpleField,
+  Blocks,
+  hasBlockChildren,
   hasTemplateChildren,
 } from '@cv/types';
 
@@ -45,15 +46,33 @@ export function createBlock<TBlock extends Block>(
   return build(prototype.template as BlockPrototypeTemplate<TBlock>);
 }
 
-/**
- *
- * @param field
- * @param value
- * @returns a shallow copy of the field with the new value.
- */
-export function setValueOfSimpleField<T>(
-  field: SimpleField<T>,
-  value: T,
-): SimpleField<T> {
-  return { ...field, value };
+export function patchBlock<TRoot extends Block, TBlock extends Blocks>(
+  root: TRoot,
+  value: Partial<TBlock> & Identifiable,
+): TRoot {
+  root = structuredClone(root);
+
+  const target = findBlock(root, value.id);
+
+  if (!target) throw new Error(`[Block]: '${value.id}' not in ${root.id}.`);
+
+  Object.assign(target, value);
+
+  return root;
+}
+
+export function findBlock(root: Block, id: UUID): Block | null {
+  if (root.id === id) return root;
+
+  if (hasBlockChildren(root)) {
+    for (const child of root.children) {
+      if (child.id === id) {
+        return child;
+      }
+      const block = findBlock(child, id);
+      if (block) return block;
+    }
+  }
+
+  return null;
 }

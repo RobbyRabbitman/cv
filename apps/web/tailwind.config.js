@@ -75,6 +75,9 @@ module.exports = {
         '.button': {
           '@apply font-bold control inline-flex p-2 active:translate-y-0.5': {},
         },
+        '.input': {
+          '@apply control p-2 placeholder:italic': {},
+        },
       });
     }),
   ],

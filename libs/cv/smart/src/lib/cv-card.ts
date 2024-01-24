@@ -5,7 +5,6 @@ import {
   computed,
   inject,
   input,
-  untracked,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UUID } from '@cv/common/types';
@@ -22,14 +21,16 @@ import { cvRoute } from '@cv/util';
   standalone: true,
   imports: [RouterLink, I18N_SMART],
   viewProviders: [provideTranslatePrefix('CV.CARD')],
-  template: `<a [routerLink]="link()" class="control h-80"></a>
-    <!-- maybe separate component -->
+  template: `<a [routerLink]="link()" class="control h-80">
+      <span class="sr-only">{{ 'PREVIEW.LABEL' | translate }}</span>
+    </a>
     <label class="flex flex-col gap-2">
-      <span class="sr-only">{{ 'LABEL_INPUT.LABEL' | translate }}</span>
+      <span class="sr-only">{{ 'INPUT.LABEL' | translate }}</span>
       <input
-        class="control p-2 placeholder:italic"
+        class="input"
         [placeholder]="placeholder()"
         [value]="value()"
+        (input)="onChange($event)"
         type="text"
       />
       <span>
@@ -50,7 +51,7 @@ export class CvCard {
 
   translate = translateFactory()();
 
-  link = computed(() => this.route(untracked(this.cvId)));
+  link = computed(() => this.route(this.cvId()));
 
   cv = computed(() => this.store.cvEntityMap()[this.cvId()]);
 
@@ -59,9 +60,17 @@ export class CvCard {
   value = computed(() => this.cv().label ?? '');
 
   placeholder = computed(() => {
-    if (this.value() === '') return this.translate('LABEL_INPUT.PLACEHOLDER');
+    if (this.value() === '') return this.translate('INPUT.PLACEHOLDER');
     return '';
   });
 
   cvId = input.required<UUID>();
+
+  protected onChange(event: Event) {
+    this.store.patchBlock(this.cv(), {
+      id: this.cv().id,
+      type: 'cv',
+      label: (event.target as HTMLInputElement).value,
+    });
+  }
 }

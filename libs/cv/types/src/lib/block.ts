@@ -5,6 +5,8 @@ export const BLOCKS = ['cv', 'section', 'paragraph', 'field'] as const;
 
 export type BlockType = (typeof BLOCKS)[number];
 
+export type Blocks = Cv | Section | Paragraph | Field;
+
 /**
  * A part of a CV.
  */
@@ -26,11 +28,9 @@ export interface HasChildren<TChildren> {
 export interface Cv extends Block, CanBeLabeled, HasChildren<Section> {
   type: 'cv';
 
-  /** ISO 8601 */
-  createdAt: string;
+  createdAt: number;
 
-  /** ISO 8601 */
-  lastModifiedAt: string;
+  lastModifiedAt: number;
 
   /** The associated user id of this CV  */
   userId: UUID;

@@ -43,9 +43,12 @@
     },
     "CARD": {
       "LAST_MODIFIED_AT": "Zuletzt bearbeitet am {{ lastModifiedAt }}",
-      "LABEL_INPUT": {
+      "INPUT": {
         "PLACEHOLDER": "Kein Titel",
         "LABEL": "Lebenslauf Titel"
+      },
+      "PREVIEW": {
+        "LABEL": "Lebenslauf bearbeiten"
       }
     }
   }
