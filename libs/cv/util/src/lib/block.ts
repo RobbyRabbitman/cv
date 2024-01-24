@@ -1,19 +1,41 @@
 import { Identifiable, UUID } from '@cv/common/types';
+import { uuid } from '@cv/common/util';
 import {
   Block,
   BlockPrototype,
   BlockPrototypeTemplate,
   Blocks,
+  Cv,
   hasBlockChildren,
   hasTemplateChildren,
 } from '@cv/types';
+
+export function createCv(
+  prototypes: Record<UUID, BlockPrototype>,
+  idFactory: () => UUID = uuid,
+): Cv {
+  const cvPrototypes = Object.values(prototypes).filter(
+    ({ type }) => type === 'cv',
+  );
+
+  if (cvPrototypes.length !== 1)
+    throw new Error(
+      `[Block]: need exactly 1 cv prototype. Found '${cvPrototypes.length}'.`,
+    );
+
+  return createBlock(
+    cvPrototypes[0] as BlockPrototype<Cv>,
+    prototypes,
+    idFactory,
+  );
+}
 
 // TODO check for loops.
 /** Creates a block by its prototype. When it has children, those prototypes have to be provided aswell. */
 export function createBlock<TBlock extends Block>(
   prototype: BlockPrototype<TBlock>,
-  idFactory: () => UUID,
   prototypes: Record<UUID, BlockPrototype> = {},
+  idFactory: () => UUID = uuid,
 ): TBlock {
   const build = (template: BlockPrototypeTemplate<TBlock>): TBlock =>
     ({
@@ -34,7 +56,7 @@ export function createBlock<TBlock extends Block>(
         throw new Error(
           `[Block]: Could not create a new child block. Prototype ${childPrototypeUuid} is missing.`,
         );
-      children.push(createBlock(childPrototype, idFactory, prototypes));
+      children.push(createBlock(childPrototype, prototypes, idFactory));
     }
 
     return build({

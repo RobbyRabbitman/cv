@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ViewEncapsulation,
+  computed,
   inject,
 } from '@angular/core';
 import { CvStore } from '@cv/data';
@@ -14,7 +15,7 @@ import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
   viewProviders: [provideTranslatePrefix('CV.CREATE_BUTTON')],
   template: `<button
     class="button"
-    (click)="cv.create()"
+    (click)="cv.create(template()!)"
     [disabled]="cv.loading()"
   >
     {{ 'LABEL' | translate }}
@@ -26,4 +27,6 @@ import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
 })
 export class CreateCvButton {
   protected cv = inject(CvStore);
+
+  protected template = computed(() => this.cv.templateEntities().at(0)?.id);
 }

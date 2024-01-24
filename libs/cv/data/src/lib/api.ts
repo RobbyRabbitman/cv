@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { UserStore } from '@cv/auth/data';
 import { Identifiable, UUID } from '@cv/common/types';
-import { firestore, uuid } from '@cv/common/util';
-import { BlockPrototype, Cv, Paragraph, Section, TextField } from '@cv/types';
-import { createBlock } from '@cv/util';
+import { firestore } from '@cv/common/util';
+import { Block, BlockPrototype, Cv, CvTemplate } from '@cv/types';
+import { createCv } from '@cv/util';
 import {
   CollectionReference,
   DocumentData,
@@ -20,68 +20,14 @@ import {
 type InferCollectionModel<C> =
   C extends CollectionReference<DocumentData, infer T> ? keyof T : never;
 
-type CvBlockPrototypesCollection = CollectionReference<
-  { cvId: UUID; prototypeId: UUID },
-  { cvId: UUID; prototypeId: UUID }
->;
-
 type CvCollection = CollectionReference<Cv, Cv>;
 
-type BlockPrototypesCollection = CollectionReference<
+type CvTemplateCollection = CollectionReference<CvTemplate, CvTemplate>;
+
+type BlockPrototypeCollection = CollectionReference<
   BlockPrototype,
   BlockPrototype
 >;
-
-const cv_1_prototype: BlockPrototype<Cv> = {
-  canBeDeleted: true,
-  canBeMoved: true,
-  id: 'cv_1_prototype',
-  label: 'CV',
-  multiple: true,
-  type: 'cv',
-  template: {
-    childPrototypeIds: ['section_1_prototype'],
-    createdAt: 0,
-    lastModifiedAt: 0,
-    userId: '',
-  },
-};
-
-const section_1_prototype: BlockPrototype<Section> = {
-  canBeDeleted: true,
-  canBeMoved: true,
-  id: 'section_1_prototype',
-  label: 'section 1',
-  multiple: true,
-  type: 'section',
-  template: {
-    childPrototypeIds: ['paragraph_1_prototype'],
-  },
-};
-
-const paragraph_1_prototype: BlockPrototype<Paragraph> = {
-  canBeDeleted: true,
-  canBeMoved: true,
-  id: 'paragraph_1_prototype',
-  label: 'paragraph 1',
-  multiple: true,
-  type: 'paragraph',
-  template: {
-    childPrototypeIds: ['field_1_prototype'],
-  },
-};
-
-const field_1_prototype: BlockPrototype<TextField> = {
-  canBeDeleted: true,
-  canBeMoved: true,
-  id: 'field_1_prototype',
-  label: 'field 1',
-  multiple: true,
-  type: 'field',
-  template: {
-    value: 'field 1',
-  },
-};
 
 @Injectable()
 export class Api {
@@ -89,40 +35,51 @@ export class Api {
 
   protected user = inject(UserStore);
 
-  // collection names
-  protected CV = 'cv';
-
-  protected BLOCK_PROTOTYPES = 'blockPrototypes';
-
-  protected CV_BLOCK_PROTOTYPES = 'cvBlockPrototypes';
-
-  // collections
-  protected cv = collection(this.firestore, this.CV) as unknown as CvCollection;
-
-  protected blockPrototypes = collection(
+  protected cvCollection = collection(
     this.firestore,
-    this.BLOCK_PROTOTYPES,
-  ) as unknown as BlockPrototypesCollection;
+    'cv',
+  ) as unknown as CvCollection;
 
-  protected cvBlockPrototypes = collection(
+  protected cvTemplateCollection = collection(
     this.firestore,
-    this.CV_BLOCK_PROTOTYPES,
-  ) as unknown as CvBlockPrototypesCollection;
+    'cvTemplate',
+  ) as unknown as CvTemplateCollection;
 
-  async getOne(cvId: UUID): Promise<Cv> {
-    const ref = doc(this.cv, cvId);
-    const snap = await getDoc(ref);
+  protected blockPrototypeCollection = collection(
+    this.firestore,
+    'blockPrototype',
+  ) as unknown as BlockPrototypeCollection;
 
-    if (!snap.exists()) throw new Error(`[Api]: no cv found for id '${cvId}'.`);
+  async getCvTemplate(cvTemplateId: UUID): Promise<CvTemplate> {
+    const cvTemplate = await getDoc(
+      doc(this.cvTemplateCollection, cvTemplateId),
+    );
 
-    return snap.data();
+    if (!cvTemplate.exists())
+      throw new Error(`[Api]: no cv template found for id '${cvTemplateId}'.`);
+
+    return cvTemplate.data();
   }
 
-  async getAll(): Promise<Cv[]> {
+  async getAllCvTemplates(): Promise<CvTemplate[]> {
+    return (await getDocs(this.cvTemplateCollection)).docs.map((snap) =>
+      snap.data(),
+    );
+  }
+
+  async getCv(cvId: UUID): Promise<Cv> {
+    const cv = await getDoc(doc(this.cvCollection, cvId));
+
+    if (!cv.exists()) throw new Error(`[Api]: no cv found for id '${cvId}'.`);
+
+    return cv.data();
+  }
+
+  async getAllCvs(): Promise<Cv[]> {
     return (
       await getDocs(
         query(
-          this.cv,
+          this.cvCollection,
           where(
             'userId' satisfies InferCollectionModel<CvCollection>,
             '==',
@@ -133,69 +90,61 @@ export class Api {
     ).docs.map((snap) => snap.data());
   }
 
-  async update(cv: Partial<Cv> & Identifiable): Promise<void> {
-    const cvRef = doc(this.cv, cv.id);
+  async updateCv(cv: Partial<Cv> & Identifiable): Promise<void> {
+    const cvRef = doc(this.cvCollection, cv.id);
 
     await updateDoc(cvRef, { ...cv, lastModifiedAt: Date.now() });
   }
 
-  async create(): Promise<UUID> {
+  async createCv(cvTemplateId: UUID): Promise<Cv> {
     const userId = this.userId();
 
-    // TODO real impl
-    const _cv = createBlock(cv_1_prototype, uuid, {
-      section_1_prototype,
-      paragraph_1_prototype,
-      field_1_prototype,
-    });
+    const prototypes = (await this.getPrototypes(cvTemplateId)).reduce(
+      (map, prototype) => {
+        map[prototype.id] = prototype;
+        return map;
+      },
+      {} as Record<UUID, BlockPrototype<Block>>,
+    );
 
-    const cvRef = doc(this.cv);
+    const cvDoc = doc(this.cvCollection);
 
-    await setDoc(cvRef, {
-      ..._cv,
-      id: cvRef.id,
+    const cv = {
+      ...createCv(prototypes),
+      id: cvDoc.id,
       userId,
       createdAt: Date.now(),
       lastModifiedAt: Date.now(),
-    });
+    } satisfies Cv;
 
-    return cvRef.id;
+    await setDoc(cvDoc, cv);
+
+    return cv;
   }
 
-  async getPrototypeUuids(cvId: UUID): Promise<UUID[]> {
-    return (
+  async getPrototypes(cvTemplateId: UUID): Promise<BlockPrototype<Block>[]> {
+    const prototypes = (
       await getDocs(
         query(
-          this.cvBlockPrototypes,
+          this.blockPrototypeCollection,
           where(
-            'cvId' satisfies InferCollectionModel<CvBlockPrototypesCollection>,
+            'templateId' satisfies InferCollectionModel<BlockPrototypeCollection>,
             '==',
-            cvId,
+            cvTemplateId,
           ),
         ),
       )
-    ).docs.map((snap) => snap.data().prototypeId);
+    ).docs.map((snap) => snap.data());
+
+    return prototypes;
   }
 
   async getOneWithPrototypes(
     cvId: UUID,
   ): Promise<{ cv: Cv; prototypes: BlockPrototype[] }> {
-    const cv = await this.getOne(cvId);
+    const cv = await this.getCv(cvId);
 
-    const prototypeIds = await this.getPrototypeUuids(cvId);
-
-    const prototypes = (
-      await getDocs(
-        query(
-          this.blockPrototypes,
-          where(
-            'id' satisfies InferCollectionModel<BlockPrototypesCollection>,
-            'in',
-            prototypeIds,
-          ),
-        ),
-      )
-    ).docs.map((snap) => snap.data());
+    const prototypes = await this.getPrototypes(cv.templateId);
 
     return { cv, prototypes };
   }

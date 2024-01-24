@@ -34,6 +34,9 @@ export interface Cv extends Block, CanBeLabeled, HasChildren<Section> {
 
   /** The associated user id of this CV  */
   userId: UUID;
+
+  /** The template this was built from. */
+  templateId: UUID;
 }
 
 /**
@@ -108,6 +111,8 @@ export interface Movable {
   canBeMoved: boolean;
 }
 
+export interface CvTemplate extends Identifiable, Labeled {}
+
 export interface BlockPrototype<TBlock extends Block = Block>
   extends Identifiable,
     Labeled,
@@ -119,6 +124,9 @@ export interface BlockPrototype<TBlock extends Block = Block>
       ? BlockPrototypeTemplateWithChildren<TBlock>
       : TBlock
   >;
+
+  /** The template this associated with. */
+  templateId: UUID;
 
   /** The type of this block */
   type: TBlock extends { type: infer B } ? B : never;

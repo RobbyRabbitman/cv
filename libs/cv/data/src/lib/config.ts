@@ -9,11 +9,14 @@ import { filterNil } from 'ngxtension/filter-nil';
 import { distinctUntilKeyChanged } from 'rxjs';
 import { Api } from './api';
 import { CvStore, provideCvStore } from './cv.store';
+import { provideMockData } from './tmp-api';
 
 export function provideCvData() {
   return makeEnvironmentProviders([
     provideCvStore(),
+    provideMockData,
     Api,
+    // get all cvs
     {
       provide: ENVIRONMENT_INITIALIZER,
       multi: true,
@@ -28,7 +31,10 @@ export function provideCvData() {
               distinctUntilKeyChanged('uid'),
               takeUntilDestroyed(),
             )
-            .subscribe(() => cv.getAll());
+            .subscribe(() => {
+              cv.getAll();
+              cv.getAllTemplates();
+            });
         };
       },
     },
