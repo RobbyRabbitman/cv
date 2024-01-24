@@ -9,7 +9,9 @@
     "@cv/auth/data": "*",
     "@cv/common/data": "*",
     "@cv/common/smart": "*",
-    "@cv/smart": "*"
+    "@cv/smart": "*",
+    "@cv/data": "*",
+    "@cv/util": "*"
   },
   "sideEffects": false
 }

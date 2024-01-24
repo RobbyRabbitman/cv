@@ -40,7 +40,7 @@
     "@ngrx/signals": "17.1.0",
     "@ngx-translate/core": "15.0.0",
     "firebase": "10.7.2",
-    "ngxtension": "1.9.9",
+    "ngxtension": "1.12.0",
     "rxjs": "7.8.0",
     "tslib": "2.3.0",
     "uuid": "9.0.1",

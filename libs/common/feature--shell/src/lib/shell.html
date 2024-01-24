@@ -8,8 +8,13 @@
   <cv-auth-smart--sign-in-button />
   }
 </header>
-<main class="container">
+<main class="container flex flex-col gap-4">
   <router-outlet />
   <cv-smart--create-cv-button />
+  <span class="flex flex-wrap gap-16">
+    @for (cv of cv.cvEntities(); track cv.id) {
+    <cv-smart--card [cvId]="cv.id" />
+    }
+  </span>
 </main>
 <footer class="container"></footer>

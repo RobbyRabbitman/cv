@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { DestroyRef, Injector, Signal, effect, signal } from '@angular/core';
 import { Theme } from '@cv/common/types';
 import { assertInjector } from 'ngxtension/assert-injector';
+import { injectWindow } from './document';
 
 export function applyTheme(theme: Signal<Theme>, injector?: Injector): void {
   injector = assertInjector(applyTheme, injector);
@@ -25,7 +26,7 @@ export function injectDocumentTheme(
 
   const theme = signal<Exclude<Theme, 'system'>>('light');
 
-  const matchMedia = injector.get(DOCUMENT).defaultView?.matchMedia;
+  const matchMedia = injectWindow({ injector }).matchMedia;
 
   if (!matchMedia) return theme;
 

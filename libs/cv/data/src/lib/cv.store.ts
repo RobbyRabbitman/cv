@@ -71,10 +71,9 @@ export const CvStore = signalStore(
       ),
     );
 
+    /** Creates a new cv. */
     const create = rxMethod<void>(
       pipe(
-        // noop when loading
-        filter(() => !store.loading()),
         // indicate loading
         tap(() => patchState(store, { loading: true })),
         // call api
@@ -98,6 +97,37 @@ export const CvStore = signalStore(
       ),
     );
 
+    /** Get all cvs of the user. */
+    const getAll = rxMethod<void>(
+      pipe(
+        // indicate loading
+        tap(() => patchState(store, { loading: true })),
+        // call api
+        switchMap(() => api.getAll()),
+        // handle response
+        tapResponse({
+          // success
+          next: (cvs) => {
+            patchState(
+              store,
+              { loading: false },
+              setEntities(cvs, {
+                collection: 'cv',
+              }),
+            );
+          },
+          // error
+          error: () => {
+            // TODO
+          },
+          // success or error
+          finalize: () => {
+            patchState(store, { loading: false });
+          },
+        }),
+      ),
+    );
+
     return {
       /** Gets a block prototype by its id. */
       getPrototype: function (prototypeId: UUID) {
@@ -105,6 +135,7 @@ export const CvStore = signalStore(
       },
       create,
       get,
+      getAll,
     };
   }),
 );

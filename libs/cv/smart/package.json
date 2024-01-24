@@ -4,7 +4,10 @@
   "peerDependencies": {
     "@angular/core": "17.1.0",
     "@cv/data": "*",
-    "@cv/i18n/smart": "*"
+    "@cv/i18n/smart": "*",
+    "@angular/router": "17.1.0",
+    "@cv/common/types": "*",
+    "@cv/util": "*"
   },
   "sideEffects": false
 }

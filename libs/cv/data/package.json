@@ -11,7 +11,9 @@
     "@cv/common/types": "*",
     "@cv/common/util": "*",
     "@cv/types": "*",
-    "@cv/util": "*"
+    "@cv/util": "*",
+    "@cv/auth/data": "*",
+    "ngxtension": "1.12.0"
   },
   "sideEffects": false
 }

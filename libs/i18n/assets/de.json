@@ -40,6 +40,13 @@
   "CV": {
     "CREATE_BUTTON": {
       "LABEL": "Erstellen"
+    },
+    "CARD": {
+      "LAST_MODIFIED_AT": "Zuletzt bearbeitet am {{ lastModifiedAt }}",
+      "LABEL_INPUT": {
+        "PLACEHOLDER": "Kein Titel",
+        "LABEL": "Lebenslauf Titel"
+      }
     }
   }
 }

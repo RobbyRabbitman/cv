@@ -45,8 +45,8 @@ dependencies:
     specifier: 10.7.2
     version: 10.7.2
   ngxtension:
-    specifier: 1.9.9
-    version: 1.9.9(@angular/common@17.1.0)(@angular/core@17.1.0)(@swc-node/register@1.6.7)(@swc/core@1.3.85)(@use-gesture/vanilla@10.3.0)(rxjs@7.8.0)
+    specifier: 1.12.0
+    version: 1.12.0(@angular/common@17.1.0)(@angular/core@17.1.0)(@swc-node/register@1.6.7)(@swc/core@1.3.85)(@use-gesture/vanilla@10.3.0)(rxjs@7.8.0)
   rxjs:
     specifier: 7.8.0
     version: 7.8.0
@@ -14220,10 +14220,10 @@ packages:
       esbuild: 0.19.11
     dev: true
 
-  /ngxtension@1.9.9(@angular/common@17.1.0)(@angular/core@17.1.0)(@swc-node/register@1.6.7)(@swc/core@1.3.85)(@use-gesture/vanilla@10.3.0)(rxjs@7.8.0):
+  /ngxtension@1.12.0(@angular/common@17.1.0)(@angular/core@17.1.0)(@swc-node/register@1.6.7)(@swc/core@1.3.85)(@use-gesture/vanilla@10.3.0)(rxjs@7.8.0):
     resolution:
       {
-        integrity: sha512-m70Zv3Hw+PlAW8XMR9HYeF1JRBeGNOCo8WVnBRuozSUBYL0KMwPXuq09COA3jNGhUwURNVbQfdFkD13iQWc/Mw==,
+        integrity: sha512-zcipEnzFV7BRhqFOFR5cFL4RXaR1L32+F4fZJ+IK07LpqoIwk5A4oXV433r3XhDh1q8FykKzGnhlE5FdmGDsSA==,
       }
     engines: { node: '>=18' }
     peerDependencies:

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": "17.1.0",
-    "ngxtension": "1.9.9",
+    "ngxtension": "1.12.0",
     "rxjs": "7.8.0",
     "uuid": "9.0.1",
     "tslib": "2.3.0",

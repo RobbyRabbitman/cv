@@ -23,7 +23,7 @@ export interface HasChildren<TChildren> {
 /**
  * A CV. It is made of multiple sections and is owned by a user.
  */
-export interface Cv extends Block, HasChildren<Section> {
+export interface Cv extends Block, CanBeLabeled, HasChildren<Section> {
   type: 'cv';
 
   /** ISO 8601 */
@@ -92,8 +92,10 @@ export interface DateRangeField extends CompositeField<[TextField, TextField]> {
   present: boolean;
 }
 
+export type CanBeLabeled = Partial<Labeled>;
+
 export interface Labeled {
-  label: UUID;
+  label: string;
 }
 
 export interface Deletable {

@@ -12,6 +12,7 @@ import {
   setDoc,
   where,
 } from '@angular/fire/firestore';
+import { UserStore } from '@cv/auth/data';
 import { UUID } from '@cv/common/types';
 import { uuid } from '@cv/common/util';
 import { BlockPrototype, Cv, Paragraph, Section, TextField } from '@cv/types';
@@ -90,6 +91,7 @@ export class Api {
   protected CV_BLOCK_PROTOTYPES = 'cvBlockPrototypes';
 
   protected firestore = inject(Firestore);
+  protected user = inject(UserStore);
 
   protected cv = collection(this.firestore, this.CV) as unknown as CvCollection;
 
@@ -112,7 +114,32 @@ export class Api {
     return snap.data();
   }
 
+  async getAll(): Promise<Cv[]> {
+    return (
+      await getDocs(
+        query(
+          this.cv,
+          where(
+            'userId' satisfies InferCollectionModel<CvCollection>,
+            '==',
+            this.userId(),
+          ),
+        ),
+      )
+    ).docs.map((snap) => snap.data());
+  }
+
+  protected userId() {
+    const user = this.user.value();
+
+    if (!user) throw new Error(`[Api]: no user.`);
+
+    return user.uid;
+  }
+
   async createCv(): Promise<UUID> {
+    const userId = this.userId();
+
     // TODO real impl
     const _cv = createBlock(cv_1_prototype, uuid, {
       section_1_prototype,
@@ -124,7 +151,7 @@ export class Api {
 
     await setDoc(docRef, {
       ..._cv,
-      userId: '',
+      userId,
       createdAt: serverTimestamp(),
       lastModifiedAt: serverTimestamp(),
     });

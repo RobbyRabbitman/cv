@@ -4,7 +4,7 @@
   "peerDependencies": {
     "@angular/core": "17.1.0",
     "@cv/i18n/data": "*",
-    "ngxtension": "1.9.9"
+    "ngxtension": "1.12.0"
   },
   "sideEffects": false
 }
