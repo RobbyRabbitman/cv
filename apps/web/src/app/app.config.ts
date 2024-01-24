@@ -12,11 +12,13 @@ import { provideCvData } from '@cv/data';
 import { provideI18nData } from '@cv/i18n/data';
 import { provideI18nSmart } from '@cv/i18n/smart';
 import { environment } from '../environments/environment';
-import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(appRoutes),
+    provideRouter([
+      { path: 'all', loadChildren: () => import('@cv--overview') },
+      { path: '**', pathMatch: 'full', redirectTo: 'all' },
+    ]),
     provideFirebase(environment.firebase),
     provideCommonData(),
     provideCvData(),

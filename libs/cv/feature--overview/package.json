@@ -1,0 +1,11 @@
+{
+  "name": "@cv--overview",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/core": "17.1.0",
+    "@cv/data": "*",
+    "@cv/smart": "*",
+    "@angular/router": "17.1.0"
+  },
+  "sideEffects": false
+}

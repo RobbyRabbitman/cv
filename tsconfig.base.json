@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@cv--overview": ["libs/cv/feature--overview/src/index.ts"],
       "@cv/auth/data": ["libs/auth/data/src/index.ts"],
       "@cv/auth/smart": ["libs/auth/smart/src/index.ts"],
       "@cv/common--shell": ["libs/common/feature--shell/src/index.ts"],
