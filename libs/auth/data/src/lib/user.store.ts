@@ -24,7 +24,7 @@ export const UserStore = signalStore(
       signIn: rxMethod<void>(pipe(exhaustMap(() => auth.signIn()))),
 
       /** The user if logged in, else null. */
-      value: auth.user,
+      value: auth.user.asReadonly(),
     };
   }),
 );

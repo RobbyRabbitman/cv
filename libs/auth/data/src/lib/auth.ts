@@ -1,21 +1,22 @@
-import { Injectable, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { Injectable, signal } from '@angular/core';
+import { firebaseAuth } from '@cv/common/util';
 import {
-  Auth as FirebaseAuth,
   GoogleAuthProvider,
-  authState,
   getRedirectResult,
+  onAuthStateChanged,
   signInWithRedirect,
-} from '@angular/fire/auth';
+} from 'firebase/auth';
 
 @Injectable()
 export class Auth {
-  protected auth = inject(FirebaseAuth);
+  protected auth = firebaseAuth();
+
+  constructor() {
+    onAuthStateChanged(this.auth, (user) => this.user.set(user));
+  }
 
   /** The user if logged in, else null. */
-  user = toSignal(authState(this.auth), {
-    initialValue: this.auth.currentUser,
-  });
+  user = signal(this.auth.currentUser);
 
   /** Signs out the current user. */
   async signOut() {

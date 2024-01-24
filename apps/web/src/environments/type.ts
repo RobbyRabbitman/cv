@@ -1,14 +1,6 @@
-import { FirebaseOptions } from '@angular/fire/app';
+import { FirebaseConfig } from '@cv/common/util';
 
 export interface Environment {
   stage: 'prod' | 'dev' | 'local';
-  firebase: FirebaseOptions & {
-    emulators?: Record<
-      'firestore' | 'auth',
-      {
-        host: string;
-        port: number;
-      }
-    >;
-  };
+  firebase: FirebaseConfig;
 }

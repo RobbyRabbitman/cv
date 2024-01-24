@@ -8,7 +8,8 @@
     "uuid": "9.0.1",
     "tslib": "2.3.0",
     "@angular/common": "17.1.0",
-    "@cv/common/types": "*"
+    "@cv/common/types": "*",
+    "firebase": "10.7.2"
   },
   "type": "commonjs",
   "main": "./src/index.js",

@@ -1,7 +1,8 @@
 {
   "name": "@cv/util",
   "version": "0.0.1",
-  "dependencies": {
+  "peerDependencies": {
+    "@angular/core": "17.1.0",
     "tslib": "2.3.0",
     "@cv/common/types": "*",
     "@cv/types": "*",

@@ -1,8 +1,12 @@
 import { Injectable, inject } from '@angular/core';
+import { UserStore } from '@cv/auth/data';
+import { UUID } from '@cv/common/types';
+import { firestore, uuid } from '@cv/common/util';
+import { BlockPrototype, Cv, Paragraph, Section, TextField } from '@cv/types';
+import { createBlock } from '@cv/util';
 import {
   CollectionReference,
   DocumentData,
-  Firestore,
   collection,
   doc,
   getDoc,
@@ -11,12 +15,7 @@ import {
   serverTimestamp,
   setDoc,
   where,
-} from '@angular/fire/firestore';
-import { UserStore } from '@cv/auth/data';
-import { UUID } from '@cv/common/types';
-import { uuid } from '@cv/common/util';
-import { BlockPrototype, Cv, Paragraph, Section, TextField } from '@cv/types';
-import { createBlock } from '@cv/util';
+} from 'firebase/firestore';
 
 type InferCollectionModel<C> =
   C extends CollectionReference<DocumentData, infer T> ? keyof T : never;
@@ -90,7 +89,7 @@ export class Api {
   protected BLOCK_PROTOTYPES = 'blockPrototypes';
   protected CV_BLOCK_PROTOTYPES = 'cvBlockPrototypes';
 
-  protected firestore = inject(Firestore);
+  protected firestore = firestore();
   protected user = inject(UserStore);
 
   protected cv = collection(this.firestore, this.CV) as unknown as CvCollection;

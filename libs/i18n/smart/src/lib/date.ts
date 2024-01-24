@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform, inject } from '@angular/core';
-import { Timestamp } from '@angular/fire/firestore';
 import { injectWindow } from '@cv/common/util';
 import { I18nStore } from '@cv/i18n/data';
+import { Timestamp } from 'firebase/firestore';
 import { markForCheckOnLocaleChanges } from './change-detection';
 
 @Pipe({
@@ -16,7 +16,7 @@ export class I18nDate implements PipeTransform {
 
   /**
    *
-   * @param value iso 8601 string | milliseconds since 1970 | Date | Firebase Timestamp
+   * @param value iso 8601 string | milliseconds since 1970 | Date | Firestore Timestamp
    * @returns a localized string representing the value.
    */
   transform(value: string | number | Date | Timestamp): string {
