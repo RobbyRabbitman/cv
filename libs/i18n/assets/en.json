@@ -38,6 +38,9 @@
     }
   },
   "CV": {
+    "OVERVIEW": {
+      "TITLE": "CVs"
+    },
     "CREATE_BUTTON": {
       "LABEL": "Create"
     }

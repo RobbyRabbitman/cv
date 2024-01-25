@@ -38,6 +38,9 @@
     }
   },
   "CV": {
+    "OVERVIEW": {
+      "TITLE": "Lebensläufe"
+    },
     "CREATE_BUTTON": {
       "LABEL": "Erstellen"
     },

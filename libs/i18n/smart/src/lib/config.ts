@@ -1,6 +1,6 @@
 import { makeEnvironmentProviders } from '@angular/core';
-import { localizeDocument } from './document';
+import { localizeDocument, localizeTitle } from './document';
 
 export function provideI18nSmart() {
-  return makeEnvironmentProviders([localizeDocument()]);
+  return makeEnvironmentProviders([localizeDocument(), localizeTitle()]);
 }
