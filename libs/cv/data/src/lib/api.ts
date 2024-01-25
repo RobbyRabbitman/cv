@@ -96,7 +96,7 @@ export class Api {
     await updateDoc(cvRef, { ...cv, lastModifiedAt: Date.now() });
   }
 
-  async createCv(cvTemplateId: UUID): Promise<Cv> {
+  async createCv(cvTemplateId: UUID, cvId: UUID): Promise<Cv> {
     const userId = this.userId();
 
     const prototypes = (await this.getPrototypes(cvTemplateId)).reduce(
@@ -107,11 +107,11 @@ export class Api {
       {} as Record<UUID, BlockPrototype<Block>>,
     );
 
-    const cvDoc = doc(this.cvCollection);
+    const cvDoc = doc(this.cvCollection, cvId);
 
     const cv = {
       ...createCv(prototypes),
-      id: cvDoc.id,
+      id: cvId,
       userId,
       createdAt: Date.now(),
       lastModifiedAt: Date.now(),

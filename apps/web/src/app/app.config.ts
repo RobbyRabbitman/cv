@@ -13,10 +13,11 @@ import { provideI18nData } from '@cv/i18n/data';
 import { provideI18nSmart } from '@cv/i18n/smart';
 import { environment } from '../environments/environment';
 
-export const appConfig: ApplicationConfig = {
+export const appConfig = {
   providers: [
     provideRouter([
       { path: 'all', loadChildren: () => import('@cv--overview') },
+      { path: 'all/:cvId', loadChildren: () => import('@cv--edit') },
       { path: '**', pathMatch: 'full', redirectTo: 'all' },
     ]),
     provideFirebase(environment.firebase),
@@ -28,4 +29,4 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     ɵprovideZonelessChangeDetection(),
   ],
-};
+} satisfies ApplicationConfig;
