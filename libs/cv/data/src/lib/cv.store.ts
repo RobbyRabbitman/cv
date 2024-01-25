@@ -1,6 +1,5 @@
 import {
   EnvironmentProviders,
-  computed,
   inject,
   makeEnvironmentProviders,
 } from '@angular/core';
@@ -12,11 +11,15 @@ import {
   patchState,
   signalStore,
   type,
-  withComputed,
   withMethods,
   withState,
 } from '@ngrx/signals';
-import { setEntities, setEntity, withEntities } from '@ngrx/signals/entities';
+import {
+  setAllEntities,
+  setEntities,
+  setEntity,
+  withEntities,
+} from '@ngrx/signals/entities';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { debounceTime, filter, from, pipe, switchMap, tap } from 'rxjs';
 import { Api } from './api';
@@ -38,11 +41,6 @@ export const CvStore = signalStore(
   withEntities({ entity: type<Cv>(), collection: 'cv' }),
   withEntities({ entity: type<CvTemplate>(), collection: 'template' }),
   withEntities({ entity: type<BlockPrototype>(), collection: 'prototype' }),
-  withComputed((store) => ({
-    cvPrototypes: computed(() =>
-      store.prototypeEntities().filter(({ type }) => type === 'cv'),
-    ),
-  })),
   withMethods((store) => {
     const api = inject(Api);
 
@@ -227,6 +225,15 @@ export const CvStore = signalStore(
       /** Gets a block prototype by its id. */
       getPrototype: function (prototypeId: UUID) {
         return store.prototypeEntityMap()[prototypeId];
+      },
+      reset: function () {
+        patchState(
+          store,
+          initialState,
+          setAllEntities([] as Cv[], { collection: 'cv' }),
+          setAllEntities([] as CvTemplate[], { collection: 'template' }),
+          setAllEntities([] as BlockPrototype[], { collection: 'prototype' }),
+        );
       },
       create,
       update,

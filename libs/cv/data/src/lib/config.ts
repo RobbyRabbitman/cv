@@ -5,8 +5,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { UserStore } from '@cv/auth/data';
-import { filterNil } from 'ngxtension/filter-nil';
-import { distinctUntilKeyChanged } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs';
 import { Api } from './api';
 import { CvStore, provideCvStore } from './cv.store';
 import { provideMockData } from './tmp-api';
@@ -27,13 +26,16 @@ export function provideCvData() {
         return () => {
           toObservable(user.value)
             .pipe(
-              filterNil(),
-              distinctUntilKeyChanged('uid'),
+              distinctUntilChanged((a, b) => a?.uid === b?.uid),
               takeUntilDestroyed(),
             )
-            .subscribe(() => {
-              cv.getAll();
-              cv.getAllTemplates();
+            .subscribe((user) => {
+              if (user) {
+                cv.getAll();
+                cv.getAllTemplates();
+              } else {
+                cv.reset();
+              }
             });
         };
       },

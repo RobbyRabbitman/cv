@@ -2,9 +2,8 @@ import { DestroyRef, Injectable, inject, signal } from '@angular/core';
 import { firebaseAuth } from '@cv/common/util';
 import {
   GoogleAuthProvider,
-  getRedirectResult,
   onAuthStateChanged,
-  signInWithRedirect,
+  signInWithPopup,
 } from 'firebase/auth';
 
 @Injectable()
@@ -26,7 +25,6 @@ export class Auth {
 
   /** Sign in the user with google. */
   async signIn() {
-    await signInWithRedirect(this.auth, new GoogleAuthProvider());
-    await getRedirectResult(this.auth);
+    await signInWithPopup(this.auth, new GoogleAuthProvider());
   }
 }
