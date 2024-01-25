@@ -1,5 +1,5 @@
-<cv-smart--create-cv-button />
 <span class="flex flex-wrap gap-16">
+  <cv-smart--create-cv-button />
   @for (cv of cv.cvEntities(); track cv.id) {
   <cv-smart--card [cvId]="cv.id" />
   }

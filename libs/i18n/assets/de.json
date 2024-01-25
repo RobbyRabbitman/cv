@@ -42,7 +42,7 @@
       "TITLE": "Lebensläufe"
     },
     "CREATE_BUTTON": {
-      "LABEL": "Erstellen"
+      "LABEL": "Lebenslauf erstellen"
     },
     "CARD": {
       "LAST_MODIFIED_AT": "Zuletzt bearbeitet am {{ lastModifiedAt }}",
