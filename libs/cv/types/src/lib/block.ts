@@ -1,7 +1,15 @@
 import { Identifiable, UUID } from '@cv/common/types';
 
 /** All block types. */
-export const BLOCKS = ['cv', 'section', 'paragraph', 'field'] as const;
+export const BLOCKS = [
+  'cv',
+  'section',
+  'paragraph',
+  'composite',
+  'text',
+  'range',
+  'period',
+] as const;
 
 export type BlockType = (typeof BLOCKS)[number];
 
@@ -49,16 +57,14 @@ export interface Section extends Block, HasChildren<Paragraph> {
 /**
  * A paragraph in a section. It is made of multiple fields.
  */
-export interface Paragraph extends Block, HasChildren<Section> {
+export interface Paragraph extends Block, HasChildren<Field> {
   type: 'paragraph';
 }
 
 /**
  * A field in a paragraph.
  */
-export interface Field extends Block {
-  type: 'field';
-}
+export interface Field extends Block {}
 
 /**
  * A field. It has a value of type `T`.
@@ -73,12 +79,16 @@ export interface SimpleField<TValue> extends Field {
  */
 export interface CompositeField<TField extends readonly Field[] = Field[]>
   extends Field {
+  type: 'composite';
+
   /** The fields this is composed of. */
   children: TField;
 }
 
 /** A field which has a text `value`. */
-export type TextField = SimpleField<string>;
+export interface TextField extends SimpleField<string> {
+  type: 'text';
+}
 
 /** A field which has a `value` in an integer range between `min` and `max` */
 export interface RangeField extends SimpleField<number> {

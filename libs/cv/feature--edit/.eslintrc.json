@@ -13,9 +13,9 @@
         "@angular-eslint/directive-selector": [
           "error",
           {
-            "type": "attribute",
-            "prefix": "cvEdit",
-            "style": "camelCase"
+            "type": ["attribute", "element"],
+            "prefix": "cv--edit",
+            "style": "kebab-case"
           }
         ],
         "@angular-eslint/component-selector": [

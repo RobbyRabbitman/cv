@@ -53,7 +53,7 @@ const field_1_prototype: BlockPrototype<TextField> = {
   id: 'field_1_prototype',
   label: 'field 1',
   multiple: true,
-  type: 'field',
+  type: 'text',
   template: {
     value: 'field 1',
   },

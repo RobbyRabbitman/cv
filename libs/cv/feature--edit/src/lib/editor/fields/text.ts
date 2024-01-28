@@ -2,29 +2,24 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  Output,
   ViewChild,
   ViewEncapsulation,
   input,
   signal,
 } from '@angular/core';
-import { fromEvent } from '@cv/common/util';
-import { TextField as TextFieldType } from '@cv/types';
-import { setValueOfSimpleField } from '@cv/util';
-import { map } from 'rxjs';
+import { TextField } from '@cv/types';
 
 @Component({
-  selector: 'cv-ui--text-field',
+  selector: 'cv--edit-text',
   standalone: true,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
   template: `<label>
     {{ field().prototypeId }}
     <input type="text" [value]="field().value" />
   </label>`,
 })
-export class TextField {
+export default class TextEdit {
   @ViewChild('input', { read: ElementRef })
   protected set _input(input: ElementRef | undefined) {
     this.input.set(input?.nativeElement);
@@ -32,10 +27,10 @@ export class TextField {
 
   protected input = signal<HTMLInputElement | undefined>(undefined);
 
-  field = input.required<TextFieldType>();
+  field = input.required<TextField>();
 
-  @Output()
-  fieldChange = fromEvent(this.input, 'input').pipe(
-    map(({ target }) => setValueOfSimpleField(this.field(), target.value)),
-  );
+  // @Output()
+  // fieldChange = fromEvent(this.input, 'input').pipe(
+  //   map(({ target }) => setValueOfSimpleField(this.field(), target.value)),
+  // );
 }

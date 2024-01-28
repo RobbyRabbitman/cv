@@ -1,4 +1,3 @@
-import { JsonPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -11,11 +10,12 @@ import {
 import { Router } from '@angular/router';
 import { CvStore } from '@cv/data';
 import { injectParams } from 'ngxtension/inject-params';
+import { CvEditor } from './editor/cv';
 
 @Component({
   selector: 'cv--edit-page',
   standalone: true,
-  imports: [JsonPipe],
+  imports: [CvEditor],
   templateUrl: './cv-edit-page.html',
   styleUrl: './cv-edit-page.scss',
   encapsulation: ViewEncapsulation.None,

@@ -1,1 +1,3 @@
-{{ cv() | json }}
+@if (cv(); as cv) {
+<cv--edit-cv [cv]="cv" />
+}
