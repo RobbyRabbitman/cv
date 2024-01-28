@@ -5,13 +5,13 @@ import {
   input,
 } from '@angular/core';
 import { Field } from '@cv/types';
-import RangeField from './fields/range';
-import TextField from './fields/text';
+import { RangeEdit } from './fields/range';
+import { TextEdit } from './fields/text';
 
 @Component({
   selector: 'cv--edit-field',
   standalone: true,
-  imports: [TextField, RangeField],
+  imports: [TextEdit, RangeEdit],
   template: `@switch (field().type) {
     @case ('text') {
       <cv--edit-text [field]="$any(field())" />

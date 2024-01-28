@@ -2,9 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   ViewEncapsulation,
+  inject,
   input,
 } from '@angular/core';
-import { Cv } from '@cv/types';
+import { CvStore } from '@cv/data';
+import { Blocks, Cv } from '@cv/types';
 import { SectionEditor } from './section';
 
 @Component({
@@ -17,5 +19,11 @@ import { SectionEditor } from './section';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CvEditor {
+  store = inject(CvStore);
+
   cv = input.required<Cv>();
+
+  patch<TBlock extends Blocks>(block: TBlock) {
+    this.store.patchBlock(this.cv(), block);
+  }
 }

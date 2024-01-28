@@ -13,7 +13,7 @@ export const BLOCKS = [
 
 export type BlockType = (typeof BLOCKS)[number];
 
-export type Blocks = Cv | Section | Paragraph | Field;
+export type Blocks = Cv | Section | Paragraph | TextField | RangeField;
 
 /**
  * A part of a CV.

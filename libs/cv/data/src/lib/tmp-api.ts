@@ -1,6 +1,13 @@
 import { ENVIRONMENT_INITIALIZER, Provider } from '@angular/core';
 import { firestore } from '@cv/common/util';
-import { BlockPrototype, Cv, Paragraph, Section, TextField } from '@cv/types';
+import {
+  BlockPrototype,
+  Cv,
+  Paragraph,
+  RangeField,
+  Section,
+  TextField,
+} from '@cv/types';
 import { collection, doc, setDoc } from 'firebase/firestore';
 
 const cv_1_prototype: BlockPrototype<Cv> = {
@@ -42,7 +49,7 @@ const paragraph_1_prototype: BlockPrototype<Paragraph> = {
   multiple: true,
   type: 'paragraph',
   template: {
-    childPrototypeIds: ['field_1_prototype'],
+    childPrototypeIds: ['field_1_prototype', 'field_2_prototype'],
   },
 };
 
@@ -59,11 +66,27 @@ const field_1_prototype: BlockPrototype<TextField> = {
   },
 };
 
+const field_2_prototype: BlockPrototype<RangeField> = {
+  canBeDeleted: true,
+  templateId: 'cv_1_template',
+  canBeMoved: true,
+  id: 'field_2_prototype',
+  label: 'field 2',
+  multiple: true,
+  type: 'range',
+  template: {
+    min: 0,
+    max: 10,
+    value: 5,
+  },
+};
+
 const cv_1_prototypes = {
   cv_1_prototype,
   section_1_prototype,
   paragraph_1_prototype,
   field_1_prototype,
+  field_2_prototype,
 };
 
 export const provideMockData = [

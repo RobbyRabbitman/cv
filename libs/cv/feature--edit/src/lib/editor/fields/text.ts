@@ -4,10 +4,14 @@ import {
   ElementRef,
   ViewChild,
   ViewEncapsulation,
+  inject,
   input,
   signal,
 } from '@angular/core';
+import { fromEvent } from '@cv/common/util';
 import { TextField } from '@cv/types';
+import { map } from 'rxjs';
+import { CvEditor } from '../cv';
 
 @Component({
   selector: 'cv--edit-text',
@@ -16,10 +20,22 @@ import { TextField } from '@cv/types';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<label>
     {{ field().prototypeId }}
-    <input type="text" [value]="field().value" />
+    <input #input class="input" type="text" [value]="field().value" />
   </label>`,
 })
-export default class TextEdit {
+export class TextEdit {
+  editor = inject(CvEditor);
+
+  constructor() {
+    fromEvent(this.input, 'input')
+      .pipe(
+        map(({ target }) =>
+          this.editor.patch({ ...this.field(), value: target.value }),
+        ),
+      )
+      .subscribe();
+  }
+
   @ViewChild('input', { read: ElementRef })
   protected set _input(input: ElementRef | undefined) {
     this.input.set(input?.nativeElement);
@@ -28,9 +44,4 @@ export default class TextEdit {
   protected input = signal<HTMLInputElement | undefined>(undefined);
 
   field = input.required<TextField>();
-
-  // @Output()
-  // fieldChange = fromEvent(this.input, 'input').pipe(
-  //   map(({ target }) => setValueOfSimpleField(this.field(), target.value)),
-  // );
 }

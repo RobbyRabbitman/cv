@@ -4,10 +4,14 @@ import {
   ElementRef,
   ViewChild,
   ViewEncapsulation,
+  inject,
   input,
   signal,
 } from '@angular/core';
+import { fromEvent } from '@cv/common/util';
 import { RangeField as RangeFieldType } from '@cv/types';
+import { map } from 'rxjs';
+import { CvEditor } from '../cv';
 
 @Component({
   selector: 'cv--edit-range',
@@ -18,6 +22,7 @@ import { RangeField as RangeFieldType } from '@cv/types';
   template: `<label>
     {{ field().prototypeId }}
     <input
+      #input
       type="range"
       [value]="field().value"
       [min]="field().min"
@@ -25,7 +30,19 @@ import { RangeField as RangeFieldType } from '@cv/types';
     />
   </label>`,
 })
-export default class RangeField {
+export class RangeEdit {
+  editor = inject(CvEditor);
+
+  constructor() {
+    fromEvent(this.input, 'input')
+      .pipe(
+        map(({ target }) =>
+          this.editor.patch({ ...this.field(), value: Number(target.value) }),
+        ),
+      )
+      .subscribe();
+  }
+
   @ViewChild('input', { read: ElementRef })
   protected set _input(input: ElementRef | undefined) {
     this.input.set(input?.nativeElement);
@@ -34,11 +51,4 @@ export default class RangeField {
   protected input = signal<HTMLInputElement | undefined>(undefined);
 
   field = input.required<RangeFieldType>();
-
-  // @Output()
-  // fieldChange = fromEvent(this.input, 'input').pipe(
-  //   map(({ target }) =>
-  //     setValueOfSimpleField(this.field(), Number(target.value)),
-  //   ),
-  // );
 }
