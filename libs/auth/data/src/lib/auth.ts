@@ -2,6 +2,7 @@ import { DestroyRef, Injectable, inject, signal } from '@angular/core';
 import { firebaseAuth } from '@cv/common/util';
 import {
   GoogleAuthProvider,
+  User,
   onAuthStateChanged,
   signInWithPopup,
 } from 'firebase/auth';
@@ -16,7 +17,7 @@ export class Auth {
   }
 
   /** The user if logged in, else null. */
-  user = signal(this.auth.currentUser);
+  user = signal<User | null | undefined>(undefined);
 
   /** Signs out the current user. */
   async signOut() {

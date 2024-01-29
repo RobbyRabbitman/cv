@@ -2,17 +2,20 @@ import {
   ChangeDetectionStrategy,
   Component,
   ViewEncapsulation,
+  computed,
   inject,
   input,
 } from '@angular/core';
+import { UUID } from '@cv/common/types';
 import { CvStore } from '@cv/data';
-import { Blocks, Cv } from '@cv/types';
+import { Block, BlockPrototype, Cv } from '@cv/types';
+import { AddChildBlockButtonRibbon } from './add-child-block-button-ribbon';
 import { SectionEditor } from './section';
 
 @Component({
   selector: 'cv--edit-cv',
   standalone: true,
-  imports: [SectionEditor],
+  imports: [SectionEditor, AddChildBlockButtonRibbon],
   templateUrl: './cv.html',
   styleUrl: './cv.scss',
   encapsulation: ViewEncapsulation.None,
@@ -23,7 +26,13 @@ export class CvEditor {
 
   cv = input.required<Cv>();
 
-  patch<TBlock extends Blocks>(block: TBlock) {
+  prototypes = input.required<Record<UUID, BlockPrototype>>();
+
+  patch<TBlock extends Block>(block: TBlock) {
     this.store.patchBlock(this.cv(), block);
   }
+
+  protected sectionPrototypes = computed(() =>
+    this.store.getChildPrototypes(this.cv())(),
+  );
 }

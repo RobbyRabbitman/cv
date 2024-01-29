@@ -6,6 +6,7 @@ import {
 
 import { provideRouter } from '@angular/router';
 import { provideAuthData } from '@cv/auth/data';
+import { isAuthenticated } from '@cv/auth/smart';
 import { provideCommonData } from '@cv/common/data';
 import { provideFirebase } from '@cv/common/util';
 import { provideCvData } from '@cv/data';
@@ -17,7 +18,12 @@ export const appConfig = {
   providers: [
     provideRouter([
       { path: 'all', loadChildren: () => import('@cv--overview') },
-      { path: 'all/:cvId', loadChildren: () => import('@cv--edit') },
+      {
+        path: 'all/:cvId',
+        loadChildren: () => import('@cv--edit'),
+        canActivate: [isAuthenticated],
+        canMatch: [isAuthenticated],
+      },
       { path: '**', pathMatch: 'full', redirectTo: 'all' },
     ]),
     provideFirebase(environment.firebase),

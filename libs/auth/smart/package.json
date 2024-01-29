@@ -4,7 +4,9 @@
   "peerDependencies": {
     "@angular/core": "17.1.0",
     "@cv/auth/data": "*",
-    "@cv/i18n/smart": "*"
+    "@cv/i18n/smart": "*",
+    "@angular/router": "17.1.0",
+    "rxjs": "7.8.0"
   },
   "sideEffects": false
 }

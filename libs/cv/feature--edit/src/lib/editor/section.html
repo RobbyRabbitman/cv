@@ -1,3 +1,5 @@
 @for (paragraph of section().children; track paragraph.id) {
 <cv--edit-paragraph [paragraph]="paragraph" />
+}@for (sectionPrototype of paragraphPrototypes(); track sectionPrototype.id) {
+<cv--edit-add-child-block-button-ribbon [block]="section()" />
 }

@@ -43,6 +43,9 @@ export default class CvEditPage {
     return this.cvStore.cvEntityMap()[cvId];
   });
 
+  // check that the prototypes exist
+  prototypes = this.cvStore.prototypeEntityMap;
+
   protected handleEmptyParam() {
     if (!this.cvId()) this.router.navigateByUrl('/');
   }

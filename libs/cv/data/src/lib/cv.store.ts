@@ -6,8 +6,18 @@ import {
 } from '@angular/core';
 import { EntityStatus, Identifiable, UUID } from '@cv/common/types';
 import { uuid } from '@cv/common/util';
-import { BlockPrototype, Blocks, Cv, CvTemplate } from '@cv/types';
-import { patchBlock as _patchBlock } from '@cv/util';
+import {
+  Block,
+  BlockPrototype,
+  Blocks,
+  Cv,
+  CvTemplate,
+  HasChildren,
+} from '@cv/types';
+import {
+  getChildPrototypes as _getChildPrototypes,
+  patchBlock as _patchBlock,
+} from '@cv/util';
 import { tapResponse } from '@ngrx/operators';
 import {
   patchState,
@@ -69,7 +79,10 @@ export const CvStore = signalStore(
     const getOne = rxMethod<UUID>(
       pipe(
         // noop when cv is already in store.
-        filter((id) => !store.cvEntityMap()[id]),
+        filter((id) => {
+          const cv = store.cvEntityMap()[id];
+          return !(cv && store.prototypeEntityMap()[cv.prototypeId]);
+        }),
         // indicate loading
         tap((id) => patchState(store, patchStatus('loading', id))),
         // call api
@@ -136,7 +149,6 @@ export const CvStore = signalStore(
               next: (cvs) => {
                 patchState(
                   store,
-
                   setEntities(cvs, {
                     collection: 'cv',
                   }),
@@ -237,6 +249,18 @@ export const CvStore = signalStore(
       /** Gets a block prototype by its id. */
       getPrototype: function (prototypeId: UUID) {
         return store.prototypeEntityMap()[prototypeId];
+      },
+      /** Gets a block prototype by its id. */
+      getChildPrototypes: function <
+        TChild extends Block,
+        TBlock extends Block & HasChildren<TChild>,
+      >(block: TBlock) {
+        return computed(() =>
+          _getChildPrototypes<TChild, TBlock>(
+            block,
+            store.prototypeEntityMap(),
+          ),
+        );
       },
       reset: function () {
         patchState(

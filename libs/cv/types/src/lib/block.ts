@@ -156,15 +156,15 @@ export type BlockPrototypeTemplateWithChildren<TBlock extends Block = Block> =
   };
 
 export function hasBlockChildren<TChild extends Block, TBlock extends Block>(
-  block: TBlock | (TBlock & HasChildren<TChild>),
+  block?: TBlock | (TBlock & HasChildren<TChild>),
 ): block is TBlock & HasChildren<TChild> {
-  return 'children' in block;
+  return block != null && 'children' in block;
 }
 
 export function hasTemplateChildren<TBlock extends Block>(
-  template:
+  template?:
     | BlockPrototypeTemplate<TBlock>
     | BlockPrototypeTemplateWithChildren<TBlock>,
 ): template is BlockPrototypeTemplateWithChildren<TBlock> {
-  return 'childPrototypeIds' in template;
+  return template != null && 'childPrototypeIds' in template;
 }

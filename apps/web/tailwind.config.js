@@ -53,6 +53,9 @@ module.exports = {
           wordWrap: 'normal',
           direction: 'ltr',
         },
+        '.divider': {
+          '@apply h-0.5 bg-opacity-25 bg-primary-500': {},
+        },
         '.border': {
           '@apply border-opacity-25 border-solid border-2 border-primary-500 rounded-md':
             {},

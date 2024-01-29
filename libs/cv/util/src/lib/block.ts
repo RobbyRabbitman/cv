@@ -6,6 +6,7 @@ import {
   BlockPrototypeTemplate,
   Blocks,
   Cv,
+  HasChildren,
   hasBlockChildren,
   hasTemplateChildren,
 } from '@cv/types';
@@ -28,6 +29,27 @@ export function createCv(
     prototypes,
     idFactory,
   );
+}
+
+export function getChildPrototypes<
+  TChild extends Block,
+  TBlock extends Block & HasChildren<TChild>,
+>(
+  block: TBlock,
+  prototypes: Record<UUID, BlockPrototype> = {},
+): BlockPrototype<TChild>[] {
+  const prototype = prototypes[block.prototypeId];
+
+  if (!hasTemplateChildren(prototype?.template)) return [];
+
+  return prototype.template.childPrototypeIds.map((id) => {
+    const prototype = prototypes[id] as BlockPrototype<TChild>;
+    if (!prototype)
+      throw new Error(
+        `[Block]: Could not get child prototypes of '${block.id}'. Prototype '${id}' is missing in '${Object.keys(prototypes)}'`,
+      );
+    return prototype;
+  });
 }
 
 // TODO check for loops.
