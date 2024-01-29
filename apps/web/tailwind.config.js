@@ -53,8 +53,16 @@ module.exports = {
           wordWrap: 'normal',
           direction: 'ltr',
         },
+        '.border': {
+          '@apply border-opacity-25 border-solid border-2 border-primary-500 rounded-md':
+            {},
+        },
+        '.border-hover': {
+          '@apply hover:border-secondary-300 hover:dark:border-secondary-600':
+            {},
+        },
         '.control': {
-          '@apply inline-flex gap-1 outline-none appearance-none bg-inherit border-opacity-25 border-solid border-2 border-primary-500 rounded-md hover:text-secondary-500 hover:dark:text-secondary-400 hover:bg-secondary-100 hover:dark:bg-secondary-950 focus-within:border-secondary-500 dark:focus-within:border-secondary-400':
+          '@apply inline-flex gap-1 outline-none appearance-none bg-inherit border border-hover hover:text-secondary-500 hover:dark:text-secondary-400 hover:bg-secondary-100 hover:dark:bg-secondary-950 focus-within:border-secondary-500 dark:focus-within:border-secondary-400':
             {},
         },
         '.select-label': {
