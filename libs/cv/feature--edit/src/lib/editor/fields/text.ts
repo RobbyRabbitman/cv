@@ -18,8 +18,8 @@ import { CvEditor } from '../cv';
   standalone: true,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<label>
-    {{ field().prototypeId }}
+  template: `<label class="flex flex-col gap-1">
+    <span class="px-2.5">{{ field().prototypeId }}</span>
     <input #input class="input" type="text" [value]="field().value" />
   </label>`,
 })

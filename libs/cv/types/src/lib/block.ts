@@ -50,7 +50,7 @@ export interface Cv extends Block, CanBeLabeled, HasChildren<Section> {
 /**
  * A Section of a CV. It is made of multiple paragraps.
  */
-export interface Section extends Block, HasChildren<Paragraph> {
+export interface Section extends Block, HasChildren<Paragraph>, CanBeLabeled {
   type: 'section';
 }
 

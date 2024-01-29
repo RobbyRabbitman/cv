@@ -19,8 +19,8 @@ import { CvEditor } from '../cv';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [],
-  template: `<label>
-    {{ field().prototypeId }}
+  template: `<label class="flex flex-col gap-1 items-start">
+    <span class="px-2.5">{{ field().prototypeId }}</span>
     <input
       #input
       type="range"

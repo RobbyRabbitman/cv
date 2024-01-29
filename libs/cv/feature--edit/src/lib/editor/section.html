@@ -1,3 +1,11 @@
+<div class="flex">
+  <cv-smart-edit-block-label
+    [cv]="editor.cv()"
+    [block]="section()"
+    [label]="'INPUT.LABEL' | translate"
+    [placeholder]="'INPUT.PLACEHOLDER' | translate"
+  />
+</div>
 @for (paragraph of section().children; track paragraph.id) {
 <cv--edit-paragraph [paragraph]="paragraph" />
 }@for (sectionPrototype of paragraphPrototypes(); track sectionPrototype.id) {
