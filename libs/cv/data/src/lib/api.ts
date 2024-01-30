@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { UserStore } from '@cv/auth/data';
 import { Identifiable, UUID } from '@cv/common/types';
 import { firestore } from '@cv/common/util';
+import { Translation } from '@cv/i18n/types';
 import { Block, BlockPrototype, Cv, CvTemplate } from '@cv/types';
 import { createCv } from '@cv/util';
 import {
@@ -149,6 +150,32 @@ export class Api {
     return { cv, prototypes };
   }
 
+  async getTranslation(
+    cvTemplateId: UUID,
+    locale: string,
+  ): Promise<Translation> {
+    const translation = await getDoc(
+      doc(
+        this.firestore,
+        this.cvTemplateCollection.path,
+        cvTemplateId,
+        'i18n',
+        locale,
+      ),
+    );
+
+    if (!translation.exists())
+      throw new Error(
+        `[Api]: no translation found for cv template id '${cvTemplateId}'. Provided '${locale}'.`,
+      );
+
+    return translation.data();
+  }
+
+  /**
+   *
+   * @returns the id of the signed in user, throws if user is not signed in,
+   */
   protected userId() {
     const user = this.user.value();
 

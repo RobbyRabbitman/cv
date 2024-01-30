@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { EntityStatus, Identifiable, UUID } from '@cv/common/types';
 import { uuid } from '@cv/common/util';
+import { Translation } from '@cv/i18n/types';
 import {
   Block,
   BlockPrototype,
@@ -30,6 +31,7 @@ import {
   setAllEntities,
   setEntities,
   setEntity,
+  updateEntity,
   withEntities,
 } from '@ngrx/signals/entities';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
@@ -41,29 +43,33 @@ export function provideCvStore(): EnvironmentProviders {
 }
 
 interface State {
-  statusMap: Record<UUID, EntityStatus>;
+  cvStatusMap: Record<UUID, EntityStatus>;
 }
 
 const initialState: State = {
-  statusMap: {},
+  cvStatusMap: {},
 };
 
 export const CvStore = signalStore(
   withState(initialState),
   withEntities({ entity: type<Cv>(), collection: 'cv' }),
-  withEntities({ entity: type<CvTemplate>(), collection: 'template' }),
+  withEntities({
+    entity: type<CvTemplate & { translations: Record<string, Translation> }>(),
+    collection: 'template',
+  }),
   withEntities({ entity: type<BlockPrototype>(), collection: 'prototype' }),
+
   withMethods((store) => {
     const api = inject(Api);
 
-    const status = function (id: UUID) {
-      return computed(() => store.statusMap()[id] ?? 'unknown');
+    const cvStatus = function (cvId: UUID) {
+      return computed(() => store.cvStatusMap()[cvId] ?? 'unknown');
     };
 
-    const patchStatus = function (status: EntityStatus, ...ids: UUID[]) {
-      return (store: { statusMap: Record<UUID, EntityStatus> }) => ({
-        statusMap: {
-          ...store.statusMap,
+    const setStatus = function (status: EntityStatus, ...ids: UUID[]) {
+      return (store: { cvStatusMap: Record<UUID, EntityStatus> }) => ({
+        cvStatusMap: {
+          ...store.cvStatusMap,
           ...ids.reduce(
             (map, id) => {
               map[id] = status;
@@ -84,7 +90,7 @@ export const CvStore = signalStore(
           return !(cv && store.prototypeEntityMap()[cv.prototypeId]);
         }),
         // indicate loading
-        tap((id) => patchState(store, patchStatus('loading', id))),
+        tap((id) => patchState(store, setStatus('loading', id))),
         // call api
         switchMap((id) =>
           from(api.getOneWithPrototypes(id)).pipe(
@@ -94,7 +100,7 @@ export const CvStore = signalStore(
               next: ({ cv, prototypes }) => {
                 patchState(
                   store,
-                  patchStatus('success', id, ...prototypes.map(({ id }) => id)),
+                  setStatus('success', id, ...prototypes.map(({ id }) => id)),
                   setEntity(cv, { collection: 'cv' }),
                   setEntities(prototypes, {
                     collection: 'prototype',
@@ -103,7 +109,7 @@ export const CvStore = signalStore(
               },
               // error
               error: () => {
-                patchState(store, patchStatus('error', id));
+                patchState(store, setStatus('error', id));
               },
             }),
           ),
@@ -115,7 +121,7 @@ export const CvStore = signalStore(
     const create = rxMethod<{ cvPrototypeId: UUID; cvId: UUID }>(
       pipe(
         // indicate loading
-        tap(({ cvId }) => patchState(store, patchStatus('loading', cvId))),
+        tap(({ cvId }) => patchState(store, setStatus('loading', cvId))),
         // call api
         switchMap(({ cvPrototypeId, cvId }) =>
           from(api.createCv(cvPrototypeId, cvId)).pipe(
@@ -127,7 +133,7 @@ export const CvStore = signalStore(
               },
               // error
               error: () => {
-                patchState(store, patchStatus('error', cvId));
+                patchState(store, setStatus('error', cvId));
               },
             }),
           ),
@@ -175,7 +181,7 @@ export const CvStore = signalStore(
         tap((cv) =>
           patchState(
             store,
-
+            setStatus('loading', cv.id),
             setEntity(cv, { collection: 'cv' }),
           ),
         ),
@@ -207,8 +213,6 @@ export const CvStore = signalStore(
     /** Updates a CV. */
     const getAllTemplates = rxMethod<void>(
       pipe(
-        // indicate loading
-        tap(() => patchState(store)),
         // call api
         switchMap(() =>
           from(api.getAllCvTemplates()).pipe(
@@ -218,10 +222,15 @@ export const CvStore = signalStore(
               next: (templates) => {
                 patchState(
                   store,
-
-                  setEntities(templates, {
-                    collection: 'template',
-                  }),
+                  setEntities(
+                    templates.map((template) => ({
+                      ...template,
+                      translations: {},
+                    })),
+                    {
+                      collection: 'template',
+                    },
+                  ),
                 );
               },
               // error
@@ -267,21 +276,73 @@ export const CvStore = signalStore(
           store,
           initialState,
           setAllEntities([] as Cv[], { collection: 'cv' }),
-          setAllEntities([] as CvTemplate[], { collection: 'template' }),
+          setAllEntities(
+            [] as (CvTemplate & {
+              translations: Record<string, Translation>;
+            })[],
+            { collection: 'template' },
+          ),
           setAllEntities([] as BlockPrototype[], { collection: 'prototype' }),
         );
       },
-      status,
+      cvStatus,
       create: function (cvPrototypeId: UUID) {
         const cvId = uuid();
         create({ cvPrototypeId, cvId });
         return cvId;
+      },
+      translation: function (cvTemplateId: UUID, locale: string) {
+        return computed(() => {
+          const translation =
+            store.templateEntityMap()[cvTemplateId].translations[locale];
+
+          if (!translation) return;
+
+          return translation;
+        });
       },
       update,
       getOne,
       getAll,
       patchBlock,
       getAllTemplates,
+      getTranslation: rxMethod<{ cvTemplateId: UUID; locale: string }>(
+        pipe(
+          switchMap(({ locale, cvTemplateId }) =>
+            from(api.getTranslation(cvTemplateId, locale)).pipe(
+              // handle response
+              tapResponse({
+                // success
+                next: (translation) => {
+                  const cvTemplate = store.templateEntityMap()[cvTemplateId];
+
+                  patchState(
+                    store,
+                    updateEntity(
+                      {
+                        id: cvTemplateId,
+                        changes: {
+                          translations: {
+                            ...cvTemplate.translations,
+                            [locale]: translation,
+                          },
+                        },
+                      },
+                      {
+                        collection: 'template',
+                      },
+                    ),
+                  );
+                },
+                // error
+                error: () => {
+                  // TODO
+                },
+              }),
+            ),
+          ),
+        ),
+      ),
     };
   }),
 );

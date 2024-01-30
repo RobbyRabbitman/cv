@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { CvStore } from '@cv/data';
+import { I18nStore } from '@cv/i18n/data';
 import { injectParams } from 'ngxtension/inject-params';
 import { CvEditor } from './editor/cv';
 
@@ -24,16 +25,19 @@ import { CvEditor } from './editor/cv';
 export default class CvEditPage {
   protected cvStore = inject(CvStore);
 
+  protected i18nStore = inject(I18nStore);
+
   protected router = inject(Router);
 
   constructor() {
     this.handleEmptyParam();
     this.handleError();
+    this.getTranslation();
   }
 
-  cvId = injectParams('cvId');
+  protected cvId = injectParams('cvId');
 
-  cv = computed(() => {
+  protected cv = computed(() => {
     const cvId = this.cvId();
 
     if (!cvId) return;
@@ -44,21 +48,50 @@ export default class CvEditPage {
   });
 
   // check that the prototypes exist
-  prototypes = this.cvStore.prototypeEntityMap;
+  protected prototypes = this.cvStore.prototypeEntityMap;
 
+  /** Navigates to '/' when the cv id is empty or nullish. */
   protected handleEmptyParam() {
-    if (!this.cvId()) this.router.navigateByUrl('/');
+    effect(() => {
+      if (!this.cvId()) untracked(() => this.router.navigateByUrl('/'));
+    });
   }
 
+  /** Gets the translation for this cv based on the locale. */
+  protected getTranslation() {
+    effect(() => {
+      const cv = this.cv();
+      const locale = this.i18nStore.locale();
+
+      if (!cv) return;
+
+      const translation = this.cvStore.translation(cv.templateId, locale)();
+
+      untracked(() => {
+        if (!translation) {
+          this.cvStore.getTranslation({ cvTemplateId: cv.templateId, locale });
+          return;
+        }
+
+        this.i18nStore.mergeTranslation(
+          locale,
+          translation!,
+          `CV.EDIT.${cv.templateId.toUpperCase()}`,
+        );
+      });
+    });
+  }
+
+  /** Navigates to '/' when the the associated entity of the cv id is in an error status. */
   protected handleError() {
     effect(() => {
       const cvId = this.cvId();
 
       if (!cvId) return;
 
-      const status = this.cvStore.status(cvId)();
+      const status = this.cvStore.cvStatus(cvId)();
 
-      if (status === 'error') this.router.navigateByUrl('/');
+      if (status === 'error') untracked(() => this.router.navigateByUrl('/'));
     });
   }
 }

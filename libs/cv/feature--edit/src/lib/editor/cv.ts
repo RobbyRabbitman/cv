@@ -32,6 +32,11 @@ export class CvEditor {
     this.store.patchBlock(this.cv(), block);
   }
 
+  translatePrefix = ({ prototypeId }: Block) =>
+    computed(() =>
+      `CV.EDIT.${this.cv().templateId}.${prototypeId}`.toUpperCase(),
+    );
+
   protected sectionPrototypes = computed(() =>
     this.store.getChildPrototypes(this.cv())(),
   );

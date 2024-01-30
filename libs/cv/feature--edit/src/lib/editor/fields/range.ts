@@ -4,11 +4,13 @@ import {
   ElementRef,
   ViewChild,
   ViewEncapsulation,
+  computed,
   inject,
   input,
   signal,
 } from '@angular/core';
 import { fromEvent } from '@cv/common/util';
+import { Translate } from '@cv/i18n/smart';
 import { RangeField as RangeFieldType } from '@cv/types';
 import { map } from 'rxjs';
 import { CvEditor } from '../cv';
@@ -18,9 +20,11 @@ import { CvEditor } from '../cv';
   standalone: true,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [Translate],
   template: `<label class="flex flex-col gap-1 items-start">
-    <span class="px-2.5">{{ field().prototypeId }}</span>
+    <span class="px-2.5">
+      {{ this.translatePrefix() + '.LABEL' | translate }}
+    </span>
     <input
       #input
       type="range"
@@ -49,6 +53,10 @@ export class RangeEdit {
   }
 
   protected input = signal<HTMLInputElement | undefined>(undefined);
+
+  protected translatePrefix = computed(() =>
+    this.editor.translatePrefix(this.field())(),
+  );
 
   field = input.required<RangeFieldType>();
 }

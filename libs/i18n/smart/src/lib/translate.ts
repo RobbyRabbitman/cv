@@ -5,7 +5,7 @@ import {
   createInjectionToken,
   createNoopInjectionToken,
 } from 'ngxtension/create-injection-token';
-import { markForCheckOnLocaleChanges } from './change-detection';
+import { markForCheckOnLocalization } from './change-detection';
 
 export const [translatePrefix, provideTranslatePrefix] =
   createNoopInjectionToken<string>('translate prefix');
@@ -53,6 +53,6 @@ export class Translate implements PipeTransform {
     : this.store.translateInstant;
 
   constructor() {
-    markForCheckOnLocaleChanges();
+    markForCheckOnLocalization();
   }
 }

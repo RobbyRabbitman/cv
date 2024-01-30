@@ -5,6 +5,8 @@ import {
   inject,
   makeEnvironmentProviders,
 } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { Translation } from '@cv/i18n/types';
 import { injectDocumentLocale } from '@cv/i18n/util';
 import {
   patchState,
@@ -15,7 +17,7 @@ import {
 } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
-import { delay, pipe, switchMap, tap } from 'rxjs';
+import { delay, firstValueFrom, map, merge, pipe, switchMap, tap } from 'rxjs';
 
 export function provideI18nStore(): EnvironmentProviders {
   return makeEnvironmentProviders([I18nStore]);
@@ -57,9 +59,38 @@ export const I18nStore = signalStore(
       ),
     );
 
-    const localized = computed(() => store.loading(), {
-      equal: (next, prev) => next === false && prev === true,
-    });
+    const mergeTranslation = async (
+      locale: string,
+      translation: Translation,
+      prefix?: string,
+    ) => {
+      await firstValueFrom(translateService.getTranslation(locale));
+      translateService.setTranslation(
+        locale,
+        (prefix ?? '')
+          .split('.')
+          .reverse()
+          .reduce(
+            (translation, path) => ({ [path]: translation }),
+            translation,
+          ),
+        true,
+      );
+    };
+
+    toSignal(
+      merge(
+        translateService.onTranslationChange,
+        translateService.onLangChange,
+      ),
+    );
+
+    const localized = toSignal(
+      merge(
+        translateService.onTranslationChange,
+        translateService.onLangChange,
+      ).pipe(map(() => ({}))),
+    );
 
     const translateInstant: (
       key: string,
@@ -81,6 +112,7 @@ export const I18nStore = signalStore(
       translate,
       setLocale,
       localized,
+      mergeTranslation,
     };
   }),
   withHooks({

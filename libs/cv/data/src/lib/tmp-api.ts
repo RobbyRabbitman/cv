@@ -76,8 +76,8 @@ const field_2_prototype: BlockPrototype<RangeField> = {
   type: 'range',
   template: {
     min: 0,
-    max: 10,
-    value: 5,
+    max: 3,
+    value: 0,
   },
 };
 
@@ -87,6 +87,20 @@ const cv_1_prototypes = {
   paragraph_1_prototype,
   field_1_prototype,
   field_2_prototype,
+};
+
+const cv_1_template_i18n_de_translation = {
+  FIELD_1_PROTOTYPE: {
+    LABEL: 'Text Feld 1',
+  },
+  FIELD_2_PROTOTYPE: {
+    LABEL: 'Range Feld 2',
+    OPTIONS: {
+      0: 'Option 1',
+      1: 'Option 2',
+      2: 'Option 3',
+    },
+  },
 };
 
 export const provideMockData = [
@@ -101,6 +115,11 @@ export const provideMockData = [
         const cvTemplate = collection(_firestore, 'cvTemplate');
 
         setDoc(doc(cvTemplate, 'cv_1_template'), { id: 'cv_1_template' });
+
+        setDoc(
+          doc(cvTemplate, 'cv_1_template', 'i18n', 'de'),
+          cv_1_template_i18n_de_translation,
+        );
 
         Object.values(cv_1_prototypes).forEach((x) => {
           setDoc(doc(blockPrototype, x.id), x);

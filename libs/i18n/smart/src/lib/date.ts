@@ -2,7 +2,7 @@ import { Pipe, PipeTransform, inject } from '@angular/core';
 import { injectWindow } from '@cv/common/util';
 import { I18nStore } from '@cv/i18n/data';
 import { Timestamp } from 'firebase/firestore';
-import { markForCheckOnLocaleChanges } from './change-detection';
+import { markForCheckOnLocalization } from './change-detection';
 
 @Pipe({
   name: 'date',
@@ -29,6 +29,6 @@ export class I18nDate implements PipeTransform {
   }
 
   constructor() {
-    markForCheckOnLocaleChanges();
+    markForCheckOnLocalization();
   }
 }

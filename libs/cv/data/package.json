@@ -12,7 +12,8 @@
     "@cv/types": "*",
     "@cv/util": "*",
     "@cv/auth/data": "*",
-    "firebase": "10.7.2"
+    "firebase": "10.7.2",
+    "@cv/i18n/types": "*"
   },
   "sideEffects": false
 }
