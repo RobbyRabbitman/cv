@@ -17,7 +17,7 @@ import {
 } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
-import { delay, firstValueFrom, map, merge, pipe, switchMap, tap } from 'rxjs';
+import { delay, map, merge, pipe, switchMap, tap } from 'rxjs';
 
 export function provideI18nStore(): EnvironmentProviders {
   return makeEnvironmentProviders([I18nStore]);
@@ -59,12 +59,11 @@ export const I18nStore = signalStore(
       ),
     );
 
-    const mergeTranslation = async (
+    const mergeTranslation = (
       locale: string,
       translation: Translation,
       prefix?: string,
-    ) => {
-      await firstValueFrom(translateService.getTranslation(locale));
+    ) =>
       translateService.setTranslation(
         locale,
         (prefix ?? '')
@@ -76,7 +75,6 @@ export const I18nStore = signalStore(
           ),
         true,
       );
-    };
 
     toSignal(
       merge(
