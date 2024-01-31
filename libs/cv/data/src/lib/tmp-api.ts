@@ -99,6 +99,7 @@ const cv_1_template_i18n_de_translation = {
       0: 'Option 1',
       1: 'Option 2',
       2: 'Option 3',
+      3: 'Option 4',
     },
   },
 };

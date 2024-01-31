@@ -1,13 +1,12 @@
 <div class="flex">
   <cv-smart-edit-block-label
-    [cv]="editor.cv()"
-    [block]="section()"
+    [cv]="section.editor.cv()"
+    [block]="section.block()"
     [label]="'INPUT.LABEL' | translate"
     [placeholder]="'INPUT.PLACEHOLDER' | translate"
   />
 </div>
-@for (paragraph of section().children; track paragraph.id) {
-<cv--edit-paragraph [paragraph]="paragraph" />
-}@for (sectionPrototype of paragraphPrototypes(); track sectionPrototype.id) {
-<cv--edit-add-child-block-button-ribbon [block]="section()" />
+@for (paragraph of section.block().children; track paragraph.id) {
+<cv--edit-paragraph [value]="paragraph" />
 }
+<cv--edit-add-child-block-button-ribbon [block]="section.block()" />

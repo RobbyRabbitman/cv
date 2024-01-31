@@ -4,16 +4,14 @@ import {
   ElementRef,
   ViewChild,
   ViewEncapsulation,
-  computed,
   inject,
-  input,
   signal,
 } from '@angular/core';
 import { fromEvent } from '@cv/common/util';
 import { Translate } from '@cv/i18n/smart';
 import { TextField } from '@cv/types';
 import { map } from 'rxjs';
-import { CvEditor } from '../cv';
+import { BlockDirective } from '../block.directive';
 
 @Component({
   selector: 'cv--edit-text',
@@ -21,24 +19,20 @@ import { CvEditor } from '../cv';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [Translate],
-  viewProviders: [],
+  hostDirectives: [{ directive: BlockDirective, inputs: ['block:value'] }],
   template: `<label class="flex flex-col gap-1">
     <span class="px-2.5">
-      {{ this.translatePrefix() + '.LABEL' | translate }}
+      {{ text.translatePrefix() + '.LABEL' | translate }}
     </span>
-    <input #input class="input" type="text" [value]="field().value" />
+    <input #input class="input" type="text" [value]="text.block().value" />
   </label>`,
 })
 export class TextEdit {
-  protected editor = inject(CvEditor);
+  protected text = inject<BlockDirective<TextField>>(BlockDirective);
 
   constructor() {
     fromEvent(this.input, 'input')
-      .pipe(
-        map(({ target }) =>
-          this.editor.patch({ ...this.field(), value: target.value }),
-        ),
-      )
+      .pipe(map(({ target }) => this.text.patch({ value: target.value })))
       .subscribe();
   }
 
@@ -48,10 +42,4 @@ export class TextEdit {
   }
 
   protected input = signal<HTMLInputElement | undefined>(undefined);
-
-  protected translatePrefix = computed(() =>
-    this.editor.translatePrefix(this.field())(),
-  );
-
-  field = input.required<TextField>();
 }

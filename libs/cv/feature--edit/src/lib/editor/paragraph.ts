@@ -2,20 +2,22 @@ import {
   ChangeDetectionStrategy,
   Component,
   ViewEncapsulation,
-  input,
+  inject,
 } from '@angular/core';
 import { Paragraph } from '@cv/types';
+import { BlockDirective } from './block.directive';
 import { FieldEdit } from './field';
 
 @Component({
   selector: 'cv--edit-paragraph',
   standalone: true,
   imports: [FieldEdit],
+  hostDirectives: [{ directive: BlockDirective, inputs: ['block:value'] }],
   templateUrl: './paragraph.html',
   styleUrl: './paragraph.scss',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ParagraphEditor {
-  paragraph = input.required<Paragraph>();
+  protected paragraph = inject<BlockDirective<Paragraph>>(BlockDirective);
 }

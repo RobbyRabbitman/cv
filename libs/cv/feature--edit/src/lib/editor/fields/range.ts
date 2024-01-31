@@ -6,43 +6,75 @@ import {
   ViewEncapsulation,
   computed,
   inject,
-  input,
   signal,
 } from '@angular/core';
 import { fromEvent } from '@cv/common/util';
 import { Translate } from '@cv/i18n/smart';
-import { RangeField as RangeFieldType } from '@cv/types';
+import { RangeField } from '@cv/types';
 import { map } from 'rxjs';
-import { CvEditor } from '../cv';
+import { BlockDirective } from '../block.directive';
 
 @Component({
   selector: 'cv--edit-range',
   standalone: true,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrl: './range.scss',
   imports: [Translate],
-  template: `<label class="flex flex-col gap-1 items-start">
-    <span class="px-2.5">
-      {{ this.translatePrefix() + '.LABEL' | translate }}
-    </span>
+  hostDirectives: [{ directive: BlockDirective, inputs: ['block:value'] }],
+  template: `<label [for]="range.block().id" class="px-2.5 col-span-full">
+      {{ range.translatePrefix() + '.LABEL' | translate }}
+    </label>
     <input
       #input
       type="range"
-      [value]="field().value"
-      [min]="field().min"
-      [max]="field().max"
+      class="control"
+      [id]="range.block().id"
+      [attr.list]="optionsId()"
+      [value]="range.block().value"
+      [min]="range.block().min"
+      [max]="range.block().max"
+      [attr.aria-valuemin]="
+        range.translatePrefix() + '.OPTIONS.' + range.block().min | translate
+      "
+      [attr.aria-valuemax]="
+        range.translatePrefix() + '.OPTIONS.' + range.block().max | translate
+      "
+      [attr.aria-valuetext]="
+        range.translatePrefix() + '.OPTIONS.' + range.block().value | translate
+      "
     />
-  </label>`,
+    <datalist [id]="optionsId()">
+      @for (option of options(); track option) {
+        <option
+          [value]="option"
+          [label]="range.translatePrefix() + '.OPTIONS.' + option | translate"
+        ></option>
+      }
+    </datalist>
+    <span aria-hidden="true">
+      {{
+        range.translatePrefix() + '.OPTIONS.' + range.block().value | translate
+      }}
+    </span>`,
 })
 export class RangeEdit {
-  editor = inject(CvEditor);
+  protected range = inject<BlockDirective<RangeField>>(BlockDirective);
+
+  protected options = computed(() => {
+    const block = this.range.block();
+
+    return Array.from({ length: block.max - block.min + 1 }).map(
+      (_, i) => i - block.min,
+    );
+  });
+
+  protected optionsId = computed(() => `${this.range.block().id}__options`);
 
   constructor() {
     fromEvent(this.input, 'input')
       .pipe(
-        map(({ target }) =>
-          this.editor.patch({ ...this.field(), value: Number(target.value) }),
-        ),
+        map(({ target }) => this.range.patch({ value: target.valueAsNumber })),
       )
       .subscribe();
   }
@@ -53,10 +85,4 @@ export class RangeEdit {
   }
 
   protected input = signal<HTMLInputElement | undefined>(undefined);
-
-  protected translatePrefix = computed(() =>
-    this.editor.translatePrefix(this.field())(),
-  );
-
-  field = input.required<RangeFieldType>();
 }

@@ -65,7 +65,7 @@ module.exports = {
             {},
         },
         '.control': {
-          '@apply inline-flex gap-1 outline-none appearance-none bg-inherit border border-hover hover:text-secondary-500 hover:dark:text-secondary-400 hover:bg-secondary-100 hover:dark:bg-secondary-950 focus-within:border-secondary-500 dark:focus-within:border-secondary-400':
+          '@apply h-11 inline-flex gap-1 outline-none appearance-none bg-inherit border border-hover hover:text-secondary-500 hover:dark:text-secondary-400 hover:bg-secondary-100 hover:dark:bg-secondary-950 focus-within:border-secondary-500 dark:focus-within:border-secondary-400':
             {},
         },
         '.select-label': {
