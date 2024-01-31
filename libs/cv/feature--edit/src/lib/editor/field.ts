@@ -13,13 +13,13 @@ import { TextEdit } from './fields/text';
   selector: 'cv--edit-field',
   standalone: true,
   imports: [TextEdit, RangeEdit],
-  hostDirectives: [{ directive: BlockDirective, inputs: ['block:value'] }],
-  template: `@switch (field.block().type) {
+  hostDirectives: [{ directive: BlockDirective, inputs: ['value'] }],
+  template: `@switch (field.instance().type) {
     @case ('text') {
-      <cv--edit-text [value]="$any(field.block())" />
+      <cv--edit-text [value]="$any(field.instance())" />
     }
     @case ('range') {
-      <cv--edit-range [value]="$any(field.block())" />
+      <cv--edit-range [value]="$any(field.instance())" />
     }
   }`,
   encapsulation: ViewEncapsulation.None,

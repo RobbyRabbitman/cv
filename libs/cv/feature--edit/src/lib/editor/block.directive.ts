@@ -11,15 +11,17 @@ export class BlockDirective<TBlock extends Block> {
 
   editor = inject(CvEditor);
 
-  translatePrefix = computed(() => this.editor.translatePrefix(this.block())());
+  translatePrefix = computed(() =>
+    this.editor.translatePrefix(this.instance())(),
+  );
 
-  block = input.required<TBlock>();
+  instance = input.required<TBlock>({ alias: 'value' });
 
   childPrototypes = computed(() =>
-    this.store.getChildPrototypes(this.block())(),
+    this.store.getChildPrototypes(this.instance())(),
   );
 
   patch(value: Partial<Omit<TBlock, 'id'>>) {
-    this.editor.patch({ ...this.block(), ...value });
+    this.editor.patch({ ...this.instance(), ...value });
   }
 }

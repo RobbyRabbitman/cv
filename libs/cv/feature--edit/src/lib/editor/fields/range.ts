@@ -21,27 +21,28 @@ import { BlockDirective } from '../block.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './range.scss',
   imports: [Translate],
-  hostDirectives: [{ directive: BlockDirective, inputs: ['block:value'] }],
-  template: `<label [for]="range.block().id" class="px-2.5 col-span-full">
+  hostDirectives: [{ directive: BlockDirective, inputs: ['value'] }],
+  template: `<label [for]="range.instance().id" class="px-2.5 col-span-full">
       {{ range.translatePrefix() + '.LABEL' | translate }}
     </label>
     <input
       #input
       type="range"
       class="control"
-      [id]="range.block().id"
+      [id]="range.instance().id"
       [attr.list]="optionsId()"
-      [value]="range.block().value"
-      [min]="range.block().min"
-      [max]="range.block().max"
+      [value]="range.instance().value"
+      [min]="range.instance().min"
+      [max]="range.instance().max"
       [attr.aria-valuemin]="
-        range.translatePrefix() + '.OPTIONS.' + range.block().min | translate
+        range.translatePrefix() + '.OPTIONS.' + range.instance().min | translate
       "
       [attr.aria-valuemax]="
-        range.translatePrefix() + '.OPTIONS.' + range.block().max | translate
+        range.translatePrefix() + '.OPTIONS.' + range.instance().max | translate
       "
       [attr.aria-valuetext]="
-        range.translatePrefix() + '.OPTIONS.' + range.block().value | translate
+        range.translatePrefix() + '.OPTIONS.' + range.instance().value
+          | translate
       "
     />
     <datalist [id]="optionsId()">
@@ -54,7 +55,8 @@ import { BlockDirective } from '../block.directive';
     </datalist>
     <span aria-hidden="true">
       {{
-        range.translatePrefix() + '.OPTIONS.' + range.block().value | translate
+        range.translatePrefix() + '.OPTIONS.' + range.instance().value
+          | translate
       }}
     </span>`,
 })
@@ -62,14 +64,14 @@ export class RangeEdit {
   protected range = inject<BlockDirective<RangeField>>(BlockDirective);
 
   protected options = computed(() => {
-    const block = this.range.block();
+    const block = this.range.instance();
 
     return Array.from({ length: block.max - block.min + 1 }).map(
       (_, i) => i - block.min,
     );
   });
 
-  protected optionsId = computed(() => `${this.range.block().id}__options`);
+  protected optionsId = computed(() => `${this.range.instance().id}__options`);
 
   constructor() {
     fromEvent(this.input, 'input')

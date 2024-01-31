@@ -19,12 +19,12 @@ import { BlockDirective } from '../block.directive';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [Translate],
-  hostDirectives: [{ directive: BlockDirective, inputs: ['block:value'] }],
+  hostDirectives: [{ directive: BlockDirective, inputs: ['value'] }],
   template: `<label class="flex flex-col gap-1">
     <span class="px-2.5">
       {{ text.translatePrefix() + '.LABEL' | translate }}
     </span>
-    <input #input class="input" type="text" [value]="text.block().value" />
+    <input #input class="input" type="text" [value]="text.instance().value" />
   </label>`,
 })
 export class TextEdit {

@@ -4,41 +4,43 @@ import {
   ViewEncapsulation,
   computed,
   inject,
-  input,
 } from '@angular/core';
 import { CvStore } from '@cv/data';
+import { Translate } from '@cv/i18n/smart';
 import { Block, BlockPrototype, HasChildren } from '@cv/types';
 import { createBlock } from '@cv/util';
-import { CvEditor } from './cv';
+import { BlockDirective } from './block.directive';
 
 @Component({
   selector: 'cv--edit-add-child-block-button-ribbon',
   standalone: true,
-  imports: [],
+  imports: [Translate],
+  hostDirectives: [{ directive: BlockDirective, inputs: ['value:for'] }],
   template: `@for (
-    childPrototype of childPrototypes();
+    childPrototype of creatableChildPrototypes();
     track childPrototype.id
   ) {
-    <button (click)="addChild(childPrototype)">{{ 'LABEL' }}</button>
+    <button (click)="addChild(childPrototype)">
+      {{ block.translatePrefix() + '.LABEL' | translate }}
+    </button>
   }`,
   styleUrl: './add-child-block-button-ribbon.scss',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddChildBlockButtonRibbon {
-  protected editor = inject(CvEditor);
+  protected block =
+    inject<BlockDirective<Block & HasChildren<Block>>>(BlockDirective);
 
   protected cvStore = inject(CvStore);
 
-  block = input.required<Block & HasChildren<Block>>();
-
   protected prototype = computed(
-    () => this.cvStore.prototypeEntityMap()[this.block().prototypeId],
+    () => this.cvStore.prototypeEntityMap()[this.block.instance().prototypeId],
   );
 
-  protected childPrototypes = computed(() => {
-    const block = this.block();
-    const childPrototypes = this.cvStore.getChildPrototypes(block)();
+  protected creatableChildPrototypes = computed(() => {
+    const childPrototypes = this.block.childPrototypes();
+    const block = this.block.instance();
 
     return childPrototypes.filter((prototype) => {
       if (prototype.multiple) return prototype;
@@ -50,13 +52,12 @@ export class AddChildBlockButtonRibbon {
   });
 
   protected addChild(prototype: BlockPrototype) {
-    const block = this.block();
+    const block = this.block.instance();
     if (!prototype.multiple) return;
-    this.editor.patch({
-      ...block,
+    this.block.patch({
       children: [
         ...block.children,
-        createBlock(prototype, this.editor.prototypes()),
+        createBlock(prototype, this.block.editor.prototypes()),
       ],
     });
   }

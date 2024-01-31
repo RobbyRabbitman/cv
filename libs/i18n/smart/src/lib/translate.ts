@@ -24,9 +24,9 @@ export const [translateFactory, provideTranslateFactory] = createInjectionToken(
       });
 
       return prefix
-        ? (key: string, params?: Record<string, string | number>) =>
-            store.translateInstant(`${prefix}.${key}`, params)
-        : store.translateInstant;
+        ? (key: string, params?: Record<string, string>) =>
+            store.translateOnce(`${prefix}.${key}`, params)
+        : store.translateOnce;
     };
 
     return translateFactory;
@@ -48,9 +48,9 @@ export class Translate implements PipeTransform {
   });
 
   transform = this.prefix
-    ? (key: string, params?: Record<string, string | number>) =>
-        this.store.translateInstant(`${this.prefix}.${key}`, params)
-    : this.store.translateInstant;
+    ? (key: string, params?: Record<string, string>) =>
+        this.store.translateOnce(`${this.prefix}.${key}`, params)
+    : this.store.translateOnce;
 
   constructor() {
     markForCheckOnLocalization();

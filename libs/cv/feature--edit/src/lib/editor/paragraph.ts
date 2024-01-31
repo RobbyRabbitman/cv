@@ -12,7 +12,7 @@ import { FieldEdit } from './field';
   selector: 'cv--edit-paragraph',
   standalone: true,
   imports: [FieldEdit],
-  hostDirectives: [{ directive: BlockDirective, inputs: ['block:value'] }],
+  hostDirectives: [{ directive: BlockDirective, inputs: ['value'] }],
   templateUrl: './paragraph.html',
   styleUrl: './paragraph.scss',
   encapsulation: ViewEncapsulation.None,

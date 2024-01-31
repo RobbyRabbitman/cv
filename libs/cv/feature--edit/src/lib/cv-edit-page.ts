@@ -61,9 +61,11 @@ export default class CvEditPage {
   protected getTranslation() {
     effect(() => {
       const cv = this.cv();
-      const locale = this.i18nStore.locale();
+      const localized = this.i18nStore.localized();
 
-      if (!cv) return;
+      if (!cv || !localized) return;
+
+      const locale = untracked(this.i18nStore.locale);
 
       const translation = this.cvStore.translation(cv.templateId, locale)();
 
@@ -75,7 +77,7 @@ export default class CvEditPage {
 
         this.i18nStore.mergeTranslation(
           locale,
-          translation!,
+          translation,
           `CV.EDIT.${cv.templateId.toUpperCase()}`,
         );
       });

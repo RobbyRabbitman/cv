@@ -2,5 +2,5 @@
 <cv--edit-section [value]="section" />
 <span class="divider"></span>
 } @for (sectionPrototype of sectionPrototypes(); track sectionPrototype.id) {
-<cv--edit-add-child-block-button-ribbon [block]="cv()" />
+<cv--edit-add-child-block-button-ribbon [for]="cv()" />
 }

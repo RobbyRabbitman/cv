@@ -1,13 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import {
   EnvironmentProviders,
-  Signal,
   computed,
   inject,
   makeEnvironmentProviders,
 } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { EntityStatus, patchEntityStatus } from '@cv/common/types';
+import { mergeObjects, objectPath } from '@cv/common/util';
 import { Translation } from '@cv/i18n/types';
 import { injectDocumentLocale } from '@cv/i18n/util';
+import { tapResponse } from '@ngrx/operators';
 import {
   patchState,
   signalStore,
@@ -16,8 +18,14 @@ import {
   withState,
 } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { TranslateService } from '@ngx-translate/core';
-import { delay, map, merge, pipe, switchMap, tap } from 'rxjs';
+import { createInjectionToken } from 'ngxtension/create-injection-token';
+import { filter, pipe, switchMap, tap } from 'rxjs';
+
+export const [injectTranslationLoader, provideTranslationLoader] =
+  createInjectionToken(() => {
+    const http = inject(HttpClient);
+    return (locale: string) => http.get(`assets/i18n/${locale}.json`);
+  });
 
 export function provideI18nStore(): EnvironmentProviders {
   return makeEnvironmentProviders([I18nStore]);
@@ -27,8 +35,11 @@ interface Store {
   /** 2 letter format e.g. 'en'. */
   locale: string;
 
-  /** Whether the app gets localized. */
-  loading: boolean;
+  /** Translations. */
+  translations: Record<string, Translation>;
+
+  /** Status of the translations. */
+  translationStatus: Record<string, EntityStatus>;
 
   /** The available locales. */
   locales: string[];
@@ -38,24 +49,56 @@ export const I18nStore = signalStore(
   withState(() => {
     const initialState: Store = {
       locale: injectDocumentLocale().slice(0, 2),
-      loading: true,
-      locales: ['en', 'de'], // TODO fetch from firestore?
+      locales: ['en', 'de'],
+      translations: {},
+      translationStatus: {},
     };
     return initialState;
   }),
   withMethods((store) => {
-    const translateService = inject(TranslateService);
+    const translationLoader = injectTranslationLoader();
 
     const setLocale = rxMethod<string>(
       pipe(
+        filter((locale) => !store.translations()[locale]),
         tap((locale) => {
-          patchState(store, { locale, loading: true });
+          patchState(store, {
+            locale,
+            translationStatus: patchEntityStatus(
+              store.translationStatus(),
+              'loading',
+              locale,
+            ),
+          });
         }),
-        delay(0), // trigger change detection so that the loading state can actually be read.
-        switchMap((locale) => translateService.use(locale)),
-        tap(() => {
-          patchState(store, { loading: false });
-        }),
+        switchMap((locale) =>
+          translationLoader(locale).pipe(
+            tapResponse({
+              next: (translation) => {
+                patchState(store, {
+                  translations: {
+                    ...store.translations,
+                    [locale]: translation,
+                  },
+                  translationStatus: patchEntityStatus(
+                    store.translationStatus(),
+                    'success',
+                    locale,
+                  ),
+                });
+              },
+              error: () => {
+                patchState(store, {
+                  translationStatus: patchEntityStatus(
+                    store.translationStatus(),
+                    'error',
+                    locale,
+                  ),
+                });
+              },
+            }),
+          ),
+        ),
       ),
     );
 
@@ -63,55 +106,58 @@ export const I18nStore = signalStore(
       locale: string,
       translation: Translation,
       prefix?: string,
-    ) =>
-      translateService.setTranslation(
-        locale,
-        (prefix ?? '')
-          .split('.')
-          .reverse()
-          .reduce(
-            (translation, path) => ({ [path]: translation }),
-            translation,
+    ) => {
+      patchState(store, {
+        translations: {
+          ...store.translations(),
+          [locale]: mergeObjects(
+            store.translations()[locale],
+            (prefix ?? '')
+              .split('.')
+              .reverse()
+              .reduce(
+                (translation, path) => ({ [path]: translation }),
+                translation,
+              ),
           ),
-        true,
-      );
-
-    toSignal(
-      merge(
-        translateService.onTranslationChange,
-        translateService.onLangChange,
-      ),
-    );
-
-    const localized = toSignal(
-      merge(
-        translateService.onTranslationChange,
-        translateService.onLangChange,
-      ).pipe(map(() => ({}))),
-    );
-
-    const translateInstant: (
-      key: string,
-      params?: Record<string, string | number>,
-    ) => string = (key, params) => translateService.instant(key, params);
-
-    const translate = function (
-      key: string,
-      params?: Record<string, string | number>,
-    ): Signal<string> {
-      return computed(() => {
-        localized();
-        return translateInstant(key, params);
+        },
       });
     };
 
-    return {
-      translateInstant,
-      translate,
-      setLocale,
-      localized,
-      mergeTranslation,
+    const translateOnce = function (
+      key: string,
+      params?: Record<string, string>,
+    ): string {
+      const translation = store.translations()[store.locale()];
+
+      if (!translation) return key;
+
+      try {
+        const value = objectPath<string | Translation>(translation, key);
+
+        if (typeof value !== 'string') throw new Error(``);
+
+        if (params)
+          return Object.keys(params).reduce(
+            (value, param) => value.replaceAll(`{{ ${param} }}`, params[param]),
+            value,
+          );
+
+        return value;
+      } catch {
+        return key;
+      }
     };
+
+    const translate = function (key: string, params?: Record<string, string>) {
+      return computed(() => translateOnce(key, params));
+    };
+
+    const localized = computed(
+      () => store.translationStatus()[store.locale()] === 'success',
+    );
+
+    return { translateOnce, translate, setLocale, mergeTranslation, localized };
   }),
   withHooks({
     onInit(store) {

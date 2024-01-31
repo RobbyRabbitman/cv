@@ -14,7 +14,7 @@ import { ParagraphEditor } from './paragraph';
 @Component({
   selector: 'cv--edit-section',
   standalone: true,
-  hostDirectives: [{ directive: BlockDirective, inputs: ['block:value'] }],
+  hostDirectives: [{ directive: BlockDirective, inputs: ['value'] }],
   imports: [
     ParagraphEditor,
     AddChildBlockButtonRibbon,
