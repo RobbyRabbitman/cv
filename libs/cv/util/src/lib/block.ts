@@ -6,7 +6,6 @@ import {
   BlockPrototypeTemplate,
   Blocks,
   Cv,
-  HasChildren,
   hasBlockChildren,
   hasTemplateChildren,
 } from '@cv/types';
@@ -31,19 +30,16 @@ export function createCv(
   );
 }
 
-export function getChildPrototypes<
-  TChild extends Block,
-  TBlock extends Block & HasChildren<TChild>,
->(
+export function getChildPrototypes<TBlock extends Block>(
   block: TBlock,
   prototypes: Record<UUID, BlockPrototype> = {},
-): BlockPrototype<TChild>[] {
+): BlockPrototype[] {
   const prototype = prototypes[block.prototypeId];
 
   if (!hasTemplateChildren(prototype?.template)) return [];
 
   return prototype.template.childPrototypeIds.map((id) => {
-    const prototype = prototypes[id] as BlockPrototype<TChild>;
+    const prototype = prototypes[id];
     if (!prototype)
       throw new Error(
         `[Block]: Could not get child prototypes of '${block.id}'. Prototype '${id}' is missing in '${Object.keys(prototypes)}'`,
