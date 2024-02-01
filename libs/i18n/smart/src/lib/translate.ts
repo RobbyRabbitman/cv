@@ -50,7 +50,8 @@ export class Translate implements PipeTransform {
   transform = this.prefix
     ? (key: string, params?: Record<string, string>) =>
         this.store.translateOnce(`${this.prefix}.${key}`, params)
-    : this.store.translateOnce;
+    : (key: string, params?: Record<string, string>) =>
+        this.store.translateOnce(key, params);
 
   constructor() {
     markForCheckOnLocalization();

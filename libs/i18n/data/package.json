@@ -9,7 +9,6 @@
     "rxjs": "7.8.0",
     "@cv/i18n/util": "*",
     "@cv/i18n/types": "*",
-    "@cv/common/types": "*",
     "@cv/common/util": "*",
     "@ngrx/operators": "17.1.0",
     "ngxtension": "1.12.0"
