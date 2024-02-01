@@ -12,10 +12,12 @@ import { Block, BlockPrototype, Blocks, Cv, CvTemplate } from '@cv/types';
 import {
   getChildPrototypes as _getChildPrototypes,
   patchBlock as _patchBlock,
+  deleteBlock,
 } from '@cv/util';
 import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, type } from '@ngrx/signals';
 import {
+  removeEntity,
   setAllEntities,
   setEntities,
   setEntity,
@@ -230,6 +232,35 @@ export class CvStore extends State {
     block: Partial<TBlock> & Identifiable,
   ) {
     this.update(_patchBlock(cv, block));
+  }
+
+  deleteCv = rxMethod<UUID>(
+    pipe(
+      tap((id) => {
+        patchState(
+          this,
+          setEntityStatus('cv', 'unknown', id),
+          removeEntity(id, { collection: 'cv' }),
+        );
+      }),
+      switchMap((id) =>
+        from(this.api.deleteCv(id)).pipe(
+          tapResponse({
+            next: () => {
+              // TODO
+            },
+            error: () => {
+              // TODO
+            },
+          }),
+        ),
+      ),
+    ),
+  );
+
+  deleteBlock(block: Block, cv: Cv) {
+    if (block.type === 'cv') this.deleteCv(block.id);
+    else this.update(deleteBlock(cv, block));
   }
 
   /** Gets a block prototype by its id. */

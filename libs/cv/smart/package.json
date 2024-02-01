@@ -9,7 +9,9 @@
     "@cv/common/types": "*",
     "@cv/util": "*",
     "@cv/types": "*",
-    "@cv/common/ui": "*"
+    "@cv/common/ui": "*",
+    "@cv/common/util": "*",
+    "ngxtension": "1.12.0"
   },
   "sideEffects": false
 }

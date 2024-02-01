@@ -28,8 +28,8 @@ import { BlockDirective } from './block.directive';
           | translate: { label: childPrototype.translation.label() | translate }
       "
     >
-      {{ childPrototype.translation.label() | translate }}
       <span aria-hidden="true" class="icon">add</span>
+      {{ childPrototype.translation.label() | translate }}
     </button>
   }`,
   styleUrl: './add-child-block-button-ribbon.scss',
@@ -41,6 +41,8 @@ export class AddChildBlockButtonRibbon {
     inject<BlockDirective<Block & HasChildren<Block>>>(BlockDirective);
 
   protected cvStore = inject(CvStore);
+
+  constructor() {}
 
   protected prototype = computed(
     () => this.cvStore.prototypeEntityMap()[this.block.instance().prototypeId],

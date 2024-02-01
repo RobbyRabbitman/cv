@@ -6,6 +6,7 @@ import {
   BlockPrototypeTemplate,
   Blocks,
   Cv,
+  HasChildren,
   hasBlockChildren,
   hasTemplateChildren,
 } from '@cv/types';
@@ -115,4 +116,39 @@ export function findBlock(root: Block, id: UUID): Block | null {
   }
 
   return null;
+}
+
+function findParent(
+  root: Block,
+  block: Block,
+): (Block & HasChildren<Block>) | null {
+  if (hasBlockChildren(root)) {
+    for (const child of root.children) {
+      if (child.id === block.id) {
+        return root;
+      }
+      const parent = findParent(child, block);
+      if (parent) return parent;
+    }
+  }
+
+  return null;
+}
+
+export function deleteBlock<TRoot extends Block>(
+  root: TRoot,
+  block: Block,
+): TRoot {
+  root = structuredClone(root);
+
+  const parent = findParent(root, block);
+
+  if (!parent) throw new Error(`[Block]: '${block.id}' not in ${root.id}.`);
+
+  parent.children.splice(
+    parent.children.findIndex(({ id }) => id === block.id),
+    1,
+  );
+
+  return root;
 }

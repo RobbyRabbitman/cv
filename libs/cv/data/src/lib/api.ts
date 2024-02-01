@@ -9,6 +9,7 @@ import {
   CollectionReference,
   DocumentData,
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -74,6 +75,10 @@ export class Api {
     if (!cv.exists()) throw new Error(`[Api]: no cv found for id '${cvId}'.`);
 
     return cv.data();
+  }
+
+  async deleteCv(cvId: UUID): Promise<void> {
+    return deleteDoc(doc(this.cvCollection, cvId));
   }
 
   async getAllCvs(): Promise<Cv[]> {

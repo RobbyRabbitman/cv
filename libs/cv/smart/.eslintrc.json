@@ -14,8 +14,8 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "cvSmart",
-            "style": "camelCase"
+            "prefix": "cv-smart",
+            "style": "kebab-case"
           }
         ],
         "@angular-eslint/component-selector": [
