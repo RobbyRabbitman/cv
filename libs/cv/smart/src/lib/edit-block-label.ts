@@ -16,8 +16,9 @@ import { Block, CanBeLabeled, Cv } from '@cv/types';
     <span class="sr-only">{{ label() }}</span>
     <ng-content select="[slot=before]"></ng-content>
     <input
-      class="input"
+      class="outline-none bg-inherit font-bold hover:text-secondary placeholder:hover:text-secondary placeholder:font-bold border-solid border-transparent border-b-2 hover:border-secondary focus:border-secondary"
       [placeholder]="placeholder()"
+      [style.width.ch]="value().length || placeholder().length"
       [value]="value()"
       (input)="onChange($event)"
       type="text"

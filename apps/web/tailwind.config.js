@@ -40,6 +40,7 @@ module.exports = {
           '@apply focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-500 focus-visible:dark:outline-secondary-500':
             {},
         },
+
         '.icon': {
           fontFamily: 'Material Symbols Outlined',
           fontWeight: 'normal',
@@ -53,30 +54,42 @@ module.exports = {
           wordWrap: 'normal',
           direction: 'ltr',
         },
-        '.divider': {
-          '@apply h-0.5 bg-opacity-25 bg-primary-500': {},
+
+        '.text-secondary': {
+          '@apply text-secondary-500 dark:text-secondary-400': {},
         },
-        '.border': {
-          '@apply border-opacity-25 border-solid border-2 border-primary-500 rounded-md':
-            {},
-        },
-        '.border-hover': {
+
+        '.border-secondary': {
           '@apply hover:border-secondary-300 hover:dark:border-secondary-600':
             {},
         },
-        '.control': {
-          '@apply h-11 inline-flex gap-1 outline-none appearance-none bg-inherit border border-hover hover:text-secondary-500 hover:dark:text-secondary-400 hover:bg-secondary-100 hover:dark:bg-secondary-950 focus-within:border-secondary-500 dark:focus-within:border-secondary-400':
+
+        '.divider': {
+          '@apply h-0.5 bg-opacity-25 bg-primary-500': {},
+        },
+
+        '.border-primary': {
+          '@apply border-opacity-25 border-solid border-2 border-primary-500 rounded-md':
             {},
         },
+
+        '.control': {
+          '@apply h-11 inline-flex gap-1 outline-none appearance-none bg-inherit border-primary hover:border-secondary hover:text-secondary hover:bg-secondary-100 hover:dark:bg-secondary-950 focus-within:border-secondary-500 dark:focus-within:border-secondary-400':
+            {},
+        },
+
         '.select-label': {
           '@apply control relative': {},
         },
+
         '.select-with-icon': {
           '@apply outline-none appearance-none py-2 pl-10 pr-8': {},
         },
+
         '.select-icon': {
           '@apply icon absolute top-2 left-2 pointer-events-none': {},
         },
+
         '.select-arrow-icon': {
           '@apply icon absolute top-2 right-2 pointer-events-none': {},
         },
@@ -86,6 +99,7 @@ module.exports = {
         '.button': {
           '@apply font-bold control inline-flex p-2 active:translate-y-0.5': {},
         },
+
         '.input': {
           '@apply control p-2 placeholder:italic': {},
         },
