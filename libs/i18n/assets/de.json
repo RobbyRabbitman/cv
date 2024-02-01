@@ -45,7 +45,7 @@
       "LABEL": "Lebenslauf erstellen"
     },
     "CARD": {
-      "LAST_MODIFIED_AT": "Zuletzt bearbeitet am {{ lastModifiedAt }}",
+      "LAST_MODIFIED_AT": "Zuletzt bearbeitet am <time datetime=\"{{ lastModifiedAtUTC }}\">{{ lastModifiedAt }}</time>",
       "INPUT": {
         "PLACEHOLDER": "Kein Titel",
         "LABEL": "Lebenslauf Titel"

@@ -18,10 +18,18 @@ import { BlockDirective } from './block.directive';
   hostDirectives: [{ directive: BlockDirective, inputs: ['value:for'] }],
   template: `@for (
     childPrototype of creatableChildPrototypes();
-    track childPrototype.id
+    track childPrototype.value.id
   ) {
-    <button (click)="addChild(childPrototype)">
-      {{ block.translatePrefix() + '.LABEL' | translate }}
+    <button
+      class="inline-flex items-center gap-1 control p-2"
+      (click)="addChild(childPrototype.value)"
+      [attr.aria-label]="
+        childPrototype.translation.add()
+          | translate: { label: childPrototype.translation.label() | translate }
+      "
+    >
+      {{ childPrototype.translation.label() | translate }}
+      <span aria-hidden="true" class="icon">add</span>
     </button>
   }`,
   styleUrl: './add-child-block-button-ribbon.scss',
@@ -42,13 +50,25 @@ export class AddChildBlockButtonRibbon {
     const childPrototypes = this.block.childPrototypes();
     const block = this.block.instance();
 
-    return childPrototypes.filter((prototype) => {
-      if (prototype.multiple) return prototype;
+    return childPrototypes
+      .filter((prototype) => {
+        if (prototype.multiple) return prototype;
 
-      return block.children.every(
-        (childBlock) => childBlock.prototypeId !== prototype.id,
-      );
-    });
+        return block.children.every(
+          (childBlock) => childBlock.prototypeId !== prototype.id,
+        );
+      })
+      .map((value) => ({
+        value,
+        translation: {
+          label: computed(
+            () => `${this.block.editor.translatePrefix(value)()}.LABEL`,
+          ),
+          add: computed(
+            () => `${this.block.editor.translatePrefix(value)()}.ADD.LABEL`,
+          ),
+        },
+      }));
   });
 
   protected addChild(prototype: BlockPrototype) {

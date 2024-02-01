@@ -10,7 +10,7 @@ import { CvStore } from '@cv/data';
 import { Block, CanBeLabeled, Cv } from '@cv/types';
 
 @Component({
-  selector: 'cv-smart-edit-block-label',
+  selector: 'cv-smart--edit-block-label',
   standalone: true,
   template: `<label class="flex flex-col gap-2">
     <span class="sr-only">{{ label() }}</span>

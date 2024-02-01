@@ -8,7 +8,8 @@
     "@angular/router": "17.1.0",
     "@cv/common/types": "*",
     "@cv/util": "*",
-    "@cv/types": "*"
+    "@cv/types": "*",
+    "@cv/common/ui": "*"
   },
   "sideEffects": false
 }

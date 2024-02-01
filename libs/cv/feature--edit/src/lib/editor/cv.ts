@@ -32,9 +32,9 @@ export class CvEditor {
     this.store.patchBlock(this.cv(), block);
   }
 
-  translatePrefix = ({ prototypeId }: Block) =>
+  translatePrefix = (blockOrBlockPrototype: Block | BlockPrototype) =>
     computed(() =>
-      `CV.EDIT.${this.cv().templateId}.${prototypeId}`.toUpperCase(),
+      `CV.EDIT.${this.cv().templateId}.${'prototypeId' in blockOrBlockPrototype ? blockOrBlockPrototype.prototypeId : blockOrBlockPrototype.id}`.toUpperCase(),
     );
 
   protected sectionPrototypes = computed(() =>
