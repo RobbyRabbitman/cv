@@ -1,5 +1,6 @@
 import {
   EnvironmentProviders,
+  Injectable,
   computed,
   inject,
   makeEnvironmentProviders,
@@ -53,6 +54,7 @@ const State = signalStore(
   withEntityStatus('translation'),
 );
 
+@Injectable()
 export class CvStore extends State {
   api = inject(Api);
 
