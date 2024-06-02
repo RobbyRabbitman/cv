@@ -2,8 +2,8 @@
   "name": "cv-types",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/cv/types/src",
-  "tags": ["scope:shared", "type:types"],
   "projectType": "library",
+  "tags": ["scope:shared", "type:types"],
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -16,8 +16,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",

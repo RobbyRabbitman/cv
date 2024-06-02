@@ -145,6 +145,10 @@ export class MenuTrigger {
           const menuItems = this.menu().items();
           const activeMenuItem = this.menu().activeItem();
 
+          if (!activeMenuItem) {
+            return;
+          }
+
           switch (event.key) {
             case 'ArrowUp': {
               const previousMenuItem = menuItems.at(
@@ -222,7 +226,7 @@ export class Menu {
   });
 
   readonly activeItem = computed(() => {
-    return this.items().find((item) => item.active())!;
+    return this.items().find((item) => item.active());
   });
 
   constructor() {

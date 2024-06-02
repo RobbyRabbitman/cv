@@ -4,7 +4,6 @@
   "sourceRoot": "libs/common/data/src",
   "projectType": "library",
   "tags": ["scope:shared", "type:data"],
-
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
@@ -17,8 +16,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",

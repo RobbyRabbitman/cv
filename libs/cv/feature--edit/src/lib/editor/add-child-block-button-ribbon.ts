@@ -42,8 +42,6 @@ export class AddChildBlockButtonRibbon {
 
   protected cvStore = inject(CvStore);
 
-  constructor() {}
-
   protected prototype = computed(
     () => this.cvStore.prototypeEntityMap()[this.block.instance().prototypeId],
   );

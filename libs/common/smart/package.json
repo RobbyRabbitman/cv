@@ -2,11 +2,11 @@
   "name": "@cv/common/smart",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/core": "17.1.0",
+    "@angular/core": "18.0.1",
     "@cv/common/data": "*",
     "@cv/common/types": "*",
     "@cv/i18n/smart": "*",
-    "@angular/common": "17.1.0"
+    "@angular/common": "18.0.1"
   },
   "dependencies": {},
   "sideEffects": false

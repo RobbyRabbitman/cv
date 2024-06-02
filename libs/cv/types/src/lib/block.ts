@@ -64,7 +64,7 @@ export interface Paragraph extends Block, HasChildren<Field> {
 /**
  * A field in a paragraph.
  */
-export interface Field extends Block {}
+export type Field = Block;
 
 /**
  * A field. It has a value of type `T`.
