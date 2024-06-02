@@ -12,16 +12,19 @@ import { Iso8601 } from '@cv/common/ui';
 import { CvStore } from '@cv/data';
 import { I18N_SMART, provideTranslatePrefix } from '@cv/i18n/smart';
 import { cvRoute } from '@cv/util';
+import { CvActionMenu } from './cv-action-menu';
 import { EditBlockLabel } from './edit-block-label';
 
 @Component({
   selector: 'cv-smart--card',
   standalone: true,
-  imports: [RouterLink, I18N_SMART, EditBlockLabel, Iso8601],
   viewProviders: [provideTranslatePrefix('CV.CARD')],
-  template: `<a [routerLink]="link()" class="control !h-80">
-      <span class="sr-only">{{ 'PREVIEW.LABEL' | translate }}</span>
-    </a>
+  template: `<span class="h-80 relative flex flex-col">
+      <a [routerLink]="link()" class="control flex-1">
+        <span class="sr-only">{{ 'PREVIEW.LABEL' | translate }}</span>
+      </a>
+      <cv-smart--action-menu class="absolute bottom-1 right-1" [cv]="cv()" />
+    </span>
     <cv-smart--edit-block-label
       [cv]="cv()"
       [block]="cv()"
@@ -44,6 +47,7 @@ import { EditBlockLabel } from './edit-block-label';
   styleUrl: './cv-card.scss',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink, I18N_SMART, EditBlockLabel, Iso8601, CvActionMenu],
 })
 export class CvCard {
   store = inject(CvStore);

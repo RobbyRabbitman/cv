@@ -1,25 +1,32 @@
 import { Directive, inject, input } from '@angular/core';
-import { fromEvent, injectElement } from '@cv/common/util';
+import { nativeElement } from '@cv/common/util';
 import { CvStore } from '@cv/data';
 import { Block, Cv } from '@cv/types';
 import { rxEffect } from 'ngxtension/rx-effect';
+import { fromEvent } from 'rxjs';
 
 @Directive({
   selector: '[cv-smart--delete-block]',
   standalone: true,
 })
 export class DeleteBlockDirective {
-  protected element = injectElement();
+  protected readonly element = nativeElement();
 
-  protected cvStore = inject(CvStore);
+  protected readonly cvStore = inject(CvStore);
 
   constructor() {
-    rxEffect(fromEvent(this.element, 'click'), () =>
-      this.cvStore.deleteBlock(this.block(), this.cv()),
-    );
+    this.deleteOnClick();
   }
 
-  cv = input.required<Cv>();
+  readonly cv = input.required<Cv>();
 
-  block = input.required<Block>();
+  readonly block = input.required<Block>();
+
+  protected deleteOnClick() {
+    rxEffect(fromEvent(this.element, 'click'), () => this.delete());
+  }
+
+  delete() {
+    this.cvStore.deleteBlock(this.block(), this.cv());
+  }
 }

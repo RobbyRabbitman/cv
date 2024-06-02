@@ -3,8 +3,11 @@ import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { assertInjector } from 'ngxtension/assert-injector';
 import { EMPTY, map, of, fromEvent as rxjsFromEvent, switchMap } from 'rxjs';
 
-export function fromEvent<T extends HTMLElement>(
-  target: Signal<undefined | T> | T,
+export function fromEvent<
+  TEvent extends Event = Event,
+  TElement extends HTMLElement = HTMLElement,
+>(
+  target: Signal<undefined | TElement> | TElement,
   event: string,
   injector?: Injector,
 ) {
@@ -13,7 +16,7 @@ export function fromEvent<T extends HTMLElement>(
   return (isSignal(target) ? toObservable(target) : of(target)).pipe(
     switchMap((target) => {
       if (target == null) return EMPTY;
-      return rxjsFromEvent(target, event).pipe(
+      return rxjsFromEvent<TEvent>(target, event).pipe(
         map((event) => ({ event, target })),
       );
     }),

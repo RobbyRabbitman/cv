@@ -1,6 +1,7 @@
 export * from './lib/di';
 export * from './lib/document';
 export * from './lib/firebase';
+export * from './lib/math';
 export * from './lib/noop';
 export * from './lib/object';
 export * from './lib/signal';

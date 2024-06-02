@@ -18,6 +18,7 @@ module.exports = {
       black: colors.black,
       primary: colors.slate,
       secondary: colors.sky,
+      disabled: colors.gray,
     },
   },
   plugins: [
@@ -31,13 +32,13 @@ module.exports = {
         },
 
         a: {
-          '@apply focus-ring': {},
+          '@apply focus-visible:focus-ring': {},
         },
       });
 
       addUtilities({
         '.focus-ring': {
-          '@apply focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary-500 focus-visible:dark:outline-secondary-500':
+          '@apply rounded-sm outline outline-2 outline-offset-4 outline-secondary-500 dark:outline-secondary-500':
             {},
         },
 
@@ -53,6 +54,14 @@ module.exports = {
           whiteSpace: 'nowrap',
           wordWrap: 'normal',
           direction: 'ltr',
+        },
+
+        '.text-primary': {
+          '@apply text-primary-500 dark:text-primary-400': {},
+        },
+
+        '.bg-primary': {
+          '@apply bg-white dark:bg-primary-900': {},
         },
 
         '.text-secondary': {
@@ -73,8 +82,25 @@ module.exports = {
             {},
         },
 
+        '.control-hover': {
+          '@apply border-secondary text-secondary bg-secondary-100 dark:bg-secondary-950':
+            {},
+        },
+
+        '.control-size': {
+          '@apply h-11 inline-flex gap-1': {},
+        },
+
+        '.control-border': {
+          '@apply border-primary': {},
+        },
+
+        '.control-focus': {
+          '@apply border-secondary-500 border-secondary-400': {},
+        },
+
         '.control': {
-          '@apply h-11 inline-flex gap-1 outline-none appearance-none bg-inherit border-primary hover:border-secondary hover:text-secondary hover:bg-secondary-100 hover:dark:bg-secondary-950 focus-within:border-secondary-500 dark:focus-within:border-secondary-400':
+          '@apply control-size outline-none appearance-none bg-inherit control-border hover:control-hover focus-within:control-focus':
             {},
         },
 

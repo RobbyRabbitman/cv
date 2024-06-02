@@ -2,16 +2,17 @@
   "name": "@cv/smart",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/core": "17.1.0",
+    "@angular/core": "17.3.2",
     "@cv/data": "*",
     "@cv/i18n/smart": "*",
-    "@angular/router": "17.1.0",
+    "@angular/router": "17.3.2",
     "@cv/common/types": "*",
     "@cv/util": "*",
     "@cv/types": "*",
     "@cv/common/ui": "*",
     "@cv/common/util": "*",
-    "ngxtension": "1.12.0"
+    "ngxtension": "1.12.0",
+    "rxjs": "7.8.0"
   },
   "sideEffects": false
 }

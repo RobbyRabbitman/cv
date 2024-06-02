@@ -1,0 +1,27 @@
+.cv-common-ui--menu {
+  @apply flex flex-col absolute -bottom-1 left-0 translate-y-full control-border z-10 text-primary bg-primary;
+
+  &--active {
+    @apply control-focus;
+  }
+
+  &-item {
+    @apply control-size items-center px-2 flex-nowrap text-nowrap bg-inherit;
+
+    &:focus-within {
+      @apply outline-none control-hover;
+    }
+
+    &:hover:not([aria-disabled='true']) {
+      @apply control-hover;
+    }
+
+    &[aria-disabled='true'] {
+      @apply opacity-50 cursor-default;
+    }
+  }
+
+  &-trigger {
+    @apply control relative items-center justify-center aspect-square;
+  }
+}
