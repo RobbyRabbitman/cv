@@ -1,24 +1,27 @@
-import { DestroyRef, Injector, Signal, isSignal } from '@angular/core';
+import { DestroyRef, ElementRef, Injector, Signal } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { assertInjector } from 'ngxtension/assert-injector';
-import { EMPTY, map, of, fromEvent as rxjsFromEvent, switchMap } from 'rxjs';
+import { EMPTY, fromEvent, switchMap } from 'rxjs';
 
-export function fromEvent<
-  TEvent extends Event = Event,
-  TElement extends HTMLElement = HTMLElement,
->(
-  target: Signal<undefined | TElement> | TElement,
+type FromEventOfSignalTarget<TElement extends HTMLElement = HTMLElement> =
+  | undefined
+  | TElement
+  | ElementRef<TElement>;
+
+export function fromEventOfSignal<TEvent extends Event = Event>(
+  target: Signal<FromEventOfSignalTarget>,
   event: string,
   injector?: Injector,
 ) {
-  injector = assertInjector(fromEvent, injector);
+  injector = assertInjector(fromEventOfSignal, injector);
 
-  return (isSignal(target) ? toObservable(target) : of(target)).pipe(
+  return toObservable(target).pipe(
     switchMap((target) => {
-      if (target == null) return EMPTY;
-      return rxjsFromEvent<TEvent>(target, event).pipe(
-        map((event) => ({ event, target })),
-      );
+      if (target == null) {
+        return EMPTY;
+      }
+      target = 'nativeElement' in target ? target.nativeElement : target;
+      return fromEvent<TEvent>(target, event);
     }),
     takeUntilDestroyed(injector.get(DestroyRef)),
   );

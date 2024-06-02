@@ -2,12 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  ViewChild,
   ViewEncapsulation,
   inject,
-  signal,
+  viewChild,
 } from '@angular/core';
-import { fromEvent } from '@cv/common/util';
+import { fromEventOfSignal } from '@cv/common/util';
 import { Translate } from '@cv/i18n/smart';
 import { TextField } from '@cv/types';
 import { map } from 'rxjs';
@@ -31,15 +30,20 @@ export class TextEdit {
   protected text = inject<BlockDirective<TextField>>(BlockDirective);
 
   constructor() {
-    fromEvent(this.input, 'input')
-      .pipe(map(({ target }) => this.text.patch({ value: target.value })))
+    this.patchTextOnInput();
+  }
+
+  protected patchTextOnInput() {
+    fromEventOfSignal(this.input, 'input')
+      .pipe(
+        map((event) =>
+          this.text.patch({
+            value: (event.target as HTMLInputElement).value,
+          }),
+        ),
+      )
       .subscribe();
   }
 
-  @ViewChild('input', { read: ElementRef })
-  protected set _input(input: ElementRef | undefined) {
-    this.input.set(input?.nativeElement);
-  }
-
-  protected input = signal<HTMLInputElement | undefined>(undefined);
+  readonly input = viewChild.required('input', { read: ElementRef });
 }

@@ -2,13 +2,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  ViewChild,
   ViewEncapsulation,
   computed,
   inject,
-  signal,
+  viewChild,
 } from '@angular/core';
-import { fromEvent } from '@cv/common/util';
+import { fromEventOfSignal } from '@cv/common/util';
 import { Translate } from '@cv/i18n/smart';
 import { RangeField } from '@cv/types';
 import { map } from 'rxjs';
@@ -61,9 +60,9 @@ import { BlockDirective } from '../block.directive';
     </span>`,
 })
 export class RangeEdit {
-  protected range = inject<BlockDirective<RangeField>>(BlockDirective);
+  protected readonly range = inject<BlockDirective<RangeField>>(BlockDirective);
 
-  protected options = computed(() => {
+  protected readonly options = computed(() => {
     const block = this.range.instance();
 
     return Array.from({ length: block.max - block.min + 1 }).map(
@@ -71,20 +70,25 @@ export class RangeEdit {
     );
   });
 
-  protected optionsId = computed(() => `${this.range.instance().id}__options`);
+  protected readonly optionsId = computed(
+    () => `${this.range.instance().id}__options`,
+  );
 
   constructor() {
-    fromEvent(this.input, 'input')
+    this.patchRangeOnInput();
+  }
+
+  protected patchRangeOnInput() {
+    fromEventOfSignal(this.input, 'input')
       .pipe(
-        map(({ target }) => this.range.patch({ value: target.valueAsNumber })),
+        map((event) =>
+          this.range.patch({
+            value: (event.target as HTMLInputElement).valueAsNumber,
+          }),
+        ),
       )
       .subscribe();
   }
 
-  @ViewChild('input', { read: ElementRef })
-  protected set _input(input: ElementRef | undefined) {
-    this.input.set(input?.nativeElement);
-  }
-
-  protected input = signal<HTMLInputElement | undefined>(undefined);
+  readonly input = viewChild.required('input', { read: ElementRef });
 }
