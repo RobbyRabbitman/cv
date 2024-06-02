@@ -6,7 +6,9 @@
     "@cv/auth/data": "*",
     "@cv/i18n/smart": "*",
     "@angular/router": "18.0.1",
-    "rxjs": "7.8.0"
+    "rxjs": "7.8.0",
+    "@cv/common/util": "0.0.1",
+    "ngxtension": "1.12.0"
   },
   "sideEffects": false
 }

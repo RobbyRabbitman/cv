@@ -3,9 +3,9 @@
   <cv-common-smart--theme-select class="ml-auto" />
   <cv-i18n-smart--locale-select />
   @if (user.value()) {
-  <cv-auth-smart--sign-out-button />
+  <button cv-auth-smart--sign-out-button></button>
   } @else {
-  <cv-auth-smart--sign-in-button />
+  <button cv-auth-smart--sign-in-button></button>
   }
 </header>
 <main class="container flex flex-col gap-4">
