@@ -87,10 +87,11 @@
       "executor": "@nx/eslint:lint"
     },
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@angular-devkit/build-angular:web-test-runner",
       "options": {
-        "jestConfig": "apps/web/jest.config.ts"
+        "include": ["{projectRoot}/src/**/*.spec.ts"],
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "{projectRoot}/tsconfig.spec.json"
       }
     }
   }

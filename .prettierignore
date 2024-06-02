@@ -8,6 +8,5 @@
 .gitignore
 .gitkeep
 *.ico
-
+.npmrc
 .angular
-

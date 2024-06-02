@@ -6,7 +6,6 @@
     "ngxtension": "1.12.0",
     "rxjs": "7.8.0",
     "uuid": "9.0.1",
-    "tslib": "2.3.0",
     "@angular/common": "18.0.1",
     "@cv/common/types": "*",
     "firebase": "10.7.2",

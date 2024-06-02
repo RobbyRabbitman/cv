@@ -2,13 +2,12 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     "*.ts": "$(capture).html, $(capture).scss, $(capture).ts, $(capture).spec.ts",
-    "jest.config.ts": "jest.preset.js",
     ".eslintrc.json": ".eslint*",
     ".editorconfig": ".prettier*",
     ".firebaserc": "firebase*, *-debug.log",
     ".gitignore": ".lintstagedrc.json, .simple-git-hooks.json",
     "README*": "CHANGELOG*",
-    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, nx.json",
-    "project.json": "ng-package.json, package.json, .eslint*, jest*"
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, nx.json, .npmrc",
+    "project.json": "ng-package.json, package.json, .eslint*"
   }
 }

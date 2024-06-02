@@ -23,10 +23,11 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@angular-devkit/build-angular:web-test-runner",
       "options": {
-        "jestConfig": "libs/cv/ui/jest.config.ts"
+        "include": ["{projectRoot}/src/**/*.spec.ts"],
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "{projectRoot}/tsconfig.spec.json"
       }
     },
     "lint": {

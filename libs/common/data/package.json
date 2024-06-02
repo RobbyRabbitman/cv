@@ -4,7 +4,6 @@
   "peerDependencies": {
     "@ngrx/signals": "17.2.0",
     "@angular/core": "18.0.1",
-    "tslib": "2.3.0",
     "@cv/common/types": "*",
     "@cv/common/util": "*"
   },

@@ -6,23 +6,30 @@
   "tags": ["scope:shared", "type:data"],
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "options": {
-        "outputPath": "dist/libs/common/data",
-        "main": "libs/common/data/src/index.ts",
-        "tsConfig": "libs/common/data/tsconfig.lib.json",
-        "assets": []
-      }
+        "project": "libs/common/data/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/common/data/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/common/data/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     },
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "executor": "@angular-devkit/build-angular:web-test-runner",
       "options": {
-        "jestConfig": "libs/common/data/jest.config.ts"
+        "include": ["{projectRoot}/src/**/*.spec.ts"],
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "{projectRoot}/tsconfig.spec.json"
       }
     }
   }
