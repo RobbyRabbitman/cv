@@ -32,9 +32,11 @@ export function withEntityStatus<Entity extends string>(entity: Entity) {
       [statusKey]: (key: string) =>
         computed(() => {
           return (
-            (store as unknown as EntityStatusSignal<Entity>)[statusMapKey]()[
-              key
-            ] ?? 'unknown'
+            (
+              (store as unknown as EntityStatusSignal<Entity>)[
+                statusMapKey
+              ] as Signal<EntityStatusMap>
+            )()[key] ?? 'unknown'
           );
         }),
     })),
