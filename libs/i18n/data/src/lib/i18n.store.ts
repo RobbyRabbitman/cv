@@ -66,15 +66,14 @@ export class I18nStore extends State {
   /** Sets the locale of this store. */
   setLocale = rxMethod<string>(
     pipe(
+      tap((locale) => {
+        patchState(this, {
+          locale,
+        });
+      }),
       filter((locale) => !this.translations()[locale]),
       tap((locale) => {
-        patchState(
-          this,
-          {
-            locale,
-          },
-          setEntityStatus('translation', 'loading', locale),
-        );
+        patchState(this, setEntityStatus('translation', 'loading', locale));
       }),
       switchMap((locale) =>
         this.translationLoader(locale).pipe(
