@@ -44,6 +44,10 @@
     "CREATE_BUTTON": {
       "LABEL": "Lebenslauf erstellen"
     },
+    "DELETE_BLOCK": {
+      "TEXT": "Löschen",
+      "LABEL": "{{ block }} löschen"
+    },
     "CARD": {
       "LAST_MODIFIED_AT": "Zuletzt bearbeitet am <time datetime=\"{{ lastModifiedAtUTC }}\">{{ lastModifiedAt }}</time>",
       "INPUT": {

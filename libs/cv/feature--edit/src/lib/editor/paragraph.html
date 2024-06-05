@@ -1,3 +1,11 @@
 @for (field of paragraph.instance().children; track field.id) {
 <cv-edit--field [value]="field" />
 }
+<div class="flex items-center">
+  <button
+    class="ml-auto button"
+    cv-smart--delete-block-button
+    [cv]="paragraph.editor.cv()"
+    [block]="paragraph.instance()"
+  ></button>
+</div>

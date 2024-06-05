@@ -4,6 +4,7 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
+import { CV_SMART } from '@cv/smart';
 import { Paragraph } from '@cv/types';
 import { BlockDirective } from './block.directive';
 import { FieldEdit } from './field';
@@ -11,7 +12,7 @@ import { FieldEdit } from './field';
 @Component({
   selector: 'cv-edit--paragraph',
   standalone: true,
-  imports: [FieldEdit],
+  imports: [FieldEdit, CV_SMART],
   host: {
     class: 'cv-edit--paragraph',
   },

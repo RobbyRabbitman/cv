@@ -4,7 +4,7 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
+import { Translate } from '@cv/i18n/smart';
 import { DeleteBlock } from './delete-block';
 
 @Component({
@@ -16,21 +16,31 @@ import { DeleteBlock } from './delete-block';
     class: DeleteBlockButton.class,
   },
   hostDirectives: [{ directive: DeleteBlock, inputs: ['cv', 'block'] }],
-  viewProviders: [provideTranslatePrefix('CV.DELETE_BLOCK_BUTTON')],
   template: `
+    <span class="sr-only">
+      {{
+        deleteBlock.translation() + '.LABEL'
+          | translate
+            : { block: deleteBlock.blockTranslation() + '.LABEL' | translate }
+      }}
+    </span>
     <span aria-hidden="true" class="icon">delete</span>
-    <span class="text-xl">{{ 'LABEL' | translate }}</span>
+    <span class="text-xl" aria-hidden="true">
+      <ng-content>
+        {{ deleteBlock.translation() + '.TEXT' | translate }}
+      </ng-content>
+    </span>
   `,
   styleUrl: './delete-block-button.scss',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DeleteBlockButton {
-  protected readonly deleteBlockDirective = inject(DeleteBlock);
+  protected readonly deleteBlock = inject(DeleteBlock);
 
   static readonly class = 'cv-smart--delete-block-button';
 
   delete() {
-    this.deleteBlockDirective.delete();
+    this.deleteBlock.delete();
   }
 }

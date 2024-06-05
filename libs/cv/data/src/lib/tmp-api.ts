@@ -90,6 +90,10 @@ const cv_1_prototypes = {
 };
 
 const cv_1_template_i18n_de_translation = {
+  CV_1_PROTOTYPE: {
+    LABEL: 'Cv 1',
+    PLACEHOLDER: 'Cv 1',
+  },
   SECTION_1_PROTOTYPE: {
     LABEL: 'Section 1',
     PLACEHOLDER: 'Section 1',
