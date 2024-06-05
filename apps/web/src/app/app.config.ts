@@ -38,6 +38,7 @@ export const appConfig = {
           runOnEnvironmentInit(() => {
             const userStore = inject(UserStore);
             const router = inject(Router);
+
             effect(() => {
               const user = userStore.value();
               if (user) {
@@ -59,7 +60,7 @@ export const appConfig = {
 
             return {
               authenticated: () => true,
-              notAuthenticated: () => router.parseUrl('/welcome'),
+              notAuthenticated: () => router.parseUrl('/'),
             };
           }),
           runOnEnvironmentInit(() => {
@@ -70,7 +71,7 @@ export const appConfig = {
               const user = userStore.value();
 
               if (!user) {
-                router.navigateByUrl('/welcome');
+                router.navigateByUrl('/');
               }
             });
           }),
