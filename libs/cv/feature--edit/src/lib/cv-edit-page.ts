@@ -14,7 +14,7 @@ import { injectParams } from 'ngxtension/inject-params';
 import { CvEditor } from './editor/cv';
 
 @Component({
-  selector: 'cv--edit-page',
+  selector: 'cv-edit--page',
   standalone: true,
   imports: [CvEditor],
   templateUrl: './cv-edit-page.html',

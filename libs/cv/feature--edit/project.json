@@ -1,8 +1,7 @@
 {
-  "name": "cv--edit",
+  "name": "cv-feature-edit",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/cv/feature--edit/src",
-  "prefix": "cv--edit",
   "projectType": "library",
   "tags": ["scope:shared", "type:feature"],
   "targets": {

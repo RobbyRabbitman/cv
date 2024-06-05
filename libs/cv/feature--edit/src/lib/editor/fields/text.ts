@@ -13,7 +13,7 @@ import { map } from 'rxjs';
 import { BlockDirective } from '../block.directive';
 
 @Component({
-  selector: 'cv--edit-text',
+  selector: 'cv-edit--text',
   standalone: true,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,

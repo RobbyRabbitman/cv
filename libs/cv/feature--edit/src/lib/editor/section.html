@@ -1,12 +1,17 @@
-<div class="flex">
+<div class="flex items-center">
   <cv-smart--edit-block-label
     [cv]="section.editor.cv()"
     [block]="section.instance()"
     [label]="'INPUT.LABEL' | translate"
     [placeholder]="'INPUT.PLACEHOLDER' | translate"
   />
+  <cv-edit--section-editor-action-menu
+    class="ml-auto"
+    [section]="section.instance()"
+    [cv]="section.editor.cv()"
+  />
 </div>
 @for (paragraph of section.instance().children; track paragraph.id) {
-<cv--edit-paragraph [value]="paragraph" />
+<cv-edit--paragraph [value]="paragraph" />
 }
-<cv--edit-add-child-block-button-ribbon [for]="section.instance()" />
+<cv-edit--add-child-block-button-ribbon [for]="section.instance()" />

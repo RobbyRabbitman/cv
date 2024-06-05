@@ -13,8 +13,11 @@ import { AddChildBlockButtonRibbon } from './add-child-block-button-ribbon';
 import { SectionEditor } from './section';
 
 @Component({
-  selector: 'cv--edit-cv',
+  selector: 'cv-edit--cv',
   standalone: true,
+  host: {
+    class: 'cv-edit--cv',
+  },
   imports: [SectionEditor, AddChildBlockButtonRibbon],
   templateUrl: './cv.html',
   styleUrl: './cv.scss',

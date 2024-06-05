@@ -9,9 +9,12 @@ import { BlockDirective } from './block.directive';
 import { FieldEdit } from './field';
 
 @Component({
-  selector: 'cv--edit-paragraph',
+  selector: 'cv-edit--paragraph',
   standalone: true,
   imports: [FieldEdit],
+  host: {
+    class: 'cv-edit--paragraph',
+  },
   hostDirectives: [{ directive: BlockDirective, inputs: ['value'] }],
   templateUrl: './paragraph.html',
   styleUrl: './paragraph.scss',

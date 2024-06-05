@@ -9,7 +9,7 @@ import { fromEvent } from 'rxjs';
   selector: '[cv-smart--delete-block]',
   standalone: true,
 })
-export class DeleteBlockDirective {
+export class DeleteBlock {
   protected readonly element = nativeElement();
 
   protected readonly cvStore = inject(CvStore);

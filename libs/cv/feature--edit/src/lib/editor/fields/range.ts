@@ -14,12 +14,15 @@ import { map } from 'rxjs';
 import { BlockDirective } from '../block.directive';
 
 @Component({
-  selector: 'cv--edit-range',
+  selector: 'cv-edit--range',
   standalone: true,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './range.scss',
   imports: [Translate],
+  host: {
+    class: 'cv-edit--range',
+  },
   hostDirectives: [{ directive: BlockDirective, inputs: ['value'] }],
   template: `<label [for]="range.instance().id" class="px-2.5 col-span-full">
       {{ range.translatePrefix() + '.LABEL' | translate }}

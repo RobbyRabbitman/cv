@@ -14,7 +14,7 @@
           "error",
           {
             "type": ["attribute", "element"],
-            "prefix": "cv--edit",
+            "prefix": "cv-edit",
             "style": "kebab-case"
           }
         ],
@@ -22,7 +22,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "cv--edit",
+            "prefix": "cv-edit",
             "style": "kebab-case"
           }
         ]

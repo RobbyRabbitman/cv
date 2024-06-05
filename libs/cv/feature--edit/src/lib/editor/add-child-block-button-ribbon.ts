@@ -12,9 +12,12 @@ import { createBlock } from '@cv/util';
 import { BlockDirective } from './block.directive';
 
 @Component({
-  selector: 'cv--edit-add-child-block-button-ribbon',
+  selector: 'cv-edit--add-child-block-button-ribbon',
   standalone: true,
   imports: [Translate],
+  host: {
+    class: 'cv-edit--add-child-block-button-ribbon',
+  },
   hostDirectives: [{ directive: BlockDirective, inputs: ['value:for'] }],
   template: `@for (
     childPrototype of creatableChildPrototypes();

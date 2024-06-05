@@ -1,14 +1,14 @@
 import { inject } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
-import { CanActivateFn, CanMatchFn, Router } from '@angular/router';
+import { CanMatchFn, Router } from '@angular/router';
 import { UserStore } from '@cv/auth/data';
 import { wrapToObservable } from '@cv/common/util';
 import { createInjectionToken } from 'ngxtension/create-injection-token';
 import { filter, switchMap } from 'rxjs';
 
 export type AuthenticatedGuardConfig = {
-  notAuthenticated: () => ReturnType<CanActivateFn | CanMatchFn>;
-  authenticated: () => ReturnType<CanActivateFn | CanMatchFn>;
+  notAuthenticated: CanMatchFn;
+  authenticated: CanMatchFn;
 };
 
 export const [authenticatedGuardConfig, provideAuthenticatedGuardConfig] =
@@ -21,7 +21,9 @@ export const [authenticatedGuardConfig, provideAuthenticatedGuardConfig] =
     } as AuthenticatedGuardConfig;
   });
 
-export const isAuthenticated: CanActivateFn | CanMatchFn = () => {
+export const isAuthenticated: CanMatchFn = (
+  ...args: Parameters<CanMatchFn>
+) => {
   const user = inject(UserStore).value;
   const config = authenticatedGuardConfig();
 
@@ -30,10 +32,10 @@ export const isAuthenticated: CanActivateFn | CanMatchFn = () => {
     .pipe(
       switchMap((user) => {
         if (!user) {
-          return wrapToObservable(config.notAuthenticated());
+          return wrapToObservable(config.notAuthenticated(...args));
         }
 
-        return wrapToObservable(config.authenticated());
+        return wrapToObservable(config.authenticated(...args));
       }),
     );
 };

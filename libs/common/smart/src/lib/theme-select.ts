@@ -33,6 +33,9 @@ import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
     </select>
   </label>`,
   styleUrl: './theme-select.scss',
+  host: {
+    class: 'cv-common-smart--theme-select',
+  },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

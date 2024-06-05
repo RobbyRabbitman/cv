@@ -10,16 +10,21 @@ import { Section } from '@cv/types';
 import { AddChildBlockButtonRibbon } from './add-child-block-button-ribbon';
 import { BlockDirective } from './block.directive';
 import { ParagraphEditor } from './paragraph';
+import { SectionEditorActionMenu } from './section-action-menu';
 
 @Component({
-  selector: 'cv--edit-section',
+  selector: 'cv-edit--section',
   standalone: true,
+  host: {
+    class: 'cv-edit--section',
+  },
   hostDirectives: [{ directive: BlockDirective, inputs: ['value'] }],
   imports: [
     ParagraphEditor,
     AddChildBlockButtonRibbon,
     EditBlockLabel,
     Translate,
+    SectionEditorActionMenu,
   ],
   viewProviders: [provideTranslatePrefix('CV.EDITOR.SECTION')],
   templateUrl: './section.html',

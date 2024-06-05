@@ -17,6 +17,9 @@ import { Logo } from './logo';
   imports: [I18N_SMART, AUTH_SMART, COMMON_SMART, Logo],
   templateUrl: './shell.html',
   styleUrl: './shell.scss',
+  host: {
+    class: 'cv-common--shell',
+  },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [provideCvRoute((id) => id, true)],

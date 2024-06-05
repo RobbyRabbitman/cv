@@ -31,7 +31,7 @@ export const appConfig = {
             const router = inject(Router);
 
             return {
-              authenticated: () => router.parseUrl('/all'),
+              authenticated: () => router.parseUrl('all'),
               notAuthenticated: () => true,
             };
           }),
@@ -41,6 +41,9 @@ export const appConfig = {
 
             effect(() => {
               const user = userStore.value();
+
+              if (user === undefined) return;
+
               if (user) {
                 router.navigateByUrl('/all');
               }
@@ -51,8 +54,8 @@ export const appConfig = {
       {
         path: 'all',
         children: [
-          { path: '', loadChildren: () => import('@cv--overview') },
-          { path: ':cvId', loadChildren: () => import('@cv--edit') },
+          { path: '', loadChildren: () => import('@cv/feature-overview') },
+          { path: ':cvId', loadChildren: () => import('@cv/feature-edit') },
         ],
         providers: [
           provideAuthenticatedGuardConfig(() => {
@@ -70,6 +73,8 @@ export const appConfig = {
             effect(() => {
               const user = userStore.value();
 
+              if (user === undefined) return;
+
               if (!user) {
                 router.navigateByUrl('/');
               }
@@ -77,8 +82,14 @@ export const appConfig = {
           }),
         ],
         canMatch: [isAuthenticated],
+        canActivate: [isAuthenticated],
+        canActivateChild: [isAuthenticated],
       },
-      { path: '**', pathMatch: 'full', redirectTo: '/welcome' },
+      {
+        path: '**',
+        pathMatch: 'full',
+        redirectTo: 'welcome',
+      },
     ]),
     provideFirebase(environment.firebase),
     provideCommonData(),

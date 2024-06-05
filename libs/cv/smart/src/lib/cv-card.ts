@@ -23,7 +23,7 @@ import { EditBlockLabel } from './edit-block-label';
       <a [routerLink]="link()" class="control flex-1">
         <span class="sr-only">{{ 'PREVIEW.LABEL' | translate }}</span>
       </a>
-      <cv-smart--action-menu class="absolute bottom-1 right-1" [cv]="cv()" />
+      <cv-smart--cv-action-menu class="absolute bottom-1 right-1" [cv]="cv()" />
     </span>
     <cv-smart--edit-block-label
       [cv]="cv()"

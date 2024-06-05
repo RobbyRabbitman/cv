@@ -14,15 +14,15 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "cvOverview",
-            "style": "camelCase"
+            "prefix": "cv-overview",
+            "style": "kebab-case"
           }
         ],
         "@angular-eslint/component-selector": [
           "error",
           {
             "type": "element",
-            "prefix": "cv--overview",
+            "prefix": "cv-overview",
             "style": "kebab-case"
           }
         ]
