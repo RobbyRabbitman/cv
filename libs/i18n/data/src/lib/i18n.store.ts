@@ -163,7 +163,7 @@ export class I18nStore extends State {
     cv: Cv;
     blockOrPrototype: Block | BlockPrototype;
   }) {
-    return `CV.EDIT.${options.cv.templateId}.${'prototypeId' in options.blockOrPrototype ? options.blockOrPrototype.prototypeId : options.blockOrPrototype.id}`.toUpperCase();
+    return `CV.TEMPLATE.${options.cv.templateId}.${'prototypeId' in options.blockOrPrototype ? options.blockOrPrototype.prototypeId : options.blockOrPrototype.id}`.toUpperCase();
   }
 
   localized = computed(
