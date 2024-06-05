@@ -78,7 +78,7 @@ export default class CvEditPage {
         this.i18nStore.mergeTranslation(
           locale,
           translation,
-          `CV.EDIT.${cv.templateId.toUpperCase()}`,
+          `CV.EDIT.${cv.prototypeId.toUpperCase()}`,
         );
       });
     });

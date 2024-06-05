@@ -12,7 +12,8 @@
     "@cv/common/ui": "*",
     "@cv/common/util": "*",
     "ngxtension": "1.12.0",
-    "rxjs": "7.8.0"
+    "rxjs": "7.8.0",
+    "@cv/i18n/data": "0.0.1"
   },
   "sideEffects": false
 }

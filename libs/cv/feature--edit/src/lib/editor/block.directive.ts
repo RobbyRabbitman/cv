@@ -11,8 +11,16 @@ export class BlockDirective<TBlock extends Block> {
 
   editor = inject(CvEditor);
 
+  translate = (options: { key: string; params?: Record<string, string> }) =>
+    computed(() =>
+      this.editor.translate({
+        blockOrPrototype: this.instance(),
+        ...options,
+      })(),
+    );
+
   translatePrefix = computed(() =>
-    this.editor.translatePrefix(this.instance())(),
+    this.editor.translateBlockPrefix(this.instance())(),
   );
 
   instance = input.required<TBlock>({ alias: 'value' });

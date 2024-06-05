@@ -118,7 +118,7 @@ export function findBlock(root: Block, id: UUID): Block | null {
   return null;
 }
 
-function findParent(
+export function findParent(
   root: Block,
   block: Block,
 ): (Block & HasChildren<Block>) | null {
@@ -133,6 +133,18 @@ function findParent(
   }
 
   return null;
+}
+
+export function pathToBlock(tree: Block, target: Block): Block[] {
+  if (!hasBlockChildren(tree)) return [tree];
+
+  for (const child of tree.children) {
+    const path = [tree, ...pathToBlock(child, target)];
+
+    if (path.at(-1)?.id === target.id) return path;
+  }
+
+  return [];
 }
 
 export function deleteBlock<TRoot extends Block>(

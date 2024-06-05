@@ -10,7 +10,8 @@
     "@cv/i18n/types": "*",
     "@cv/common/util": "*",
     "@ngrx/operators": "17.2.0",
-    "ngxtension": "1.12.0"
+    "ngxtension": "1.12.0",
+    "@cv/types": "0.0.1"
   },
   "sideEffects": false
 }

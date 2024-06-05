@@ -14,6 +14,7 @@ import {
 } from '@cv/common/util';
 import { Translation } from '@cv/i18n/types';
 import { injectDocumentLocale } from '@cv/i18n/util';
+import { Block, BlockPrototype, Cv } from '@cv/types';
 import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
@@ -146,6 +147,25 @@ export class I18nStore extends State {
 
   translate(key: string, params?: Record<string, string>) {
     return computed(() => this.translateOnce(key, params));
+  }
+
+  translateBlock(options: {
+    cv: Cv;
+    blockOrPrototype: Block | BlockPrototype;
+    key: string;
+    params?: Record<string, string>;
+  }) {
+    return this.translate(
+      [this.translateBlockPrefix(options), options.key].join('.'),
+      options.params,
+    );
+  }
+
+  translateBlockPrefix(options: {
+    cv: Cv;
+    blockOrPrototype: Block | BlockPrototype;
+  }) {
+    return `CV.EDIT.${options.cv.prototypeId}.${'prototypeId' in options.blockOrPrototype ? options.blockOrPrototype.prototypeId : options.blockOrPrototype.id}`.toUpperCase();
   }
 
   localized = computed(

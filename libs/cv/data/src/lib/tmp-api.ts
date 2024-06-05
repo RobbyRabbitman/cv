@@ -92,21 +92,25 @@ const cv_1_prototypes = {
 const cv_1_template_i18n_de_translation = {
   SECTION_1_PROTOTYPE: {
     LABEL: 'Section 1',
+    PLACEHOLDER: 'Section 1',
     ADD: {
       LABEL: '{{ label }} hinzufügen',
     },
   },
   PARAGRAPH_1_PROTOTYPE: {
     LABEL: 'Paragraph 1',
+    PLACEHOLDER: 'Paragraph 1',
     ADD: {
       LABEL: '{{ label }} hinzufügen',
     },
   },
   FIELD_1_PROTOTYPE: {
     LABEL: 'Text Feld 1',
+    PLACEHOLDER: 'Text Feld 1',
   },
   FIELD_2_PROTOTYPE: {
     LABEL: 'Range Feld 2',
+    PLACEHOLDER: 'Range Feld 2',
     OPTIONS: {
       0: 'Option 1',
       1: 'Option 2',

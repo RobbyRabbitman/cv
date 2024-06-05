@@ -27,12 +27,15 @@ import { BlockDirective } from './block.directive';
       class="inline-flex items-center gap-1 control p-2"
       (click)="addChild(childPrototype.value)"
       [attr.aria-label]="
-        childPrototype.translation.add()
-          | translate: { label: childPrototype.translation.label() | translate }
+        childPrototype.translatePrefix() + '.ADD.LABEL'
+          | translate
+            : { label: childPrototype.translatePrefix() + '.LABEL' | translate }
       "
     >
       <span aria-hidden="true" class="icon">add</span>
-      {{ childPrototype.translation.label() | translate }}
+      <span aria-hidden="true">
+        {{ childPrototype.translatePrefix() + '.LABEL' | translate }}
+      </span>
     </button>
   }`,
   styleUrl: './add-child-block-button-ribbon.scss',
@@ -40,38 +43,24 @@ import { BlockDirective } from './block.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddChildBlockButtonRibbon {
-  protected block =
+  protected readonly block =
     inject<BlockDirective<Block & HasChildren<Block>>>(BlockDirective);
 
-  protected cvStore = inject(CvStore);
+  protected readonly store = inject(CvStore);
 
-  protected prototype = computed(
-    () => this.cvStore.prototypeEntityMap()[this.block.instance().prototypeId],
-  );
-
-  protected creatableChildPrototypes = computed(() => {
+  protected readonly creatableChildPrototypes = computed(() => {
     const childPrototypes = this.block.childPrototypes();
-    const block = this.block.instance();
 
     return childPrototypes
-      .filter((prototype) => {
-        if (prototype.multiple) return prototype;
-
-        return block.children.every(
-          (childBlock) => childBlock.prototypeId !== prototype.id,
-        );
-      })
-      .map((value) => ({
-        value,
-        translation: {
-          label: computed(
-            () => `${this.block.editor.translatePrefix(value)()}.LABEL`,
+      .filter((prototype) => prototype.multiple)
+      .map((value) => {
+        return {
+          value,
+          translatePrefix: computed(() =>
+            this.block.editor.translateBlockPrefix(value)(),
           ),
-          add: computed(
-            () => `${this.block.editor.translatePrefix(value)()}.ADD.LABEL`,
-          ),
-        },
-      }));
+        };
+      });
   });
 
   protected addChild(prototype: BlockPrototype) {

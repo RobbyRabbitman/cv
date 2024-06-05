@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { UUID } from '@cv/common/types';
 import { CvStore } from '@cv/data';
+import { I18nStore } from '@cv/i18n/data';
 import { Block, BlockPrototype, Cv } from '@cv/types';
 import { AddChildBlockButtonRibbon } from './add-child-block-button-ribbon';
 import { SectionEditor } from './section';
@@ -27,6 +28,8 @@ import { SectionEditor } from './section';
 export class CvEditor {
   store = inject(CvStore);
 
+  i18n = inject(I18nStore);
+
   cv = input.required<Cv>();
 
   prototypes = input.required<Record<UUID, BlockPrototype>>();
@@ -35,9 +38,27 @@ export class CvEditor {
     this.store.patchBlock(this.cv(), block);
   }
 
-  translatePrefix = (blockOrBlockPrototype: Block | BlockPrototype) =>
+  translate(options: {
+    blockOrPrototype: Block | BlockPrototype;
+    key: string;
+    params?: Record<string, string>;
+  }) {
+    return computed(() =>
+      this.i18n.translateBlock({
+        cv: this.cv(),
+        blockOrPrototype: options.blockOrPrototype,
+        key: options.key,
+        params: options.params,
+      })(),
+    );
+  }
+
+  translateBlockPrefix = (blockOrPrototype: Block | BlockPrototype) =>
     computed(() =>
-      `CV.EDIT.${this.cv().templateId}.${'prototypeId' in blockOrBlockPrototype ? blockOrBlockPrototype.prototypeId : blockOrBlockPrototype.id}`.toUpperCase(),
+      this.i18n.translateBlockPrefix({
+        cv: this.cv(),
+        blockOrPrototype,
+      }),
     );
 
   protected sectionPrototypes = computed(() =>
