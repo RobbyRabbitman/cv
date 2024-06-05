@@ -4,6 +4,7 @@ export * from './lib/firebase';
 export * from './lib/math';
 export * from './lib/noop';
 export * from './lib/object';
+export * from './lib/rxjs';
 export * from './lib/signal';
 export * from './lib/signal.store';
 export * from './lib/theme';

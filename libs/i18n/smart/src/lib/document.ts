@@ -14,11 +14,12 @@ import { CommonStore } from '@cv/common/data';
 import { injectWindow, runOnEnvironmentInit } from '@cv/common/util';
 import { I18nStore } from '@cv/i18n/data';
 
-export const localizeDocument = runOnEnvironmentInit(() => {
-  const i18n = inject(I18nStore);
-  const window = injectWindow();
-  effect(() => (window.document.documentElement.lang = i18n.locale()));
-});
+export const localizeDocument = () =>
+  runOnEnvironmentInit(() => {
+    const i18n = inject(I18nStore);
+    const window = injectWindow();
+    effect(() => (window.document.documentElement.lang = i18n.locale()));
+  });
 
 export const localizeTitle = () =>
   makeEnvironmentProviders([
