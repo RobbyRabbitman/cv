@@ -6,7 +6,7 @@ import { COMMON_SHELL_FEATURE } from '@cv/common--shell';
   standalone: true,
   imports: [COMMON_SHELL_FEATURE, RouterOutlet],
   selector: 'cv-app',
-  template: `<cv-common--shell><router-outlet /></cv-common--shell>`,
+  template: `<cv-common--shell><router-outlet hidden /></cv-common--shell>`,
 })
 export class App {}
 
