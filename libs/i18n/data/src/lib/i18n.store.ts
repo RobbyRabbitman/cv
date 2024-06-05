@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import {
   EnvironmentProviders,
   Injectable,
@@ -12,6 +11,7 @@ import {
   setEntityStatus,
   withEntityStatus,
 } from '@cv/common/util';
+import { Api } from '@cv/data';
 import { Translation } from '@cv/i18n/types';
 import { injectDocumentLocale } from '@cv/i18n/util';
 import { Block, BlockPrototype, Cv } from '@cv/types';
@@ -19,13 +19,12 @@ import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { createInjectionToken } from 'ngxtension/create-injection-token';
-import { filter, pipe, switchMap, tap } from 'rxjs';
+import { filter, from, pipe, switchMap, tap } from 'rxjs';
 
 export const [injectTranslationApi, provideTranslationApi] =
   createInjectionToken(() => {
-    const http = inject(HttpClient);
-    return (locale: string) =>
-      http.get<Translation>(`assets/i18n/${locale}.json`);
+    const api = inject(Api);
+    return (locale: string) => from(api.getTranslation('common', locale));
   });
 
 export function provideI18nStore(): EnvironmentProviders {

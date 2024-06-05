@@ -37,6 +37,11 @@ export class Api {
 
   protected user = inject(UserStore);
 
+  protected readonly i18nCollection = collection(
+    this.firestore,
+    'i18n',
+  ) as unknown as CollectionReference<Translation, Translation>;
+
   protected cvCollection = collection(
     this.firestore,
     'cv',
@@ -155,23 +160,14 @@ export class Api {
     return { cv, prototypes };
   }
 
-  async getTranslation(
-    cvTemplateId: UUID,
-    locale: string,
-  ): Promise<Translation> {
+  async getTranslation(id: UUID, locale: string): Promise<Translation> {
     const translation = await getDoc(
-      doc(
-        this.firestore,
-        this.cvTemplateCollection.path,
-        cvTemplateId,
-        'i18n',
-        locale,
-      ),
+      doc(this.firestore, this.i18nCollection.path, locale, 'translation', id),
     );
 
     if (!translation.exists())
       throw new Error(
-        `[Api]: no translation found for cv template id '${cvTemplateId}'. Provided '${locale}'.`,
+        `[Api]: no translation found id '${id}'. Provided '${locale}'.`,
       );
 
     return translation.data();

@@ -89,7 +89,7 @@ const cv_1_prototypes = {
   field_2_prototype,
 };
 
-const cv_1_template_i18n_de_translation = {
+const i18n_de_translation_cv_1_template = {
   CV_1_PROTOTYPE: {
     LABEL: 'Cv 1',
     PLACEHOLDER: 'Cv 1',
@@ -124,6 +124,70 @@ const cv_1_template_i18n_de_translation = {
   },
 };
 
+const i18n_de_translation_common = {
+  AUTH: {
+    SIGN_IN: {
+      BUTTON: {
+        LABEL: 'Anmelden',
+      },
+    },
+    SIGN_OUT: {
+      BUTTON: {
+        LABEL: 'Abmelden',
+      },
+    },
+  },
+  I18N: {
+    LOCALE: {
+      SELECT: {
+        LABEL: 'Sprache wählen',
+      },
+    },
+  },
+  COMMON: {
+    FEATURES: {
+      SHELL: {
+        LOGO: {
+          LABEL: '{{ appName }} Startseite',
+        },
+      },
+    },
+    THEME: {
+      SELECT: {
+        LABEL: 'Design',
+        OPTIONS: {
+          LIGHT: 'Hell',
+          DARK: 'Dunkel',
+          SYSTEM: 'System',
+        },
+      },
+    },
+  },
+  CV: {
+    OVERVIEW: {
+      TITLE: 'Lebensläufe',
+    },
+    CREATE_BUTTON: {
+      LABEL: 'Lebenslauf erstellen',
+    },
+    DELETE_BLOCK: {
+      TEXT: 'Löschen',
+      LABEL: '{{ block }} löschen',
+    },
+    CARD: {
+      LAST_MODIFIED_AT:
+        'Zuletzt bearbeitet am <time datetime="{{ lastModifiedAtUTC }}">{{ lastModifiedAt }}</time>',
+      INPUT: {
+        PLACEHOLDER: 'Kein Titel',
+        LABEL: 'Lebenslauf Titel',
+      },
+      PREVIEW: {
+        LABEL: 'Lebenslauf bearbeiten',
+      },
+    },
+  },
+};
+
 export const provideMockData = [
   {
     provide: ENVIRONMENT_INITIALIZER,
@@ -138,8 +202,13 @@ export const provideMockData = [
         setDoc(doc(cvTemplate, 'cv_1_template'), { id: 'cv_1_template' });
 
         setDoc(
-          doc(cvTemplate, 'cv_1_template', 'i18n', 'de'),
-          cv_1_template_i18n_de_translation,
+          doc(_firestore, 'i18n', 'de', 'translation', 'common'),
+          i18n_de_translation_common,
+        );
+
+        setDoc(
+          doc(_firestore, 'i18n', 'de', 'translation', 'cv_1_template'),
+          i18n_de_translation_cv_1_template,
         );
 
         Object.values(cv_1_prototypes).forEach((x) => {

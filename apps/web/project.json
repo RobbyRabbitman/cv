@@ -15,15 +15,7 @@
         "browser": "apps/web/src/main.ts",
         "tsConfig": "apps/web/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/web/src/favicon.ico",
-          "apps/web/src/assets",
-          {
-            "glob": "*",
-            "input": "libs/i18n/assets",
-            "output": "assets/i18n/"
-          }
-        ],
+        "assets": ["apps/web/src/favicon.ico", "apps/web/src/assets"],
         "styles": ["apps/web/src/styles.scss"],
         "scripts": []
       },
