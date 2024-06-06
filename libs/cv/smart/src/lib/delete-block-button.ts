@@ -2,7 +2,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   ViewEncapsulation,
+  booleanAttribute,
   inject,
+  input,
 } from '@angular/core';
 import { Translate } from '@cv/i18n/smart';
 import { DeleteBlock } from './delete-block';
@@ -27,7 +29,9 @@ import { DeleteBlock } from './delete-block';
     <span aria-hidden="true" class="icon">delete</span>
     <span class="text-xl" aria-hidden="true">
       <ng-content>
-        {{ deleteBlock.translation() + '.TEXT' | translate }}
+        @if (!textHidden()) {
+          {{ deleteBlock.translation() + '.TEXT' | translate }}
+        }
       </ng-content>
     </span>
   `,
@@ -43,4 +47,6 @@ export class DeleteBlockButton {
   delete() {
     this.deleteBlock.delete();
   }
+
+  textHidden = input(false, { transform: booleanAttribute });
 }

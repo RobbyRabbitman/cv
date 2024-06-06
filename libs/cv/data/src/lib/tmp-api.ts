@@ -15,7 +15,7 @@ const cv_1_prototype: BlockPrototype<Cv> = {
   templateId: 'cv_1_template',
   canBeMoved: true,
   id: 'cv_1_prototype',
-  label: 'CV',
+  label: '',
   multiple: true,
   type: 'cv',
   template: {
@@ -32,7 +32,7 @@ const section_1_prototype: BlockPrototype<Section> = {
   templateId: 'cv_1_template',
   canBeMoved: true,
   id: 'section_1_prototype',
-  label: 'section 1',
+  label: '',
   multiple: true,
   type: 'section',
   template: {
@@ -45,7 +45,7 @@ const paragraph_1_prototype: BlockPrototype<Paragraph> = {
   templateId: 'cv_1_template',
   canBeMoved: true,
   id: 'paragraph_1_prototype',
-  label: 'paragraph 1',
+  label: '',
   multiple: true,
   type: 'paragraph',
   template: {
@@ -58,11 +58,11 @@ const field_1_prototype: BlockPrototype<TextField> = {
   templateId: 'cv_1_template',
   canBeMoved: true,
   id: 'field_1_prototype',
-  label: 'field 1',
+  label: '',
   multiple: true,
   type: 'text',
   template: {
-    value: 'field 1',
+    value: '',
   },
 };
 
@@ -71,12 +71,12 @@ const field_2_prototype: BlockPrototype<RangeField> = {
   templateId: 'cv_1_template',
   canBeMoved: true,
   id: 'field_2_prototype',
-  label: 'field 2',
+  label: '',
   multiple: true,
   type: 'range',
   template: {
     min: 0,
-    max: 3,
+    max: 5,
     value: 0,
   },
 };
@@ -95,31 +95,32 @@ const i18n_de_translation_cv_1_template = {
     PLACEHOLDER: 'Cv 1',
   },
   SECTION_1_PROTOTYPE: {
-    LABEL: 'Section 1',
-    PLACEHOLDER: 'Section 1',
+    LABEL: 'Kenntnisse und Fähigkeiten',
+    PLACEHOLDER: 'Kenntnisse und Fähigkeiten',
     ADD: {
       LABEL: '{{ label }} hinzufügen',
     },
   },
   PARAGRAPH_1_PROTOTYPE: {
-    LABEL: 'Paragraph 1',
-    PLACEHOLDER: 'Paragraph 1',
+    LABEL: 'Kenntnis/Fähigkeit',
+    PLACEHOLDER: 'Kenntnis/Fähigkeit',
     ADD: {
       LABEL: '{{ label }} hinzufügen',
     },
   },
   FIELD_1_PROTOTYPE: {
-    LABEL: 'Text Feld 1',
-    PLACEHOLDER: 'Text Feld 1',
+    LABEL: 'Kenntnis/Fähigkeit',
+    PLACEHOLDER: 'Kenntnis/Fähigkeit',
   },
   FIELD_2_PROTOTYPE: {
-    LABEL: 'Range Feld 2',
-    PLACEHOLDER: 'Range Feld 2',
+    LABEL: 'Niveau',
     OPTIONS: {
-      0: 'Option 1',
-      1: 'Option 2',
-      2: 'Option 3',
-      3: 'Option 4',
+      0: 'Wähle eine Option',
+      1: 'Grundkenntnisse',
+      2: 'Durchschnittlich',
+      3: 'Gut',
+      4: 'Sehr gut',
+      5: 'Ausgezeichnet',
     },
   },
 };
