@@ -18,14 +18,7 @@ import { Block, BlockPrototype, Cv } from '@cv/types';
 import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { createInjectionToken } from 'ngxtension/create-injection-token';
-import { filter, from, pipe, switchMap, tap } from 'rxjs';
-
-export const [injectTranslationApi, provideTranslationApi] =
-  createInjectionToken(() => {
-    const api = inject(Api);
-    return (locale: string) => from(api.getTranslation('common', locale));
-  });
+import { filter, forkJoin, from, map, pipe, switchMap, tap } from 'rxjs';
 
 export function provideI18nStore(): EnvironmentProviders {
   return makeEnvironmentProviders([I18nStore]);
@@ -61,7 +54,7 @@ export class I18nStore extends State {
     this.setLocale(this.locale());
   }
 
-  protected translationLoader = injectTranslationApi();
+  protected api = inject(Api);
 
   /** Sets the locale of this store. */
   setLocale = rxMethod<string>(
@@ -76,24 +69,35 @@ export class I18nStore extends State {
         patchState(this, setEntityStatus('translation', 'loading', locale));
       }),
       switchMap((locale) =>
-        this.translationLoader(locale).pipe(
-          tapResponse({
-            next: (translation) => {
-              patchState(
-                this,
-                {
-                  translations: {
-                    ...this.translations,
-                    [locale]: translation,
-                  },
-                },
-                setEntityStatus('translation', 'success', locale),
-              );
-            },
-            error: () => {
-              patchState(this, setEntityStatus('translation', 'error', locale));
-            },
-          }),
+        from(this.api.getAllCvTemplates()).pipe(
+          map((cvTemplates) => cvTemplates.map((cvTemplate) => cvTemplate.id)),
+          switchMap((cvTemplateIds) =>
+            forkJoin(
+              ['common', ...cvTemplateIds].map((id) =>
+                from(this.api.getTranslation(id, locale)).pipe(
+                  tapResponse({
+                    next: (translation) => {
+                      this.mergeTranslation(
+                        locale,
+                        translation,
+                        id !== 'common' ? `CV.EDIT` : undefined,
+                      );
+                      patchState(
+                        this,
+                        setEntityStatus('translation', 'success', locale),
+                      );
+                    },
+                    error: () => {
+                      patchState(
+                        this,
+                        setEntityStatus('translation', 'error', locale),
+                      );
+                    },
+                  }),
+                ),
+              ),
+            ),
+          ),
         ),
       ),
     ),
@@ -109,13 +113,15 @@ export class I18nStore extends State {
         ...this.translations(),
         [locale]: mergeObjects(
           this.translations()[locale],
-          (prefix ?? '')
-            .split('.')
-            .reverse()
-            .reduce(
-              (translation, path) => ({ [path]: translation }),
-              translation,
-            ),
+          prefix
+            ? prefix
+                .split('.')
+                .reverse()
+                .reduce(
+                  (translation, path) => ({ [path]: translation }),
+                  translation,
+                )
+            : translation,
         ),
       },
     });

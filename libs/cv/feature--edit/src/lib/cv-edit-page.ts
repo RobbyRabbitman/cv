@@ -32,7 +32,6 @@ export default class CvEditPage {
   constructor() {
     this.handleEmptyParam();
     this.handleError();
-    this.getTranslation();
   }
 
   protected cvId = injectParams('cvId');
@@ -54,33 +53,6 @@ export default class CvEditPage {
   protected handleEmptyParam() {
     effect(() => {
       if (!this.cvId()) untracked(() => this.router.navigateByUrl('/'));
-    });
-  }
-
-  /** Gets the translation for this cv based on the locale. */
-  protected getTranslation() {
-    effect(() => {
-      const cv = this.cv();
-      const localized = this.i18nStore.localized();
-
-      if (!cv || !localized) return;
-
-      const locale = untracked(this.i18nStore.locale);
-
-      const translation = this.cvStore.translation(cv.templateId, locale)();
-
-      untracked(() => {
-        if (!translation) {
-          this.cvStore.getTranslation({ cvTemplateId: cv.templateId, locale });
-          return;
-        }
-
-        this.i18nStore.mergeTranslation(
-          locale,
-          translation,
-          `CV.TEMPLATE.${cv.templateId.toUpperCase()}`,
-        );
-      });
     });
   }
 
