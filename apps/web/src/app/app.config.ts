@@ -15,7 +15,11 @@ import {
 import { provideCommonData } from '@cv/common/data';
 import { provideFirebase, runOnEnvironmentInit } from '@cv/common/util';
 import { provideCvData } from '@cv/data';
-import { provideI18nData, withCoerceLocale } from '@cv/i18n/data';
+import {
+  provideI18nData,
+  withAvailableLocales,
+  withCoerceLocale,
+} from '@cv/i18n/data';
 import { provideI18nSmart } from '@cv/i18n/smart';
 import { environment } from '../environments/environment';
 
@@ -96,6 +100,7 @@ export const appConfig = {
     provideCvData(),
     provideAuthData(),
     provideI18nData(
+      withAvailableLocales(),
       withCoerceLocale({
         weights: {
           language: 5,

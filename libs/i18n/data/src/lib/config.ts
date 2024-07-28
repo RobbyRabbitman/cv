@@ -45,7 +45,26 @@ export function withCoerceLocale(options: {
   ]);
 }
 
-type I18nDataFeatureKind = 'coerce-locale';
+/**
+ * Provides the list of available locales.
+ */
+export function withAvailableLocales() {
+  return makeI18nDataFeature('available-locales', [
+    {
+      provide: ENVIRONMENT_INITIALIZER,
+      multi: true,
+      useFactory: () => {
+        const i18n = inject(I18nStore);
+
+        return () => {
+          i18n.loadAllLocales();
+        };
+      },
+    },
+  ]);
+}
+
+type I18nDataFeatureKind = 'coerce-locale' | 'available-locales';
 
 interface I18nDataFeature {
   kind: I18nDataFeatureKind;

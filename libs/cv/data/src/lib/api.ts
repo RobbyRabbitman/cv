@@ -175,6 +175,14 @@ export class Api {
 
   /**
    *
+   * @returns all available locales
+   */
+  async getAllLocales(): Promise<UUID[]> {
+    return (await getDocs(this.i18nCollection)).docs.map(({ id }) => id);
+  }
+
+  /**
+   *
    * @returns the id of the signed in user, throws if user is not signed in,
    */
   protected userId() {

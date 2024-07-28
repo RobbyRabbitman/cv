@@ -4,6 +4,7 @@ import {
   computed,
   inject,
   makeEnvironmentProviders,
+  untracked,
 } from '@angular/core';
 import { setEntityStatus, withEntityStatus } from '@cv/common/util';
 import { Api } from '@cv/data';
@@ -40,7 +41,7 @@ const State = signalStore(
   withState(() => {
     const initialState: State = {
       locale: injectDocumentLocale(),
-      locales: ['en-Latn-US', 'de-Latn-DE'],
+      locales: [],
       translations: {},
     };
     return initialState;
@@ -131,7 +132,6 @@ export class I18nStore extends State {
     const translation = this.translations()[this.locale()];
 
     return translate(key, translation, {
-      assert: 'string',
       ...options,
     }) as TResult;
   }
@@ -168,9 +168,26 @@ export class I18nStore extends State {
     return `CV.TEMPLATE.${options.cv.templateId}.${'prototypeId' in options.blockOrPrototype ? options.blockOrPrototype.prototypeId : options.blockOrPrototype.id}`.toUpperCase();
   }
 
-  readonly localized = computed(
-    () => this.translationStatus(this.locale())() === 'success',
-  );
+  readonly localized = computed(() => {
+    const locales = this.locales();
+    const locale = this.locale();
+    const localeStatus = untracked(() => this.translationStatus(locale))();
+
+    return localeStatus === 'success' && locales.includes(locale);
+  });
 
   readonly Locale = computed(() => new Intl.Locale(this.locale()));
+
+  readonly loadAllLocales = rxMethod<void>(
+    pipe(
+      switchMap(async () => {
+        try {
+          const locales = await this.api.getAllLocales();
+          patchState(this, { locales });
+        } finally {
+          // TODO
+        }
+      }),
+    ),
+  );
 }
