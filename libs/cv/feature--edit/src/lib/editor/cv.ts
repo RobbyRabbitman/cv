@@ -48,7 +48,9 @@ export class CvEditor {
         cv: this.cv(),
         blockOrPrototype: options.blockOrPrototype,
         key: options.key,
-        params: options.params,
+        options: {
+          params: options.params,
+        },
       })(),
     );
   }

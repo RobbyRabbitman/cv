@@ -1,5 +1,6 @@
 import { Injector, Pipe, PipeTransform, inject } from '@angular/core';
 import { I18nStore } from '@cv/i18n/data';
+import { TranslationParameters } from '@cv/i18n/types';
 import { assertInjector } from 'ngxtension/assert-injector';
 import {
   createInjectionToken,
@@ -24,8 +25,8 @@ export const [translateFactory, provideTranslateFactory] = createInjectionToken(
       });
 
       return prefix
-        ? (key: string, params?: Record<string, string>) =>
-            store.translateOnce(`${prefix}.${key}`, params)
+        ? (key: string, params?: TranslationParameters) =>
+            store.translateOnce(`${prefix}.${key}`, { params })
         : store.translateOnce;
     };
 
@@ -48,10 +49,10 @@ export class Translate implements PipeTransform {
   });
 
   transform = this.prefix
-    ? (key: string, params?: Record<string, string>) =>
-        this.store.translateOnce(`${this.prefix}.${key}`, params)
-    : (key: string, params?: Record<string, string>) =>
-        this.store.translateOnce(key, params);
+    ? (key: string, params?: TranslationParameters) =>
+        this.store.translateOnce(`${this.prefix}.${key}`, { params })
+    : (key: string, params?: TranslationParameters) =>
+        this.store.translateOnce(key, { params });
 
   constructor() {
     markForCheckOnLocalization();

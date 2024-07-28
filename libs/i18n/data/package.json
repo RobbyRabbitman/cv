@@ -8,7 +8,6 @@
     "@cv/i18n/util": "*",
     "@cv/i18n/types": "*",
     "@cv/common/util": "*",
-    "@ngrx/operators": "17.2.0",
     "@cv/types": "0.0.1",
     "@cv/data": "0.0.1"
   },

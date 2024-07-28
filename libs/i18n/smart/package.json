@@ -9,7 +9,8 @@
     "firebase": "10.7.2",
     "@angular/platform-browser": "18.0.1",
     "@angular/router": "18.0.1",
-    "@cv/common/data": "*"
+    "@cv/common/data": "*",
+    "@cv/i18n/types": "0.0.1"
   },
   "sideEffects": false
 }

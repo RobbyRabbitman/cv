@@ -203,12 +203,12 @@ export const provideMockData = [
         setDoc(doc(cvTemplate, 'cv_1_template'), { id: 'cv_1_template' });
 
         setDoc(
-          doc(_firestore, 'i18n', 'de', 'translation', 'common'),
+          doc(_firestore, 'i18n', 'de-Latn-DE', 'translation', 'common'),
           i18n_de_translation_common,
         );
 
         setDoc(
-          doc(_firestore, 'i18n', 'de', 'translation', 'cv_1_template'),
+          doc(_firestore, 'i18n', 'de-Latn-DE', 'translation', 'cv_1_template'),
           i18n_de_translation_cv_1_template,
         );
 
