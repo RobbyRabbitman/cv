@@ -33,11 +33,9 @@ export class DeleteBlock {
     this.cvStore.deleteBlock(this.block(), this.cv());
   }
 
-  readonly translation = computed(() =>
-    this.i18n.translate('CV.DELETE_BLOCK')(),
-  );
+  readonly translationPrefix = computed(() => 'CV.DELETE_BLOCK');
 
-  readonly blockTranslation = computed(() =>
+  readonly blockTranslationPrefix = computed(() =>
     this.i18n.translateBlockPrefix({
       blockOrPrototype: this.block(),
       cv: this.cv(),

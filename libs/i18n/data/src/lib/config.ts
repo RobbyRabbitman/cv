@@ -38,8 +38,6 @@ export function withCoerceLocale(options: {
               weights: options.weights,
             });
 
-            console.log(i18n.translations());
-
             untracked(() => i18n.setLocale(coercedLocale ?? locale));
           });
       },

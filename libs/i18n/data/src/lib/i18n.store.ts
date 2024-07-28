@@ -10,6 +10,7 @@ import { setEntityStatus, withEntityStatus } from '@cv/common/util';
 import { Api } from '@cv/data';
 import {
   Locale,
+  NarrowTranslationValue,
   Translation,
   TranslationParameters,
   TranslationValueType,
@@ -141,8 +142,9 @@ export class I18nStore extends State {
     const translation = this.translations()[this.locale()];
 
     return translate(key, translation, {
+      assert: 'string',
       ...options,
-    }) as TResult;
+    }) as NarrowTranslationValue<TResult>;
   }
 
   translate<TResult extends TranslationValueType = 'string'>(

@@ -21,16 +21,19 @@ import { DeleteBlock } from './delete-block';
   template: `
     <span class="sr-only">
       {{
-        deleteBlock.translation() + '.LABEL'
+        deleteBlock.translationPrefix() + '.LABEL'
           | translate
-            : { block: deleteBlock.blockTranslation() + '.LABEL' | translate }
+            : {
+                block:
+                  deleteBlock.blockTranslationPrefix() + '.LABEL' | translate
+              }
       }}
     </span>
     <span aria-hidden="true" class="icon">delete</span>
     <span class="text-xl" aria-hidden="true">
       <ng-content>
         @if (!textHidden()) {
-          {{ deleteBlock.translation() + '.TEXT' | translate }}
+          {{ deleteBlock.translationPrefix() + '.TEXT' | translate }}
         }
       </ng-content>
     </span>
@@ -48,5 +51,5 @@ export class DeleteBlockButton {
     this.deleteBlock.delete();
   }
 
-  textHidden = input(false, { transform: booleanAttribute });
+  readonly textHidden = input(false, { transform: booleanAttribute });
 }
