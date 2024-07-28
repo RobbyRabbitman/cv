@@ -80,13 +80,22 @@ export class I18nStore extends State {
           const cvTemplateIds = cvTemplates.map((cvTemplate) => cvTemplate.id);
 
           const cvTemplateTranslations = await Promise.all(
-            cvTemplateIds.map(async (id) =>
-              this.api.getTranslation(id, locale),
-            ),
+            cvTemplateIds.map(async (id) => {
+              const translation = await this.api.getTranslation(id, locale);
+
+              return {
+                id,
+                translation,
+              };
+            }),
           );
 
-          for (const cvTemplateTranslation of cvTemplateTranslations) {
-            this.mergeTranslation(locale, cvTemplateTranslation, 'CV.EDIT');
+          for (const { id, translation } of cvTemplateTranslations) {
+            this.mergeTranslation(
+              locale,
+              translation,
+              `CV.TEMPLATE.${id.toUpperCase()}`,
+            );
           }
 
           const commonTranslation = await this.api.getTranslation(
