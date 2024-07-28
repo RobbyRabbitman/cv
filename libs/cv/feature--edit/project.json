@@ -28,9 +28,6 @@
         "polyfills": ["zone.js", "zone.js/testing"],
         "tsConfig": "{projectRoot}/tsconfig.spec.json"
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
     }
   }
 }

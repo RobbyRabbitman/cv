@@ -75,9 +75,6 @@
       },
       "defaultConfiguration": "local"
     },
-    "lint": {
-      "executor": "@nx/eslint:lint"
-    },
     "test": {
       "executor": "@angular-devkit/build-angular:web-test-runner",
       "options": {
