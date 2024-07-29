@@ -9,9 +9,9 @@ import {
 import { RouterLink } from '@angular/router';
 import { UUID } from '@cv/common/types';
 import { Iso8601 } from '@cv/common/ui';
-import { CvStore } from '@cv/data';
+import { CvStore } from '@cv/cv/data';
+import { cvRoute } from '@cv/cv/util';
 import { I18N_SMART, provideTranslatePrefix } from '@cv/i18n/smart';
-import { cvRoute } from '@cv/util';
 import { CvActionMenu } from './cv-action-menu';
 import { EditBlockLabel } from './edit-block-label';
 

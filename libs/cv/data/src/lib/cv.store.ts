@@ -7,13 +7,13 @@ import {
 } from '@angular/core';
 import { Identifiable, UUID } from '@cv/common/types';
 import { setEntityStatus, uuid, withEntityStatus } from '@cv/common/util';
-import { Translation } from '@cv/i18n/types';
-import { Block, BlockPrototype, Blocks, Cv, CvTemplate } from '@cv/types';
+import { Block, BlockPrototype, Blocks, Cv, CvTemplate } from '@cv/cv/types';
 import {
   getChildPrototypes as _getChildPrototypes,
   patchBlock as _patchBlock,
   deleteBlock,
-} from '@cv/util';
+} from '@cv/cv/util';
+import { Translation } from '@cv/i18n/types';
 import { tapResponse } from '@ngrx/operators';
 import { patchState, signalStore, type } from '@ngrx/signals';
 import {

@@ -8,7 +8,7 @@ import {
   untracked,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { CvStore } from '@cv/data';
+import { CvStore } from '@cv/cv/data';
 import { I18nStore } from '@cv/i18n/data';
 import { injectParams } from 'ngxtension/inject-params';
 import { CvEditor } from './editor/cv';

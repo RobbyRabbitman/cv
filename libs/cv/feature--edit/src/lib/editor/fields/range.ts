@@ -8,8 +8,8 @@ import {
   viewChild,
 } from '@angular/core';
 import { fromEventOfSignal } from '@cv/common/util';
+import { RangeField } from '@cv/cv/types';
 import { Translate } from '@cv/i18n/smart';
-import { RangeField } from '@cv/types';
 import { map } from 'rxjs';
 import { BlockDirective } from '../block.directive';
 

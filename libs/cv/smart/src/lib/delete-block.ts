@@ -1,8 +1,8 @@
 import { Directive, computed, inject, input } from '@angular/core';
 import { nativeElement } from '@cv/common/util';
-import { CvStore } from '@cv/data';
+import { CvStore } from '@cv/cv/data';
+import { Block, Cv } from '@cv/cv/types';
 import { I18nStore } from '@cv/i18n/data';
-import { Block, Cv } from '@cv/types';
 import { rxEffect } from 'ngxtension/rx-effect';
 import { fromEvent } from 'rxjs';
 

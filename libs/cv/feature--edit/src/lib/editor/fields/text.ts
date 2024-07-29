@@ -7,8 +7,8 @@ import {
   viewChild,
 } from '@angular/core';
 import { fromEventOfSignal } from '@cv/common/util';
+import { TextField } from '@cv/cv/types';
 import { Translate } from '@cv/i18n/smart';
-import { TextField } from '@cv/types';
 import { map } from 'rxjs';
 import { BlockDirective } from '../block.directive';
 

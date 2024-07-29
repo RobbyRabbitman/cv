@@ -2,9 +2,9 @@ import { Injectable, inject } from '@angular/core';
 import { UserStore } from '@cv/auth/data';
 import { Identifiable, UUID } from '@cv/common/types';
 import { firestore } from '@cv/common/util';
+import { Block, BlockPrototype, Cv, CvTemplate } from '@cv/cv/types';
+import { createCv } from '@cv/cv/util';
 import { Translation } from '@cv/i18n/types';
-import { Block, BlockPrototype, Cv, CvTemplate } from '@cv/types';
-import { createCv } from '@cv/util';
 import {
   CollectionReference,
   DocumentData,

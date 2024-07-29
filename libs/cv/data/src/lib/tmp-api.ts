@@ -7,7 +7,7 @@ import {
   RangeField,
   Section,
   TextField,
-} from '@cv/types';
+} from '@cv/cv/types';
 import { collection, doc, setDoc } from 'firebase/firestore';
 
 const cv_1_prototype: BlockPrototype<Cv> = {

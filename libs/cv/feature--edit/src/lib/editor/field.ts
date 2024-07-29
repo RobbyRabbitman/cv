@@ -4,7 +4,7 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { Field } from '@cv/types';
+import { Field } from '@cv/cv/types';
 import { BlockDirective } from './block.directive';
 import { RangeEdit } from './fields/range';
 import { TextEdit } from './fields/text';

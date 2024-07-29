@@ -1,5 +1,5 @@
 {
-  "name": "@cv/common--shell",
+  "name": "@cv/common/feature--shell",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": "18.0.1",
@@ -9,7 +9,7 @@
     "@cv/auth/data": "*",
     "@cv/common/data": "*",
     "@cv/common/smart": "*",
-    "@cv/util": "*"
+    "@cv/cv/util": "*"
   },
   "sideEffects": false
 }

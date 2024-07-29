@@ -5,9 +5,9 @@ import {
   input,
 } from '@angular/core';
 import { COMMON_UI_MENU } from '@cv/common/ui';
+import { CV_SMART } from '@cv/cv/smart';
+import { Cv, Section } from '@cv/cv/types';
 import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
-import { CV_SMART } from '@cv/smart';
-import { Cv, Section } from '@cv/types';
 
 @Component({
   selector: 'cv-edit--section-editor-action-menu',

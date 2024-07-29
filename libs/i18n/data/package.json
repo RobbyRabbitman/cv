@@ -8,8 +8,8 @@
     "@cv/i18n/util": "*",
     "@cv/i18n/types": "*",
     "@cv/common/util": "*",
-    "@cv/types": "0.0.1",
-    "@cv/data": "0.0.1"
+    "@cv/cv/types": "0.0.1",
+    "@cv/cv/data": "0.0.1"
   },
   "sideEffects": false
 }

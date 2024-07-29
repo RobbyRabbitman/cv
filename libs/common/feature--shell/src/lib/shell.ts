@@ -7,8 +7,8 @@ import {
 import { UserStore } from '@cv/auth/data';
 import { AUTH_SMART } from '@cv/auth/smart';
 import { COMMON_SMART } from '@cv/common/smart';
+import { provideCvRoute } from '@cv/cv/util';
 import { I18N_SMART } from '@cv/i18n/smart';
-import { provideCvRoute } from '@cv/util';
 import { Logo } from './logo';
 
 @Component({

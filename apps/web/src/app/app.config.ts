@@ -14,7 +14,7 @@ import {
 } from '@cv/auth/smart';
 import { provideCommonData } from '@cv/common/data';
 import { provideFirebase, runOnEnvironmentInit } from '@cv/common/util';
-import { provideCvData } from '@cv/data';
+import { provideCvData } from '@cv/cv/data';
 import {
   provideI18nData,
   withAvailableLocales,
@@ -58,8 +58,8 @@ export const appConfig = {
       {
         path: 'all',
         children: [
-          { path: '', loadChildren: () => import('@cv/feature-overview') },
-          { path: ':cvId', loadChildren: () => import('@cv/feature-edit') },
+          { path: '', loadChildren: () => import('@cv/cv/feature--overview') },
+          { path: ':cvId', loadChildren: () => import('@cv/cv/feature--edit') },
         ],
         providers: [
           provideAuthenticatedGuardConfig(() => {

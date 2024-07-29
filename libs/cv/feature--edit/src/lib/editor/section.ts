@@ -4,9 +4,9 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
+import { EditBlockLabel } from '@cv/cv/smart';
+import { Section } from '@cv/cv/types';
 import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
-import { EditBlockLabel } from '@cv/smart';
-import { Section } from '@cv/types';
 import { AddChildBlockButtonRibbon } from './add-child-block-button-ribbon';
 import { BlockDirective } from './block.directive';
 import { ParagraphEditor } from './paragraph';

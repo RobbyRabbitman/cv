@@ -22,25 +22,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@cv/feature-edit": ["libs/cv/feature--edit/src/index.ts"],
-      "@cv/feature-overview": ["libs/cv/feature--overview/src/index.ts"],
-      "@cv/auth/data": ["libs/auth/data/src/index.ts"],
-      "@cv/auth/smart": ["libs/auth/smart/src/index.ts"],
-      "@cv/common--shell": ["libs/common/feature--shell/src/index.ts"],
-      "@cv/common/data": ["libs/common/data/src/index.ts"],
-      "@cv/common/smart": ["libs/common/smart/src/index.ts"],
-      "@cv/common/types": ["libs/common/types/src/index.ts"],
-      "@cv/common/ui": ["libs/common/ui/src/index.ts"],
-      "@cv/common/util": ["libs/common/util/src/index.ts"],
-      "@cv/data": ["libs/cv/data/src/index.ts"],
-      "@cv/i18n/data": ["libs/i18n/data/src/index.ts"],
-      "@cv/i18n/smart": ["libs/i18n/smart/src/index.ts"],
-      "@cv/i18n/types": ["libs/i18n/types/src/index.ts"],
-      "@cv/i18n/util": ["libs/i18n/util/src/index.ts"],
-      "@cv/smart": ["libs/cv/smart/src/index.ts"],
-      "@cv/types": ["libs/cv/types/src/index.ts"],
-      "@cv/ui": ["libs/cv/ui/src/index.ts"],
-      "@cv/util": ["libs/cv/util/src/index.ts"]
+      "@cv/*": ["libs/*/src/index.ts"]
     }
   },
   "angularCompilerOptions": {

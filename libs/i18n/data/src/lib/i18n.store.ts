@@ -7,7 +7,8 @@ import {
   untracked,
 } from '@angular/core';
 import { setEntityStatus, withEntityStatus } from '@cv/common/util';
-import { Api } from '@cv/data';
+import { Api } from '@cv/cv/data';
+import { Block, BlockPrototype, Cv } from '@cv/cv/types';
 import {
   Locale,
   NarrowTranslationValue,
@@ -20,7 +21,6 @@ import {
   mergeTranslation,
   translate,
 } from '@cv/i18n/util';
-import { Block, BlockPrototype, Cv } from '@cv/types';
 import { patchState, signalStore, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap } from 'rxjs';

@@ -9,7 +9,7 @@ import {
   HasChildren,
   hasBlockChildren,
   hasTemplateChildren,
-} from '@cv/types';
+} from '@cv/cv/types';
 
 export function createCv(
   prototypes: Record<UUID, BlockPrototype>,

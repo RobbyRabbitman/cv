@@ -5,8 +5,8 @@ import {
   input,
 } from '@angular/core';
 import { COMMON_UI_MENU } from '@cv/common/ui';
+import { Cv } from '@cv/cv/types';
 import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
-import { Cv } from '@cv/types';
 import { DeleteBlockButton } from './delete-block-button';
 
 @Component({

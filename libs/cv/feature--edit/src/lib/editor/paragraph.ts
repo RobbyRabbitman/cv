@@ -4,8 +4,8 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { CV_SMART } from '@cv/smart';
-import { Paragraph } from '@cv/types';
+import { CV_SMART } from '@cv/cv/smart';
+import { Paragraph } from '@cv/cv/types';
 import { BlockDirective } from './block.directive';
 import { FieldEdit } from './field';
 

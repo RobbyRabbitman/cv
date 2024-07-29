@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { COMMON_SHELL_FEATURE } from '@cv/common--shell';
+import { COMMON_SHELL_FEATURE } from '@cv/common/feature--shell';
 
 @Component({
   standalone: true,

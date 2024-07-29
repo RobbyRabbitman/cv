@@ -1,6 +1,6 @@
 import { Directive, computed, inject, input } from '@angular/core';
-import { CvStore } from '@cv/data';
-import { Block } from '@cv/types';
+import { CvStore } from '@cv/cv/data';
+import { Block } from '@cv/cv/types';
 import { CvEditor } from './cv';
 
 @Directive({

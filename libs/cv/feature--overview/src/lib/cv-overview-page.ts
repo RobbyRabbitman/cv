@@ -4,8 +4,8 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { CvStore } from '@cv/data';
-import { CV_SMART } from '@cv/smart';
+import { CvStore } from '@cv/cv/data';
+import { CV_SMART } from '@cv/cv/smart';
 
 @Component({
   selector: 'cv-overview--page',

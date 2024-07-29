@@ -1,5 +1,5 @@
 {
-  "name": "@cv/types",
+  "name": "@cv/cv/types",
   "version": "0.0.1",
   "peerDependencies": {
     "@cv/common/types": "*"

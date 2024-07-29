@@ -1,14 +1,14 @@
 {
-  "name": "@cv/smart",
+  "name": "@cv/cv/smart",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": "18.0.1",
-    "@cv/data": "*",
+    "@cv/cv/data": "*",
     "@cv/i18n/smart": "*",
     "@angular/router": "18.0.1",
     "@cv/common/types": "*",
-    "@cv/util": "*",
-    "@cv/types": "*",
+    "@cv/cv/util": "*",
+    "@cv/cv/types": "*",
     "@cv/common/ui": "*",
     "@cv/common/util": "*",
     "ngxtension": "1.12.0",

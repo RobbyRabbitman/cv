@@ -7,9 +7,9 @@ import {
   input,
 } from '@angular/core';
 import { UUID } from '@cv/common/types';
-import { CvStore } from '@cv/data';
+import { CvStore } from '@cv/cv/data';
+import { Block, BlockPrototype, Cv } from '@cv/cv/types';
 import { I18nStore } from '@cv/i18n/data';
-import { Block, BlockPrototype, Cv } from '@cv/types';
 import { AddChildBlockButtonRibbon } from './add-child-block-button-ribbon';
 import { SectionEditor } from './section';
 

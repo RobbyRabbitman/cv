@@ -5,10 +5,10 @@ import {
   computed,
   inject,
 } from '@angular/core';
-import { CvStore } from '@cv/data';
+import { CvStore } from '@cv/cv/data';
+import { Block, BlockPrototype, HasChildren } from '@cv/cv/types';
+import { createBlock } from '@cv/cv/util';
 import { Translate } from '@cv/i18n/smart';
-import { Block, BlockPrototype, HasChildren } from '@cv/types';
-import { createBlock } from '@cv/util';
 import { BlockDirective } from './block.directive';
 
 @Component({

@@ -6,7 +6,7 @@ import {
   inject,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { CvStore } from '@cv/data';
+import { CvStore } from '@cv/cv/data';
 import { Translate, provideTranslatePrefix } from '@cv/i18n/smart';
 
 @Component({

@@ -6,9 +6,9 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { CvStore } from '@cv/data';
+import { CvStore } from '@cv/cv/data';
+import { Block, CanBeLabeled, Cv } from '@cv/cv/types';
 import { I18nStore } from '@cv/i18n/data';
-import { Block, CanBeLabeled, Cv } from '@cv/types';
 
 @Component({
   selector: 'cv-smart--edit-block-label',
