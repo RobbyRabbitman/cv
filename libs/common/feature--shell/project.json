@@ -5,22 +5,5 @@
   "prefix": "cv-common--shell",
   "projectType": "library",
   "tags": ["scope:shared", "type:feature"],
-  "targets": {
-    "build": {
-      "executor": "@nx/angular:ng-packagr-lite",
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "options": {
-        "project": "libs/common/feature--shell/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/common/feature--shell/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/common/feature--shell/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
-    }
-  }
+  "targets": {}
 }

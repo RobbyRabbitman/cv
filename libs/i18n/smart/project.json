@@ -5,22 +5,5 @@
   "prefix": "cv-i18n-smart",
   "projectType": "library",
   "tags": ["scope:shared", "type:smart"],
-  "targets": {
-    "build": {
-      "executor": "@nx/angular:ng-packagr-lite",
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "options": {
-        "project": "libs/i18n/smart/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/i18n/smart/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/i18n/smart/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
-    }
-  }
+  "targets": {}
 }

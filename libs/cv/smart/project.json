@@ -5,22 +5,5 @@
   "prefix": "cv-smart",
   "projectType": "library",
   "tags": ["scope:shared", "type:smart"],
-  "targets": {
-    "build": {
-      "executor": "@nx/angular:ng-packagr-lite",
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "options": {
-        "project": "libs/cv/smart/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/cv/smart/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/cv/smart/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
-    }
-  }
+  "targets": {}
 }

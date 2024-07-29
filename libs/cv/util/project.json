@@ -4,22 +4,5 @@
   "sourceRoot": "libs/cv/util/src",
   "projectType": "library",
   "tags": ["scope:shared", "type:util"],
-  "targets": {
-    "build": {
-      "executor": "@nx/angular:ng-packagr-lite",
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "options": {
-        "project": "libs/cv/util/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/cv/util/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/cv/util/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
-    }
-  }
+  "targets": {}
 }

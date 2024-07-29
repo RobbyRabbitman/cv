@@ -4,22 +4,5 @@
   "sourceRoot": "libs/i18n/data/src",
   "projectType": "library",
   "tags": ["scope:shared", "type:data"],
-  "targets": {
-    "build": {
-      "executor": "@nx/angular:ng-packagr-lite",
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "options": {
-        "project": "libs/i18n/data/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/i18n/data/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/i18n/data/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
-    }
-  }
+  "targets": {}
 }

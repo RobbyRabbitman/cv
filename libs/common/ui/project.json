@@ -5,22 +5,5 @@
   "prefix": "cv-common-ui",
   "projectType": "library",
   "tags": ["scope:shared", "type:ui"],
-  "targets": {
-    "build": {
-      "executor": "@nx/angular:ng-packagr-lite",
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "options": {
-        "project": "libs/common/ui/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/common/ui/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/common/ui/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
-    }
-  }
+  "targets": {}
 }
