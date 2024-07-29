@@ -22,7 +22,7 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@cv/cv/*": ["libs/*/src/index.ts"],
+      "@cv/*": ["libs/*/src/index.ts"],
       "@cv/tools/plugins/angular": ["tools/plugins/angular/src/index.ts"]
     }
   },
