@@ -21,14 +21,6 @@
         }
       },
       "defaultConfiguration": "production"
-    },
-    "test": {
-      "executor": "@angular-devkit/build-angular:web-test-runner",
-      "options": {
-        "include": ["{projectRoot}/src/**/*.spec.ts"],
-        "polyfills": ["zone.js", "zone.js/testing"],
-        "tsConfig": "{projectRoot}/tsconfig.spec.json"
-      }
     }
   }
 }

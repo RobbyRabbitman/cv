@@ -4,30 +4,5 @@
   "sourceRoot": "libs/i18n/util/src",
   "projectType": "library",
   "tags": ["scope:shared", "type:util"],
-  "targets": {
-    "build": {
-      "executor": "@nx/angular:ng-packagr-lite",
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "options": {
-        "project": "libs/i18n/util/ng-package.json"
-      },
-      "configurations": {
-        "production": {
-          "tsConfig": "libs/i18n/util/tsconfig.lib.prod.json"
-        },
-        "development": {
-          "tsConfig": "libs/i18n/util/tsconfig.lib.json"
-        }
-      },
-      "defaultConfiguration": "production"
-    },
-    "test": {
-      "executor": "@angular-devkit/build-angular:web-test-runner",
-      "options": {
-        "include": ["{projectRoot}/src/**/*.spec.ts"],
-        "polyfills": ["zone.js", "zone.js/testing"],
-        "tsConfig": "{projectRoot}/tsconfig.spec.json"
-      }
-    }
-  }
+  "targets": {}
 }
