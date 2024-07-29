@@ -16,7 +16,8 @@
       "options": {
         "targetName": "lint-eslint"
       }
-    }
+    },
+    "@cv/tools/plugins/angular"
   ],
   "targetDefaults": {
     "build": {

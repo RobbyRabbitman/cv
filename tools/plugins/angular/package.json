@@ -1,0 +1,6 @@
+{
+  "name": "@cv/tools/plugins/angular",
+  "version": "0.0.0",
+  "type": "commonjs",
+  "main": "./src/index.js"
+}
