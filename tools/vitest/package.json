@@ -1,0 +1,11 @@
+{
+  "name": "@robby-rabbitman/tools-vitest",
+  "version": "0.0.0",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts"
+}

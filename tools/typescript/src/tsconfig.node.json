@@ -1,6 +1,6 @@
 {
   // a ts config for node
-  "extends": "base/tsconfig.base.json",
+  "extends": "./base/tsconfig.base.json",
   "compilerOptions": {
     "types": ["node"],
     "module": "NodeNext",
