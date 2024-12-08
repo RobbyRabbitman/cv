@@ -21,6 +21,8 @@ jobs:
           # the full git history is required for nrwl/nx-set-shas@v4
           fetch-depth: 0
 
+      - uses: nrwl/nx-set-shas@v4
+
       - run: corepack enable
 
       - uses: actions/setup-node@v4
@@ -29,7 +31,7 @@ jobs:
           node-version-file: package.json
           cache-dependency-path: pnpm-lock.yaml
 
-      - uses: nrwl/nx-set-shas@v4
+      - run: pnpm i
 
       - run: pnpm nx report --verbose
 
