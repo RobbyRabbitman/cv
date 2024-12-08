@@ -1,0 +1,15 @@
+{
+  // a ts config for vitest tests that run in node
+  "extends": "./tsconfig.node.json",
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "types": [
+      "node",
+      "vitest/globals",
+      "vitest/importMeta",
+      "vite/client",
+      "vitest"
+    ]
+  }
+}

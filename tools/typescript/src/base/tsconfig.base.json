@@ -1,0 +1,40 @@
+{
+  "files": [],
+  "include": [],
+  "exclude": [],
+  "compilerOptions": {
+    "composite": true,
+    "incremental": true,
+
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext"],
+
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    "skipLibCheck": true,
+
+    "strict": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false,
+    "importHelpers": true,
+    "isolatedModules": true,
+
+    "pretty": true
+  }
+}
