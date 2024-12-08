@@ -5,7 +5,25 @@
   },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "sharedGlobals": []
+    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"],
+    "ci": [
+      {
+        "env": "CI"
+      }
+    ],
+    "vitestGlobals": [
+      "{projectRoot}/tools/vitest/**/*",
+      {
+        "externalDependencies": [
+          "vite",
+          "vitest",
+          "@vitest/ui",
+          "@vitest/coverage-v8",
+          "@nx/vite"
+        ]
+      }
+    ],
+    "test-vitest": ["default", "vitestGlobals"]
   },
   "plugins": [
     {
@@ -30,6 +48,7 @@
   ],
   "targetDefaults": {
     "test-vitest": {
+      "inputs": ["test-vitest", "^test-vitest"],
       "configurations": {
         "ci": {
           "run": true
