@@ -1,0 +1,38 @@
+name: ci
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    permissions:
+      actions: read
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # the full git history is required for nrwl/nx-set-shas@v4
+          fetch-depth: 0
+
+      - run: corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version-file: package.json
+          cache-dependency-path: pnpm-lock.yaml
+
+      - uses: nrwl/nx-set-shas@v4
+
+      - run: pnpm nx report --verbose
+
+      - run: pnpm nx format:check
+
+      - run: pnpm nx sync:check

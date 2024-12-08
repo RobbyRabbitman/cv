@@ -8,6 +8,12 @@
         "options": {
           "cwd": "{projectRoot}"
         }
+      },
+      "format": {
+        "command": "sh src/format/format-all.sh",
+        "options": {
+          "cwd": "{projectRoot}"
+        }
       }
     }
   }
