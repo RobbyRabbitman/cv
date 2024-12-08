@@ -1,0 +1,14 @@
+{
+  "name": "@robby-rabbitman/cv-tools-workspace",
+  "version": "0.0.0",
+  "nx": {
+    "targets": {
+      "clean": {
+        "command": "sh src/clean-workspace.sh",
+        "options": {
+          "cwd": "{projectRoot}"
+        }
+      }
+    }
+  }
+}

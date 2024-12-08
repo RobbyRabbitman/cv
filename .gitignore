@@ -1,0 +1,10 @@
+dist
+tmp
+node_modules
+coverage
+
+.DS_Store
+Thumbs.db
+
+.nx/cache
+.nx/workspace-data
