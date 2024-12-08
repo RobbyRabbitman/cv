@@ -2,5 +2,9 @@
   "files": [],
   "include": [],
   "exclude": [],
-  "references": []
+  "references": [
+    {
+      "path": "./tools/vitest"
+    }
+  ]
 }
