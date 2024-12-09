@@ -14,16 +14,7 @@ const nxEslintConfig = [
       parser: jsoncEslintParser,
     },
     rules: {
-      '@nx/dependency-checks': [
-        /**
-         * TODO: enable this rule - find out how this rule is supposed to be
-         * configured in a pnpm workspace
-         */
-        'off',
-        {
-          buildTargets: ['eslint-nx-dependency-checks-pseudo-build'],
-        },
-      ],
+      '@nx/dependency-checks': ['error'],
     },
   },
   // https://nx.dev/nx-api/eslint-plugin#enforce-module-boundaries-rule
@@ -58,47 +49,12 @@ const nxEslintConfig = [
           enforceBuildableLibDependency: true,
           allow: [],
           depConstraints: [
-            // types
-            {
-              sourceTag: 'type:lib',
-              onlyDependOnLibsWithTags: [
-                'type:lib',
-                'type:assets',
-                'type:tokens',
-                'type:util',
-                'type:storybook',
-                'type:tool',
-              ],
-            },
-            {
-              sourceTag: 'type:storybook',
-              onlyDependOnLibsWithTags: [
-                'type:storybook',
-                'type:util',
-                'type:tool',
-                'type:lib',
-
-                'scope:node',
-                'scope:web',
-              ],
-            },
-            {
-              sourceTag: 'type:tokens',
-              onlyDependOnLibsWithTags: ['type:tokens', 'type:tool'],
-            },
-            {
-              sourceTag: 'type:assets',
-              onlyDependOnLibsWithTags: ['type:assets', 'type:tool'],
-            },
-            {
-              sourceTag: 'type:util',
-              onlyDependOnLibsWithTags: ['type:util', 'type:tool'],
-            },
+            /** Types */
             {
               sourceTag: 'type:tool',
               onlyDependOnLibsWithTags: ['type:util', 'type:tool'],
             },
-            // scopes
+            /** Scopes */
             {
               sourceTag: 'scope:js',
               onlyDependOnLibsWithTags: ['scope:js'],
