@@ -28,6 +28,8 @@
     "noImplicitOverride": true,
     "forceConsistentCasingInFileNames": true,
 
+    "allowJs": true,
+    "checkJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "emitDecoratorMetadata": false,
