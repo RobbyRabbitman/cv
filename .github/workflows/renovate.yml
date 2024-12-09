@@ -52,7 +52,7 @@ jobs:
       # pull requests: write
       # workflows: write
       # email addresses: read
-      - run: pnpm nx run tools-renovate-bot:renovate:ci
+      - run: pnpm nx run @robby-rabbitman/cv-tools-renovate-bot:renovate:ci
         env:
           RENOVATE_PLATFORM: github
           RENOVATE_REPOSITORIES: ${{ github.repository }}
