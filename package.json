@@ -11,7 +11,7 @@
     "@commitlint/types": "19.5.0",
     "@eslint/js": "9.14.0",
     "@nx/devkit": "20.2.1",
-    "@nx/eslint-plugin": "20.2.1",
+    "@nx/eslint": "20.2.1",
     "@nx/js": "20.2.1",
     "@nx/vite": "20.2.1",
     "@types/eslint-config-prettier": "6.11.3",

@@ -1,13 +1,9 @@
 {
-  "name": "@hdi-components/tools-eslint",
-  "version": "0.7.3",
-  "files": [
-    "dist",
-    "package.json"
-  ],
+  "name": "@robby-rabbitman/cv-tools-eslint",
+  "version": "0.0.0",
   "type": "module",
-  "main": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "typescript-eslint": "8.16.0",
     "angular-eslint": "18.4.3",

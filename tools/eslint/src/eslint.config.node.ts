@@ -1,6 +1,6 @@
 import { type Linter } from 'eslint';
 import nodeEslint from 'eslint-plugin-n';
-import packageJson from '../../../package.json';
+import packageJson from '../../../package.json' with { type: 'json' };
 import ignoreEslintConfig from './eslint.config.ignore.js';
 import jsEslintConfig from './eslint.config.javascript.js';
 import nxEslintConfig from './eslint.config.nx.js';
@@ -35,6 +35,7 @@ const nodeEslintConfig = [
       ...nodeEslintConfigRecomended.rules,
       /** @nx/dependency-checks is handling the dependency checks */
       'n/no-missing-import': 'off',
+      'n/no-unpublished-import': 'off',
       'n/no-extraneous-import': 'off',
 
       'n/no-process-exit': 'off',
