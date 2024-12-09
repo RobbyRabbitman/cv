@@ -8,6 +8,9 @@
     },
     {
       "path": "./tools/commitlint"
+    },
+    {
+      "path": "./tools/eslint"
     }
   ]
 }

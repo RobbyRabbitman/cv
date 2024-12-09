@@ -2,6 +2,9 @@
   "name": "@robby-rabbitman/cv-tools-renovate-bot",
   "version": "0.0.0",
   "nx": {
+    "tags": [
+      "type:tool"
+    ],
     "targets": {
       "lint": {
         "inputs": [

@@ -39,7 +39,7 @@ jobs:
 
       - run: pnpm nx sync:check
 
-      - run: pnpm nx affected -t lint typecheck typecheck-tsc -c ci
+      - run: pnpm nx affected -t lint lint-eslint typecheck typecheck-tsc -c ci
 
       - run: pnpm nx affected -t build build-tsc build-vite -c ci
 
