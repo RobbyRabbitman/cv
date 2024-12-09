@@ -2,6 +2,7 @@
   "name": "@robby-rabbitman/cv",
   "version": "0.0.0",
   "scripts": {
+    "clean": "git clean -dXf && pnpm i && pnpm nx reset",
     "postinstall": "sh tools/workspace/src/npm-life-cycle/npm-post-install.sh"
   },
   "devDependencies": {
