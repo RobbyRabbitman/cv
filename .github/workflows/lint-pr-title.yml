@@ -2,6 +2,7 @@ name: lint-pr-title
 
 on:
   pull_request:
+    types: [opened, reopened, synchronize, edited]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
