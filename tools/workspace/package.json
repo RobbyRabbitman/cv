@@ -3,23 +3,11 @@
   "version": "0.0.0",
   "nx": {
     "targets": {
-      "clean": {
-        "command": "sh src/clean-workspace.sh",
-        "options": {
-          "cwd": "{projectRoot}"
-        }
-      },
       "delete-all-local-git-branches": {
-        "command": "sh src/git/delete-all-local-git-branches.sh",
-        "options": {
-          "cwd": "{projectRoot}"
-        }
+        "command": "sh {projectRoot}/src/git/delete-all-local-git-branches.sh"
       },
       "format": {
-        "command": "sh src/format/format-all.sh",
-        "options": {
-          "cwd": "{projectRoot}"
-        }
+        "command": "sh {projectRoot}/src/format/format-all.sh"
       }
     }
   }
