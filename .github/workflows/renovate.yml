@@ -30,13 +30,13 @@ jobs:
         with:
           token: ${{ steps.create-renovate-app-token.outputs.token }}
 
-      - run: corepack enable
-
       - uses: actions/setup-node@v4
         with:
           cache: pnpm
           node-version-file: package.json
           cache-dependency-path: pnpm-lock.yaml
+
+      - run: corepack enable
 
       - run: pnpm i
 

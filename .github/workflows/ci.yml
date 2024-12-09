@@ -8,6 +8,31 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  lint-pr-title:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - run: corepack enable
+
+      - run: pnpm i
+
+      - run: pnpm nx run @robby-rabbitman/cv-tools-commitlint:commitlint
+        env:
+          CV_TOOLS_COMMITLINT_TEXT: ${{ github.event.pull_request.title }}
+
   ci:
     runs-on: ubuntu-latest
 
@@ -23,13 +48,13 @@ jobs:
 
       - uses: nrwl/nx-set-shas@v4
 
-      - run: corepack enable
-
       - uses: actions/setup-node@v4
         with:
           node-version-file: package.json
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
+
+      - run: corepack enable
 
       - run: pnpm i
 
