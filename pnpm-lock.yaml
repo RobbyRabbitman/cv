@@ -102,6 +102,9 @@ importers:
       '@nx/devkit':
         specifier: 20.2.1
         version: 20.2.1(nx@20.2.1(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.15)))
+      '@robby-rabbitman/cv-tools-eslint':
+        specifier: workspace:*
+        version: link:../eslint
       '@robby-rabbitman/cv-tools-vitest':
         specifier: workspace:*
         version: link:../vitest
@@ -140,7 +143,11 @@ importers:
 
   tools/typescript: {}
 
-  tools/vitest: {}
+  tools/vitest:
+    dependencies:
+      '@robby-rabbitman/cv-tools-eslint':
+        specifier: workspace:*
+        version: link:../eslint
 
   tools/workspace: {}
 

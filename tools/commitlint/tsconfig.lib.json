@@ -10,6 +10,9 @@
   "references": [
     {
       "path": "../vitest/tsconfig.lib.json"
+    },
+    {
+      "path": "../eslint/tsconfig.lib.json"
     }
   ]
 }
