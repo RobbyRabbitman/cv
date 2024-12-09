@@ -1,0 +1,53 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+
+    ":configMigration",
+
+    ":dependencyDashboard",
+
+    "group:monorepos",
+    "group:recommended",
+
+    "npm:unpublishSafe",
+
+    ":separateMajorReleases",
+    ":combinePatchMinorReleases",
+
+    ":automergeMinor",
+
+    ":semanticCommits",
+    ":semanticPrefixFixDepsChoreOthers",
+    ":semanticCommitTypeAll(chore)",
+    ":semanticCommitScopeDisabled",
+
+    ":prHourlyLimitNone",
+    ":prConcurrentLimitNone"
+  ],
+  "onboarding": false,
+  "requireConfig": "ignored",
+  "autoApprove": true,
+  "enabledManagers": ["npm"],
+  "labels": ["renovate"],
+  "lockFileMaintenance": { "enabled": true },
+  "packageRules": [
+    {
+      "description": "ignore '@robby-rabbitman/cv-*' packages, as nx release will handle it",
+      "enabled": false,
+      "matchPackageNames": ["/^@robby-rabbitman/cv-/"]
+    },
+    {
+      "description": "Groups all 'prettier' packages together. Remove me when there is a group preset",
+      "groupName": "prettier",
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["/^prettier$/", "/^prettier-/"]
+    },
+    {
+      "description": "Groups all 'nx' packages together. Remove me when there is a group preset",
+      "groupName": "nx",
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["/^@nx//", "/^nx$/"]
+    }
+  ]
+}
