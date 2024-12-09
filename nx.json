@@ -49,7 +49,11 @@
   "targetDefaults": {
     "test-vitest": {
       "inputs": ["test-vitest", "^test-vitest"],
+      "defaultConfiguration": "local",
       "configurations": {
+        "local": {
+          "ui": true
+        },
         "ci": {
           "run": true
         }
