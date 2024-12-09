@@ -14,7 +14,12 @@ const nxEslintConfig = [
       parser: jsoncEslintParser,
     },
     rules: {
-      '@nx/dependency-checks': ['error'],
+      '@nx/dependency-checks': [
+        'error',
+        {
+          buildTargets: ['build-tsc'],
+        },
+      ],
     },
   },
   // https://nx.dev/nx-api/eslint-plugin#enforce-module-boundaries-rule
