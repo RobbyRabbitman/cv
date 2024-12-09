@@ -2,10 +2,10 @@ name: lint-pr-title
 
 on:
   pull_request:
-    types: [edited]
+    types: [opened, reopened, synchronize, edited]
 
 concurrency:
-  group: ${{ github.head_ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

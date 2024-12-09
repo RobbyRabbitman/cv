@@ -28,7 +28,7 @@
   "onboarding": false,
   "requireConfig": "ignored",
   "autoApprove": true,
-  "enabledManagers": ["npm"],
+  "enabledManagers": ["npm", "nvm"],
   "labels": ["renovate"],
   "lockFileMaintenance": { "enabled": true },
   "packageRules": [
