@@ -2,7 +2,6 @@ name: lint-pr-title
 
 on:
   pull_request:
-    types: [opened, reopened, edited]
 
 concurrency:
   group: ${{ github.head_ref }}
