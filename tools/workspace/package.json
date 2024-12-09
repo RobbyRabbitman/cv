@@ -9,6 +9,12 @@
           "cwd": "{projectRoot}"
         }
       },
+      "delete-all-local-git-branches": {
+        "command": "sh src/git/delete-all-local-git-branches.sh",
+        "options": {
+          "cwd": "{projectRoot}"
+        }
+      },
       "format": {
         "command": "sh src/format/format-all.sh",
         "options": {
