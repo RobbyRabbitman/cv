@@ -58,7 +58,7 @@ jobs:
           test-vitest
 
       - run: >
-          pnpm nx affected -t sonar-scan -c ci --parallel 1
+          pnpm nx affected -t sonar-scan -c ci --parallel 1 --verbose
           --option sonar.organization=robby-rabbitman-cv
           --option sonar.token=${{ secrets.SONAR_TOKEN }}
           --option sonar.qualitygate.wait=true
