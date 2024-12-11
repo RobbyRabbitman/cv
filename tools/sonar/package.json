@@ -1,0 +1,32 @@
+{
+  "name": "@robby-rabbitman/cv-tools-sonar",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "yargs": "17.7.2",
+    "sonarqube-scanner": "4.2.6",
+    "@nx/devkit": "20.2.1",
+    "@robby-rabbitman/cv-tools-vitest": "workspace:*",
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@robby-rabbitman/cv-node-util": "workspace:*",
+    "memfs": "4.15.0"
+  },
+  "nx": {
+    "tags": [
+      "scope:node",
+      "type:tool"
+    ],
+    "targets": {
+      "exec-sonar-scan-cli": {
+        "command": "tsx {projectRoot}/src/sonar-scan/sonar-scan.cli.ts",
+        "options": {
+          "env": {
+            "TSX_TSCONFIG_PATH": "{projectRoot}/tsconfig.lib.json"
+          }
+        }
+      }
+    }
+  }
+}

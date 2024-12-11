@@ -1,4 +1,5 @@
 import { logger } from '@nx/devkit';
+import { join } from 'path';
 import {
   coverageConfigDefaults,
   defineConfig,
@@ -11,7 +12,16 @@ export function vitestNodeTypescript(userConfig?: Partial<UserConfig>) {
     test: {
       globals: true,
       environment: 'node',
-      reporters: ['default', 'hanging-process'],
+      reporters: [
+        'default',
+        'hanging-process',
+        [
+          'vitest-sonar-reporter',
+          {
+            outputFile: join('coverage', 'execution-report.xml'),
+          },
+        ],
+      ],
       coverage: {
         enabled: true,
         clean: true,

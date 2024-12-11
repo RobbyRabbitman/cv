@@ -1,5 +1,5 @@
 {
-  "extends": "../../../tools/typescript/src/tsconfig.node.json",
+  "extends": "../typescript/src/tsconfig.node.json",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
@@ -9,10 +9,13 @@
   "exclude": ["*.config.*", "src/**/*.spec.*"],
   "references": [
     {
-      "path": "../../../tools/vitest/tsconfig.lib.json"
+      "path": "../../libs/node/util/tsconfig.lib.json"
     },
     {
-      "path": "../../../tools/eslint/tsconfig.lib.json"
+      "path": "../vitest/tsconfig.lib.json"
+    },
+    {
+      "path": "../eslint/tsconfig.lib.json"
     }
   ]
 }

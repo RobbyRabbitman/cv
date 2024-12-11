@@ -84,6 +84,9 @@
     "test-vitest": {
       "inputs": ["test-vitest", "^test-vitest"],
       "defaultConfiguration": "local",
+      "options": {
+        "coverage": true
+      },
       "configurations": {
         "local": {
           "ui": true
