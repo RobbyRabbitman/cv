@@ -23,7 +23,26 @@
         ]
       }
     ],
-    "test-vitest": ["default", "vitestGlobals"]
+    "test-vitest": ["default", "vitestGlobals"],
+    "eslintGlobals": [
+      "{workspaceRoot}/tools/eslint/**/*",
+      {
+        "externalDependencies": [
+          "@eslint/js",
+          "@nx/eslint",
+          "@types/eslint-config-prettier",
+          "angular-eslint",
+          "eslint",
+          "eslint-config-prettier",
+          "eslint-plugin-chai-friendly",
+          "eslint-plugin-n",
+          "globals",
+          "jsonc-eslint-parser",
+          "typescript-eslint"
+        ]
+      }
+    ],
+    "lint-eslint": ["default", "eslintGlobals"]
   },
   "plugins": [
     {
@@ -39,6 +58,15 @@
       }
     },
     {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint-eslint"
+      }
+    },
+    {
+      "plugin": "@robby-rabbitman/cv-tools-nx-eslint-dependency-checks-plugin"
+    },
+    {
       "plugin": "@nx/vite/plugin",
       "options": {
         "buildTargetName": "build-vite",
@@ -47,6 +75,12 @@
     }
   ],
   "targetDefaults": {
+    "lint-eslint": {
+      "inputs": ["lint-eslint"],
+      "options": {
+        "report-unused-disable-directives": true
+      }
+    },
     "test-vitest": {
       "inputs": ["test-vitest", "^test-vitest"],
       "defaultConfiguration": "local",

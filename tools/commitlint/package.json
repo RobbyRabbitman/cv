@@ -1,18 +1,19 @@
 {
   "name": "@robby-rabbitman/cv-tools-commitlint",
   "version": "0.0.0",
-  "files": [
-    "dist",
-    "package.json"
-  ],
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "dependencies": {
+    "@nx/devkit": "20.2.1",
+    "@commitlint/types": "19.5.0",
     "@robby-rabbitman/cv-tools-vitest": "workspace:*",
-    "@nx/devkit": "20.2.1"
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*"
   },
   "nx": {
+    "tags": [
+      "type:tool"
+    ],
     "targets": {
       "commitlint": {
         "command": "echo \"$CV_TOOLS_COMMITLINT_TEXT\" | pnpm commitlint --config={projectRoot}/src/commitlint.config.ts --verbose"

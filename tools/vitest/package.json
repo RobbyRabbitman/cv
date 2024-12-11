@@ -1,11 +1,18 @@
 {
   "name": "@robby-rabbitman/cv-tools-vitest",
   "version": "0.0.0",
-  "files": [
-    "dist",
-    "package.json"
-  ],
   "type": "module",
   "main": "./dist/index.js",
-  "types": "./dist/index.d.ts"
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@nx/devkit": "20.2.1",
+    "vitest": "2.1.8",
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*"
+  },
+  "nx": {
+    "tags": [
+      "type:tool",
+      "scope:js"
+    ]
+  }
 }
