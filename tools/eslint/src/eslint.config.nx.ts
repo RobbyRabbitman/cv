@@ -17,7 +17,7 @@ const nxEslintConfig = [
       '@nx/dependency-checks': [
         'error',
         {
-          buildTargets: ['build-tsc'],
+          buildTargets: ['nx-eslint-dependency-checks-pseudo-build'],
         },
       ],
     },

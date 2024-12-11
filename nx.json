@@ -64,6 +64,9 @@
       }
     },
     {
+      "plugin": "@robby-rabbitman/cv-tools-nx-eslint-dependency-checks-plugin"
+    },
+    {
       "plugin": "@nx/vite/plugin",
       "options": {
         "buildTargetName": "build-vite",

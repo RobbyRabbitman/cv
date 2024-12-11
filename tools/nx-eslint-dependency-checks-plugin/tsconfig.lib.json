@@ -1,0 +1,10 @@
+{
+  "extends": "../typescript/src/tsconfig.node-cjs.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "tsBuildInfoFile": "node_modules/.cache/tsBuildInfo/tsconfig.lib.tsbuildinfo"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["*.config.*", "src/**/*.spec.*"]
+}
