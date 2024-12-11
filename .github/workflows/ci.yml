@@ -39,11 +39,23 @@ jobs:
 
       - run: pnpm nx sync:check
 
-      - run: pnpm nx affected -t lint lint-eslint typecheck typecheck-tsc -c ci
+      - run: >
+          pnpm nx affected -c ci -t
+          lint 
+          lint-eslint 
+          typecheck 
+          typecheck-tsc
 
-      - run: pnpm nx affected -t build build-tsc build-vite -c ci
+      - run: >
+          pnpm nx affected -c ci -t
+          build
+          build-tsc
+          build-vite
 
-      - run: pnpm nx affected -t test test-vitest -c ci
+      - run: >
+          pnpm nx affected -c ci -t
+          test
+          test-vitest
 
       - run: >
           pnpm nx affected -t sonar-scan -c ci
@@ -53,4 +65,4 @@ jobs:
           --option sonar.pullrequest.branch=${{ github.head_ref }}
           --option sonar.pullrequest.base=${{ github.base_ref }}
           --option sonar.qualitygate.wait=true
-          --option sonar.userHome=${{ runner.temp }}/.sonar
+          --option sonar.userHome=${{ github.workspace }}/.sonar
