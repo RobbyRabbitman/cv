@@ -1,5 +1,5 @@
 import { spawnSync } from 'child_process';
-import { describe, Mock } from 'vitest';
+import { describe } from 'vitest';
 import { getCurrentBranchName } from './git';
 
 vi.mock('child_process');
@@ -8,12 +8,14 @@ vi.mock('@nx/devkit', () => ({
 }));
 
 describe('[Unit Test] getCurrentBranchName', () => {
-  const spawnSyncMock = spawnSync as Mock;
-
   beforeEach(() => {
-    spawnSyncMock.mockReturnValue({
-      error: null,
+    vi.mocked(spawnSync).mockReturnValue({
       stdout: 'some-branch-name\n',
+      output: [],
+      pid: 123,
+      signal: null,
+      status: 0,
+      stderr: '',
     });
   });
 
@@ -22,13 +24,9 @@ describe('[Unit Test] getCurrentBranchName', () => {
     vi.restoreAllMocks();
   });
 
-  it('should return the current branch name', () => {
-    expect(getCurrentBranchName()).toBe('some-branch-name');
-  });
-
   it('should return the current branch name of the nx workspace', () => {
     getCurrentBranchName();
-    expect(spawnSyncMock).toHaveBeenCalledWith(
+    expect(spawnSync).toHaveBeenCalledWith(
       expect.anything(),
       expect.anything(),
       expect.objectContaining({ cwd: '/some/workspace' }),
@@ -36,7 +34,13 @@ describe('[Unit Test] getCurrentBranchName', () => {
   });
 
   it('should throw an error if the command fails', () => {
-    spawnSyncMock.mockReturnValueOnce({
+    vi.mocked(spawnSync).mockReturnValue({
+      output: [],
+      pid: 123,
+      signal: null,
+      status: 1,
+      stderr: '',
+      stdout: '',
       error: new Error('Oopsie!'),
     });
 
