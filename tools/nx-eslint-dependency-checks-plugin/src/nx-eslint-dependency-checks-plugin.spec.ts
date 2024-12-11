@@ -70,7 +70,7 @@ describe('[Unit Test] infer pseudo build target for eslint @nx/dependency-checks
           projects: {
             'project-1': expect.objectContaining({
               targets: expect.objectContaining({
-                'eslint-nx-dependency-checks-pseudo-build': expect.anything(),
+                'nx-eslint-dependency-checks-pseudo-build': expect.anything(),
               }),
             }),
           },
@@ -93,7 +93,7 @@ describe('[Unit Test] infer pseudo build target for eslint @nx/dependency-checks
           projects: {
             'project-1': expect.objectContaining({
               targets: expect.objectContaining({
-                'eslint-nx-dependency-checks-pseudo-build': {
+                'nx-eslint-dependency-checks-pseudo-build': {
                   command:
                     "echo 'It seems like you called me - you should not. I am just a workaround for https://github.com/nrwl/nx/issues/9748' && exit 1",
                 },
