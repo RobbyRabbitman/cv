@@ -4,6 +4,13 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
   "dependencies": {
     "yargs": "17.7.2",
     "sonarqube-scanner": "4.2.6",
@@ -20,12 +27,10 @@
     ],
     "targets": {
       "exec-sonar-scan-cli": {
-        "command": "tsx {projectRoot}/src/sonar-scan/sonar-scan.cli.ts",
-        "options": {
-          "env": {
-            "TSX_TSCONFIG_PATH": "{projectRoot}/tsconfig.lib.json"
-          }
-        }
+        "command": "node {projectRoot}/dist/sonar-scan/sonar-scan.cli.js",
+        "dependsOn": [
+          "build*"
+        ]
       }
     }
   }

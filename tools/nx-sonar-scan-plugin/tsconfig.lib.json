@@ -7,5 +7,18 @@
   },
   "include": ["src/**/*"],
   "exclude": ["*.config.*", "src/**/*.spec.*"],
-  "references": []
+  "references": [
+    {
+      "path": "../../libs/node/util/tsconfig.lib.json"
+    },
+    {
+      "path": "../sonar/tsconfig.lib.json"
+    },
+    {
+      "path": "../vitest/tsconfig.lib.json"
+    },
+    {
+      "path": "../eslint/tsconfig.lib.json"
+    }
+  ]
 }

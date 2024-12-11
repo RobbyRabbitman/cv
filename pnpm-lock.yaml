@@ -210,6 +210,9 @@ importers:
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
         version: link:../eslint
+      '@robby-rabbitman/cv-tools-sonar':
+        specifier: workspace:*
+        version: link:../sonar
       '@robby-rabbitman/cv-tools-vitest':
         specifier: workspace:*
         version: link:../vitest

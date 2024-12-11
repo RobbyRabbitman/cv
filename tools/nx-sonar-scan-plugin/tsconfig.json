@@ -7,6 +7,18 @@
   "exclude": [],
   "references": [
     {
+      "path": "../../libs/node/util"
+    },
+    {
+      "path": "../sonar"
+    },
+    {
+      "path": "../vitest"
+    },
+    {
+      "path": "../eslint"
+    },
+    {
       "path": "./tsconfig.lib.json"
     },
     {

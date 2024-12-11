@@ -3,7 +3,9 @@ import {
   type CreateNodesV2,
   type TargetConfiguration,
   createNodesFromFiles,
+  getPackageManagerCommand,
 } from '@nx/devkit';
+import sonarPackageJson from '@robby-rabbitman/cv-tools-sonar/package.json';
 import { dirname } from 'path';
 
 /**
@@ -32,7 +34,7 @@ export interface SonarScanPluginOptions {
 export const SONAR_PROJECT_PROPERTIES_GLOB = '**/sonar-project.properties';
 
 /** The command to run the sonar scan. */
-export const SONAR_SCAN_COMMAND = 'pnpm nx run tools-sonar:exec-sonar-scan-cli';
+export const SONAR_SCAN_COMMAND = `${getPackageManagerCommand().exec} nx run ${sonarPackageJson.name}:${'exec-sonar-scan-cli' satisfies keyof typeof sonarPackageJson.nx.targets}`;
 
 /** https://nx.dev/extending-nx/recipes/project-graph-plugins */
 export const createNodesV2 = [
