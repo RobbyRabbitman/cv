@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@nx/devkit": "20.2.1",
+    "@nx/devkit": "20.2.2",
     "vitest": "2.1.8",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*"
   },
