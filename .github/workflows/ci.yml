@@ -44,3 +44,5 @@ jobs:
       - run: pnpm nx affected -t build build-tsc build-vite -c ci
 
       - run: pnpm nx affected -t test test-vitest -c ci
+
+      - run: pnpm nx affected -t sonar-scan --option sonar.token=${{ secrets.SONAR_TOKEN }} -c ci

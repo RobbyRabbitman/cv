@@ -101,7 +101,8 @@ describe('[Unit Test] infer sonar scan targets', () => {
             'project-1': expect.objectContaining({
               targets: expect.objectContaining({
                 'sonar-scan': expect.objectContaining({
-                  command: 'pnpm nx run tools-sonar:exec-sonar-scan-cli',
+                  command:
+                    'npx nx run @robby-rabbitman/cv-tools-sonar:exec-sonar-scan-cli',
                 } satisfies SonarScanTargetConfiguration),
               }),
             }),
