@@ -46,10 +46,4 @@ jobs:
       - run: pnpm nx affected -t test test-vitest -c ci
 
       - run: |
-          pnpm nx affected -t sonar-scan -c ci \
-            --option sonar.organization=robby-rabbitman-cv \ 
-            --option sonar.token=${{ secrets.SONAR_TOKEN }} \
-            --option sonar.qualitygate.wait=true \
-            --option sonar.pullrequest.key=${{ github.event.number }} \
-            --option sonar.pullrequest.branch=${{ github.head_ref }} \
-            --option sonar.pullrequest.base=${{ github.base_ref }}
+          pnpm nx affected -t sonar-scan -c ci --option sonar.organization=robby-rabbitman-cv --option sonar.token=${{ secrets.SONAR_TOKEN }} --option sonar.qualitygate.wait=true --option sonar.pullrequest.key=${{ github.event.number }} --option sonar.pullrequest.branch=${{ github.head_ref }} --option sonar.pullrequest.base=${{ github.base_ref }}
