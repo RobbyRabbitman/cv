@@ -1,5 +1,4 @@
 import { logger, readCachedProjectGraph } from '@nx/devkit';
-import { getCurrentBranchName } from '@robby-rabbitman/cv-node-util';
 import { existsSync } from 'fs';
 import { join } from 'path';
 import { scan } from 'sonarqube-scanner';
@@ -116,20 +115,6 @@ export async function sonarScan(options: SonarScanOptions) {
     ...technologyBasedSonarProperties,
     ...properties,
   };
-
-  /**
-   * If the branch name is not provided in the properties set it to the current
-   * branch when its not a pull request - sonar will fail because their relation
-   * is exclusive.
-   */
-  const sonarBranchNameProperty = 'sonar.branch.name';
-  const sonarPullrequestBranchNameProperty = 'sonar.pullrequest.branch';
-  if (
-    !sonarProperties[sonarBranchNameProperty] &&
-    !sonarProperties[sonarPullrequestBranchNameProperty]
-  ) {
-    sonarProperties[sonarBranchNameProperty] = getCurrentBranchName();
-  }
 
   logger.verbose(
     '[sonarScan] invoking sonar scan with properties:',

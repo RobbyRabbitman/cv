@@ -93,21 +93,6 @@ describe('[Unit Test] sonarScan', () => {
 
   describe('when a project is found with the given name', () => {
     describe('should scan', () => {
-      it('with the current branch name when it is not set and it is not a pull request', () => {
-        sonarScan({
-          projectName: 'some-project',
-          workspaceRoot: workspaceRootMock,
-        });
-
-        expect(scan).toHaveBeenCalledWith(
-          expect.objectContaining({
-            options: expect.objectContaining({
-              'sonar.branch.name': 'some-branch-name',
-            }),
-          }),
-        );
-      });
-
       it('with the provided branch name', () => {
         sonarScan({
           projectName: 'some-project',
