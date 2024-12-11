@@ -11,6 +11,9 @@
     },
     {
       "path": "./tools/eslint"
+    },
+    {
+      "path": "./tools/nx-eslint-dependency-checks-plugin"
     }
   ]
 }
