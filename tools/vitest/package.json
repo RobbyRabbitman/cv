@@ -6,9 +6,7 @@
   "types": "./dist/index.d.ts",
   "dependencies": {
     "@nx/devkit": "20.2.1",
-    "vitest": "2.1.8"
-  },
-  "devDependencies": {
+    "vitest": "2.1.8",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*"
   },
   "nx": {
