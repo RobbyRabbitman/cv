@@ -16,9 +16,7 @@
     "package.json"
   ],
   "dependencies": {
-    "@nx/devkit": "20.2.1"
-  },
-  "devDependencies": {
+    "@nx/devkit": "20.2.1",
     "@robby-rabbitman/cv-tools-vitest": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "memfs": "4.15.0",
