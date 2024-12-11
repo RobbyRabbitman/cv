@@ -4,13 +4,13 @@
     "applyChanges": true
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"],
     "ci": [
       {
         "env": "CI"
       }
     ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"],
     "vitestGlobals": [
       "{projectRoot}/tools/vitest/**/*",
       {
@@ -23,9 +23,9 @@
         ]
       }
     ],
-    "test-vitest": ["default", "vitestGlobals"],
     "eslintGlobals": [
       "{workspaceRoot}/tools/eslint/**/*",
+      "{workspaceRoot}/tools/nx-eslint-dependency-checks-plugin/**/*",
       {
         "externalDependencies": [
           "@eslint/js",
@@ -42,7 +42,16 @@
         ]
       }
     ],
-    "lint-eslint": ["default", "eslintGlobals"]
+    "sonarScanGlobals": [
+      "{workspaceRoot}/tools/sonar/**/*",
+      "{workspaceRoot}/tools/nx-sonar-scan-plugin/**/*",
+      {
+        "externalDependencies": ["sonarqube-scanner"]
+      }
+    ],
+    "test-vitest": ["default", "vitestGlobals"],
+    "lint-eslint": ["default", "eslintGlobals"],
+    "sonar-scan": ["default", "sonarScanGlobals"]
   },
   "plugins": [
     {
@@ -71,6 +80,21 @@
       "options": {
         "buildTargetName": "build-vite",
         "testTargetName": "test-vitest"
+      }
+    },
+    {
+      "plugin": "@robby-rabbitman/cv-tools-nx-sonar-scan-plugin",
+      "options": {
+        "sonarScanTargetName": "sonar-scan",
+        "sonarScanTargetConfiguration": {
+          "cache": true,
+          "inputs": ["sonar-scan"],
+          "options": {
+            "projectName": "{projectName}",
+            "inferredProjectTechnology": "js={projectRoot}/vitest.config.ts"
+          },
+          "dependsOn": ["test*"]
+        }
       }
     }
   ],

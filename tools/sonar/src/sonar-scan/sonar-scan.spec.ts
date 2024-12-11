@@ -304,11 +304,6 @@ describe('[Unit Test] sonarScan', () => {
             expect(scan).toHaveBeenCalledWith(
               expect.objectContaining({
                 options: expect.objectContaining({
-                  /**
-                   * @hdi-components js projects have their tests in the src
-                   * directory next to the implementation unlike e.g. java
-                   * projects where tests are in a tests directory.
-                   */
                   'sonar.tests': 'src',
                 }),
               }),
@@ -502,7 +497,7 @@ describe('[Unit Test] defaultSonarProperties', () => {
     vi.unstubAllEnvs();
   });
 
-  it('should return the sonarqube server for hdi components ', () => {
+  it('should use the sonar cloud', () => {
     expect(defaultSonarProperties()['sonar.host.url']).toEqual(
       'https://sonarcloud.io',
     );
