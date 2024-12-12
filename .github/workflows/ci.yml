@@ -21,8 +21,8 @@ jobs:
           # the full git history is required for nrwl/nx-set-shas@v4
           fetch-depth: 0
 
-      # setup java for the sonar scanner => so it does not download it via its 'jre provisioning' and we can run in parallel
-      # see https://github.com/SonarSource/sonar-scanner-cli/blob/master/src/main/assembly/bin/sonar-scanner
+      # setup java so that the sonar scanner can run in parallel - note that 'jre provisioning' needs to be disabled,
+      # so that the scanner does not download multiple jre's at the start of the first parallel tasks
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
@@ -67,8 +67,11 @@ jobs:
           test
           test-vitest
 
+      # OBSERVATION: Running the sonar scan in parallel errors with 'Checksum verification failed for /home/runner/work/cv/cv/.sonar/cache/...' which is the sonars home directory
+      # TODO: remove parallel 1 when https://community.sonarsource.com/t/after-upgrade-to-sonar-to-10-6-error-checksum-verification-failed-for-jre/129056/24 is fixed
       - run: >
           pnpm nx affected -t sonar-scan -c ci
+          --parallel 1
           --option sonar.organization=robby-rabbitman-cv
           --option sonar.token=${{ secrets.SONAR_TOKEN }}
           --option sonar.userHome=${{ github.workspace }}/.sonar
