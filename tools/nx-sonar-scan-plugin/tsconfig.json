@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "composite": true
+  },
+  "files": [],
+  "include": [],
+  "exclude": [],
+  "references": [
+    {
+      "path": "../../libs/node/util"
+    },
+    {
+      "path": "../sonar"
+    },
+    {
+      "path": "../vitest"
+    },
+    {
+      "path": "../eslint"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

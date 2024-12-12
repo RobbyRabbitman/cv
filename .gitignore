@@ -3,9 +3,12 @@ dist-spec
 tmp
 node_modules
 coverage
+.sonar
 
 .DS_Store
 Thumbs.db
 
 .nx/cache
 .nx/workspace-data
+
+**/*.timestamp-*

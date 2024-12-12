@@ -21,6 +21,13 @@ jobs:
           # the full git history is required for nrwl/nx-set-shas@v4
           fetch-depth: 0
 
+      # setup java so that the sonar scanner can run in parallel - note that 'jre provisioning' needs to be disabled,
+      # so that the scanner does not download multiple jre's at the start of the first parallel tasks
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
       - uses: nrwl/nx-set-shas@v4
 
       - run: corepack enable
@@ -31,6 +38,9 @@ jobs:
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
 
+      - run: echo 'NX_VERBOSE_LOGGING=true' >> $GITHUB_ENV
+        if: ${{ runner.debug }} == '1'
+
       - run: pnpm i
 
       - run: pnpm nx report --verbose
@@ -39,8 +49,31 @@ jobs:
 
       - run: pnpm nx sync:check
 
-      - run: pnpm nx affected -t lint lint-eslint typecheck typecheck-tsc -c ci
+      - run: >
+          pnpm nx affected -c ci -t
+          lint 
+          lint-eslint 
+          typecheck 
+          typecheck-tsc
 
-      - run: pnpm nx affected -t build build-tsc build-vite -c ci
+      - run: >
+          pnpm nx affected -c ci -t
+          build
+          build-tsc
+          build-vite
 
-      - run: pnpm nx affected -t test test-vitest -c ci
+      - run: >
+          pnpm nx affected -c ci -t
+          test
+          test-vitest
+
+      # OBSERVATION: Running the sonar scan in parallel errors with 'Checksum verification failed for /home/runner/work/cv/cv/.sonar/cache/...' which is the sonars home directory
+      # TODO: remove parallel 1 when https://community.sonarsource.com/t/after-upgrade-to-sonar-to-10-6-error-checksum-verification-failed-for-jre/129056/24 is fixed
+      - run: >
+          pnpm nx affected -t sonar-scan -c ci
+          --parallel 1
+          --option sonar.organization=robby-rabbitman-cv
+          --option sonar.token=${{ secrets.SONAR_TOKEN }}
+          --option sonar.userHome=${{ github.workspace }}/.sonar
+          --option sonar.qualitygate.wait=true
+          --option sonar.scanner.skipJreProvisioning=true

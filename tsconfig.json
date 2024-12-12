@@ -14,6 +14,15 @@
     },
     {
       "path": "./tools/nx-eslint-dependency-checks-plugin"
+    },
+    {
+      "path": "./libs/node/util"
+    },
+    {
+      "path": "./tools/sonar"
+    },
+    {
+      "path": "./tools/nx-sonar-scan-plugin"
     }
   ]
 }
