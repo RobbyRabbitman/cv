@@ -91,7 +91,7 @@
           "inputs": ["sonar-scan"],
           "options": {
             "projectName": "{projectName}",
-            "inferredProjectTechnology": "js={projectRoot}/vitest.config.ts"
+            "inferredProjectTechnology": "js={projectRoot}/vitest.config.ts,js={projectRoot}/vitest.config.mts"
           },
           "dependsOn": ["test*"]
         }
