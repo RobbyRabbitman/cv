@@ -1,6 +1,9 @@
 {
   "name": "@robby-rabbitman/cv-tools-renovate-bot",
   "version": "0.0.0",
+  "dependencies": {
+    "renovate": "39.62.6"
+  },
   "nx": {
     "tags": [
       "type:tool"
