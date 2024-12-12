@@ -33,6 +33,9 @@ jobs:
 
       - run: pnpm i
 
+      - run: NX_VERBOSE_LOGGING=true >> $GITHUB_ENV
+        if: ${{ runner.debug }} == '1'
+
       - run: pnpm nx report --verbose
 
       - run: pnpm nx format:check
