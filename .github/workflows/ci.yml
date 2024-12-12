@@ -73,4 +73,4 @@ jobs:
           --option sonar.token=${{ secrets.SONAR_TOKEN }}
           --option sonar.userHome=${{ github.workspace }}/.sonar
           --option sonar.qualitygate.wait=true
-          --option sonar.scanner.skipJreProvisioning=false
+          --option sonar.scanner.skipJreProvisioning=true
