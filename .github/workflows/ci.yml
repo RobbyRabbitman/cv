@@ -64,10 +64,5 @@ jobs:
           pnpm nx affected -t sonar-scan -c ci --parallel 1
           --option sonar.organization=robby-rabbitman-cv
           --option sonar.token=${{ secrets.SONAR_TOKEN }}
-          --option sonar.qualitygate.wait=true
           --option sonar.userHome=${{ github.workspace }}/.sonar
-          --option sonar.log.level=TRACE
-          --option sonar.projectCreation.mainBranchName=main
-        # --option sonar.pullrequest.key=${{ github.event.number }}
-        # --option sonar.pullrequest.branch=${{ github.head_ref }}
-        # --option sonar.pullrequest.base=${{ github.base_ref }}
+          --option sonar.qualitygate.wait=true
