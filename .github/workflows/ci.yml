@@ -21,6 +21,13 @@ jobs:
           # the full git history is required for nrwl/nx-set-shas@v4
           fetch-depth: 0
 
+      # setup java for the sonar scanner => so it does not download it via its 'jre provisioning' and we can run in parallel
+      # see https://github.com/SonarSource/sonar-scanner-cli/blob/master/src/main/assembly/bin/sonar-scanner
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
       - uses: nrwl/nx-set-shas@v4
 
       - run: corepack enable
@@ -61,7 +68,7 @@ jobs:
           test-vitest
 
       - run: >
-          pnpm nx affected -t sonar-scan -c ci --parallel 1
+          pnpm nx affected -t sonar-scan -c ci
           --option sonar.organization=robby-rabbitman-cv
           --option sonar.token=${{ secrets.SONAR_TOKEN }}
           --option sonar.userHome=${{ github.workspace }}/.sonar
