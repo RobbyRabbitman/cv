@@ -69,3 +69,4 @@ jobs:
           --option sonar.pullrequest.key=${{ github.event.number }}
           --option sonar.pullrequest.branch=${{ github.head_ref }}
           --option sonar.pullrequest.base=${{ github.base_ref }}
+          --option sonar.log.level=TRACE
