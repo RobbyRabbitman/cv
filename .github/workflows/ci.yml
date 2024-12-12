@@ -2,10 +2,18 @@ name: ci
 
 on:
   pull_request:
+  push:
+    branches:
+      # needs to run the main branch aswell
+      # - for the sonar scan 'main' branch analysis
+      # - for the 'nx-set-shas' task to find the last successful commit as the base for nx affected
+      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # - cancel any previous runs in progress for new pushes on the same pull request
+  # - run every push on main, so that sonar scans are not cancelled for the main branch
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   ci:
@@ -21,14 +29,17 @@ jobs:
           # the full git history is required for nrwl/nx-set-shas@v4
           fetch-depth: 0
 
-      # setup java so that the sonar scanner can run in parallel - note that 'jre provisioning' needs to be disabled,
-      # so that the scanner does not download multiple jre's at the start of the first parallel tasks
+      # setup java so that the sonar scanner can run in parallel
+      # - note that 'jre provisioning' needs to be disabled, so that the scanner does not download multiple jre's at the start of the first parallel tasks as the scanners jre caching mechanism is used instead is not build for parallel execution
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '21'
 
       - uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: main
+          last-successful-event: push
 
       - run: corepack enable
 
