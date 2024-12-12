@@ -31,10 +31,10 @@ jobs:
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
 
-      - run: pnpm i
-
       - run: echo 'NX_VERBOSE_LOGGING=true' >> $GITHUB_ENV
         if: ${{ runner.debug }} == 1
+
+      - run: pnpm i
 
       - run: pnpm nx report --verbose
 
