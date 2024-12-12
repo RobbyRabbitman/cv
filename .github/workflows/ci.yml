@@ -66,6 +66,7 @@ jobs:
           --option sonar.token=${{ secrets.SONAR_TOKEN }}
           --option sonar.qualitygate.wait=true
           --option sonar.userHome=${{ github.workspace }}/.sonar
+          --option sonar.projectCreation.mainBranchName=main
       # --option sonar.pullrequest.key=${{ github.event.number }}
       # --option sonar.pullrequest.branch=${{ github.head_ref }}
       # --option sonar.pullrequest.base=${{ github.base_ref }}
