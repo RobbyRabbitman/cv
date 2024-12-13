@@ -25,10 +25,10 @@
     "@nx/eslint": "20.2.2",
     "@nx/js": "20.2.2",
     "@nx/vite": "20.2.2",
-    "@robby-rabbitman/cv-tools-nx-eslint-dependency-checks-plugin": "workspace:*",
-    "@robby-rabbitman/cv-tools-nx-sonar-scan-plugin": "workspace:*",
     "@robby-rabbitman/cv-tools-nx-angular-plugin": "workspace:*",
+    "@robby-rabbitman/cv-tools-nx-eslint-dependency-checks-plugin": "workspace:*",
     "@robby-rabbitman/cv-tools-nx-ng-packagr-plugin": "workspace:*",
+    "@robby-rabbitman/cv-tools-nx-sonar-scan-plugin": "workspace:*",
     "@types/eslint-config-prettier": "6.11.3",
     "@types/jasmine": "5.1.5",
     "@types/karma": "6.3.9",
@@ -72,6 +72,9 @@
     "node": "22.12.0"
   },
   "devDependencies": {
-    "@analogjs/vite-plugin-angular": "1.10.1"
+    "@analogjs/vite-plugin-angular": "1.10.1",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.49",
+    "tailwindcss": "3.4.16"
   }
 }
