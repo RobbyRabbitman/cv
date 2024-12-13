@@ -54,7 +54,6 @@ const createNgPackagrTargets: CreateNodesFunction<
       outputs: ['{projectRoot}/coverage'],
       options: {
         cwd: '{projectRoot}',
-        include: ['src/**/*.spec.*'],
         tsConfig: 'tsconfig.spec.json',
       },
     },
