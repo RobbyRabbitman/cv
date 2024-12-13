@@ -1,0 +1,7 @@
+{
+  // a ts config for the web
+  "extends": "./base/tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM", "DOM.Iterable"]
+  }
+}

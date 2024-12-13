@@ -20,6 +20,10 @@ const tsEslintConfig = [
          * https://github.com/ihordiachenko/eslint-plugin-chai-friendly/issues/41
          */
         '@typescript-eslint/no-unused-expressions': 'off',
+        '@typescript-eslint/no-extraneous-class': [
+          'error',
+          { allowWithDecorator: true },
+        ],
       },
     })),
   /**

@@ -1,0 +1,13 @@
+{
+  "extends": "../../../tools/typescript/src/tsconfig.ng-app.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app"
+  },
+  "files": ["src/main.ts"],
+  "include": ["src/**/*.d.ts"],
+  "references": [
+    {
+      "path": "../../../tools/eslint/tsconfig.lib.json"
+    }
+  ]
+}

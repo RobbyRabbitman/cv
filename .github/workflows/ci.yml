@@ -74,11 +74,15 @@ jobs:
           build
           build-tsc
           build-vite
+          build-angular
+          build-ng-packagr
 
       - run: >
           pnpm nx affected -c ci -t
           test
           test-vitest
+          test-angular
+          test-ng-packagr
 
       # OBSERVATION: Running the sonar scan in parallel errors with 'Checksum verification failed for /home/runner/work/cv/cv/.sonar/cache/...' which is the sonars home directory
       # TODO: remove parallel 1 when https://community.sonarsource.com/t/after-upgrade-to-sonar-to-10-6-error-checksum-verification-failed-for-jre/129056/24 is fixed

@@ -1,10 +1,11 @@
 dist
 dist-spec
+out-tsc
 tmp
 node_modules
 coverage
 .sonar
-
+.angular
 .DS_Store
 Thumbs.db
 

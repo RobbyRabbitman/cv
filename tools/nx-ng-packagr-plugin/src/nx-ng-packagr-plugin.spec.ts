@@ -162,7 +162,7 @@ describe('[Unit Test] infer ng-packagr targets', () => {
       ]);
     });
 
-    it('should use the @angular-devkit/build-angular:web-test-runner when no testTargetConfiguration is provided in the schema', async () => {
+    it('should use the @angular-devkit/build-angular:karma when no testTargetConfiguration is provided in the schema', async () => {
       const nodes = await inferNgPackagrTargets({
         directories: {
           'project-1/ng-package.json': '',
@@ -176,14 +176,16 @@ describe('[Unit Test] infer ng-packagr targets', () => {
             projects: {
               'project-1': expect.objectContaining({
                 targets: expect.objectContaining({
-                  test: expect.objectContaining({
-                    executor: '@angular-devkit/build-angular:web-test-runner',
+                  test: {
+                    executor: '@angular-devkit/build-angular:karma',
+                    cache: true,
+                    inputs: ['default', '^default'],
+                    outputs: ['{projectRoot}/coverage'],
                     options: {
-                      include: ['{projectRoot}/src/**/*.spec.ts'],
-                      tsConfig: '{projectRoot}/tsconfig.spec.json',
-                      polyfills: ['zone.js', 'zone.js/testing'],
+                      cwd: '{projectRoot}',
+                      tsConfig: 'tsconfig.spec.json',
                     },
-                  }),
+                  },
                 }),
               }),
             },
@@ -300,13 +302,15 @@ describe('[Unit Test] infer ng-packagr targets', () => {
             projects: {
               'project-1': expect.objectContaining({
                 targets: expect.objectContaining({
-                  build: expect.objectContaining({
+                  build: {
                     command: 'ng-packagr',
+                    cache: true,
+                    inputs: ['default', '^default'],
                     outputs: ['{projectRoot}/dist'],
                     options: {
                       cwd: '{projectRoot}',
                     },
-                  }),
+                  },
                 }),
               }),
             },
@@ -338,14 +342,14 @@ describe('[Unit Test] infer ng-packagr targets', () => {
             projects: {
               'project-1': expect.objectContaining({
                 targets: expect.objectContaining({
-                  build: {
+                  build: expect.objectContaining({
                     command: 'custom command',
                     outputs: ['custom-output'],
                     options: {
                       cwd: '{projectRoot}',
                       custom: 'option',
                     },
-                  },
+                  }),
                 }),
               }),
             },

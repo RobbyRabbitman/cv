@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.ng.json",
+  "compilerOptions": {
+    // https://github.com/angular/angular/issues/57850#issuecomment-2376411680
+    "composite": false
+  }
+}

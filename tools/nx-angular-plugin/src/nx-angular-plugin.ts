@@ -6,38 +6,40 @@ import {
 } from '@nx/devkit';
 import { dirname } from 'path';
 
-export type NgPackagrPluginSchema = Partial<NgPackagrPluginOptions>;
+export type AngularPluginSchema = Partial<AngularPluginOptions>;
 
-export interface NgPackagrPluginOptions {
+export interface AngularPluginOptions {
   buildTargetName: string;
   buildTargetConfiguration?: TargetConfiguration;
+  serveTargetName: string;
+  serveTargetConfiguration?: TargetConfiguration;
   testTargetName: string;
   testTargetConfiguration?: TargetConfiguration;
 }
 
-const NG_PACKAGR_CONFIG_FILE_NAME = 'ng-package.json';
-const NG_PACKAGR_CONFIG_GLOB = `**/${NG_PACKAGR_CONFIG_FILE_NAME}`;
+const ANGULAR_CONFIG_FILE_NAME = 'angular.json';
+const ANGULAR_CONFIG_GLOB = `**/${ANGULAR_CONFIG_FILE_NAME}`;
 
 /** https://nx.dev/extending-nx/recipes/project-graph-plugins */
 export const createNodesV2 = [
-  NG_PACKAGR_CONFIG_GLOB,
-  (ngPackagrConfigPaths, schema, context) =>
+  ANGULAR_CONFIG_GLOB,
+  (angularConfigPaths, schema, context) =>
     createNodesFromFiles(
-      createNgPackagrTargets,
-      ngPackagrConfigPaths,
+      createAngularTargets,
+      angularConfigPaths,
       schema,
       context,
     ),
-] satisfies CreateNodesV2<NgPackagrPluginSchema>;
+] satisfies CreateNodesV2<AngularPluginSchema>;
 
-const createNgPackagrTargets: CreateNodesFunction<
-  NgPackagrPluginSchema | undefined
-> = (ngPackagrConfigPath, schema) => {
+const createAngularTargets: CreateNodesFunction<
+  AngularPluginSchema | undefined
+> = (angularConfigPath, schema) => {
   const defaultOptions = {
     /** Build */
     buildTargetName: 'build',
     buildTargetConfiguration: {
-      command: 'ng-packagr',
+      command: 'ng build',
       cache: true,
       inputs: ['default', '^default'],
       outputs: ['{projectRoot}/dist'],
@@ -48,16 +50,23 @@ const createNgPackagrTargets: CreateNodesFunction<
     /** Test */
     testTargetName: 'test',
     testTargetConfiguration: {
-      executor: '@angular-devkit/build-angular:karma',
+      command: 'ng test',
       cache: true,
       inputs: ['default', '^default'],
       outputs: ['{projectRoot}/coverage'],
       options: {
         cwd: '{projectRoot}',
-        tsConfig: 'tsconfig.spec.json',
       },
     },
-  } satisfies NgPackagrPluginOptions;
+    /** Serve */
+    serveTargetName: 'serve',
+    serveTargetConfiguration: {
+      command: 'ng serve',
+      options: {
+        cwd: '{projectRoot}',
+      },
+    },
+  } satisfies AngularPluginOptions;
 
   const normalizedOptions = {
     /** Build */
@@ -80,13 +89,23 @@ const createNgPackagrTargets: CreateNodesFunction<
         ...schema?.testTargetConfiguration?.options,
       },
     },
-  } satisfies NgPackagrPluginOptions;
+    /** Serve */
+    serveTargetName: schema?.serveTargetName || defaultOptions.serveTargetName,
+    serveTargetConfiguration: {
+      ...defaultOptions.serveTargetConfiguration,
+      ...schema?.serveTargetConfiguration,
+      options: {
+        ...defaultOptions.serveTargetConfiguration.options,
+        ...schema?.serveTargetConfiguration?.options,
+      },
+    },
+  } satisfies AngularPluginOptions;
 
-  const ngPackagrProjectRoot = dirname(ngPackagrConfigPath);
+  const angularProjectRoot = dirname(angularConfigPath);
 
   return {
     projects: {
-      [ngPackagrProjectRoot]: {
+      [angularProjectRoot]: {
         targets: {
           /** Build */
           [normalizedOptions.buildTargetName]:
@@ -94,6 +113,9 @@ const createNgPackagrTargets: CreateNodesFunction<
           /** Test */
           [normalizedOptions.testTargetName]:
             normalizedOptions.testTargetConfiguration,
+          /** Serve */
+          [normalizedOptions.serveTargetName]:
+            normalizedOptions.serveTargetConfiguration,
         },
       },
     },

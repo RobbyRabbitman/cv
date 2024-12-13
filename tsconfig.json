@@ -26,6 +26,12 @@
     },
     {
       "path": "./tools/nx-ng-packagr-plugin"
+    },
+    {
+      "path": "./tools/nx-angular-plugin"
+    },
+    {
+      "path": "./apps/web/cv"
     }
   ]
 }

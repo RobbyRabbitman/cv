@@ -42,6 +42,52 @@
         ]
       }
     ],
+    "angularGlobals": [
+      "{workspaceRoot}/tools/nx-angular-plugin/**/*",
+      {
+        "externalDependencies": [
+          "@angular-devkit/build-angular",
+          "@angular/animations",
+          "@angular/cli",
+          "@angular/common",
+          "@angular/compiler-cli",
+          "@angular/compiler",
+          "@angular/core",
+          "@angular/forms",
+          "@angular/platform-browser-dynamic",
+          "@angular/platform-browser",
+          "@angular/router",
+
+          "rxjs",
+          "typescript",
+          "tslib",
+
+          "vite"
+        ]
+      }
+    ],
+    "ngPackagrGlobals": [
+      "{workspaceRoot}/tools/nx-ng-packagr-plugin/**/*",
+      {
+        "externalDependencies": ["ng-packagr"]
+      }
+    ],
+    "karmaGlobals": [
+      {
+        "externalDependencies": [
+          "karma-chrome-launcher",
+          "karma-coverage",
+          "karma-jasmine-html-reporter",
+          "karma-jasmine",
+          "karma"
+        ]
+      }
+    ],
+    "jasmineGlobals": [
+      {
+        "externalDependencies": ["jasmine-core", "@types/jasmine"]
+      }
+    ],
     "sonarScanGlobals": [
       "{workspaceRoot}/tools/sonar/**/*",
       "{workspaceRoot}/tools/nx-sonar-scan-plugin/**/*",
@@ -51,7 +97,11 @@
     ],
     "test-vitest": ["default", "vitestGlobals"],
     "lint-eslint": ["default", "eslintGlobals"],
-    "sonar-scan": ["default", "sonarScanGlobals"]
+    "sonar-scan": ["default", "sonarScanGlobals"],
+    "build-angular": ["default", "angularGlobals"],
+    "test-angular": ["build-angular", "karmaGlobals", "jasmineGlobals"],
+    "build-ng-packagr": ["default", "angularGlobals", "ngPackagrGlobals"],
+    "test-ng-packagr": ["build-ng-packagr", "karmaGlobals", "jasmineGlobals"]
   },
   "plugins": [
     {
@@ -76,10 +126,40 @@
       "plugin": "@robby-rabbitman/cv-tools-nx-eslint-dependency-checks-plugin"
     },
     {
+      "plugin": "@robby-rabbitman/cv-tools-nx-angular-plugin",
+      "options": {
+        "buildTargetName": "build-angular",
+        "testTargetName": "test-angular",
+        "serveTargetName": "serve",
+        "buildTargetConfiguration": {
+          "inputs": ["build-angular", "^build-angular"]
+        },
+        "testTargetConfiguration": {
+          "inputs": ["test-angular", "^test-angular"],
+          "options": {
+            "code-coverage": true
+          },
+          "configurations": {
+            "ci": {
+              "watch": false,
+              "progress": false,
+              "browsers": "ChromeHeadless"
+            }
+          }
+        }
+      }
+    },
+    {
       "plugin": "@robby-rabbitman/cv-tools-nx-ng-packagr-plugin",
       "options": {
         "buildTargetName": "build-ng-packagr",
-        "testTargetName": "test-ng-packagr"
+        "testTargetName": "test-ng-packagr",
+        "buildTargetConfiguration": {
+          "inputs": ["build-ng-packagr", "^build-ng-packagr"]
+        },
+        "testTargetConfiguration": {
+          "inputs": ["test-ng-packagr", "^test-ng-packagr"]
+        }
       }
     },
     {
