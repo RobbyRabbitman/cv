@@ -56,7 +56,6 @@ const createNgPackagrTargets: CreateNodesFunction<
         cwd: '{projectRoot}',
         include: ['src/**/*.spec.*'],
         tsConfig: 'tsconfig.spec.json',
-        polyfills: ['zone.js', 'zone.js/testing'],
       },
     },
   } satisfies NgPackagrPluginOptions;

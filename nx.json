@@ -58,7 +58,6 @@
           "@angular/platform-browser",
           "@angular/router",
 
-          "zone.js",
           "rxjs",
           "typescript",
           "tslib",
@@ -136,7 +135,17 @@
           "inputs": ["build-angular", "^build-angular"]
         },
         "testTargetConfiguration": {
-          "inputs": ["test-angular", "^test-angular"]
+          "inputs": ["test-angular", "^test-angular"],
+          "options": {
+            "code-coverage": true
+          },
+          "configurations": {
+            "ci": {
+              "watch": false,
+              "progress": false,
+              "browsers": "ChromeHeadless"
+            }
+          }
         }
       }
     },

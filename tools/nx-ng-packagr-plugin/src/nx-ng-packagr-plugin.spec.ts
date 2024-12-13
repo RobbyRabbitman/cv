@@ -162,7 +162,7 @@ describe('[Unit Test] infer ng-packagr targets', () => {
       ]);
     });
 
-    it('should use the @angular-devkit/build-angular:web-test-runner when no testTargetConfiguration is provided in the schema', async () => {
+    it('should use the @angular-devkit/build-angular:karma when no testTargetConfiguration is provided in the schema', async () => {
       const nodes = await inferNgPackagrTargets({
         directories: {
           'project-1/ng-package.json': '',
@@ -177,15 +177,13 @@ describe('[Unit Test] infer ng-packagr targets', () => {
               'project-1': expect.objectContaining({
                 targets: expect.objectContaining({
                   test: {
-                    executor: '@angular-devkit/build-angular:web-test-runner',
+                    executor: '@angular-devkit/build-angular:karma',
                     cache: true,
                     inputs: ['default', '^default'],
                     outputs: ['{projectRoot}/coverage'],
                     options: {
                       cwd: '{projectRoot}',
-                      include: ['src/**/*.spec.*'],
                       tsConfig: 'tsconfig.spec.json',
-                      polyfills: ['zone.js', 'zone.js/testing'],
                     },
                   },
                 }),
