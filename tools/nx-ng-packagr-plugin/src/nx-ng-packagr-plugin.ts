@@ -1,7 +1,6 @@
 import {
   type CreateNodesFunction,
   type CreateNodesV2,
-  type ProjectConfiguration,
   type TargetConfiguration,
   createNodesFromFiles,
 } from '@nx/devkit';
@@ -13,7 +12,7 @@ export interface NgPackagrPluginOptions {
   buildTargetName: string;
   buildTargetConfiguration?: TargetConfiguration;
   testTargetName: string;
-  testTargetConfiguration: TargetConfiguration;
+  testTargetConfiguration?: TargetConfiguration;
 }
 
 const NG_PACKAGR_CONFIG_FILE_NAME = 'ng-package.json';
@@ -35,20 +34,42 @@ const createNgPackagrTargets: CreateNodesFunction<
   NgPackagrPluginSchema | undefined
 > = (ngPackagrConfigPath, schema) => {
   const defaultOptions = {
+    /** Build */
     buildTargetName: 'build',
+    buildTargetConfiguration: {
+      command: 'ng-packagr',
+      cache: true,
+      inputs: ['default', '^default'],
+      outputs: ['{projectRoot}/dist'],
+      options: {
+        cwd: '{projectRoot}',
+      },
+    },
+    /** Test */
     testTargetName: 'test',
     testTargetConfiguration: {
       executor: '@angular-devkit/build-angular:web-test-runner',
       options: {
-        include: ['{projectRoot}/src/**/*.spec.ts'],
-        tsConfig: '{projectRoot}/tsconfig.spec.json',
+        cwd: '{projectRoot}',
+        include: ['src/**/*.spec.*'],
+        tsConfig: 'tsconfig.spec.json',
         polyfills: ['zone.js', 'zone.js/testing'],
       },
     },
   } satisfies NgPackagrPluginOptions;
 
   const normalizedOptions = {
+    /** Build */
     buildTargetName: schema?.buildTargetName || defaultOptions.buildTargetName,
+    buildTargetConfiguration: {
+      ...defaultOptions.buildTargetConfiguration,
+      ...schema?.buildTargetConfiguration,
+      options: {
+        ...defaultOptions.buildTargetConfiguration.options,
+        ...schema?.buildTargetConfiguration?.options,
+      },
+    },
+    /** Test */
     testTargetName: schema?.testTargetName || defaultOptions.testTargetName,
     testTargetConfiguration: {
       ...defaultOptions.testTargetConfiguration,
@@ -58,30 +79,21 @@ const createNgPackagrTargets: CreateNodesFunction<
         ...schema?.testTargetConfiguration?.options,
       },
     },
-    buildTargetConfiguration: schema?.buildTargetConfiguration,
   } satisfies NgPackagrPluginOptions;
 
   const ngPackagrProjectRoot = dirname(ngPackagrConfigPath);
 
-  const ngPackagrTargets: NonNullable<ProjectConfiguration['targets']> = {};
-
-  ngPackagrTargets[normalizedOptions.buildTargetName] = {
-    command: 'ng-packagr',
-    outputs: ['{projectRoot}/dist'],
-    ...normalizedOptions.buildTargetConfiguration,
-    options: {
-      cwd: '{projectRoot}',
-      ...normalizedOptions.buildTargetConfiguration?.options,
-    },
-  };
-
-  ngPackagrTargets[normalizedOptions.testTargetName] =
-    normalizedOptions.testTargetConfiguration;
-
   return {
     projects: {
       [ngPackagrProjectRoot]: {
-        targets: ngPackagrTargets,
+        targets: {
+          /** Build */
+          [normalizedOptions.buildTargetName]:
+            normalizedOptions.buildTargetConfiguration,
+          /** Test */
+          [normalizedOptions.testTargetName]:
+            normalizedOptions.testTargetConfiguration,
+        },
       },
     },
   };
