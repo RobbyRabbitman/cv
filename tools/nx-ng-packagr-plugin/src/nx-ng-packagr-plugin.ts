@@ -49,6 +49,9 @@ const createNgPackagrTargets: CreateNodesFunction<
     testTargetName: 'test',
     testTargetConfiguration: {
       executor: '@angular-devkit/build-angular:web-test-runner',
+      cache: true,
+      inputs: ['default', '^default'],
+      outputs: ['{projectRoot}/coverage'],
       options: {
         cwd: '{projectRoot}',
         include: ['src/**/*.spec.*'],
