@@ -1,5 +1,5 @@
 {
-  "name": "@robby-rabbitman/cv-node-util",
+  "name": "@robby-rabbitman/cv-libs-node-util",
   "version": "0.0.0",
   "type": "module",
   "main": "./dist/index.js",

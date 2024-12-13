@@ -3,7 +3,7 @@ import {
   readCachedProjectGraph,
   targetToTargetString,
 } from '@nx/devkit';
-import { getCurrentBranchName } from '@robby-rabbitman/cv-node-util';
+import { getCurrentBranchName } from '@robby-rabbitman/cv-libs-node-util';
 import { spawnSync, type SpawnSyncReturns } from 'child_process';
 import { mkdir, writeFile } from 'fs/promises';
 import { vol } from 'memfs';
@@ -13,7 +13,7 @@ import { defaultSonarProperties, sonarScan } from './sonar-scan';
 
 vi.mock('@nx/devkit');
 vi.mock('child_process');
-vi.mock('@robby-rabbitman/cv-node-util');
+vi.mock('@robby-rabbitman/cv-libs-node-util');
 vi.mock('sonarqube-scanner');
 vi.mock('fs', async () => {
   const memfs = await vi.importActual<typeof import('memfs')>('memfs');
