@@ -5,6 +5,7 @@ export const ignoreEslintConfig = [
     ignores: [
       'dist/',
       'dist-spec/',
+      'out-tsc/',
       'node_modules/',
       'tmp/',
       'coverage/',
