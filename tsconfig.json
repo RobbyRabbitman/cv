@@ -23,6 +23,9 @@
     },
     {
       "path": "./tools/nx-sonar-scan-plugin"
+    },
+    {
+      "path": "./tools/nx-ng-packagr-plugin"
     }
   ]
 }
