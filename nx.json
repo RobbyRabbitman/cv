@@ -136,7 +136,6 @@
           "inputs": ["build-angular", "^build-angular"]
         },
         "testTargetConfiguration": {
-          "command": "web-test-runner",
           "inputs": ["test-angular", "^test-angular"]
         }
       }
@@ -150,7 +149,6 @@
           "inputs": ["build-ng-packagr", "^build-ng-packagr"]
         },
         "testTargetConfiguration": {
-          "command": "web-test-runner",
           "inputs": ["test-ng-packagr", "^test-ng-packagr"]
         }
       }
