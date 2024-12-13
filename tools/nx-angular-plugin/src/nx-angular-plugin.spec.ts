@@ -1,9 +1,9 @@
 import { type CreateNodesContextV2, type CreateNodesResult } from '@nx/devkit';
-import { type DirectoryJSON, vol } from 'memfs';
+import { vol, type DirectoryJSON } from 'memfs';
 import { minimatch } from 'minimatch';
 import {
   createNodesV2,
-  type NgPackagrPluginSchema,
+  type AngularPluginSchema,
 } from './nx-angular-plugin.js';
 
 vi.mock('fs', async () => {
@@ -12,11 +12,11 @@ vi.mock('fs', async () => {
   return memfs.fs;
 });
 
-describe('[Unit Test] infer ng-packagr targets', () => {
-  /** Infer ng-packagrtargets for the given directories. */
-  const inferNgPackagrTargets = async (options: {
+describe('[Unit Test] infer angular targets', () => {
+  /** Infer angular targets for the given directories. */
+  const inferAngularTargets = async (options: {
     directories: DirectoryJSON;
-    schema?: NgPackagrPluginSchema;
+    schema?: AngularPluginSchema;
     context?: CreateNodesContextV2;
   }) => {
     const [createNodesGlob, createNodesFn] = createNodesV2;
@@ -45,56 +45,32 @@ describe('[Unit Test] infer ng-packagr targets', () => {
     vi.resetModules();
   });
 
-  it("should infer 'ng-package.json' files", async () => {
-    const nodes = await inferNgPackagrTargets({
+  it("should infer 'angular.json' files", async () => {
+    const nodes = await inferAngularTargets({
       directories: {
-        'ng-package.json': '',
-        'project-1/ng-package.json': '',
-        'nested/project-2/ng-package.json': '',
+        'angular.json': '',
+        'project-1/angular.json': '',
+        'nested/project-2/angular.json': '',
       },
     });
 
     expect(nodes).toEqual([
-      ['ng-package.json', expect.anything()],
-      ['project-1/ng-package.json', expect.anything()],
-      ['nested/project-2/ng-package.json', expect.anything()],
+      ['angular.json', expect.anything()],
+      ['project-1/angular.json', expect.anything()],
+      ['nested/project-2/angular.json', expect.anything()],
     ]);
   });
 
-  it("should add a test target in the directory the 'ng-package.json' file is in", async () => {
-    const nodes = await inferNgPackagrTargets({
+  it("should add a build target in the directory the 'angular.json' file is in", async () => {
+    const nodes = await inferAngularTargets({
       directories: {
-        'project-1/ng-package.json': '',
+        'project-1/angular.json': '',
       },
     });
 
     expect(nodes).toEqual([
       [
-        'project-1/ng-package.json',
-        {
-          projects: {
-            'project-1': expect.objectContaining({
-              targets: expect.objectContaining({
-                /** Default target name */
-                test: expect.anything(),
-              }),
-            }),
-          },
-        } satisfies CreateNodesResult,
-      ],
-    ]);
-  });
-
-  it("should add a build target in the directory the 'ng-package.json' file is in", async () => {
-    const nodes = await inferNgPackagrTargets({
-      directories: {
-        'project-1/ng-package.json': '',
-      },
-    });
-
-    expect(nodes).toEqual([
-      [
-        'project-1/ng-package.json',
+        'project-1/angular.json',
         {
           projects: {
             'project-1': expect.objectContaining({
@@ -109,11 +85,183 @@ describe('[Unit Test] infer ng-packagr targets', () => {
     ]);
   });
 
+  it("should add a test target in the directory the 'angular.json' file is in", async () => {
+    const nodes = await inferAngularTargets({
+      directories: {
+        'project-1/angular.json': '',
+      },
+    });
+
+    expect(nodes).toEqual([
+      [
+        'project-1/angular.json',
+        {
+          projects: {
+            'project-1': expect.objectContaining({
+              targets: expect.objectContaining({
+                /** Default target name */
+                test: expect.anything(),
+              }),
+            }),
+          },
+        } satisfies CreateNodesResult,
+      ],
+    ]);
+  });
+
+  it("should add a serve target in the directory the 'angular.json' file is in", async () => {
+    const nodes = await inferAngularTargets({
+      directories: {
+        'project-1/angular.json': '',
+      },
+    });
+
+    expect(nodes).toEqual([
+      [
+        'project-1/angular.json',
+        {
+          projects: {
+            'project-1': expect.objectContaining({
+              targets: expect.objectContaining({
+                /** Default target name */
+                serve: expect.anything(),
+              }),
+            }),
+          },
+        } satisfies CreateNodesResult,
+      ],
+    ]);
+  });
+
+  describe('build target', () => {
+    it('should use the provided name when buildTargetName is provided in the schema', async () => {
+      const nodes = await inferAngularTargets({
+        directories: {
+          'project-1/angular.json': '',
+        },
+        schema: {
+          buildTargetName: 'custom-build-name',
+        },
+      });
+
+      expect(nodes).toEqual([
+        [
+          'project-1/angular.json',
+          {
+            projects: {
+              'project-1': expect.objectContaining({
+                targets: expect.objectContaining({
+                  'custom-build-name': expect.anything(),
+                }),
+              }),
+            },
+          } satisfies CreateNodesResult,
+        ],
+      ]);
+    });
+
+    it('should use the default name of build when buildTargetName is not provided', async () => {
+      const nodes = await inferAngularTargets({
+        directories: {
+          'project-1/angular.json': '',
+        },
+        schema: {
+          buildTargetName: '',
+        },
+      });
+
+      expect(nodes).toEqual([
+        [
+          'project-1/angular.json',
+          {
+            projects: {
+              'project-1': expect.objectContaining({
+                targets: expect.objectContaining({
+                  build: expect.anything(),
+                }),
+              }),
+            },
+          } satisfies CreateNodesResult,
+        ],
+      ]);
+    });
+
+    it('should use ng build when no buildTargetConfiguration is provided in the schema', async () => {
+      const nodes = await inferAngularTargets({
+        directories: {
+          'project-1/angular.json': '',
+        },
+      });
+
+      expect(nodes).toEqual([
+        [
+          'project-1/angular.json',
+          {
+            projects: {
+              'project-1': expect.objectContaining({
+                targets: expect.objectContaining({
+                  build: {
+                    command: 'ng build',
+                    cache: true,
+                    inputs: ['default', '^default'],
+                    outputs: ['{projectRoot}/dist'],
+                    options: {
+                      cwd: '{projectRoot}',
+                    },
+                  },
+                }),
+              }),
+            },
+          } satisfies CreateNodesResult,
+        ],
+      ]);
+    });
+
+    it('should use the provided configuration when buildTargetConfiguration is provided in the schema', async () => {
+      const nodes = await inferAngularTargets({
+        directories: {
+          'project-1/angular.json': '',
+        },
+        schema: {
+          buildTargetConfiguration: {
+            command: 'custom command',
+            outputs: ['custom-output'],
+            options: {
+              custom: 'option',
+            },
+          },
+        },
+      });
+
+      expect(nodes).toEqual([
+        [
+          'project-1/angular.json',
+          {
+            projects: {
+              'project-1': expect.objectContaining({
+                targets: expect.objectContaining({
+                  build: expect.objectContaining({
+                    command: 'custom command',
+                    outputs: ['custom-output'],
+                    options: {
+                      cwd: '{projectRoot}',
+                      custom: 'option',
+                    },
+                  }),
+                }),
+              }),
+            },
+          } satisfies CreateNodesResult,
+        ],
+      ]);
+    });
+  });
+
   describe('test target', () => {
     it('should use the provided name when testTargetName is provided in the schema', async () => {
-      const nodes = await inferNgPackagrTargets({
+      const nodes = await inferAngularTargets({
         directories: {
-          'project-1/ng-package.json': '',
+          'project-1/angular.json': '',
         },
         schema: {
           testTargetName: 'custom-test-name',
@@ -122,7 +270,7 @@ describe('[Unit Test] infer ng-packagr targets', () => {
 
       expect(nodes).toEqual([
         [
-          'project-1/ng-package.json',
+          'project-1/angular.json',
           {
             projects: {
               'project-1': expect.objectContaining({
@@ -137,9 +285,9 @@ describe('[Unit Test] infer ng-packagr targets', () => {
     });
 
     it('should use the default name of test when testTargetName is not provided', async () => {
-      const nodes = await inferNgPackagrTargets({
+      const nodes = await inferAngularTargets({
         directories: {
-          'project-1/ng-package.json': '',
+          'project-1/angular.json': '',
         },
         schema: {
           testTargetName: '',
@@ -148,7 +296,7 @@ describe('[Unit Test] infer ng-packagr targets', () => {
 
       expect(nodes).toEqual([
         [
-          'project-1/ng-package.json',
+          'project-1/angular.json',
           {
             projects: {
               'project-1': expect.objectContaining({
@@ -162,28 +310,29 @@ describe('[Unit Test] infer ng-packagr targets', () => {
       ]);
     });
 
-    it('should use the @angular-devkit/build-angular:web-test-runner when no testTargetConfiguration is provided in the schema', async () => {
-      const nodes = await inferNgPackagrTargets({
+    it('should use ng test when no testTargetConfiguration is provided in the schema', async () => {
+      const nodes = await inferAngularTargets({
         directories: {
-          'project-1/ng-package.json': '',
+          'project-1/angular.json': '',
         },
       });
 
       expect(nodes).toEqual([
         [
-          'project-1/ng-package.json',
+          'project-1/angular.json',
           {
             projects: {
               'project-1': expect.objectContaining({
                 targets: expect.objectContaining({
-                  test: expect.objectContaining({
-                    executor: '@angular-devkit/build-angular:web-test-runner',
+                  test: {
+                    command: 'ng test',
+                    cache: true,
+                    inputs: ['default', '^default'],
+                    outputs: ['{projectRoot}/coverage'],
                     options: {
-                      include: ['{projectRoot}/src/**/*.spec.ts'],
-                      tsConfig: '{projectRoot}/tsconfig.spec.json',
-                      polyfills: ['zone.js', 'zone.js/testing'],
+                      cwd: '{projectRoot}',
                     },
-                  }),
+                  },
                 }),
               }),
             },
@@ -193,9 +342,9 @@ describe('[Unit Test] infer ng-packagr targets', () => {
     });
 
     it('should use the provided configuration when testTargetConfiguration is provided in the schema', async () => {
-      const nodes = await inferNgPackagrTargets({
+      const nodes = await inferAngularTargets({
         directories: {
-          'project-1/ng-package.json': '',
+          'project-1/angular.json': '',
         },
         schema: {
           testTargetConfiguration: {
@@ -211,7 +360,7 @@ describe('[Unit Test] infer ng-packagr targets', () => {
 
       expect(nodes).toEqual([
         [
-          'project-1/ng-package.json',
+          'project-1/angular.json',
           {
             projects: {
               'project-1': expect.objectContaining({
@@ -233,25 +382,25 @@ describe('[Unit Test] infer ng-packagr targets', () => {
     });
   });
 
-  describe('build target', () => {
-    it('should use the provided name when buildTargetName is provided in the schema', async () => {
-      const nodes = await inferNgPackagrTargets({
+  describe('serve target', () => {
+    it('should use the provided name when serveTargetName is provided in the schema', async () => {
+      const nodes = await inferAngularTargets({
         directories: {
-          'project-1/ng-package.json': '',
+          'project-1/angular.json': '',
         },
         schema: {
-          buildTargetName: 'custom-build-name',
+          serveTargetName: 'custom-serve-name',
         },
       });
 
       expect(nodes).toEqual([
         [
-          'project-1/ng-package.json',
+          'project-1/angular.json',
           {
             projects: {
               'project-1': expect.objectContaining({
                 targets: expect.objectContaining({
-                  'custom-build-name': expect.anything(),
+                  'custom-serve-name': expect.anything(),
                 }),
               }),
             },
@@ -260,24 +409,24 @@ describe('[Unit Test] infer ng-packagr targets', () => {
       ]);
     });
 
-    it('should use the default name of build when buildTargetName is not provided', async () => {
-      const nodes = await inferNgPackagrTargets({
+    it('should use the default name of serve when serveTargetName is not provided', async () => {
+      const nodes = await inferAngularTargets({
         directories: {
-          'project-1/ng-package.json': '',
+          'project-1/angular.json': '',
         },
         schema: {
-          buildTargetName: '',
+          serveTargetName: '',
         },
       });
 
       expect(nodes).toEqual([
         [
-          'project-1/ng-package.json',
+          'project-1/angular.json',
           {
             projects: {
               'project-1': expect.objectContaining({
                 targets: expect.objectContaining({
-                  build: expect.anything(),
+                  serve: expect.anything(),
                 }),
               }),
             },
@@ -286,27 +435,26 @@ describe('[Unit Test] infer ng-packagr targets', () => {
       ]);
     });
 
-    it('should use the ng-packagr command when no buildTargetConfiguration is provided in the schema', async () => {
-      const nodes = await inferNgPackagrTargets({
+    it('should use ng serve when no serveTargetConfiguration is provided in the schema', async () => {
+      const nodes = await inferAngularTargets({
         directories: {
-          'project-1/ng-package.json': '',
+          'project-1/angular.json': '',
         },
       });
 
       expect(nodes).toEqual([
         [
-          'project-1/ng-package.json',
+          'project-1/angular.json',
           {
             projects: {
               'project-1': expect.objectContaining({
                 targets: expect.objectContaining({
-                  build: expect.objectContaining({
-                    command: 'ng-packagr',
-                    outputs: ['{projectRoot}/dist'],
+                  serve: {
+                    command: 'ng serve',
                     options: {
                       cwd: '{projectRoot}',
                     },
-                  }),
+                  },
                 }),
               }),
             },
@@ -315,15 +463,14 @@ describe('[Unit Test] infer ng-packagr targets', () => {
       ]);
     });
 
-    it('should use the provided configuration when buildTargetConfiguration is provided in the schema', async () => {
-      const nodes = await inferNgPackagrTargets({
+    it('should use the provided configuration when serveTargetConfiguration is provided in the schema', async () => {
+      const nodes = await inferAngularTargets({
         directories: {
-          'project-1/ng-package.json': '',
+          'project-1/angular.json': '',
         },
         schema: {
-          buildTargetConfiguration: {
+          serveTargetConfiguration: {
             command: 'custom command',
-            outputs: ['custom-output'],
             options: {
               custom: 'option',
             },
@@ -333,19 +480,18 @@ describe('[Unit Test] infer ng-packagr targets', () => {
 
       expect(nodes).toEqual([
         [
-          'project-1/ng-package.json',
+          'project-1/angular.json',
           {
             projects: {
               'project-1': expect.objectContaining({
                 targets: expect.objectContaining({
-                  build: {
+                  serve: expect.objectContaining({
                     command: 'custom command',
-                    outputs: ['custom-output'],
                     options: {
                       cwd: '{projectRoot}',
                       custom: 'option',
                     },
-                  },
+                  }),
                 }),
               }),
             },
