@@ -27,10 +27,7 @@ export const sonarApi = {
       };
     }) => {
       const response = await fetch(
-        new URL(
-          `api/projects/create?${new URLSearchParams(options.params)}`,
-          sonarHost(options.host),
-        ),
+        `${sonarHost(options.host)}/api/projects/create?${new URLSearchParams(options.params)}`,
         {
           method: 'POST',
           headers: {
@@ -65,11 +62,9 @@ export const sonarApi = {
       };
     }) => {
       const response = await fetch(
-        new URL(
-          `api/projects/search?${new URLSearchParams(options.params)}`,
-          sonarHost(options.host),
-        ),
+        `${sonarHost(options.host)}/api/projects/search?${new URLSearchParams(options.params)}`,
         {
+          method: 'GET',
           headers: {
             ...sonarAuthHeader(options.token),
           },
@@ -110,10 +105,7 @@ export const sonarApi = {
       params: { name: string; project: string };
     }) => {
       const response = await fetch(
-        new URL(
-          `api/project_branches/rename?${new URLSearchParams(options.params)}`,
-          sonarHost(options.host),
-        ),
+        `${sonarHost(options.host)}/api/project_branches/rename?${new URLSearchParams(options.params)}`,
         {
           method: 'POST',
           headers: {
