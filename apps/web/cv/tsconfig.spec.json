@@ -2,7 +2,7 @@
   "extends": "../../../tools/typescript/src/tsconfig.ng-app.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
-    "types": ["jasmine"]
+    "types": ["mocha"]
   },
   "include": ["src/**/*.ts"]
 }

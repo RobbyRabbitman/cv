@@ -48,7 +48,7 @@ const createNgPackagrTargets: CreateNodesFunction<
     /** Test */
     testTargetName: 'test',
     testTargetConfiguration: {
-      executor: '@angular-devkit/build-angular:web-test-runner',
+      executor: '@angular-devkit/build-angular:karma',
       cache: true,
       inputs: ['default', '^default'],
       outputs: ['{projectRoot}/coverage'],

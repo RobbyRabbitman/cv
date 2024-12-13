@@ -1,6 +1,7 @@
 {
   "name": "@robby-rabbitman/cv-apps-web-cv",
   "version": "0.0.0",
+  "type": "module",
   "dependencies": {
     "@angular-devkit/build-angular": "19.0.5",
     "@angular/animations": "19.0.4",
@@ -12,6 +13,12 @@
     "@angular/forms": "19.0.4",
     "@angular/platform-browser-dynamic": "19.0.4",
     "@angular/platform-browser": "19.0.4",
-    "@angular/router": "19.0.4"
+    "@angular/router": "19.0.4",
+    "@web/test-runner": "0.19.0",
+    "@web/test-runner-core": "0.13.4",
+    "@remcovaes/web-test-runner-vite-plugin": "1.2.2",
+    "chai": "5.1.2",
+    "@types/chai": "5.0.1",
+    "@types/mocha": "10.0.10"
   }
 }
