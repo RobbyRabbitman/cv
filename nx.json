@@ -10,7 +10,10 @@
       }
     ],
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"],
+    "sharedGlobals": [
+      "{workspaceRoot}/.github/workflows/ci.yml",
+      "sonarScanGlobals"
+    ],
     "vitestGlobals": [
       "{projectRoot}/tools/vitest/**/*",
       {

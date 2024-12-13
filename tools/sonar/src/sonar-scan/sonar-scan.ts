@@ -2,6 +2,7 @@ import { logger, readCachedProjectGraph } from '@nx/devkit';
 import { existsSync } from 'fs';
 import { join } from 'path';
 import { scan } from 'sonarqube-scanner';
+import { sonarApi } from '../api/sonar.api.js';
 
 export type SonarProperties = Record<string, string>;
 
@@ -79,13 +80,21 @@ export async function sonarScan(options: SonarScanOptions) {
     );
   }
 
+  const organization = properties?.['sonar.organization'];
+
+  if (!organization) {
+    throw new Error(
+      `[sonarScan] No 'sonar.organization' property found in the sonar properties.`,
+    );
+  }
+
   const projectDirectory = project.data.root;
   const projectRoot = join(workspaceRoot, projectDirectory);
 
   const sonarBaseProperties = {
     'sonar.scm.provider': 'git',
     'sonar.projectBaseDir': projectRoot,
-    'sonar.projectKey': projectName,
+    'sonar.projectKey': `${organization}--${projectName.replaceAll('@', '').replaceAll('/', '--')}`,
     'sonar.sourceEncoding': 'UTF-8',
   } satisfies SonarProperties;
 
@@ -116,6 +125,11 @@ export async function sonarScan(options: SonarScanOptions) {
     ...properties,
   };
 
+  await prepareScan({
+    projectName,
+    sonarProperties,
+  });
+
   logger.verbose(
     '[sonarScan] invoking sonar scan with properties:',
     sonarProperties,
@@ -123,6 +137,69 @@ export async function sonarScan(options: SonarScanOptions) {
 
   return scan({
     options: sonarProperties,
+  });
+}
+
+/**
+ * Creates a project and sets the main branch before the first scan - is a no-op
+ * if the project already exists.
+ *
+ * TODO: remove me when there is a `sonar.*` property to set the main branch
+ * upon project creation on the first scan
+ */
+async function prepareScan(options: {
+  projectName: string;
+  sonarProperties: SonarProperties;
+}) {
+  const { projectName, sonarProperties } = options;
+
+  const projectKey = sonarProperties['sonar.projectKey'];
+
+  if (!projectKey) {
+    throw new Error(
+      `[sonarScan] No 'sonar.projectKey' property found in the sonar properties.`,
+    );
+  }
+
+  const organization = sonarProperties['sonar.organization'];
+
+  if (!organization) {
+    throw new Error(
+      `[sonarScan] No 'sonar.organization' property found in the sonar properties.`,
+    );
+  }
+
+  const sonarProjects = await sonarApi.projects.search({
+    token: sonarProperties['sonar.token'],
+    params: {
+      organization,
+      projects: [projectKey],
+    },
+  });
+
+  if (sonarProjects.paging.total > 0) {
+    logger.verbose(
+      `[sonarScan] Project with key '${projectKey}' already exists - skipping project creation.`,
+    );
+    return;
+  }
+
+  await sonarApi.projects.create({
+    token: sonarProperties['sonar.token'],
+    params: {
+      name: projectName,
+      project: projectKey,
+      visibility: 'public',
+      organization,
+    },
+  });
+
+  await sonarApi.project_branches.rename({
+    token: sonarProperties['sonar.token'],
+    params: {
+      project: projectKey,
+      name: 'main',
+    },
   });
 }
 
