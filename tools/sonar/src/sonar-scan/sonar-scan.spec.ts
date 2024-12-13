@@ -183,6 +183,7 @@ describe('[Unit Test] sonarScan', () => {
             project: 'some-organization--some-project',
             visibility: 'public',
             newCodeDefinitionType: 'previous_version',
+            newCodeDefinitionValue: 'previous_version',
           },
         });
       });

@@ -191,6 +191,7 @@ async function prepareScan(options: {
       project: projectKey,
       visibility: 'public',
       newCodeDefinitionType: 'previous_version',
+      newCodeDefinitionValue: 'previous_version',
       organization,
     },
   });
