@@ -42,6 +42,43 @@
         ]
       }
     ],
+    "angularGlobals": [
+      "{workspaceRoot}/tools/nx-ng-packagr-plugin/**/*",
+      "{workspaceRoot}/tools/nx-angular-plugin/**/*",
+      {
+        "externalDependencies": [
+          "ng-packagr",
+
+          "@angular-devkit/build-angular",
+          "@angular/animations",
+          "@angular/cli",
+          "@angular/common",
+          "@angular/compiler-cli",
+          "@angular/compiler",
+          "@angular/core",
+          "@angular/forms",
+          "@angular/platform-browser-dynamic",
+          "@angular/platform-browser",
+          "@angular/router",
+
+          "zone.js",
+          "rxjs",
+          "typescript",
+          "tslib",
+
+          "vite",
+
+          "jasmine-core",
+          "@types/jasmine",
+
+          "karma-chrome-launcher",
+          "karma-coverage",
+          "karma-jasmine-html-reporter",
+          "karma-jasmine",
+          "karma"
+        ]
+      }
+    ],
     "sonarScanGlobals": [
       "{workspaceRoot}/tools/sonar/**/*",
       "{workspaceRoot}/tools/nx-sonar-scan-plugin/**/*",
