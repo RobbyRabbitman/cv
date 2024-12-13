@@ -76,6 +76,14 @@
       "plugin": "@robby-rabbitman/cv-tools-nx-eslint-dependency-checks-plugin"
     },
     {
+      "plugin": "@robby-rabbitman/cv-tools-nx-angular-plugin",
+      "options": {
+        "buildTargetName": "build-angular",
+        "testTargetName": "test-angular",
+        "serveTargetName": "serve"
+      }
+    },
+    {
       "plugin": "@robby-rabbitman/cv-tools-nx-ng-packagr-plugin",
       "options": {
         "buildTargetName": "build-ng-packagr",

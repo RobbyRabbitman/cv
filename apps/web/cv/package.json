@@ -1,11 +1,6 @@
 {
   "name": "@robby-rabbitman/cv-apps-web-cv",
   "version": "0.0.0",
-  "scripts": {
-    "serve": "ng serve",
-    "build": "ng build",
-    "test": "ng test"
-  },
   "dependencies": {
     "@angular-devkit/build-angular": "19.0.5",
     "@angular/animations": "19.0.4",
