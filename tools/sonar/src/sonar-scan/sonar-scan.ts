@@ -2,6 +2,7 @@ import { logger, readCachedProjectGraph } from '@nx/devkit';
 import { existsSync } from 'fs';
 import { join } from 'path';
 import { scan } from 'sonarqube-scanner';
+import { sonarApi } from '../api/sonar.api.js';
 
 export type SonarProperties = Record<string, string>;
 
@@ -79,13 +80,29 @@ export async function sonarScan(options: SonarScanOptions) {
     );
   }
 
+  const organization = properties?.['sonar.organization'];
+  if (!organization) {
+    throw new Error(
+      `[sonarScan] No 'sonar.organization' property found in the sonar properties.`,
+    );
+  }
+
+  const token = properties?.['sonar.token'];
+  if (!token) {
+    throw new Error(
+      `[sonarScan] No 'sonar.token' property found in the sonar properties.`,
+    );
+  }
+
   const projectDirectory = project.data.root;
   const projectRoot = join(workspaceRoot, projectDirectory);
 
   const sonarBaseProperties = {
     'sonar.scm.provider': 'git',
     'sonar.projectBaseDir': projectRoot,
-    'sonar.projectKey': projectName,
+    'sonar.organization': organization,
+    'sonar.token': token,
+    'sonar.projectKey': `${organization}--${projectName.replaceAll('@', '').replaceAll('/', '--')}`,
     'sonar.sourceEncoding': 'UTF-8',
   } satisfies SonarProperties;
 
@@ -110,11 +127,16 @@ export async function sonarScan(options: SonarScanOptions) {
    * Priority order: base properties < technology specific properties < scan
    * properties passed to the function.
    */
-  const sonarProperties: SonarProperties = {
+  const sonarProperties = {
     ...sonarBaseProperties,
     ...technologyBasedSonarProperties,
     ...properties,
-  };
+  } satisfies SonarProperties;
+
+  await prepareScan({
+    projectName,
+    sonarProperties,
+  });
 
   logger.verbose(
     '[sonarScan] invoking sonar scan with properties:',
@@ -123,6 +145,63 @@ export async function sonarScan(options: SonarScanOptions) {
 
   return scan({
     options: sonarProperties,
+  });
+}
+
+/**
+ * Creates a project and sets the main branch before the first scan - is a no-op
+ * if the project already exists.
+ *
+ * TODO: remove me when there is a `sonar.*` property to set the main branch
+ * upon project creation on the first scan
+ */
+async function prepareScan(options: {
+  projectName: string;
+  sonarProperties: {
+    'sonar.token': string;
+    'sonar.organization': string;
+    'sonar.projectKey': string;
+  };
+}) {
+  const { projectName, sonarProperties } = options;
+
+  const projectKey = sonarProperties['sonar.projectKey'];
+  const organization = sonarProperties['sonar.organization'];
+  const token = sonarProperties['sonar.token'];
+
+  const sonarProjects = await sonarApi.projects.search({
+    token,
+    params: {
+      organization,
+      projects: [projectKey],
+    },
+  });
+
+  if (sonarProjects.paging.total > 0) {
+    logger.verbose(
+      `[sonarScan] Project with key '${projectKey}' already exists - skipping project creation.`,
+    );
+    return;
+  }
+
+  await sonarApi.projects.create({
+    token,
+    params: {
+      name: projectName,
+      project: projectKey,
+      visibility: 'public',
+      newCodeDefinitionType: 'previous_version',
+      newCodeDefinitionValue: 'previous_version',
+      organization,
+    },
+  });
+
+  await sonarApi.project_branches.rename({
+    token,
+    params: {
+      project: projectKey,
+      name: 'main',
+    },
   });
 }
 

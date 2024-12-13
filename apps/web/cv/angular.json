@@ -50,7 +50,8 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "styles": ["src/styles.scss"]
+            "styles": ["src/styles.scss"],
+            "karmaConfig": "karma.conf.cjs"
           }
         }
       }

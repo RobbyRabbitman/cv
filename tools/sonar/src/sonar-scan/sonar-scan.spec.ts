@@ -9,9 +9,25 @@ import { mkdir, writeFile } from 'fs/promises';
 import { vol } from 'memfs';
 import { join } from 'path';
 import { scan } from 'sonarqube-scanner';
+import { sonarApi } from '../api/sonar.api';
 import { defaultSonarProperties, sonarScan } from './sonar-scan';
 
 vi.mock('@nx/devkit');
+vi.mock('../api/sonar.api.js', () => ({
+  sonarApi: {
+    projects: {
+      search: vi.fn(() => ({
+        paging: {
+          total: 1,
+        },
+      })),
+      create: vi.fn(),
+    },
+    project_branches: {
+      rename: vi.fn(),
+    },
+  },
+}));
 vi.mock('child_process');
 vi.mock('@robby-rabbitman/cv-libs-node-util');
 vi.mock('sonarqube-scanner');
@@ -28,6 +44,11 @@ vi.mock('fs/promises', async () => {
 
 describe('[Unit Test] sonarScan', () => {
   const workspaceRootMock = '/workspace';
+
+  const defaultSonarProperties = {
+    'sonar.token': '123',
+    'sonar.organization': 'some-organization',
+  };
 
   beforeEach(async () => {
     const actualNxDevkit =
@@ -52,14 +73,11 @@ describe('[Unit Test] sonarScan', () => {
             root: 'apps/some-project',
           },
         },
-        'some-java-project': {
+        '@scope/other-project': {
           type: 'app',
-          name: 'some-java-project',
+          name: '@scope/other-project',
           data: {
-            root: 'apps/some-java-project',
-            targets: {
-              sonar: {},
-            },
+            root: 'apps/other-project',
           },
         },
       },
@@ -85,19 +103,126 @@ describe('[Unit Test] sonarScan', () => {
       sonarScan({
         projectName: 'nonExistentProject',
         workspaceRoot: workspaceRootMock,
+        properties: {
+          ...defaultSonarProperties,
+        },
       }),
     ).rejects.toThrow(
       "[sonarScan] No project found with the name 'nonExistentProject'.",
     );
   });
 
+  it('should throw an error if no organization is provided', async () => {
+    await expect(
+      sonarScan({
+        projectName: 'some-project',
+        workspaceRoot: workspaceRootMock,
+      }),
+    ).rejects.toThrow(
+      "[sonarScan] No 'sonar.organization' property found in the sonar properties.",
+    );
+  });
+
+  it('should throw an error if no token is provided', async () => {
+    await expect(
+      sonarScan({
+        projectName: 'some-project',
+        workspaceRoot: workspaceRootMock,
+        properties: {
+          'sonar.organization': 'some-organization',
+        },
+      }),
+    ).rejects.toThrow(
+      "[sonarScan] No 'sonar.token' property found in the sonar properties.",
+    );
+  });
+
+  it('should use the project name and organization for the project key', async () => {
+    await sonarScan({
+      projectName: '@scope/other-project',
+      workspaceRoot: workspaceRootMock,
+      properties: {
+        ...defaultSonarProperties,
+      },
+    });
+
+    expect(scan).toHaveBeenCalledWith(
+      expect.objectContaining({
+        options: expect.objectContaining({
+          'sonar.projectKey': 'some-organization--scope--other-project',
+        }),
+      }),
+    );
+  });
+
   describe('when a project is found with the given name', () => {
-    describe('should scan', () => {
-      it('with the provided branch name', () => {
-        sonarScan({
+    describe('should prepare a scan', () => {
+      it("create a project when it doesn't exist", async () => {
+        vi.mocked(sonarApi.projects.search).mockResolvedValueOnce({
+          paging: {
+            total: 0,
+            pageIndex: 1,
+            pageSize: 1,
+          },
+          components: [],
+        });
+
+        await sonarScan({
           projectName: 'some-project',
           workspaceRoot: workspaceRootMock,
           properties: {
+            ...defaultSonarProperties,
+          },
+        });
+
+        expect(sonarApi.projects.create).toHaveBeenCalledWith({
+          token: '123',
+          params: {
+            name: 'some-project',
+            organization: 'some-organization',
+            project: 'some-organization--some-project',
+            visibility: 'public',
+            newCodeDefinitionType: 'previous_version',
+            newCodeDefinitionValue: 'previous_version',
+          },
+        });
+      });
+
+      it('create set the main branch', async () => {
+        vi.mocked(sonarApi.projects.search).mockResolvedValueOnce({
+          paging: {
+            total: 0,
+            pageIndex: 1,
+            pageSize: 1,
+          },
+          components: [],
+        });
+
+        await sonarScan({
+          projectName: 'some-project',
+          workspaceRoot: workspaceRootMock,
+          properties: {
+            ...defaultSonarProperties,
+          },
+        });
+
+        expect(sonarApi.project_branches.rename).toHaveBeenCalledWith({
+          token: '123',
+          params: {
+            project: 'some-organization--some-project',
+            name: 'main',
+          },
+        });
+      });
+    });
+
+    describe('should scan', () => {
+      it('with the provided branch name', async () => {
+        await sonarScan({
+          projectName: 'some-project',
+          workspaceRoot: workspaceRootMock,
+          properties: {
+            ...defaultSonarProperties,
             'sonar.branch.name': 'some-provided-branch-name',
           },
         });
@@ -111,11 +236,12 @@ describe('[Unit Test] sonarScan', () => {
         );
       });
 
-      it('with the pull request branch name', () => {
-        sonarScan({
+      it('with the pull request branch name', async () => {
+        await sonarScan({
           projectName: 'some-project',
           workspaceRoot: workspaceRootMock,
           properties: {
+            ...defaultSonarProperties,
             'sonar.pullrequest.branch': 'some-pull-request-branch',
           },
         });
@@ -141,6 +267,7 @@ describe('[Unit Test] sonarScan', () => {
           projectName: 'some-project',
           workspaceRoot: workspaceRootMock,
           properties: {
+            ...defaultSonarProperties,
             'sonar.token': 'some-token',
           },
         });
@@ -159,6 +286,9 @@ describe('[Unit Test] sonarScan', () => {
           await sonarScan({
             projectName: 'some-project',
             workspaceRoot: workspaceRootMock,
+            properties: {
+              ...defaultSonarProperties,
+            },
           });
 
           expect(scan).toHaveBeenCalledWith(
@@ -174,6 +304,9 @@ describe('[Unit Test] sonarScan', () => {
           await sonarScan({
             projectName: 'some-project',
             workspaceRoot: workspaceRootMock,
+            properties: {
+              ...defaultSonarProperties,
+            },
           });
 
           expect(scan).toHaveBeenCalledWith(
@@ -189,12 +322,15 @@ describe('[Unit Test] sonarScan', () => {
           await sonarScan({
             projectName: 'some-project',
             workspaceRoot: workspaceRootMock,
+            properties: {
+              ...defaultSonarProperties,
+            },
           });
 
           expect(scan).toHaveBeenCalledWith(
             expect.objectContaining({
               options: expect.objectContaining({
-                'sonar.projectKey': 'some-project',
+                'sonar.projectKey': 'some-organization--some-project',
               }),
             }),
           );
@@ -204,6 +340,9 @@ describe('[Unit Test] sonarScan', () => {
           await sonarScan({
             projectName: 'some-project',
             workspaceRoot: workspaceRootMock,
+            properties: {
+              ...defaultSonarProperties,
+            },
           });
 
           expect(scan).toHaveBeenCalledWith(
@@ -218,10 +357,13 @@ describe('[Unit Test] sonarScan', () => {
 
       describe('with inferred technologies', () => {
         describe('based on file presence', () => {
-          it('exact match', () => {
-            sonarScan({
+          it('exact match', async () => {
+            await sonarScan({
               projectName: 'some-project',
               workspaceRoot: workspaceRootMock,
+              properties: {
+                ...defaultSonarProperties,
+              },
               inferredProjectTechnologies: {
                 js: ['apps/some-project/tsconfig.json'],
               },
@@ -240,10 +382,13 @@ describe('[Unit Test] sonarScan', () => {
             );
           });
 
-          it('gracefully', () => {
-            sonarScan({
+          it('gracefully', async () => {
+            await sonarScan({
               projectName: 'some-project',
               workspaceRoot: workspaceRootMock,
+              properties: {
+                ...defaultSonarProperties,
+              },
               inferredProjectTechnologies: {
                 js: ['apps/some-project/nonExistentFile'],
               },
@@ -267,6 +412,9 @@ describe('[Unit Test] sonarScan', () => {
             await sonarScan({
               projectName: 'some-project',
               workspaceRoot: workspaceRootMock,
+              properties: {
+                ...defaultSonarProperties,
+              },
               projectTechnologies: ['js'],
             });
 
@@ -283,6 +431,9 @@ describe('[Unit Test] sonarScan', () => {
             await sonarScan({
               projectName: 'some-project',
               workspaceRoot: workspaceRootMock,
+              properties: {
+                ...defaultSonarProperties,
+              },
               projectTechnologies: ['js'],
             });
 
@@ -299,6 +450,9 @@ describe('[Unit Test] sonarScan', () => {
             await sonarScan({
               projectName: 'some-project',
               workspaceRoot: workspaceRootMock,
+              properties: {
+                ...defaultSonarProperties,
+              },
               projectTechnologies: ['js'],
             });
 
@@ -327,6 +481,9 @@ describe('[Unit Test] sonarScan', () => {
             await sonarScan({
               projectName: 'some-project',
               workspaceRoot: workspaceRootMock,
+              properties: {
+                ...defaultSonarProperties,
+              },
               projectTechnologies: ['js'],
             });
 
@@ -343,6 +500,9 @@ describe('[Unit Test] sonarScan', () => {
             await sonarScan({
               projectName: 'some-project',
               workspaceRoot: workspaceRootMock,
+              properties: {
+                ...defaultSonarProperties,
+              },
               projectTechnologies: ['js'],
             });
 
@@ -364,6 +524,9 @@ describe('[Unit Test] sonarScan', () => {
             await sonarScan({
               projectName: 'some-project',
               workspaceRoot: workspaceRootMock,
+              properties: {
+                ...defaultSonarProperties,
+              },
               projectTechnologies: ['js'],
             });
 
@@ -385,6 +548,9 @@ describe('[Unit Test] sonarScan', () => {
             await sonarScan({
               projectName: 'some-project',
               workspaceRoot: workspaceRootMock,
+              properties: {
+                ...defaultSonarProperties,
+              },
               projectTechnologies: ['js'],
             });
 
@@ -416,6 +582,9 @@ describe('[Unit Test] sonarScan', () => {
             await sonarScan({
               projectName: 'some-project',
               workspaceRoot: workspaceRootMock,
+              properties: {
+                ...defaultSonarProperties,
+              },
               projectTechnologies: ['js'],
             });
 
@@ -444,6 +613,9 @@ describe('[Unit Test] sonarScan', () => {
               await sonarScan({
                 projectName: 'some-project',
                 workspaceRoot: workspaceRootMock,
+                properties: {
+                  ...defaultSonarProperties,
+                },
                 projectTechnologies: ['js'],
               });
 
@@ -461,6 +633,9 @@ describe('[Unit Test] sonarScan', () => {
               await sonarScan({
                 projectName: 'some-project',
                 workspaceRoot: workspaceRootMock,
+                properties: {
+                  ...defaultSonarProperties,
+                },
                 projectTechnologies: ['js'],
               });
 

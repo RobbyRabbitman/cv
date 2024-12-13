@@ -10,7 +10,10 @@
       }
     ],
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"],
+    "sharedGlobals": [
+      "{workspaceRoot}/.github/workflows/ci.yml",
+      "sonarScanGlobals"
+    ],
     "vitestGlobals": [
       "{projectRoot}/tools/vitest/**/*",
       {
@@ -178,7 +181,7 @@
           "inputs": ["sonar-scan"],
           "options": {
             "projectName": "{projectName}",
-            "inferredProjectTechnology": "js={projectRoot}/vitest.config.ts,js={projectRoot}/vitest.config.mts"
+            "inferredProjectTechnology": "js={projectRoot}/tsconfig.json"
           },
           "dependsOn": ["test*"]
         }
