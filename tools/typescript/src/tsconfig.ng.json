@@ -1,0 +1,15 @@
+{
+  "extends": "./base/tsconfig.base.json",
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "experimentalDecorators": true
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "strictinjectionparameters": true,
+    "strictstandalone": true
+  }
+}

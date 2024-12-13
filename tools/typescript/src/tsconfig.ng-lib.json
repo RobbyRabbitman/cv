@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.ng.json",
+  "compilerOptions": {
+    // https://github.com/ng-packagr/ng-packagr/issues/2867#issuecomment-2188407958
+    "composite": false
+  },
+  "angularCompilerOptions": {
+    "compilationMode": "partial",
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "strictinjectionparameters": true,
+    "strictstandalone": true
+  }
+}
