@@ -81,10 +81,16 @@ export async function sonarScan(options: SonarScanOptions) {
   }
 
   const organization = properties?.['sonar.organization'];
-
   if (!organization) {
     throw new Error(
       `[sonarScan] No 'sonar.organization' property found in the sonar properties.`,
+    );
+  }
+
+  const token = properties?.['sonar.token'];
+  if (!token) {
+    throw new Error(
+      `[sonarScan] No 'sonar.token' property found in the sonar properties.`,
     );
   }
 
@@ -94,6 +100,8 @@ export async function sonarScan(options: SonarScanOptions) {
   const sonarBaseProperties = {
     'sonar.scm.provider': 'git',
     'sonar.projectBaseDir': projectRoot,
+    'sonar.organization': organization,
+    'sonar.token': token,
     'sonar.projectKey': `${organization}--${projectName.replaceAll('@', '').replaceAll('/', '--')}`,
     'sonar.sourceEncoding': 'UTF-8',
   } satisfies SonarProperties;
@@ -119,11 +127,11 @@ export async function sonarScan(options: SonarScanOptions) {
    * Priority order: base properties < technology specific properties < scan
    * properties passed to the function.
    */
-  const sonarProperties: SonarProperties = {
+  const sonarProperties = {
     ...sonarBaseProperties,
     ...technologyBasedSonarProperties,
     ...properties,
-  };
+  } satisfies SonarProperties;
 
   await prepareScan({
     projectName,
@@ -149,28 +157,20 @@ export async function sonarScan(options: SonarScanOptions) {
  */
 async function prepareScan(options: {
   projectName: string;
-  sonarProperties: SonarProperties;
+  sonarProperties: {
+    'sonar.token': string;
+    'sonar.organization': string;
+    'sonar.projectKey': string;
+  };
 }) {
   const { projectName, sonarProperties } = options;
 
   const projectKey = sonarProperties['sonar.projectKey'];
-
-  if (!projectKey) {
-    throw new Error(
-      `[sonarScan] No 'sonar.projectKey' property found in the sonar properties.`,
-    );
-  }
-
   const organization = sonarProperties['sonar.organization'];
-
-  if (!organization) {
-    throw new Error(
-      `[sonarScan] No 'sonar.organization' property found in the sonar properties.`,
-    );
-  }
+  const token = sonarProperties['sonar.token'];
 
   const sonarProjects = await sonarApi.projects.search({
-    token: sonarProperties['sonar.token'],
+    token,
     params: {
       organization,
       projects: [projectKey],
@@ -185,7 +185,7 @@ async function prepareScan(options: {
   }
 
   await sonarApi.projects.create({
-    token: sonarProperties['sonar.token'],
+    token,
     params: {
       name: projectName,
       project: projectKey,
@@ -195,7 +195,7 @@ async function prepareScan(options: {
   });
 
   await sonarApi.project_branches.rename({
-    token: sonarProperties['sonar.token'],
+    token,
     params: {
       project: projectKey,
       name: 'main',
