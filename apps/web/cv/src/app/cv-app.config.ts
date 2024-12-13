@@ -2,13 +2,17 @@ import {
   type ApplicationConfig,
   provideExperimentalZonelessChangeDetection,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {
+  provideRouter,
+  withComponentInputBinding,
+  withDebugTracing,
+} from '@angular/router';
 
 import { cvAppRoutes } from './cv-app.routes';
 
 export const cvAppConfig = {
   providers: [
     provideExperimentalZonelessChangeDetection(),
-    provideRouter(cvAppRoutes),
+    provideRouter(cvAppRoutes, withDebugTracing(), withComponentInputBinding()),
   ],
 } satisfies ApplicationConfig;
