@@ -1,8 +1,7 @@
 {
-  "extends": "../../../tools/typescript/src/tsconfig.ng-app.json",
+  "extends": "../../../tools/typescript/src/tsconfig.ng-karma.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/spec",
-    "types": ["mocha"]
+    "outDir": "./out-tsc/spec"
   },
   "include": ["src/**/*.ts"]
 }

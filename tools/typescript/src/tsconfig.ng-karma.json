@@ -3,6 +3,7 @@
   "compilerOptions": {
     // https://github.com/angular/angular-cli/issues/25936
     "allowJs": false,
-    "checkJs": false
+    "checkJs": false,
+    "types": ["jasmine"]
   }
 }

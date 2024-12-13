@@ -7,18 +7,13 @@
     "@angular/animations": "19.0.4",
     "@angular/cli": "19.0.5",
     "@angular/common": "19.0.4",
-    "@angular/compiler-cli": "19.0.4",
     "@angular/compiler": "19.0.4",
+    "@angular/compiler-cli": "19.0.4",
     "@angular/core": "19.0.4",
     "@angular/forms": "19.0.4",
-    "@angular/platform-browser-dynamic": "19.0.4",
     "@angular/platform-browser": "19.0.4",
+    "@angular/platform-browser-dynamic": "19.0.4",
     "@angular/router": "19.0.4",
-    "@web/test-runner": "0.19.0",
-    "@web/test-runner-core": "0.13.4",
-    "@remcovaes/web-test-runner-vite-plugin": "1.2.2",
-    "chai": "5.1.2",
-    "@types/chai": "5.0.1",
-    "@types/mocha": "10.0.10"
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*"
   }
 }
