@@ -14,12 +14,11 @@
     }
   },
   "dependencies": {
-    "@robby-rabbitman/cv-tools-vitest": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*"
   },
   "nx": {
     "tags": [
-      "scope:js",
+      "scope:angular",
       "type:types"
     ]
   }

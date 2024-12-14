@@ -1,12 +1,8 @@
 {
   "extends": "../../../tools/typescript/src/tsconfig.ng-lib.json",
-  "compilerOptions": {},
   "include": ["src/**/*"],
   "exclude": ["*.config.*", "src/**/*.spec.*"],
   "references": [
-    {
-      "path": "../../../tools/vitest/tsconfig.lib.json"
-    },
     {
       "path": "../../../tools/eslint/tsconfig.lib.json"
     }

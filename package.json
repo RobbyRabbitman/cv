@@ -53,6 +53,7 @@
     "memfs": "4.15.0",
     "minimatch": "10.0.1",
     "ng-packagr": "19.0.1",
+    "ngxtension": "4.2.0",
     "nx": "20.2.2",
     "postcss": "8.4.49",
     "prettier": "3.4.2",

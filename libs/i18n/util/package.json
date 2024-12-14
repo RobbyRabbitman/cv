@@ -2,17 +2,26 @@
   "name": "@robby-rabbitman/cv-libs-i18n-util",
   "version": "0.0.0",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-i18n-util.mjs",
+  "typings": "dist/index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-i18n-util.mjs"
+    }
+  },
   "dependencies": {
-    "@robby-rabbitman/cv-tools-vitest": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@angular/core": "19.0.4",
     "@robby-rabbitman/cv-libs-i18n-types": "workspace:*",
     "@robby-rabbitman/cv-libs-js-util": "workspace:*"
   },
   "nx": {
     "tags": [
-      "scope:web",
+      "scope:angular",
       "type:util"
     ]
   }

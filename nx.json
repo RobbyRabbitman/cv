@@ -153,19 +153,6 @@
       }
     },
     {
-      "plugin": "@robby-rabbitman/cv-tools-nx-ng-packagr-plugin",
-      "options": {
-        "buildTargetName": "build-ng-packagr",
-        "testTargetName": "test-ng-packagr",
-        "buildTargetConfiguration": {
-          "inputs": ["build-ng-packagr", "^build-ng-packagr"]
-        },
-        "testTargetConfiguration": {
-          "inputs": ["test-ng-packagr", "^test-ng-packagr"]
-        }
-      }
-    },
-    {
       "plugin": "@nx/vite/plugin",
       "options": {
         "buildTargetName": "build-vite",

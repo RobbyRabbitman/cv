@@ -6,11 +6,9 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "cv": {
+    "app": {
       "projectType": "application",
       "root": "",
-      "sourceRoot": "src",
-      "prefix": "cv",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",

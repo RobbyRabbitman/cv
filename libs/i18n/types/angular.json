@@ -1,0 +1,29 @@
+{
+  "$schema": "../../../node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "pnpm"
+  },
+  "projects": {
+    "lib": {
+      "projectType": "library",
+      "root": "",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "tsconfig.lib.json",
+            "project": "ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.cjs"
+          }
+        }
+      }
+    }
+  }
+}

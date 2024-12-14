@@ -2,6 +2,7 @@ import jsEslint from '@eslint/js';
 import { type Linter } from 'eslint';
 import prettierEslintConfig from 'eslint-config-prettier';
 import chaiFriendlyEslintPlugin from 'eslint-plugin-chai-friendly';
+import globals from 'globals';
 import ignoreEslintConfig from './eslint.config.ignore.js';
 
 const jsEslintConfig = [
@@ -18,6 +19,15 @@ const jsEslintConfig = [
   {
     ...chaiFriendlyEslintPlugin.configs.recommendedFlat,
     files: ['**/*.js', '**/*.mjs', '**/*.cjs', '**/*.jsx'],
+  },
+  {
+    files: ['*.cjs'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.amd,
+      },
+    },
   },
   prettierEslintConfig,
 ] satisfies Linter.Config[];

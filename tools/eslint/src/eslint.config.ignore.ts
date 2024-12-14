@@ -3,6 +3,7 @@ import { type Linter } from 'eslint';
 export const ignoreEslintConfig = [
   {
     ignores: [
+      '.angular/',
       'dist/',
       'dist-spec/',
       'out-tsc/',

@@ -1,9 +1,7 @@
 {
-  "extends": "../../../tools/typescript/src/tsconfig.vitest-node.json",
+  "extends": "../../../tools/typescript/src/tsconfig.ng-karma.json",
   "compilerOptions": {
-    "rootDir": ".",
-    "outDir": "dist-spec",
-    "tsBuildInfoFile": "node_modules/.cache/tsBuildInfo/tsconfig.spec.tsbuildinfo"
+    "outDir": "./out-tsc/spec"
   },
-  "include": ["vite.config.*", "vitest.config.*", "src/**/*"]
+  "include": ["src/**/*"]
 }

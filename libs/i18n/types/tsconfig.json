@@ -7,9 +7,6 @@
   "exclude": [],
   "references": [
     {
-      "path": "../../../tools/vitest"
-    },
-    {
       "path": "../../../tools/eslint"
     },
     {
