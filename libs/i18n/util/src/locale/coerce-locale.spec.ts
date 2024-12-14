@@ -1,26 +1,25 @@
 import { coerceLocale, type CoerceLocaleOptions } from './coerce-locale';
 
-describe('coerceLocale', () => {
+describe('[Unit Test] coerceLocale', () => {
   it('should return the best matching locale based on weights', () => {
-    const options: CoerceLocaleOptions = {
+    const options = {
       locale: 'en-US',
       candidates: ['en', 'de'],
       weights: { language: 1 },
-    };
+    } satisfies CoerceLocaleOptions;
 
-    const result = coerceLocale(options);
-    expect(result).toBe('en');
+    expect(coerceLocale(options)).toBe('en');
   });
 
   it('should return the fallback locale if no match is found', () => {
-    const options: CoerceLocaleOptions = {
+    const options = {
       locale: 'fr-FR',
       candidates: ['en', 'de'],
-      fallback: 'en',
-    };
+      fallback: 'es',
+      weights: { language: 1 },
+    } satisfies CoerceLocaleOptions;
 
-    const result = coerceLocale(options);
-    expect(result).toBe('en');
+    expect(coerceLocale(options)).toBe('es');
   });
 
   it('should throw an error if no match is found and requireMatch is true', () => {
@@ -30,8 +29,8 @@ describe('coerceLocale', () => {
       requireMatch: true,
     };
 
-    expect(() => coerceLocale(options)).toThrow(
-      "Could not coerce locale 'fr-FR' to one of the candidates: en,de. You may adjust the weights or the candidates.",
+    expect(() => coerceLocale(options)).toThrowError(
+      "Could not coerce locale 'fr-FR' to one of the candidates: en, de. You may adjust the weights or the candidates.",
     );
   });
 

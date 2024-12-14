@@ -38,10 +38,8 @@ describe('[Unit Test] injectNavigatorLanguage', () => {
 
     expect(() =>
       TestBed.runInInjectionContext(() => injectNavigatorLanguage()),
-    ).toThrow(
-      new Error(
-        "Navigator language 'invalid-bcp47-tag' is not a valid BCP 47 tag.",
-      ),
+    ).toThrowError(
+      "Navigator language 'invalid-bcp47-tag' is not a valid BCP 47 tag.",
     );
   });
 

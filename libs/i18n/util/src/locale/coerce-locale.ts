@@ -1,35 +1,19 @@
 import type { Locale } from '@robby-rabbitman/cv-libs-i18n-types';
 
 export interface CoerceLocaleOptions {
-  /** The locale to coerce. */
   locale: Locale;
-
-  /**
-   * The list of candidates to compare the `locale` against - eventually
-   * returning the best match.
-   */
   candidates: Locale[];
-
-  /**
-   * The locale to fallback to when the `locale` cannot be coerced to one of the
-   * `candidates`.
-   */
   fallback?: Locale;
-
-  /**
-   * Whether the `locale` can be coerced to one of the `candidates`.
-   *
-   * - If `true`, an error is thrown when no match is found.
-   * - If `false`, `undefined` is returned when no match is found.
-   */
   requireMatch?: boolean;
-
-  /**
-   * The weights to apply to the comparison of the `locale` against the
-   * `candidates`.
-   */
   weights?: Partial<Record<keyof Intl.LocaleOptions, number>>;
 }
+
+export function coerceLocale(
+  options:
+    | (Omit<CoerceLocaleOptions, 'requireMatch'> & { requireMatch: true })
+    | (Omit<CoerceLocaleOptions, 'fallback'> & { fallback: Locale }),
+): Locale;
+export function coerceLocale(options: CoerceLocaleOptions): Locale | null;
 
 /**
  * Coerces a locale from a list of candidate locales based on specified weights.
@@ -54,8 +38,7 @@ export function coerceLocale(options: CoerceLocaleOptions) {
   const defaultOptions = {
     requireMatch: true,
     weights: {
-      /** Intl.Locale always has a language because of the bcp47 spec. */
-      language: 1,
+      language: 1, // Intl.Locale always has a language because of the BCP 47 spec.
     },
   } satisfies Partial<CoerceLocaleOptions>;
 
@@ -79,15 +62,17 @@ export function coerceLocale(options: CoerceLocaleOptions) {
   for (const currentCandidate of candidates) {
     const localePartsOfCurrentCandidate = new Intl.Locale(currentCandidate);
 
-    let scoreOfCurrentCandidate = 0;
+    let scoreOfCurrentCandidate = -1;
 
-    for (const weight in weights) {
+    for (const weightKey in weights) {
       if (
-        localeParts[weight as keyof Intl.LocaleOptions] ===
-        localePartsOfCurrentCandidate[weight as keyof Intl.LocaleOptions]
-      )
-        scoreOfCurrentCandidate +=
-          weights[weight as keyof Intl.LocaleOptions] ?? 0;
+        localeParts[weightKey as keyof typeof weights] ===
+        localePartsOfCurrentCandidate[weightKey as keyof typeof weights]
+      ) {
+        scoreOfCurrentCandidate += (weights as Required<typeof weights>)[
+          weightKey as keyof typeof weights
+        ];
+      }
     }
 
     if (scoreOfCurrentCandidate > scoreOfBestCandidate) {
@@ -106,7 +91,7 @@ export function coerceLocale(options: CoerceLocaleOptions) {
 
   if (requireMatch) {
     throw new Error(
-      `Could not coerce locale '${locale}' to one of the candidates: ${candidates}. You may adjust the weights or the candidates.`,
+      `Could not coerce locale '${locale}' to one of the candidates: ${candidates.join(', ')}. You may adjust the weights or the candidates.`,
     );
   }
 
