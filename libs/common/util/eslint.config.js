@@ -1,3 +1,3 @@
-import { nodeEslintConfig } from '@robby-rabbitman/cv-tools-eslint';
+import { webEslintConfig } from '@robby-rabbitman/cv-tools-eslint';
 
-export default [...nodeEslintConfig];
+export default [...webEslintConfig];
