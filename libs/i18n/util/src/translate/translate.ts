@@ -7,7 +7,7 @@ import {
   type TranslationValue,
   type TranslationValueType,
 } from '@robby-rabbitman/cv-libs-i18n-types';
-import { mergeObjects, walkObject } from '@robby-rabbitman/cv-libs-js-util';
+import { walkObject } from '@robby-rabbitman/cv-libs-js-util';
 
 /**
  * Translates a `key` for the given `translation`.
@@ -23,20 +23,19 @@ import { mergeObjects, walkObject } from '@robby-rabbitman/cv-libs-js-util';
  * - Optionally, it asserts the return type to be a _translation_ or a
  *   _translation string_.
  */
-export function translate(
-  key: string,
-  translation: Translation,
-  options: {
-    params?: TranslationParameters;
-    assert?: TranslationValueType;
-  },
-): typeof translation extends Translation
+export function translate(options: {
+  key: string;
+  translation: Translation;
+  params?: TranslationParameters;
+  assert?: TranslationValueType;
+}): typeof options.translation extends Translation
   ? NarrowTranslationValue<typeof options.assert>
   : string {
-  if (!isTranslation(translation) && !isTranslationString(translation))
-    return key;
+  const { key, translation, assert, params } = options;
 
-  const { assert, params } = options;
+  if (!isTranslation(translation)) {
+    return key;
+  }
 
   let value: TranslationValue;
 
@@ -48,7 +47,9 @@ export function translate(
 
   if (isTranslation(value)) {
     if (assert && assert !== 'Translation') {
-      throw new Error(`Expected a Translation for key '${key}'.`);
+      throw new Error(
+        `Expected a '${assert}' for key '${key}' but got a 'Translation'.`,
+      );
     }
 
     return value;
@@ -56,7 +57,9 @@ export function translate(
 
   if (isTranslationString(value)) {
     if (assert && assert !== 'string') {
-      throw new Error(`Expected a translation string for key '${key}'.`);
+      throw new Error(
+        `Expected a '${assert}' for key '${key}' but got a 'Translation String'.`,
+      );
     }
 
     if (params) {
@@ -69,36 +72,6 @@ export function translate(
   }
 
   throw new Error(
-    `Expected a Translation or a translation string - provided: ${value}`,
+    `Expected a 'Translation' or a 'Translation String' - provided: ${value}`,
   );
-}
-
-/**
- * Merges the `source` translation into the `target` translation.
- *
- * - If `options.prefix` is provided, it merges the `source` translation into the
- *   `target` translation at the specified `prefix`.
- */
-export function mergeTranslation(
-  target: Translation,
-  source: Translation,
-  options?: {
-    prefix?: string;
-  },
-) {
-  target = structuredClone(target);
-  source = structuredClone(source);
-
-  if (options?.prefix) {
-    const prefix = options.prefix.split('.').reverse();
-
-    source = prefix.reduce(
-      (translation, path) => ({ [path]: translation }),
-      source,
-    );
-  }
-
-  const mergedTranslation = mergeObjects(target, source);
-
-  return mergedTranslation;
 }
