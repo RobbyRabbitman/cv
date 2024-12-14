@@ -14,7 +14,8 @@
     }
   },
   "dependencies": {
-    "@robby-rabbitman/cv-tools-eslint": "workspace:*"
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@robby-rabbitman/cv-tools-karma": "workspace:*"
   },
   "nx": {
     "tags": [

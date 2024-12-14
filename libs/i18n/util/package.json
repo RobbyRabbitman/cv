@@ -19,6 +19,7 @@
     "@robby-rabbitman/cv-libs-i18n-types": "workspace:*",
     "@robby-rabbitman/cv-libs-js-util": "workspace:*",
     "@robby-rabbitman/cv-libs-common-util": "workspace:*",
+    "@robby-rabbitman/cv-tools-karma": "workspace:*",
     "ngxtension": "4.2.0"
   },
   "nx": {
