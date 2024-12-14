@@ -1,16 +1,10 @@
 import { type Linter } from 'eslint';
 import globals from 'globals';
 import angularEslintConfig from './eslint.config.angular.js';
-import ignoreEslintConfig from './eslint.config.ignore.js';
-import jsEslintConfig from './eslint.config.javascript.js';
-import nxEslintConfig from './eslint.config.nx.js';
-import tsEslintConfig from './eslint.config.typescript.js';
+import baseEslintConfig from './eslint.config.base.js';
 
 export const webEslintConfig = [
-  ...ignoreEslintConfig,
-  ...jsEslintConfig,
-  ...tsEslintConfig,
-  ...nxEslintConfig,
+  ...baseEslintConfig,
   ...angularEslintConfig,
   {
     languageOptions: {

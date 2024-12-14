@@ -1,19 +1,13 @@
 import { type Linter } from 'eslint';
 import nodeEslint from 'eslint-plugin-n';
 import packageJson from '../../../package.json' with { type: 'json' };
-import ignoreEslintConfig from './eslint.config.ignore.js';
-import jsEslintConfig from './eslint.config.javascript.js';
-import nxEslintConfig from './eslint.config.nx.js';
-import tsEslintConfig from './eslint.config.typescript.js';
+import baseEslintConfig from './eslint.config.base.js';
 
 const nodeEslintConfigRecomended =
   nodeEslint.configs['flat/recommended-module'];
 
 const nodeEslintConfig = [
-  ...ignoreEslintConfig,
-  ...jsEslintConfig,
-  ...tsEslintConfig,
-  ...nxEslintConfig,
+  ...baseEslintConfig,
   /** https://github.com/eslint-community/eslint-plugin-n */
   {
     ...nodeEslintConfigRecomended,
