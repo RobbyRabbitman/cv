@@ -237,38 +237,11 @@ importers:
         specifier: 4.2.0
         version: 4.2.0(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
 
-  libs/common/util/dist:
-    dependencies:
-      '@angular/common':
-        specifier: 19.0.4
-        version: 19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
-      '@angular/core':
-        specifier: 19.0.4
-        version: 19.0.4(rxjs@7.8.1)(zone.js@0.15.0)
-      '@robby-rabbitman/cv-tools-eslint':
-        specifier: workspace:*
-        version: link:../../../../tools/eslint
-      ngxtension:
-        specifier: 4.2.0
-        version: 4.2.0(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
-      tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
-
   libs/i18n/types:
     dependencies:
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
         version: link:../../../tools/eslint
-
-  libs/i18n/types/dist:
-    dependencies:
-      '@robby-rabbitman/cv-tools-eslint':
-        specifier: workspace:*
-        version: link:../../../../tools/eslint
-      tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
 
   libs/i18n/util:
     dependencies:
@@ -277,10 +250,10 @@ importers:
         version: 19.0.4(rxjs@7.8.1)(zone.js@0.15.0)
       '@robby-rabbitman/cv-libs-common-util':
         specifier: workspace:*
-        version: link:../../common/util/dist
+        version: link:../../common/util
       '@robby-rabbitman/cv-libs-i18n-types':
         specifier: workspace:*
-        version: link:../types/dist
+        version: link:../types
       '@robby-rabbitman/cv-libs-js-util':
         specifier: workspace:*
         version: link:../../js/util
@@ -290,30 +263,6 @@ importers:
       ngxtension:
         specifier: 4.2.0
         version: 4.2.0(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
-
-  libs/i18n/util/dist:
-    dependencies:
-      '@angular/core':
-        specifier: 19.0.4
-        version: 19.0.4(rxjs@7.8.1)(zone.js@0.15.0)
-      '@robby-rabbitman/cv-libs-common-util':
-        specifier: workspace:*
-        version: link:../../../common/util/dist
-      '@robby-rabbitman/cv-libs-i18n-types':
-        specifier: workspace:*
-        version: link:../../types/dist
-      '@robby-rabbitman/cv-libs-js-util':
-        specifier: workspace:*
-        version: link:../../../js/util
-      '@robby-rabbitman/cv-tools-eslint':
-        specifier: workspace:*
-        version: link:../../../../tools/eslint
-      ngxtension:
-        specifier: 4.2.0
-        version: 4.2.0(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
-      tslib:
-        specifier: ^2.3.0
-        version: 2.8.1
 
   libs/js/util:
     dependencies:
