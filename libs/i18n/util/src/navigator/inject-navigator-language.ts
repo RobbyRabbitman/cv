@@ -2,21 +2,23 @@ import type { Injector } from '@angular/core';
 import { injectWindow } from '@robby-rabbitman/cv-libs-common-util';
 import { assertInjector } from 'ngxtension/assert-injector';
 
-interface InjectNavigatorLanguageOptions {
+export interface InjectNavigatorLanguageOptions {
   injector?: Injector;
+
+  /** Whether to assert that the `navigator.language` is a valid BCP 47 tag. */
   assertBCP47tag?: boolean;
 }
 
-export function injectNavigatorLanguage(options: {
+export function injectNavigatorLanguage(options?: {
   injector?: Injector;
   assertBCP47tag: true;
 }): Intl.UnicodeBCP47LocaleIdentifier;
-export function injectNavigatorLanguage(options: {
+export function injectNavigatorLanguage(options?: {
   injector?: Injector;
   assertBCP47tag?: false;
 }): string;
 export function injectNavigatorLanguage(
-  options: InjectNavigatorLanguageOptions,
+  options?: InjectNavigatorLanguageOptions,
 ): string | Intl.UnicodeBCP47LocaleIdentifier;
 
 /**
@@ -29,7 +31,7 @@ export function injectNavigatorLanguage(
  * @see {@link injectWindow}
  */
 export function injectNavigatorLanguage(
-  options: InjectNavigatorLanguageOptions,
+  options?: InjectNavigatorLanguageOptions,
 ) {
   const defaultOptions = {
     assertBCP47tag: true,
@@ -47,9 +49,14 @@ export function injectNavigatorLanguage(
       return navigatorLanguage;
     }
 
-    if (Intl.getCanonicalLocales(navigatorLanguage).length === 0) {
+    try {
+      new Intl.Locale(navigatorLanguage);
+    } catch (error) {
       throw new Error(
         `Navigator language '${navigatorLanguage}' is not a valid BCP 47 tag.`,
+        {
+          cause: error,
+        },
       );
     }
 

@@ -9,6 +9,8 @@ export const [
    * @see {@link DOCUMENT}
    */
   injectWindow,
+  provideWindow,
+  WINDOW,
 ] = createInjectionToken(() => {
   const document = inject(DOCUMENT);
 
