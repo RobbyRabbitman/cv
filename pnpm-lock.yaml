@@ -228,8 +228,8 @@ importers:
   libs/node/util:
     dependencies:
       '@nx/devkit':
-        specifier: 20.2.1
-        version: 20.2.1(nx@20.2.2)
+        specifier: 20.2.2
+        version: 20.2.2(nx@20.2.2)
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
         version: link:../../../tools/eslint
@@ -291,8 +291,8 @@ importers:
   tools/nx-angular-plugin:
     dependencies:
       '@nx/devkit':
-        specifier: 20.2.1
-        version: 20.2.1(nx@20.2.2)
+        specifier: 20.2.2
+        version: 20.2.2(nx@20.2.2)
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
         version: link:../eslint
@@ -327,8 +327,8 @@ importers:
   tools/nx-ng-packagr-plugin:
     dependencies:
       '@nx/devkit':
-        specifier: 20.2.1
-        version: 20.2.1(nx@20.2.2)
+        specifier: 20.2.2
+        version: 20.2.2(nx@20.2.2)
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
         version: link:../eslint
@@ -345,8 +345,8 @@ importers:
   tools/nx-sonar-scan-plugin:
     dependencies:
       '@nx/devkit':
-        specifier: 20.2.1
-        version: 20.2.1(nx@20.2.2)
+        specifier: 20.2.2
+        version: 20.2.2(nx@20.2.2)
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
         version: link:../eslint
@@ -372,8 +372,8 @@ importers:
   tools/sonar:
     dependencies:
       '@nx/devkit':
-        specifier: 20.2.1
-        version: 20.2.1(nx@20.2.2)
+        specifier: 20.2.2
+        version: 20.2.2(nx@20.2.2)
       '@robby-rabbitman/cv-libs-node-util':
         specifier: workspace:*
         version: link:../../libs/node/util
@@ -2215,11 +2215,6 @@ packages:
   '@npmcli/run-script@9.0.2':
     resolution: {integrity: sha512-cJXiUlycdizQwvqE1iaAb4VRUM3RX09/8q46zjvy+ct9GhfZRWd7jXYVc1tn/CfRlGPVkX/u4sstRlepsm7hfw==}
     engines: {node: ^18.17.0 || >=20.5.0}
-
-  '@nx/devkit@20.2.1':
-    resolution: {integrity: sha512-boNTu7Z7oHkYjrYg5Wzg+cQfbEJ2nntRj1eI99w8mp4qz2B4PEEjJOB0BZafR54ZcKpGEbyp/QBB945GsjTUbw==}
-    peerDependencies:
-      nx: '>= 19 <= 21'
 
   '@nx/devkit@20.2.2':
     resolution: {integrity: sha512-uqs0LVvuRRVAfFdn0ewvmr1vsNV9Ztugw36emcLJxskqhBZb10K+vzdTDAZpg5aVE2ISg1BmPidoOyk1tP+Omg==}
@@ -10878,18 +10873,6 @@ snapshots:
     transitivePeerDependencies:
       - bluebird
       - supports-color
-
-  '@nx/devkit@20.2.1(nx@20.2.2)':
-    dependencies:
-      ejs: 3.1.10
-      enquirer: 2.3.6
-      ignore: 5.3.2
-      minimatch: 9.0.3
-      nx: 20.2.2
-      semver: 7.6.3
-      tmp: 0.2.3
-      tslib: 2.8.1
-      yargs-parser: 21.1.1
 
   '@nx/devkit@20.2.2(nx@20.2.2)':
     dependencies:
