@@ -44,6 +44,9 @@
     },
     {
       "path": "./libs/common/util"
+    },
+    {
+      "path": "./tools/karma"
     }
   ]
 }
