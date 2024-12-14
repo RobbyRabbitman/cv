@@ -2,15 +2,24 @@ import { logger, readCachedProjectGraph } from '@nx/devkit';
 import { existsSync } from 'fs';
 import { join } from 'path';
 import { scan } from 'sonarqube-scanner';
+import { type ViteUserConfig } from 'vitest/config';
 import { sonarApi } from '../api/sonar.api.js';
 
 export type SonarProperties = Record<string, string>;
 
 export const SONAR_SCAN_PROJECT_TECHNOLOGIES = ['js'] as const;
+export const SONAR_SCAN_PROJECT_TEST_TECHNOLOGIES = [
+  'karma',
+  'vitest',
+] as const;
 
 /** @see {@link SonarScanOptions} */
 export type SonarScanProjectTechnology =
   (typeof SONAR_SCAN_PROJECT_TECHNOLOGIES)[number];
+
+/** @see {@link SonarScanOptions} */
+export type SonarScanProjectTestTechnology =
+  (typeof SONAR_SCAN_PROJECT_TEST_TECHNOLOGIES)[number];
 
 /** @see {@link sonarScan} options. */
 export interface SonarScanOptions {
@@ -29,6 +38,10 @@ export interface SonarScanOptions {
    * - {@link buildJsBasedSonarProperties js}
    */
   projectTechnologies?: SonarScanProjectTechnology[];
+
+  inferredProjectTestTechnologies?: Partial<
+    Record<SonarScanProjectTestTechnology, string[]>
+  >;
 
   /**
    * Adds technology specific properties to the sonar scan options based on the
@@ -70,6 +83,7 @@ export async function sonarScan(options: SonarScanOptions) {
     inferredProjectTechnologies,
     projectTechnologies,
     properties,
+    inferredProjectTestTechnologies,
   } = options;
 
   const project = readCachedProjectGraph().nodes[projectName];
@@ -122,6 +136,21 @@ export async function sonarScan(options: SonarScanOptions) {
     projectDirectory,
     workspaceRoot,
   });
+
+  const testTechnologyBasedSonarProperties =
+    await buildTestTechnologyBasedSonarProperties({
+      inferredProjectTestTechnologies,
+      projectDirectory,
+      workspaceRoot,
+    });
+
+  if (testTechnologyBasedSonarProperties['sonar.coverage.exclusions']) {
+    logger.verbose(
+      '[sonarScan] adding additional coverage exclusions based on test technology',
+    );
+    technologyBasedSonarProperties['sonar.coverage.exclusions'] +=
+      `,${testTechnologyBasedSonarProperties['sonar.coverage.exclusions']}`;
+  }
 
   /**
    * Priority order: base properties < technology specific properties < scan
@@ -359,7 +388,7 @@ export function buildJsBasedSonarProperties(options: {
    *
    * https://docs.sonarsource.com/sonar/latest/project-administration/analysis-scope/#file-exclusion-and-inclusion
    */
-  const jsBasedSonarProperties: SonarProperties = {
+  const jsBasedSonarProperties = {
     /**
      * - Some sonar properties ONLY allow relative paths
      *   https://docs.sonarsource.com/sonar/latest/project-administration/analysis-scope
@@ -376,9 +405,13 @@ export function buildJsBasedSonarProperties(options: {
       storybookStoryFilePattern,
     ].join(','),
     'sonar.javascript.lcov.reportPaths': join(coverageDirectory, 'lcov.info'),
-  };
+  } satisfies SonarProperties;
 
   const executionReportPath = join(coverageDirectory, 'execution-report.xml');
+
+  const optionalJsBasedSonarProperties: {
+    'sonar.testExecutionReportPaths'?: string;
+  } = {};
 
   /**
    * Not every js project has a test execution report
@@ -386,9 +419,65 @@ export function buildJsBasedSonarProperties(options: {
    * - Vitest https://www.npmjs.com/package/vitest-sonar-reporter
    */
   if (existsSync(join(workspaceRoot, projectDirectory, executionReportPath))) {
-    jsBasedSonarProperties['sonar.testExecutionReportPaths'] =
+    optionalJsBasedSonarProperties['sonar.testExecutionReportPaths'] =
       executionReportPath;
   }
 
-  return jsBasedSonarProperties;
+  return { ...jsBasedSonarProperties, ...optionalJsBasedSonarProperties };
+}
+
+export async function buildTestTechnologyBasedSonarProperties(options: {
+  inferredProjectTestTechnologies: SonarScanOptions['inferredProjectTestTechnologies'];
+  projectDirectory: string;
+  workspaceRoot: string;
+}): Promise<{
+  'sonar.coverage.exclusions'?: string;
+}> {
+  const { inferredProjectTestTechnologies, projectDirectory, workspaceRoot } =
+    options;
+
+  if (!inferredProjectTestTechnologies) {
+    return {};
+  }
+
+  const testTechnologyBuildersForSonarProperties: Record<
+    SonarScanProjectTestTechnology,
+    (file: string) => Promise<{
+      'sonar.coverage.exclusions'?: string;
+    }>
+  > = {
+    karma: async () => ({}),
+    vitest: async (file) => {
+      const vitestConfig = (await import(file)) as ViteUserConfig;
+
+      const vitestCoverageExclude = vitestConfig.test?.coverage?.exclude;
+
+      if (!vitestCoverageExclude) {
+        return {};
+      }
+
+      logger.verbose(
+        '[buildTestTechnologyBasedSonarProperties] found exclusions in vitest config',
+        vitestCoverageExclude,
+      );
+
+      return {
+        'sonar.coverage.exclusions': vitestCoverageExclude.join(','),
+      };
+    },
+  };
+
+  const sonarTestTechnologyProperties = await Object.entries(
+    inferredProjectTestTechnologies,
+  ).reduce(
+    async (sonarOptions, [technology, file]) => ({
+      ...sonarOptions,
+      ...(await testTechnologyBuildersForSonarProperties[
+        technology as SonarScanProjectTestTechnology
+      ](file)),
+    }),
+    Promise.resolve({} as SonarProperties),
+  );
+
+  return sonarTestTechnologyProperties;
 }

@@ -31,6 +31,12 @@ export async function sonarScanCli() {
         description:
           'The technology of the project to scan based on the presence of specific files e.g. --inferredProjectTechnology js=package.json --inferredProjectTechnology js=tsconfig.json',
       })
+      .option('inferredProjectTestTechnologies', {
+        type: 'string',
+        array: true,
+        description:
+          'The technology of the project to scan based on the presence of specific files e.g. --inferredProjectTestTechnologies karma=karma.config.js',
+      })
       .option('option', {
         type: 'string',
         array: true,
@@ -79,6 +85,30 @@ export async function sonarScanCli() {
           ],
         }),
         {} as NonNullable<SonarScanOptions['inferredProjectTechnologies']>,
+      );
+
+    const inferredProjectTestTechnologies = (
+      options.inferredProjectTestTechnologies ?? []
+    )
+      .flatMap((inferredProjectTestTechnologies) =>
+        inferredProjectTestTechnologies.split(','),
+      )
+      .map(
+        (inferredProjectTestTechnology) =>
+          inferredProjectTestTechnology.split('=') as [
+            SonarScanProjectTechnology,
+            string,
+          ],
+      )
+      .reduce(
+        (inferredProjectTestTechnologies, [technology, file]) => ({
+          ...inferredProjectTestTechnologies,
+          [technology]: [
+            ...(inferredProjectTestTechnologies[technology] ?? []),
+            file,
+          ],
+        }),
+        {} as NonNullable<SonarScanOptions['inferredProjectTestTechnologies']>,
       );
 
     const combinedOptions = {
