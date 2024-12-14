@@ -32,6 +32,12 @@
     },
     {
       "path": "./apps/web/cv"
+    },
+    {
+      "path": "./libs/i18n/types"
+    },
+    {
+      "path": "./libs/i18n/util"
     }
   ]
 }
