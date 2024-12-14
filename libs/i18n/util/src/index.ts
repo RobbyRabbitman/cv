@@ -1,2 +1,2 @@
-export * from './lib/locale';
-export * from './lib/translation';
+export * from './locale';
+export * from './translation';

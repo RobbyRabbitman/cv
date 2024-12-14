@@ -47,6 +47,7 @@
     ],
     "angularGlobals": [
       "{workspaceRoot}/tools/nx-angular-plugin/**/*",
+      "ngPackagrGlobals",
       {
         "externalDependencies": [
           "@angular-devkit/build-angular",
@@ -117,7 +118,8 @@
           "targetName": "build-tsc",
           "configName": "tsconfig.lib.json"
         }
-      }
+      },
+      "include": ["tools/**", "libs/{js,node}/**"]
     },
     {
       "plugin": "@nx/eslint/plugin",
@@ -181,6 +183,9 @@
       "options": {
         "report-unused-disable-directives": true
       }
+    },
+    "test*": {
+      "dependsOn": ["build*"]
     },
     "test-vitest": {
       "inputs": ["test-vitest", "^test-vitest"],

@@ -4,6 +4,12 @@
   "exclude": ["*.config.*", "src/**/*.spec.*"],
   "references": [
     {
+      "path": "../../../tools/vitest/tsconfig.lib.json"
+    },
+    {
+      "path": "../../js/util/tsconfig.lib.json"
+    },
+    {
       "path": "../../../tools/eslint/tsconfig.lib.json"
     }
   ]

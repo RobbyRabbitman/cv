@@ -17,7 +17,8 @@
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@angular/core": "19.0.4",
     "@robby-rabbitman/cv-libs-i18n-types": "workspace:*",
-    "@robby-rabbitman/cv-libs-js-util": "workspace:*"
+    "@robby-rabbitman/cv-libs-js-util": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-util": "workspace:*"
   },
   "nx": {
     "tags": [

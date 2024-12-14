@@ -1,5 +1,5 @@
 import { Injector } from '@angular/core';
-import { injectWindow } from '@cv/common/util';
+import { injectWindow } from '@robby-rabbitman/cv-libs-common-util';
 import { assertInjector } from 'ngxtension/assert-injector';
 
 /** Injects the locale from the document. */

@@ -41,6 +41,9 @@
     },
     {
       "path": "./libs/js/util"
+    },
+    {
+      "path": "./libs/common/util"
     }
   ]
 }
