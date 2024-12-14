@@ -1,7 +1,4 @@
 {
   "extends": "../../../tools/typescript/src/tsconfig.ng-karma.json",
-  "compilerOptions": {
-    "outDir": "./out-tsc/spec"
-  },
   "include": ["src/**/*"]
 }
