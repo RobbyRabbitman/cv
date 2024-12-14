@@ -21,7 +21,7 @@ const nxEslintConfig = [
        * 2. Nx reset
        * 3. Run eslint
        *
-       * TODO: Find out how this rule workds - maybe the nx reset causes the
+       * TODO: Find out how this rule works - maybe the nx reset causes the
        * project graph to be rebuild and the rules checks also the dist ???
        *
        * Switch to 'error' when the rule is understood and the setup is correct.
