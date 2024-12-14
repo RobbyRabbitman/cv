@@ -6,7 +6,7 @@
   },
   "nx": {
     "tags": [
-      "scope:tool"
+      "type:tool"
     ],
     "targets": {
       "lint": {

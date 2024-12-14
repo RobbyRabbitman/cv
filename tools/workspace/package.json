@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "nx": {
     "tags": [
-      "scope:tool"
+      "type:tool"
     ],
     "targets": {
       "delete-all-local-git-branches": {

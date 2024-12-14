@@ -53,8 +53,12 @@ const nxEslintConfig = [
               onlyDependOnLibsWithTags: ['type:*'],
             },
             {
-              sourceTag: 'type:util',
-              onlyDependOnLibsWithTags: ['type:util', 'type:types'],
+              sourceTag: 'type:tool',
+              onlyDependOnLibsWithTags: ['type:*'],
+            },
+            {
+              sourceTag: 'type:types',
+              onlyDependOnLibsWithTags: ['type:types', 'type:util'],
             },
             {
               sourceTag: 'type:types',
@@ -62,20 +66,6 @@ const nxEslintConfig = [
             },
 
             /** Scopes */
-
-            /** Every scope can depend on tools - they are used in configs etc. */
-            {
-              sourceTag: 'scope:*',
-              onlyDependOnLibsWithTags: ['scope:tool'],
-            },
-            /**
-             * Tools are scopeless as they represent the utelization of a
-             * specific tool, which can be of any scope.
-             */
-            {
-              sourceTag: 'scope:tool',
-              onlyDependOnLibsWithTags: ['scope:*'],
-            },
             {
               sourceTag: 'scope:js',
               onlyDependOnLibsWithTags: ['scope:js'],

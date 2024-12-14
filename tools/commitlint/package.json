@@ -12,7 +12,7 @@
   },
   "nx": {
     "tags": [
-      "scope:tool"
+      "type:tool"
     ],
     "targets": {
       "commitlint": {

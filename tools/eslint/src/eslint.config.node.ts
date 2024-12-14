@@ -1,5 +1,6 @@
 import { type Linter } from 'eslint';
 import nodeEslint from 'eslint-plugin-n';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import packageJson from '../../../package.json' with { type: 'json' };
 import baseEslintConfig from './eslint.config.base.js';
 
