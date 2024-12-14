@@ -24,7 +24,7 @@
   },
   "nx": {
     "tags": [
-      "type:tool"
+      "scope:tool"
     ]
   }
 }

@@ -23,7 +23,7 @@
   },
   "nx": {
     "tags": [
-      "type:tool"
+      "scope:tool"
     ],
     "targets": {
       "exec-sonar-scan-cli": {
