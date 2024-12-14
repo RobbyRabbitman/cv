@@ -64,39 +64,32 @@ const nxEslintConfig = [
             },
             {
               sourceTag: 'type:tool',
-              onlyDependOnLibsWithTags: ['type:util', 'type:tool'],
+              onlyDependOnLibsWithTags: ['scope:*', 'type:util', 'type:tool'],
             },
-            /** Scopes */ {
-              sourceTag: 'scope:shared',
-              onlyDependOnLibsWithTags: ['scope:shared'],
+            /** Scopes */
+            {
+              sourceTag: 'scope:*',
+              onlyDependOnLibsWithTags: ['type:tool'],
             },
             {
               sourceTag: 'scope:js',
-              onlyDependOnLibsWithTags: ['scope:shared', 'scope:js'],
+              onlyDependOnLibsWithTags: ['scope:js', 'type:tool'],
             },
             {
               sourceTag: 'scope:node',
-              onlyDependOnLibsWithTags: [
-                'scope:shared',
-                'scope:js',
-                'scope:node',
-              ],
+              onlyDependOnLibsWithTags: ['scope:js', 'scope:node', 'type:tool'],
             },
             {
               sourceTag: 'scope:web',
-              onlyDependOnLibsWithTags: [
-                'scope:shared',
-                'scope:js',
-                'scope:web',
-              ],
+              onlyDependOnLibsWithTags: ['scope:js', 'scope:web', 'type:tool'],
             },
             {
               sourceTag: 'scope:angular',
               onlyDependOnLibsWithTags: [
-                'scope:shared',
                 'scope:js',
                 'scope:web',
                 'scope:angular',
+                'type:tool',
               ],
             },
           ],

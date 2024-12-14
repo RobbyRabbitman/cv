@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "nx": {
     "tags": [
-      "scope:shared",
       "type:tool"
     ],
     "targets": {
