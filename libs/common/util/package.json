@@ -13,7 +13,7 @@
       "default": "./dist/fesm2022/robby-rabbitman-cv-libs-common-util.mjs"
     }
   },
-  "dependencies": {
+  "peerDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@angular/core": "19.0.4",
     "@angular/common": "19.0.4",

@@ -2,7 +2,14 @@ import { DOCUMENT } from '@angular/common';
 import { inject } from '@angular/core';
 import { createInjectionToken } from 'ngxtension/create-injection-token';
 
-export const [injectWindow] = createInjectionToken(() => {
+export const [
+  /**
+   * Injects the window.
+   *
+   * @see {@link DOCUMENT}
+   */
+  injectWindow,
+] = createInjectionToken(() => {
   const document = inject(DOCUMENT);
 
   const window = document.defaultView;
