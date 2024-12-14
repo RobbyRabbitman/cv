@@ -14,7 +14,7 @@
   "peerDependencies": {
     "yargs": "17.7.2",
     "sonarqube-scanner": "4.2.6",
-    "@nx/devkit": "20.2.1",
+    "@nx/devkit": "20.2.2",
     "@robby-rabbitman/cv-tools-vitest": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-libs-node-util": "workspace:*",
