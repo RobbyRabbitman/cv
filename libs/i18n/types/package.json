@@ -13,7 +13,7 @@
       "default": "./dist/fesm2022/robby-rabbitman-cv-libs-i18n-types.mjs"
     }
   },
-  "dependencies": {
+  "peerDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-tools-karma": "workspace:*"
   },

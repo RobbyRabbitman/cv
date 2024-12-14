@@ -1,5 +1,4 @@
 {
-  "allowedNonPeerDependencies": ["@robby-rabbitman/cv"],
   "lib": {
     "entryFile": "src/index.ts"
   }
