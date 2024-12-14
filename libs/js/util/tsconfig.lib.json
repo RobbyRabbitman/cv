@@ -1,0 +1,18 @@
+{
+  "extends": "../../../tools/typescript/src/tsconfig.node.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "tsBuildInfoFile": "node_modules/.cache/tsBuildInfo/tsconfig.lib.tsbuildinfo"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["*.config.*", "src/**/*.spec.*"],
+  "references": [
+    {
+      "path": "../../../tools/vitest/tsconfig.lib.json"
+    },
+    {
+      "path": "../../../tools/eslint/tsconfig.lib.json"
+    }
+  ]
+}

@@ -32,6 +32,9 @@
     },
     {
       "path": "./apps/web/cv"
+    },
+    {
+      "path": "./libs/js/util"
     }
   ]
 }
