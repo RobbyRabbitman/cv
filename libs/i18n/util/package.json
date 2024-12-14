@@ -6,7 +6,9 @@
   "types": "./dist/index.d.ts",
   "dependencies": {
     "@robby-rabbitman/cv-tools-vitest": "workspace:*",
-    "@robby-rabbitman/cv-tools-eslint": "workspace:*"
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@robby-rabbitman/cv-libs-i18n-types": "workspace:*",
+    "@robby-rabbitman/cv-libs-js-util": "workspace:*"
   },
   "nx": {
     "tags": [

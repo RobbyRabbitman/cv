@@ -1,10 +1,6 @@
 {
-  "extends": "../../../tools/typescript/src/tsconfig.web.json",
-  "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist",
-    "tsBuildInfoFile": "node_modules/.cache/tsBuildInfo/tsconfig.lib.tsbuildinfo"
-  },
+  "extends": "../../../tools/typescript/src/tsconfig.ng-lib.json",
+  "compilerOptions": {},
   "include": ["src/**/*"],
   "exclude": ["*.config.*", "src/**/*.spec.*"],
   "references": [

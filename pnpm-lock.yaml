@@ -227,6 +227,12 @@ importers:
 
   libs/i18n/util:
     dependencies:
+      '@robby-rabbitman/cv-libs-i18n-types':
+        specifier: workspace:*
+        version: link:../types
+      '@robby-rabbitman/cv-libs-js-util':
+        specifier: workspace:*
+        version: link:../../js/util
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
         version: link:../../../tools/eslint

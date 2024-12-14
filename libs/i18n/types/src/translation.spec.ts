@@ -1,4 +1,4 @@
-import { isTranslation, isTranslationString } from './translation.js';
+import { isTranslation, isTranslationString } from './translation';
 
 describe('[Unit Test] Translation', () => {
   describe('isTranslationString', () => {

@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
 export interface Translation {
-  [key: string]: TranslationValue;
+  [key: PropertyKey]: TranslationValue;
 }
 
 export type TranslationValue = string | Translation;
