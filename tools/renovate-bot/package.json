@@ -1,7 +1,7 @@
 {
   "name": "@robby-rabbitman/cv-tools-renovate-bot",
   "version": "0.0.0",
-  "dependencies": {
+  "peerDependencies": {
     "renovate": "39.62.6"
   },
   "nx": {

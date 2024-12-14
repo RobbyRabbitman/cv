@@ -6,11 +6,9 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "cv": {
+    "app": {
       "projectType": "application",
       "root": "",
-      "sourceRoot": "src",
-      "prefix": "cv",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -51,7 +49,7 @@
           "options": {
             "tsConfig": "tsconfig.spec.json",
             "styles": ["src/styles.scss"],
-            "karmaConfig": "karma.conf.cjs"
+            "karmaConfig": "karma.config.cjs"
           }
         }
       }

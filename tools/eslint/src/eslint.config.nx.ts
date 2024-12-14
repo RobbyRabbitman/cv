@@ -7,22 +7,34 @@ import ignoreConfig from './eslint.config.ignore.js';
 const nxEslintConfig = [
   ...ignoreConfig,
   { plugins: { '@nx': nxEslintPlugin } },
-  // https://nx.dev/nx-api/eslint-plugin#dependency-checks-rule
+  /** https://nx.dev/nx-api/eslint-plugin#dependency-checks-rule */
   {
     files: ['**/*.json'],
     languageOptions: {
       parser: jsoncEslintParser,
     },
     rules: {
+      /**
+       * OBSERVATION: This rule is a bit tricky in order to 'work' ...
+       *
+       * 1. Build all projects
+       * 2. Nx reset
+       * 3. Run eslint
+       *
+       * TODO: Find out how this rule works - maybe the nx reset causes the
+       * project graph to be rebuild and the rules checks also the dist ???
+       *
+       * Switch to 'error' when the rule is understood and the setup is correct.
+       */
       '@nx/dependency-checks': [
-        'error',
+        'warn',
         {
           buildTargets: ['nx-eslint-dependency-checks-pseudo-build'],
         },
       ],
     },
   },
-  // https://nx.dev/nx-api/eslint-plugin#enforce-module-boundaries-rule
+  /** https://nx.dev/nx-api/eslint-plugin#enforce-module-boundaries-rule */
   {
     files: ['**/*.ts', '**/*.mts', '**/*.cts', '**/*.tsx'],
     languageOptions: {
@@ -31,34 +43,40 @@ const nxEslintConfig = [
   },
   {
     files: [
-      '**/*.ts',
-      '**/*.mts',
-      '**/*.cts',
-      '**/*.tsx',
-      '**/*.js',
-      '**/*.mjs',
-      '**/*.cjs',
-      '**/*.jsx',
-    ],
-    ignores: [
-      '**/vite.config.*',
-      '**/vitest.config.*',
-      '**/wtr.config.*',
-      '**/eslint.config.*',
-      '**/stylelint.config.*',
+      '**/src/**/*.ts',
+      '**/src/**/*.mts',
+      '**/src/**/*.cts',
+      '**/src/**/*.tsx',
+      '**/src/**/*.js',
+      '**/src/**/*.mjs',
+      '**/src/**/*.cjs',
+      '**/src/**/*.jsx',
     ],
     rules: {
       '@nx/enforce-module-boundaries': [
         'error',
         {
           enforceBuildableLibDependency: true,
-          allow: [],
           depConstraints: [
             /** Types */
+
+            {
+              sourceTag: 'type:app',
+              onlyDependOnLibsWithTags: ['type:*'],
+            },
             {
               sourceTag: 'type:tool',
-              onlyDependOnLibsWithTags: ['type:util', 'type:tool'],
+              onlyDependOnLibsWithTags: ['type:*'],
             },
+            {
+              sourceTag: 'type:types',
+              onlyDependOnLibsWithTags: ['type:types', 'type:util'],
+            },
+            {
+              sourceTag: 'type:types',
+              onlyDependOnLibsWithTags: ['type:types', 'type:util'],
+            },
+
             /** Scopes */
             {
               sourceTag: 'scope:js',

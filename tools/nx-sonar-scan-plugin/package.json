@@ -15,7 +15,7 @@
     "dist",
     "package.json"
   ],
-  "dependencies": {
+  "peerDependencies": {
     "@nx/devkit": "20.2.2",
     "@robby-rabbitman/cv-tools-vitest": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
@@ -25,7 +25,6 @@
   },
   "nx": {
     "tags": [
-      "scope:node",
       "type:tool"
     ]
   }
