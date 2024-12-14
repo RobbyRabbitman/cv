@@ -562,6 +562,9 @@ packages:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '*'
 
+  '@angular-eslint/bundled-angular-compiler@18.4.3':
+    resolution: {integrity: sha512-zdrA8mR98X+U4YgHzUKmivRU+PxzwOL/j8G7eTOvBuq8GPzsP+hvak+tyxlgeGm9HsvpFj9ERHLtJ0xDUPs8fg==}
+
   '@angular-eslint/bundled-angular-compiler@19.0.2':
     resolution: {integrity: sha512-HPmp92r70SNO/0NdIaIhxrgVSpomqryuUk7jszvNRtu+OzYCJGcbLhQD38T3dbBWT/AV0QXzyzExn6/2ai9fEw==}
 
@@ -8509,6 +8512,8 @@ snapshots:
       typescript: 5.6.2
     transitivePeerDependencies:
       - chokidar
+
+  '@angular-eslint/bundled-angular-compiler@18.4.3': {}
 
   '@angular-eslint/bundled-angular-compiler@19.0.2': {}
 

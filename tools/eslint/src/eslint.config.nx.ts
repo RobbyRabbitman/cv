@@ -7,7 +7,7 @@ import ignoreConfig from './eslint.config.ignore.js';
 const nxEslintConfig = [
   ...ignoreConfig,
   { plugins: { '@nx': nxEslintPlugin } },
-  // https://nx.dev/nx-api/eslint-plugin#dependency-checks-rule
+  /** https://nx.dev/nx-api/eslint-plugin#dependency-checks-rule */
   {
     files: ['**/*.json'],
     languageOptions: {
@@ -22,7 +22,7 @@ const nxEslintConfig = [
       ],
     },
   },
-  // https://nx.dev/nx-api/eslint-plugin#enforce-module-boundaries-rule
+  /** https://nx.dev/nx-api/eslint-plugin#enforce-module-boundaries-rule */
   {
     files: ['**/*.ts', '**/*.mts', '**/*.cts', '**/*.tsx'],
     languageOptions: {
