@@ -7,6 +7,13 @@
     "@angular/platform-browser": "19.0.4",
     "@angular/router": "19.0.4",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@robby-rabbitman/cv-tools-karma": "workspace:*",
     "@angular/common": "19.0.4"
+  },
+  "nx": {
+    "tags": [
+      "scope:angular",
+      "type:app"
+    ]
   }
 }

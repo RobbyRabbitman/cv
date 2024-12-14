@@ -11,8 +11,8 @@
   },
   "nx": {
     "tags": [
-      "type:tool",
-      "scope:js"
+      "scope:shared",
+      "type:tool"
     ]
   }
 }

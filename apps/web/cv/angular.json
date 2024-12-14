@@ -49,7 +49,7 @@
           "options": {
             "tsConfig": "tsconfig.spec.json",
             "styles": ["src/styles.scss"],
-            "karmaConfig": "karma.conf.cjs"
+            "karmaConfig": "karma.config.cjs"
           }
         }
       }

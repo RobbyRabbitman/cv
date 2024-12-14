@@ -18,6 +18,7 @@
   },
   "nx": {
     "tags": [
+      "scope:shared",
       "type:tool"
     ]
   }

@@ -23,7 +23,7 @@
   },
   "nx": {
     "tags": [
-      "scope:node",
+      "scope:shared",
       "type:tool"
     ],
     "targets": {

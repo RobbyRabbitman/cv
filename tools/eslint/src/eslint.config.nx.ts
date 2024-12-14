@@ -52,29 +52,48 @@ const nxEslintConfig = [
         'error',
         {
           enforceBuildableLibDependency: true,
-          allow: [],
           depConstraints: [
             /** Types */
+            {
+              sourceTag: 'type:app',
+              onlyDependOnLibsWithTags: ['type:*'],
+            },
+            {
+              sourceTag: 'type:util',
+              onlyDependOnLibsWithTags: ['type:util', 'type:tool'],
+            },
             {
               sourceTag: 'type:tool',
               onlyDependOnLibsWithTags: ['type:util', 'type:tool'],
             },
-            /** Scopes */
+            /** Scopes */ {
+              sourceTag: 'scope:shared',
+              onlyDependOnLibsWithTags: ['scope:shared'],
+            },
             {
               sourceTag: 'scope:js',
-              onlyDependOnLibsWithTags: ['scope:js'],
+              onlyDependOnLibsWithTags: ['scope:shared', 'scope:js'],
             },
             {
               sourceTag: 'scope:node',
-              onlyDependOnLibsWithTags: ['scope:js', 'scope:node'],
+              onlyDependOnLibsWithTags: [
+                'scope:shared',
+                'scope:js',
+                'scope:node',
+              ],
             },
             {
               sourceTag: 'scope:web',
-              onlyDependOnLibsWithTags: ['scope:js', 'scope:web'],
+              onlyDependOnLibsWithTags: [
+                'scope:shared',
+                'scope:js',
+                'scope:web',
+              ],
             },
             {
               sourceTag: 'scope:angular',
               onlyDependOnLibsWithTags: [
+                'scope:shared',
                 'scope:js',
                 'scope:web',
                 'scope:angular',
