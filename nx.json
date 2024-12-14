@@ -184,6 +184,9 @@
         "report-unused-disable-directives": true
       }
     },
+    "build*": {
+      "dependsOn": ["^build*"]
+    },
     "test*": {
       "dependsOn": ["build*"]
     },

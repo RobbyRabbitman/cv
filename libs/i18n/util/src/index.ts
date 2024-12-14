@@ -1,2 +1,2 @@
-export * from './locale';
+export * from './locale/coerce-locale';
 export * from './translation';
