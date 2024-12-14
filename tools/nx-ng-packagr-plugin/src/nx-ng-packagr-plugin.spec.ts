@@ -309,6 +309,7 @@ describe('[Unit Test] infer ng-packagr targets', () => {
                     outputs: ['{projectRoot}/dist'],
                     options: {
                       cwd: '{projectRoot}',
+                      config: 'tsconfig.lib.json',
                     },
                   },
                 }),
@@ -348,6 +349,7 @@ describe('[Unit Test] infer ng-packagr targets', () => {
                     options: {
                       cwd: '{projectRoot}',
                       custom: 'option',
+                      config: 'tsconfig.lib.json',
                     },
                   }),
                 }),
