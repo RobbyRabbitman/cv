@@ -234,6 +234,15 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/vitest
 
+  libs/js/util:
+    dependencies:
+      '@robby-rabbitman/cv-tools-eslint':
+        specifier: workspace:*
+        version: link:../../../tools/eslint
+      '@robby-rabbitman/cv-tools-vitest':
+        specifier: workspace:*
+        version: link:../../../tools/vitest
+
   libs/node/util:
     dependencies:
       '@nx/devkit':

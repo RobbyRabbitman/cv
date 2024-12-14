@@ -1,0 +1,17 @@
+{
+  "name": "@robby-rabbitman/cv-libs-js-util",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@robby-rabbitman/cv-tools-vitest": "workspace:*",
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*"
+  },
+  "nx": {
+    "tags": [
+      "scope:js",
+      "type:util"
+    ]
+  }
+}

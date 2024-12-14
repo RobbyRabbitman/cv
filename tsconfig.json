@@ -38,6 +38,9 @@
     },
     {
       "path": "./libs/i18n/util"
+    },
+    {
+      "path": "./libs/js/util"
     }
   ]
 }
