@@ -31,21 +31,14 @@ const nxEslintConfig = [
   },
   {
     files: [
-      '**/*.ts',
-      '**/*.mts',
-      '**/*.cts',
-      '**/*.tsx',
-      '**/*.js',
-      '**/*.mjs',
-      '**/*.cjs',
-      '**/*.jsx',
-    ],
-    ignores: [
-      '**/vite.config.*',
-      '**/vitest.config.*',
-      '**/wtr.config.*',
-      '**/eslint.config.*',
-      '**/stylelint.config.*',
+      '**/src/**/*.ts',
+      '**/src/**/*.mts',
+      '**/src/**/*.cts',
+      '**/src/**/*.tsx',
+      '**/src/**/*.js',
+      '**/src/**/*.mjs',
+      '**/src/**/*.cjs',
+      '**/src/**/*.jsx',
     ],
     rules: {
       '@nx/enforce-module-boundaries': [
