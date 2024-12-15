@@ -245,6 +245,9 @@ importers:
       '@robby-rabbitman/cv-libs-common-feature--shell':
         specifier: workspace:*
         version: link:../../../libs/common/feature--shell
+      '@robby-rabbitman/cv-libs-web-util':
+        specifier: workspace:*
+        version: link:../../../libs/web/util
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
         version: link:../../../tools/eslint
