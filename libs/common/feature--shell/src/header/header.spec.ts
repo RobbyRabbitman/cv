@@ -17,6 +17,22 @@ describe('[Unit Test] Header', () => {
 
     expect(component).toBeInstanceOf(Header);
   });
+});
+
+describe('[Component Test] Header', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [provideExperimentalZonelessChangeDetection()],
+      imports: [Header],
+    });
+  });
+
+  it('should create', async () => {
+    const fixture = TestBed.createComponent(Header);
+    const component = fixture.componentInstance;
+
+    expect(component).toBeInstanceOf(Header);
+  });
 
   it('should have no accessibility violations', async () => {
     const fixture = TestBed.createComponent(Header);
