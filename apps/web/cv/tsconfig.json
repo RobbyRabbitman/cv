@@ -7,6 +7,9 @@
   "exclude": [],
   "references": [
     {
+      "path": "../../../libs/common/types"
+    },
+    {
       "path": "../../../libs/common/data"
     },
     {
