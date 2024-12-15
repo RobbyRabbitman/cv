@@ -1,19 +1,19 @@
 import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { CommonStore } from '../store/common.store';
-import { provideCommonStore } from './with-common-store';
+import { withCommonStore } from './with-common-store';
 
-describe('[Unit Test] provideCommonStore', () => {
+describe('[Unit Test] withCommonStore', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         provideExperimentalZonelessChangeDetection(),
-        provideCommonStore(),
+        withCommonStore(),
       ],
     });
   });
 
-  it('should inject CommonStore', () => {
+  it('should provide CommonStore', () => {
     const commonStore = TestBed.inject(CommonStore);
     expect(commonStore).toBeInstanceOf(CommonStore);
   });
