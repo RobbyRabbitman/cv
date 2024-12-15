@@ -5,7 +5,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "peerDependencies": {
-    "@robby-rabbitman/cv-tools-eslint": "workspace:*"
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "axe-core": "4.10.2"
   },
   "nx": {
     "tags": [

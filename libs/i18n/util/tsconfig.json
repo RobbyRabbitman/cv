@@ -13,15 +13,6 @@
       "path": "../../common/util"
     },
     {
-      "path": "../../../tools/vitest"
-    },
-    {
-      "path": "../../js/util"
-    },
-    {
-      "path": "../types"
-    },
-    {
       "path": "../../../tools/karma"
     },
     {
