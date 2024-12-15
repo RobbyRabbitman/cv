@@ -119,7 +119,7 @@
           "configName": "tsconfig.lib.json"
         }
       },
-      "include": ["tools/**", "libs/{js,node}/**"]
+      "include": ["tools/**", "libs/{js,node,web}/**"]
     },
     {
       "plugin": "@nx/eslint/plugin",
