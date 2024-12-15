@@ -297,8 +297,13 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/karma
 
+  libs/common/testing: {}
+
   libs/common/types:
     dependencies:
+      '@robby-rabbitman/cv-libs-common-testing':
+        specifier: workspace:*
+        version: link:../testing
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
         version: link:../../../tools/eslint
@@ -314,6 +319,12 @@ importers:
       '@angular/core':
         specifier: 19.0.4
         version: 19.0.4(rxjs@7.8.1)(zone.js@0.15.0)
+      '@angular/platform-browser-dynamic':
+        specifier: 19.0.4
+        version: 19.0.4(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/compiler@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.0.4(@angular/animations@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))
+      '@robby-rabbitman/cv-libs-common-testing':
+        specifier: workspace:*
+        version: link:../testing
       '@robby-rabbitman/cv-libs-common-types':
         specifier: workspace:*
         version: link:../types

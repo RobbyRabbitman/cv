@@ -7,10 +7,13 @@
   "exclude": [],
   "references": [
     {
-      "path": "../types"
+      "path": "../util"
     },
     {
-      "path": "../util"
+      "path": "../testing"
+    },
+    {
+      "path": "../types"
     },
     {
       "path": "../../../tools/karma"

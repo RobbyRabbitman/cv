@@ -10,6 +10,9 @@
       "path": "../../../libs/common/util"
     },
     {
+      "path": "../../../libs/common/testing"
+    },
+    {
       "path": "../../../libs/common/types"
     },
     {
