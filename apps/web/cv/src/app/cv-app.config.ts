@@ -1,5 +1,6 @@
 import {
   type ApplicationConfig,
+  provideExperimentalCheckNoChangesForDebug,
   provideExperimentalZonelessChangeDetection,
 } from '@angular/core';
 import {
@@ -15,6 +16,7 @@ export const cvAppConfig = {
   providers: [
     /** Change detection */
     provideExperimentalZonelessChangeDetection(),
+    provideExperimentalCheckNoChangesForDebug({ interval: 1_000 }),
 
     /** Router */
     provideRouter(cvAppRoutes, withDebugTracing(), withComponentInputBinding()),

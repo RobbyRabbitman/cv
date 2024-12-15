@@ -2,7 +2,10 @@
   "$schema": "../../../node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "pnpm"
+    "packageManager": "pnpm",
+    "cache": {
+      "environment": "ci"
+    }
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -36,10 +39,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "cv:build:production"
+              "buildTarget": "app:build:production"
             },
             "development": {
-              "buildTarget": "cv:build:development"
+              "buildTarget": "app:build:development"
             }
           },
           "defaultConfiguration": "development"

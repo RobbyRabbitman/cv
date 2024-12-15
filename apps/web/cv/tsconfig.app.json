@@ -4,6 +4,9 @@
   "include": ["src/**/*.d.ts"],
   "references": [
     {
+      "path": "../../../libs/common/feature--shell"
+    },
+    {
       "path": "../../../tools/karma/tsconfig.lib.json"
     },
     {

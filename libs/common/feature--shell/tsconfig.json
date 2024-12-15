@@ -7,16 +7,13 @@
   "exclude": [],
   "references": [
     {
-      "path": "../../../libs/common/feature--shell"
-    },
-    {
       "path": "../../../tools/karma"
     },
     {
       "path": "../../../tools/eslint"
     },
     {
-      "path": "./tsconfig.app.json"
+      "path": "./tsconfig.lib.json"
     },
     {
       "path": "./tsconfig.spec.json"

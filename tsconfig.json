@@ -47,6 +47,9 @@
     },
     {
       "path": "./tools/karma"
+    },
+    {
+      "path": "./libs/common/feature--shell"
     }
   ]
 }
