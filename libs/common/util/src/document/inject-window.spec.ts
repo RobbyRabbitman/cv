@@ -9,7 +9,6 @@ describe('[Unit Test] injectWindow', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        provideExperimentalZonelessChangeDetection(),
         {
           provide: DOCUMENT,
           useValue: {

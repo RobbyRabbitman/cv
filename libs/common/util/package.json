@@ -19,7 +19,8 @@
     "@angular/common": "19.0.4",
     "ngxtension": "4.2.0",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
-    "@robby-rabbitman/cv-libs-common-types": "workspace:*"
+    "@robby-rabbitman/cv-libs-common-types": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-testing": "workspace:*"
   },
   "nx": {
     "tags": [

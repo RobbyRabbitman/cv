@@ -10,12 +10,6 @@ import { getPreferredColorScheme, setColorScheme } from './color-scheme';
 import { WINDOW } from './inject-window';
 
 describe('[Unit Test] setColorScheme', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [provideExperimentalZonelessChangeDetection()],
-    });
-  });
-
   it('should set the color scheme on the target element', async () => {
     const colorScheme = signal<ColorScheme>('dark');
     const someElement = document.createElement('div');
