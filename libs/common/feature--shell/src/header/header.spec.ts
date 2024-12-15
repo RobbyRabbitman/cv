@@ -1,22 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import axe from 'axe-core';
 import { Header } from './header';
 
-describe('HeaderComponent', () => {
-  let component: Header;
-  let fixture: ComponentFixture<Header>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+describe('[Unit Test] Header', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [provideExperimentalZonelessChangeDetection()],
       imports: [Header],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(Header);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create', async () => {
+    const fixture = TestBed.createComponent(Header);
+    const component = fixture.componentInstance;
+
+    expect(component).toBeInstanceOf(Header);
+  });
+
+  it('should have no accessibility violations', async () => {
+    const fixture = TestBed.createComponent(Header);
+
+    const a11y = await axe.run(fixture.nativeElement);
+
+    expect(a11y.violations.length).toBe(0);
   });
 });
