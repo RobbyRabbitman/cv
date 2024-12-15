@@ -40,10 +40,10 @@ export function setColorScheme(options: {
 }
 
 /** Gets the preferred color scheme of the user. */
-export function getPreferredColorScheme(options: {
+export function getPreferredColorScheme(options?: {
   injector?: Injector;
 }): Signal<ColorScheme> {
-  const { injector } = options;
+  const { injector } = options ?? {};
 
   return assertInjector(getPreferredColorScheme, injector, () => {
     const preferredColorScheme = signal<ColorScheme>('system');
