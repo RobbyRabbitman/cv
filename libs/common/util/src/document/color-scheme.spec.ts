@@ -2,7 +2,6 @@ import {
   ApplicationRef,
   Injector,
   provideExperimentalZonelessChangeDetection,
-  type Signal,
   signal,
 } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
@@ -18,7 +17,7 @@ describe('[Unit Test] setColorScheme', () => {
   });
 
   it('should set the color scheme on the target element', async () => {
-    const colorScheme: Signal<ColorScheme> = signal('dark');
+    const colorScheme = signal<ColorScheme>('dark');
     const someElement = document.createElement('div');
 
     expect(someElement.style.getPropertyValue('color-scheme')).not.toBe('dark');
@@ -32,8 +31,26 @@ describe('[Unit Test] setColorScheme', () => {
     expect(someElement.style.getPropertyValue('color-scheme')).toBe('dark');
   });
 
+  it('should not set a color scheme on the target element when the provided color scheme is system', async () => {
+    const colorScheme = signal<ColorScheme>('dark');
+    const someElement = document.createElement('div');
+
+    expect(someElement.style.getPropertyValue('color-scheme')).not.toBe('dark');
+
+    TestBed.runInInjectionContext(() =>
+      setColorScheme({ colorScheme, targetElement: someElement }),
+    );
+
+    await TestBed.inject(ApplicationRef).whenStable();
+    expect(someElement.style.getPropertyValue('color-scheme')).toBe('dark');
+
+    colorScheme.set('system');
+    await TestBed.inject(ApplicationRef).whenStable();
+    expect(someElement.style.getPropertyValue('color-scheme')).toBe('');
+  });
+
   it('should remove the color scheme property on cleanup', async () => {
-    const colorScheme: Signal<ColorScheme> = signal('dark');
+    const colorScheme = signal<ColorScheme>('dark');
     const someElement = document.createElement('div');
 
     expect(someElement.style.getPropertyValue('color-scheme')).not.toBe('dark');
@@ -52,7 +69,7 @@ describe('[Unit Test] setColorScheme', () => {
   });
 
   it('should use the root element if no target element is provided', async () => {
-    const colorScheme: Signal<ColorScheme> = signal('dark');
+    const colorScheme = signal<ColorScheme>('dark');
 
     expect(
       document.documentElement.style.getPropertyValue('color-scheme'),
