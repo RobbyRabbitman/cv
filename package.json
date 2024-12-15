@@ -6,6 +6,7 @@
     "node": "22.12.0"
   },
   "scripts": {
+    "x": "echo 'Need to build every project and reset project graph before syncing dependencies ...' && nx run-many -t build build-tsc build-angular && nx reset && nx run-many -t lint-eslint --fix --rule '@nx/dependency-checks:error'",
     "clean": "git clean -dXf && pnpm i && pnpm nx reset && pnpm nx sync",
     "postinstall": "sh tools/workspace/src/npm-life-cycle/npm-post-install.sh"
   },
