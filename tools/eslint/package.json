@@ -19,6 +19,21 @@
   "nx": {
     "tags": [
       "type:tool"
-    ]
+    ],
+    "targets": {
+      "sync-dependencies": {
+        "executor": "nx:run-commands",
+        "options": {
+          "parallel": false,
+          "commands": [
+            {
+              "description": "Need to build every project and reset project graph before syncing dependencies ...",
+              "command": "nx run-many -t build build-tsc build-angular && nx reset"
+            },
+            "nx run-many -t lint-eslint --fix --rule '@nx/dependency-checks:error'"
+          ]
+        }
+      }
+    }
   }
 }
