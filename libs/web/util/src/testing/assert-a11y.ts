@@ -1,5 +1,10 @@
 import axe, { type ElementContext, type RunOptions } from 'axe-core';
 
+/**
+ * Asserts that the given element has no accessibility violations using `axe`.
+ *
+ * @see {@link https://github.com/dequelabs/axe-core axe}
+ */
 export async function assertA11y(
   element: ElementContext,
   options?: RunOptions,
