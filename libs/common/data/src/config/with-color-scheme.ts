@@ -1,22 +1,19 @@
+import { inject, provideEnvironmentInitializer } from '@angular/core';
 import {
-  inject,
-  makeEnvironmentProviders,
-  provideEnvironmentInitializer,
-} from '@angular/core';
-import { setColorScheme } from '@robby-rabbitman/cv-libs-common-util';
+  type ColorSchemeOptions,
+  setColorScheme,
+} from '@robby-rabbitman/cv-libs-common-util';
 import { CommonStore } from '../store/common.store';
 
-/**
- * Sets the color scheme on the root element based on the state of the common
- * store.
- */
-export function withColorScheme() {
-  return makeEnvironmentProviders([
-    provideEnvironmentInitializer(() => {
-      const commonStore = inject(CommonStore);
-      setColorScheme({
-        colorScheme: commonStore.colorScheme,
-      });
-    }),
-  ]);
+/** Sets the color scheme based on the state of the common store. */
+export function withColorScheme(
+  options?: Pick<ColorSchemeOptions, 'targetElement'>,
+) {
+  return provideEnvironmentInitializer(() => {
+    const commonStore = inject(CommonStore);
+    setColorScheme({
+      colorScheme: commonStore.colorScheme,
+      targetElement: options?.targetElement,
+    });
+  });
 }

@@ -1,14 +1,8 @@
-import { makeEnvironmentProviders } from '@angular/core';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import {
   COLOR_SCHEMES,
   type ColorScheme,
 } from '@robby-rabbitman/cv-libs-common-types';
-
-/** Provides the {@link CommonStore}. */
-export function provideCommonStore() {
-  return makeEnvironmentProviders([CommonStore]);
-}
 
 /** @see {@link CommonStore} */
 export interface CommonState {

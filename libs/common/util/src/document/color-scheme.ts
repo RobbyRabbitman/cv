@@ -12,29 +12,33 @@ import { type ColorScheme } from '@robby-rabbitman/cv-libs-common-types';
 import { assertInjector } from 'ngxtension/assert-injector';
 import { injectWindow } from './inject-window';
 
+export interface ColorSchemeOptions {
+  colorScheme: Signal<ColorScheme>;
+  injector?: Injector;
+  targetElement?: HTMLElement;
+}
+
 /**
  * Sets the color scheme for the given element reactively.
  *
  * - Uses the document element, if no target element is provided.
  */
-export function setColorScheme(options: {
-  colorScheme: Signal<ColorScheme>;
-  injector?: Injector;
-  targetElement?: HTMLElement;
-}): EffectRef {
+export function setColorScheme(options: ColorSchemeOptions): EffectRef {
   const { colorScheme, injector, targetElement } = options;
 
   return assertInjector(setColorScheme, injector, () => {
     const element = targetElement ?? inject(DOCUMENT).documentElement;
 
     return effect((cleanUp) => {
-      cleanUp(() => element.style.removeProperty('color-scheme'));
+      const _colorScheme = colorScheme();
 
-      if (colorScheme() === 'system') {
+      if (_colorScheme === 'system') {
         return;
       }
 
-      element.style.setProperty('color-scheme', colorScheme());
+      element.style.setProperty('color-scheme', _colorScheme);
+
+      cleanUp(() => element.style.removeProperty('color-scheme'));
     });
   });
 }
