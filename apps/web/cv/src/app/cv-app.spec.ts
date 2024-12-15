@@ -7,7 +7,6 @@ import { cvAppConfig } from './cv-app.config';
 describe('[Unit Test] CvApp', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CvApp],
       providers: [provideAnimationsAsync('noop')],
     });
   });
@@ -22,7 +21,6 @@ describe('[Unit Test] CvApp', () => {
 describe('[Integration Test] CvApp', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CvApp],
       providers: [cvAppConfig.providers],
     });
   });

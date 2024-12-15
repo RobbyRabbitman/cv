@@ -7,7 +7,6 @@ describe('[Unit Test] Shell', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [provideAnimationsAsync('noop')],
-      imports: [Shell],
     });
   });
 
@@ -23,7 +22,6 @@ describe('[Component Test] Shell', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [provideAnimationsAsync('animations')],
-      imports: [Shell],
     });
   });
 

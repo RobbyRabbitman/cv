@@ -3,12 +3,6 @@ import { assertA11y } from '@robby-rabbitman/cv-libs-web-util';
 import { Footer } from './footer';
 
 describe('[Unit Test] Footer', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [Footer],
-    });
-  });
-
   it('should create', async () => {
     const fixture = TestBed.createComponent(Footer);
     const component = fixture.componentInstance;
@@ -18,12 +12,6 @@ describe('[Unit Test] Footer', () => {
 });
 
 describe('[Component Test] Footer', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [Footer],
-    });
-  });
-
   it('should create', async () => {
     const fixture = TestBed.createComponent(Footer);
     const component = fixture.componentInstance;
