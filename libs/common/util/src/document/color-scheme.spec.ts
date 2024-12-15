@@ -1,9 +1,4 @@
-import {
-  ApplicationRef,
-  Injector,
-  provideExperimentalZonelessChangeDetection,
-  signal,
-} from '@angular/core';
+import { ApplicationRef, Injector, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { type ColorScheme } from '@robby-rabbitman/cv-libs-common-types';
 import { getPreferredColorScheme, setColorScheme } from './color-scheme';
@@ -108,7 +103,6 @@ describe('[Unit Test] getPreferredColorScheme', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        provideExperimentalZonelessChangeDetection(),
         {
           provide: WINDOW,
           useValue: {

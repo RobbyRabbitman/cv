@@ -1,9 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import {
-  ApplicationRef,
-  provideExperimentalZonelessChangeDetection,
-  signal,
-} from '@angular/core';
+import { ApplicationRef, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import type { ColorScheme } from '@robby-rabbitman/cv-libs-common-types';
 import { CommonStore } from '../store/common.store';
@@ -20,7 +16,6 @@ describe('[Unit Test] withColorScheme', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        provideExperimentalZonelessChangeDetection(),
         CommonStoreStub,
         {
           provide: CommonStore,
@@ -49,10 +44,7 @@ describe('[Unit Test] withColorScheme', () => {
 describe('[Integration Test] withColorScheme', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        provideExperimentalZonelessChangeDetection(),
-        provideCommonData(),
-      ],
+      providers: [provideCommonData()],
     });
   });
 

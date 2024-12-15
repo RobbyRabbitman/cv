@@ -1,4 +1,3 @@
-import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import {
   injectWindow,
@@ -13,7 +12,6 @@ describe('[Unit Test] injectNavigatorLanguage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        provideExperimentalZonelessChangeDetection(),
         provideWindow(() => {
           return {
             navigator: { language: mockNavigatorLanguage },
@@ -59,12 +57,6 @@ describe('[Unit Test] injectNavigatorLanguage', () => {
 });
 
 describe('[Integration Test] injectNavigatorLanguage', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [provideExperimentalZonelessChangeDetection()],
-    });
-  });
-
   it('should return the navigator BCP 47 language tag', () => {
     expect(TestBed.runInInjectionContext(() => injectNavigatorLanguage())).toBe(
       navigator.language,
