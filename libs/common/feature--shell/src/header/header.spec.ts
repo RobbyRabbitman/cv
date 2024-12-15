@@ -1,6 +1,6 @@
 import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import axe from 'axe-core';
+import { assertA11y } from '@robby-rabbitman/cv-libs-web-util';
 import { Header } from './header';
 
 describe('[Unit Test] Header', () => {
@@ -21,8 +21,6 @@ describe('[Unit Test] Header', () => {
   it('should have no accessibility violations', async () => {
     const fixture = TestBed.createComponent(Header);
 
-    const a11y = await axe.run(fixture.nativeElement);
-
-    expect(a11y.violations.length).toBe(0);
+    expect(() => assertA11y(fixture.nativeElement)).not.toThrow();
   });
 });

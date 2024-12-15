@@ -56,6 +56,9 @@
     },
     {
       "path": "./libs/common/data"
+    },
+    {
+      "path": "./libs/web/util"
     }
   ]
 }

@@ -4,6 +4,9 @@
   "exclude": ["*.config.*", "src/**/*.spec.*"],
   "references": [
     {
+      "path": "../../web/util/tsconfig.lib.json"
+    },
+    {
       "path": "../../../tools/karma/tsconfig.lib.json"
     },
     {

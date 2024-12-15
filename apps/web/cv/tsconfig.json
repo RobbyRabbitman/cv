@@ -7,13 +7,16 @@
   "exclude": [],
   "references": [
     {
-      "path": "../../../libs/common/types"
-    },
-    {
       "path": "../../../libs/common/util"
     },
     {
+      "path": "../../../libs/common/types"
+    },
+    {
       "path": "../../../libs/common/data"
+    },
+    {
+      "path": "../../../libs/web/util"
     },
     {
       "path": "../../../libs/common/feature--shell"
