@@ -3,12 +3,16 @@
   "version": "0.0.0",
   "type": "module",
   "peerDependencies": {
+    "@angular/common": "19.0.4",
     "@angular/core": "19.0.4",
     "@angular/platform-browser": "19.0.4",
     "@angular/router": "19.0.4",
+    "@robby-rabbitman/cv-libs-common-feature--shell": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
-    "@angular/common": "19.0.4"
+    "@robby-rabbitman/cv-libs-common-data": "workspace:*",
+    "@nx/devkit": "20.2.2",
+    "@robby-rabbitman/cv-libs-web-util": "workspace:*"
   },
   "nx": {
     "tags": [

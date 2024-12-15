@@ -7,9 +7,6 @@
   "exclude": [],
   "references": [
     {
-      "path": "../../common/util"
-    },
-    {
       "path": "../../../tools/vitest"
     },
     {
@@ -17,6 +14,12 @@
     },
     {
       "path": "../types"
+    },
+    {
+      "path": "../../common/types"
+    },
+    {
+      "path": "../../common/util"
     },
     {
       "path": "../../../tools/karma"

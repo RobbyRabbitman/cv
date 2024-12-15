@@ -1,0 +1,4 @@
+{
+  "extends": "../../../tools/typescript/src/tsconfig.ng-karma.json",
+  "include": ["src/**/*"]
+}

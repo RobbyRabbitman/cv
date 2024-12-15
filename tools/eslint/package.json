@@ -13,8 +13,8 @@
     "eslint": "9.16.0",
     "eslint-plugin-n": "17.14.0",
     "@nx/eslint-plugin": "20.2.2",
-    "jsonc-eslint-parser": "2.4.0",
-    "globals": "15.13.0"
+    "globals": "15.13.0",
+    "jsonc-eslint-parser": "2.4.0"
   },
   "nx": {
     "tags": [

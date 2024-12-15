@@ -47,6 +47,18 @@
     },
     {
       "path": "./tools/karma"
+    },
+    {
+      "path": "./libs/common/feature--shell"
+    },
+    {
+      "path": "./libs/common/types"
+    },
+    {
+      "path": "./libs/common/data"
+    },
+    {
+      "path": "./libs/web/util"
     }
   ]
 }
