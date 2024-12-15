@@ -75,10 +75,8 @@
     "vite": "5.4.11",
     "vitest": "2.1.8",
     "vitest-sonar-reporter": "2.0.0",
-    "yargs": "17.7.2"
-  },
-  "dependencies": {
-    "@nx/angular": "20.2.2",
+    "yargs": "17.7.2",
+    "@ngrx/signals": "18.1.1",
     "prettier-plugin-organize-imports": "4.1.0",
     "prettier-plugin-tailwindcss": "0.6.9"
   }

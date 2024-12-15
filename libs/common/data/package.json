@@ -1,8 +1,8 @@
 {
-  "name": "@robby-rabbitman/cv-libs-common-util",
+  "name": "@robby-rabbitman/cv-libs-common-data",
   "version": "0.0.0",
   "type": "module",
-  "module": "dist/fesm2022/robby-rabbitman-cv-libs-common-util.mjs",
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-common-data.mjs",
   "typings": "dist/index.d.ts",
   "exports": {
     "./package.json": {
@@ -10,21 +10,19 @@
     },
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-common-util.mjs"
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-common-data.mjs"
     }
   },
   "peerDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
-    "@angular/core": "19.0.4",
-    "@angular/common": "19.0.4",
-    "ngxtension": "4.2.0",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
-    "@robby-rabbitman/cv-libs-common-types": "workspace:*"
+    "@robby-rabbitman/cv-libs-common-types": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-util": "workspace:*"
   },
   "nx": {
     "tags": [
       "scope:angular",
-      "type:util"
+      "type:data"
     ]
   }
 }

@@ -10,6 +10,7 @@ import {
   withComponentInputBinding,
   withDebugTracing,
 } from '@angular/router';
+import { provideCommonData } from '@robby-rabbitman/cv-libs-common-data';
 import { cvAppRoutes } from './cv-app.routes';
 
 export const cvAppConfig = {
@@ -28,5 +29,8 @@ export const cvAppConfig = {
 
     /** Animations */
     provideAnimationsAsync('animations'),
+
+    /** Common */
+    provideCommonData(),
   ],
 } satisfies ApplicationConfig;

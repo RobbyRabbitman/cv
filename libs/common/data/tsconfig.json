@@ -7,16 +7,7 @@
   "exclude": [],
   "references": [
     {
-      "path": "../../common/types"
-    },
-    {
-      "path": "../../common/util"
-    },
-    {
-      "path": "../../../tools/vitest"
-    },
-    {
-      "path": "../../js/util"
+      "path": "../util"
     },
     {
       "path": "../types"
