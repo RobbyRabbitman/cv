@@ -287,6 +287,9 @@ importers:
       '@angular/material':
         specifier: 19.0.3
         version: 19.0.3(4oulajnvbzpfq774xnc3sy5q4y)
+      '@robby-rabbitman/cv-libs-common-testing':
+        specifier: workspace:*
+        version: link:../testing
       '@robby-rabbitman/cv-libs-web-util':
         specifier: workspace:*
         version: link:../../web/util
@@ -297,7 +300,20 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/karma
 
-  libs/common/testing: {}
+  libs/common/testing:
+    dependencies:
+      '@angular/core':
+        specifier: 19.0.4
+        version: 19.0.4(rxjs@7.8.1)(zone.js@0.15.0)
+      '@angular/platform-browser-dynamic':
+        specifier: 19.0.4
+        version: 19.0.4(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/compiler@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.0.4(@angular/animations@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))
+      '@robby-rabbitman/cv-tools-eslint':
+        specifier: workspace:*
+        version: link:../../../tools/eslint
+      '@robby-rabbitman/cv-tools-karma':
+        specifier: workspace:*
+        version: link:../../../tools/karma
 
   libs/common/types:
     dependencies:
@@ -319,9 +335,6 @@ importers:
       '@angular/core':
         specifier: 19.0.4
         version: 19.0.4(rxjs@7.8.1)(zone.js@0.15.0)
-      '@angular/platform-browser-dynamic':
-        specifier: 19.0.4
-        version: 19.0.4(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/compiler@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.0.4(@angular/animations@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))
       '@robby-rabbitman/cv-libs-common-testing':
         specifier: workspace:*
         version: link:../testing

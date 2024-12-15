@@ -1,4 +1,3 @@
-import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { assertA11y } from '@robby-rabbitman/cv-libs-web-util';
@@ -7,10 +6,7 @@ import { Shell } from './shell';
 describe('[Unit Test] Shell', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        provideExperimentalZonelessChangeDetection(),
-        provideAnimationsAsync('noop'),
-      ],
+      providers: [provideAnimationsAsync('noop')],
       imports: [Shell],
     });
   });
@@ -26,10 +22,7 @@ describe('[Unit Test] Shell', () => {
 describe('[Component Test] Shell', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        provideExperimentalZonelessChangeDetection(),
-        provideAnimationsAsync('animations'),
-      ],
+      providers: [provideAnimationsAsync('animations')],
       imports: [Shell],
     });
   });

@@ -18,6 +18,7 @@
     "@angular/core": "19.0.4",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
     "@robby-rabbitman/cv-libs-web-util": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-testing": "workspace:*",
     "@angular/material": "19.0.3"
   },
   "nx": {

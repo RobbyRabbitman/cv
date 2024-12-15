@@ -1,4 +1,3 @@
-import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { assertA11y } from '@robby-rabbitman/cv-libs-web-util';
 import { Footer } from './footer';
@@ -6,7 +5,6 @@ import { Footer } from './footer';
 describe('[Unit Test] Footer', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [provideExperimentalZonelessChangeDetection()],
       imports: [Footer],
     });
   });
@@ -22,7 +20,6 @@ describe('[Unit Test] Footer', () => {
 describe('[Component Test] Footer', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [provideExperimentalZonelessChangeDetection()],
       imports: [Footer],
     });
   });
