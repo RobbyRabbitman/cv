@@ -4,5 +4,10 @@
   "useTabs": false,
   "printWidth": 80,
   "endOfLine": "lf",
-  "plugins": ["prettier-plugin-jsdoc", "prettier-plugin-sh"]
+  "plugins": [
+    "prettier-plugin-jsdoc",
+    "prettier-plugin-sh",
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-tailwindcss"
+  ]
 }

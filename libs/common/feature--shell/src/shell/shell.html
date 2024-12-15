@@ -1,3 +1,8 @@
-<header class="flex p-4 gap-4 items-center container"></header>
-<main class="container flex flex-col px-4 gap-4"><ng-content /></main>
-<footer class="container"></footer>
+<cv-common--feature-shell--header />
+<mat-sidenav-container class="flex-1">
+  <mat-sidenav mode="side" opened></mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content />
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<cv-common--feature-shell--footer />

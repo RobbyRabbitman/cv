@@ -1,1 +1,20 @@
+@use '@angular/material' as mat;
+
 @tailwind utilities;
+
+html {
+  color-scheme: light dark;
+
+  @include mat.theme(
+    (
+      color: mat.$violet-palette,
+      theme-type: color-scheme,
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
