@@ -4,12 +4,6 @@
   "include": ["src/**/*.d.ts"],
   "references": [
     {
-      "path": "../../../libs/common/util"
-    },
-    {
-      "path": "../../../libs/common/types"
-    },
-    {
       "path": "../../../libs/common/data"
     },
     {
