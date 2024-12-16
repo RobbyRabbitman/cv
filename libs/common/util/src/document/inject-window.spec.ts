@@ -1,5 +1,4 @@
 import { DOCUMENT } from '@angular/common';
-import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { injectWindow } from './inject-window';
 
@@ -9,7 +8,6 @@ describe('[Unit Test] injectWindow', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        provideExperimentalZonelessChangeDetection(),
         {
           provide: DOCUMENT,
           useValue: {
@@ -38,12 +36,6 @@ describe('[Unit Test] injectWindow', () => {
 });
 
 describe('[Integration Test] injectWindow', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [provideExperimentalZonelessChangeDetection()],
-    });
-  });
-
   it('should get the window of the document', () => {
     expect(TestBed.runInInjectionContext(() => injectWindow())).toBe(window);
   });

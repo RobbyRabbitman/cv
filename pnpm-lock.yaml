@@ -245,6 +245,9 @@ importers:
       '@robby-rabbitman/cv-libs-common-feature--shell':
         specifier: workspace:*
         version: link:../../../libs/common/feature--shell
+      '@robby-rabbitman/cv-libs-common-testing':
+        specifier: workspace:*
+        version: link:../../../libs/common/testing
       '@robby-rabbitman/cv-libs-web-util':
         specifier: workspace:*
         version: link:../../../libs/web/util
@@ -266,6 +269,9 @@ importers:
       '@ngrx/signals':
         specifier: 18.1.1
         version: 18.1.1(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
+      '@robby-rabbitman/cv-libs-common-testing':
+        specifier: workspace:*
+        version: link:../testing
       '@robby-rabbitman/cv-libs-common-types':
         specifier: workspace:*
         version: link:../types
@@ -287,6 +293,12 @@ importers:
       '@angular/material':
         specifier: 19.0.3
         version: 19.0.3(4oulajnvbzpfq774xnc3sy5q4y)
+      '@angular/platform-browser':
+        specifier: 19.0.4
+        version: 19.0.4(@angular/animations@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))
+      '@robby-rabbitman/cv-libs-common-testing':
+        specifier: workspace:*
+        version: link:../testing
       '@robby-rabbitman/cv-libs-web-util':
         specifier: workspace:*
         version: link:../../web/util
@@ -297,8 +309,26 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/karma
 
+  libs/common/testing:
+    dependencies:
+      '@angular/core':
+        specifier: 19.0.4
+        version: 19.0.4(rxjs@7.8.1)(zone.js@0.15.0)
+      '@angular/platform-browser-dynamic':
+        specifier: 19.0.4
+        version: 19.0.4(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/compiler@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.0.4(@angular/animations@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))
+      '@robby-rabbitman/cv-tools-eslint':
+        specifier: workspace:*
+        version: link:../../../tools/eslint
+      '@robby-rabbitman/cv-tools-karma':
+        specifier: workspace:*
+        version: link:../../../tools/karma
+
   libs/common/types:
     dependencies:
+      '@robby-rabbitman/cv-libs-common-testing':
+        specifier: workspace:*
+        version: link:../testing
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
         version: link:../../../tools/eslint
@@ -314,6 +344,9 @@ importers:
       '@angular/core':
         specifier: 19.0.4
         version: 19.0.4(rxjs@7.8.1)(zone.js@0.15.0)
+      '@robby-rabbitman/cv-libs-common-testing':
+        specifier: workspace:*
+        version: link:../testing
       '@robby-rabbitman/cv-libs-common-types':
         specifier: workspace:*
         version: link:../types
@@ -341,6 +374,9 @@ importers:
       '@angular/core':
         specifier: 19.0.4
         version: 19.0.4(rxjs@7.8.1)(zone.js@0.15.0)
+      '@robby-rabbitman/cv-libs-common-testing':
+        specifier: workspace:*
+        version: link:../../common/testing
       '@robby-rabbitman/cv-libs-common-util':
         specifier: workspace:*
         version: link:../../common/util

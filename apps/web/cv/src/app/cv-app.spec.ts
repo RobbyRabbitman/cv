@@ -1,4 +1,3 @@
-import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { assertA11y } from '@robby-rabbitman/cv-libs-web-util';
@@ -8,11 +7,7 @@ import { cvAppConfig } from './cv-app.config';
 describe('[Unit Test] CvApp', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CvApp],
-      providers: [
-        provideExperimentalZonelessChangeDetection(),
-        provideAnimationsAsync('noop'),
-      ],
+      providers: [provideAnimationsAsync('noop')],
     });
   });
 
@@ -26,7 +21,6 @@ describe('[Unit Test] CvApp', () => {
 describe('[Integration Test] CvApp', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CvApp],
       providers: [cvAppConfig.providers],
     });
   });

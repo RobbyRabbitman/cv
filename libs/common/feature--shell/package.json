@@ -18,7 +18,9 @@
     "@angular/core": "19.0.4",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
     "@robby-rabbitman/cv-libs-web-util": "workspace:*",
-    "@angular/material": "19.0.3"
+    "@robby-rabbitman/cv-libs-common-testing": "workspace:*",
+    "@angular/material": "19.0.3",
+    "@angular/platform-browser": "19.0.4"
   },
   "nx": {
     "tags": [

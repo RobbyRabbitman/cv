@@ -7,6 +7,9 @@
   "exclude": [],
   "references": [
     {
+      "path": "../testing"
+    },
+    {
       "path": "../../web/util"
     },
     {

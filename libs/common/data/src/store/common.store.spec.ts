@@ -1,4 +1,3 @@
-import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { COLOR_SCHEMES } from '@robby-rabbitman/cv-libs-common-types';
 import { CommonStore } from './common.store';
@@ -6,7 +5,7 @@ import { CommonStore } from './common.store';
 describe('[Unit Test] CommonStore', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [provideExperimentalZonelessChangeDetection(), CommonStore],
+      providers: [CommonStore],
     });
   });
 

@@ -1,21 +1,10 @@
-import {
-  ApplicationRef,
-  Injector,
-  provideExperimentalZonelessChangeDetection,
-  signal,
-} from '@angular/core';
+import { ApplicationRef, Injector, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { type ColorScheme } from '@robby-rabbitman/cv-libs-common-types';
 import { getPreferredColorScheme, setColorScheme } from './color-scheme';
 import { WINDOW } from './inject-window';
 
 describe('[Unit Test] setColorScheme', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [provideExperimentalZonelessChangeDetection()],
-    });
-  });
-
   it('should set the color scheme on the target element', async () => {
     const colorScheme = signal<ColorScheme>('dark');
     const someElement = document.createElement('div');
@@ -114,7 +103,6 @@ describe('[Unit Test] getPreferredColorScheme', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        provideExperimentalZonelessChangeDetection(),
         {
           provide: WINDOW,
           useValue: {
