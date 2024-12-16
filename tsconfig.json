@@ -34,7 +34,34 @@
       "path": "./apps/web/cv"
     },
     {
+      "path": "./libs/i18n/types"
+    },
+    {
+      "path": "./libs/i18n/util"
+    },
+    {
       "path": "./libs/js/util"
+    },
+    {
+      "path": "./libs/common/util"
+    },
+    {
+      "path": "./tools/karma"
+    },
+    {
+      "path": "./libs/common/feature--shell"
+    },
+    {
+      "path": "./libs/common/types"
+    },
+    {
+      "path": "./libs/common/data"
+    },
+    {
+      "path": "./libs/web/util"
+    },
+    {
+      "path": "./libs/common/testing"
     }
   ]
 }

@@ -1,0 +1,26 @@
+{
+  "name": "@robby-rabbitman/cv-libs-i18n-types",
+  "version": "0.0.0",
+  "type": "module",
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-i18n-types.mjs",
+  "typings": "dist/index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-i18n-types.mjs"
+    }
+  },
+  "peerDependencies": {
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@robby-rabbitman/cv-tools-karma": "workspace:*"
+  },
+  "nx": {
+    "tags": [
+      "scope:angular",
+      "type:types"
+    ]
+  }
+}

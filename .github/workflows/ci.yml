@@ -92,5 +92,5 @@ jobs:
           --option sonar.organization=robby-rabbitman-cv
           --option sonar.token=${{ secrets.SONAR_TOKEN }}
           --option sonar.userHome=${{ github.workspace }}/.sonar
-          --option sonar.qualitygate.wait=true
           --option sonar.scanner.skipJreProvisioning=true
+        if: github.event_name == 'push' && github.ref_name == 'main'

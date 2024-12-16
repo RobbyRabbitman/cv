@@ -2,15 +2,16 @@
   "$schema": "../../../node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "pnpm"
+    "packageManager": "pnpm",
+    "cache": {
+      "environment": "ci"
+    }
   },
   "newProjectRoot": "projects",
   "projects": {
-    "cv": {
+    "app": {
       "projectType": "application",
       "root": "",
-      "sourceRoot": "src",
-      "prefix": "cv",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -38,10 +39,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "cv:build:production"
+              "buildTarget": "app:build:production"
             },
             "development": {
-              "buildTarget": "cv:build:development"
+              "buildTarget": "app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -51,7 +52,7 @@
           "options": {
             "tsConfig": "tsconfig.spec.json",
             "styles": ["src/styles.scss"],
-            "karmaConfig": "karma.conf.cjs"
+            "karmaConfig": "karma.config.cjs"
           }
         }
       }

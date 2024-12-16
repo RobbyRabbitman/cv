@@ -1,0 +1,17 @@
+{
+  "name": "@robby-rabbitman/cv-libs-web-util",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "peerDependencies": {
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "axe-core": "4.10.2"
+  },
+  "nx": {
+    "tags": [
+      "scope:web",
+      "type:util"
+    ]
+  }
+}

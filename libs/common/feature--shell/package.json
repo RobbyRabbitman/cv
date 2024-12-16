@@ -1,0 +1,31 @@
+{
+  "name": "@robby-rabbitman/cv-libs-common-feature--shell",
+  "version": "0.0.0",
+  "type": "module",
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-common-feature--shell.mjs",
+  "typings": "dist/index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-common-feature--shell.mjs"
+    }
+  },
+  "peerDependencies": {
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@angular/core": "19.0.4",
+    "@robby-rabbitman/cv-tools-karma": "workspace:*",
+    "@robby-rabbitman/cv-libs-web-util": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-testing": "workspace:*",
+    "@angular/material": "19.0.3",
+    "@angular/platform-browser": "19.0.4"
+  },
+  "nx": {
+    "tags": [
+      "scope:angular",
+      "type:util"
+    ]
+  }
+}

@@ -47,6 +47,7 @@
     ],
     "angularGlobals": [
       "{workspaceRoot}/tools/nx-angular-plugin/**/*",
+      "ngPackagrGlobals",
       {
         "externalDependencies": [
           "@angular-devkit/build-angular",
@@ -117,7 +118,8 @@
           "targetName": "build-tsc",
           "configName": "tsconfig.lib.json"
         }
-      }
+      },
+      "include": ["tools/**", "libs/{js,node,web}/**"]
     },
     {
       "plugin": "@nx/eslint/plugin",
@@ -153,19 +155,6 @@
       }
     },
     {
-      "plugin": "@robby-rabbitman/cv-tools-nx-ng-packagr-plugin",
-      "options": {
-        "buildTargetName": "build-ng-packagr",
-        "testTargetName": "test-ng-packagr",
-        "buildTargetConfiguration": {
-          "inputs": ["build-ng-packagr", "^build-ng-packagr"]
-        },
-        "testTargetConfiguration": {
-          "inputs": ["test-ng-packagr", "^test-ng-packagr"]
-        }
-      }
-    },
-    {
       "plugin": "@nx/vite/plugin",
       "options": {
         "buildTargetName": "build-vite",
@@ -194,6 +183,15 @@
       "options": {
         "report-unused-disable-directives": true
       }
+    },
+    "build*": {
+      "dependsOn": ["^build*"]
+    },
+    "serve": {
+      "dependsOn": ["build*"]
+    },
+    "test*": {
+      "dependsOn": ["build*"]
     },
     "test-vitest": {
       "inputs": ["test-vitest", "^test-vitest"],

@@ -1,0 +1,16 @@
+{
+  "name": "@robby-rabbitman/cv-tools-karma",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "peerDependencies": {
+    "karma": "6.4.4",
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*"
+  },
+  "nx": {
+    "tags": [
+      "type:tool"
+    ]
+  }
+}

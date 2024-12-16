@@ -1,5 +1,6 @@
-/** @param {import('karma').Config} config */
-module.exports = function (config) {
+import type { Config, ConfigOptions } from 'karma';
+
+export function karmaConfigAngular(config: Config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
@@ -29,5 +30,5 @@ module.exports = function (config) {
     reporters: ['progress', 'kjhtml'],
     browsers: ['Chrome'],
     restartOnFileChange: true,
-  });
-};
+  } as ConfigOptions);
+}

@@ -1,0 +1,16 @@
+{
+  "extends": "../../../tools/typescript/src/tsconfig.ng-lib.json",
+  "include": ["src/**/*"],
+  "exclude": ["*.config.*", "src/**/*.spec.*"],
+  "references": [
+    {
+      "path": "../../web/util/tsconfig.lib.json"
+    },
+    {
+      "path": "../../../tools/karma/tsconfig.lib.json"
+    },
+    {
+      "path": "../../../tools/eslint/tsconfig.lib.json"
+    }
+  ]
+}

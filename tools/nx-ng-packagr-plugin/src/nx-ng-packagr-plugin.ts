@@ -43,6 +43,7 @@ const createNgPackagrTargets: CreateNodesFunction<
       outputs: ['{projectRoot}/dist'],
       options: {
         cwd: '{projectRoot}',
+        config: 'tsconfig.lib.json',
       },
     },
     /** Test */
