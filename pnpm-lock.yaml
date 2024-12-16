@@ -374,6 +374,9 @@ importers:
       '@angular/core':
         specifier: 19.0.4
         version: 19.0.4(rxjs@7.8.1)(zone.js@0.15.0)
+      '@robby-rabbitman/cv-libs-common-testing':
+        specifier: workspace:*
+        version: link:../../common/testing
       '@robby-rabbitman/cv-libs-common-util':
         specifier: workspace:*
         version: link:../../common/util
