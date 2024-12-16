@@ -11,7 +11,7 @@
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-chai-friendly": "1.0.1",
     "eslint": "9.16.0",
-    "eslint-plugin-n": "17.14.0",
+    "eslint-plugin-n": "17.15.0",
     "@nx/eslint-plugin": "20.2.2",
     "globals": "15.13.0",
     "jsonc-eslint-parser": "2.4.0"
