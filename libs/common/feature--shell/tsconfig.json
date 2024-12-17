@@ -7,10 +7,34 @@
   "exclude": [],
   "references": [
     {
+      "path": "../../web/util"
+    },
+    {
+      "path": "../data"
+    },
+    {
+      "path": "../../../tools/vitest"
+    },
+    {
+      "path": "../../js/util"
+    },
+    {
+      "path": "../../i18n/types"
+    },
+    {
       "path": "../testing"
     },
     {
-      "path": "../../web/util"
+      "path": "../types"
+    },
+    {
+      "path": "../util"
+    },
+    {
+      "path": "../../i18n/util"
+    },
+    {
+      "path": "../feature--color-scheme"
     },
     {
       "path": "../../../tools/karma"
