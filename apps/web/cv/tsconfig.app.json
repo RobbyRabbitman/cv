@@ -4,6 +4,9 @@
   "include": ["src/**/*.d.ts"],
   "references": [
     {
+      "path": "../../../libs/web/util/tsconfig.lib.json"
+    },
+    {
       "path": "../../../libs/common/util"
     },
     {
@@ -16,7 +19,7 @@
       "path": "../../../libs/common/data"
     },
     {
-      "path": "../../../libs/web/util/tsconfig.lib.json"
+      "path": "../../../libs/common/feature--color-scheme"
     },
     {
       "path": "../../../libs/common/feature--shell"

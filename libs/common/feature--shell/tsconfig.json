@@ -10,16 +10,7 @@
       "path": "../../web/util"
     },
     {
-      "path": "../data"
-    },
-    {
-      "path": "../../../tools/vitest"
-    },
-    {
-      "path": "../../js/util"
-    },
-    {
-      "path": "../../i18n/types"
+      "path": "../util"
     },
     {
       "path": "../testing"
@@ -28,10 +19,7 @@
       "path": "../types"
     },
     {
-      "path": "../util"
-    },
-    {
-      "path": "../../i18n/util"
+      "path": "../data"
     },
     {
       "path": "../feature--color-scheme"

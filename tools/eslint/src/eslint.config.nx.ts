@@ -52,6 +52,7 @@ const nxEslintConfig = [
       '**/src/**/*.cjs',
       '**/src/**/*.jsx',
     ],
+    ignores: ['**/src/testing/**/*'],
     rules: {
       '@nx/enforce-module-boundaries': [
         'error',
