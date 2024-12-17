@@ -11,6 +11,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/fesm2022/robby-rabbitman-cv-libs-common-data.mjs"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "default": "./dist/testing/fesm2022/robby-rabbitman-cv-libs-common-data-testing.mjs"
     }
   },
   "peerDependencies": {
