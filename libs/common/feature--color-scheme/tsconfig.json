@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "composite": true
+  },
+  "files": [],
+  "include": [],
+  "exclude": [],
+  "references": [
+    {
+      "path": "../util"
+    },
+    {
+      "path": "../testing"
+    },
+    {
+      "path": "../types"
+    },
+    {
+      "path": "../data"
+    },
+    {
+      "path": "../../../tools/karma"
+    },
+    {
+      "path": "../../../tools/eslint"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}
