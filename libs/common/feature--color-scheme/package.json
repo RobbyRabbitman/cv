@@ -21,7 +21,9 @@
     "@ngrx/signals": "18.1.1",
     "@robby-rabbitman/cv-libs-common-data": "workspace:*",
     "@robby-rabbitman/cv-libs-common-types": "workspace:*",
-    "@robby-rabbitman/cv-libs-common-testing": "workspace:*"
+    "@robby-rabbitman/cv-libs-common-testing": "workspace:*",
+    "@angular/cdk": "19.0.3",
+    "@angular/platform-browser": "19.0.4"
   },
   "nx": {
     "tags": [
