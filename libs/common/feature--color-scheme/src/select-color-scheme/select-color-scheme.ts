@@ -56,10 +56,20 @@ const SELECT_COLOR_SCHEME_ICONS = {
         ) {
           <button
             mat-menu-item
+            [class.cv-common--feature-color-scheme--select-color-scheme__option--selected]="
+              colorSchemeOption.selected
+            "
+            [attr.data-option]="colorSchemeOption.value"
             (click)="common.setColorScheme(colorSchemeOption.value)"
           >
-            <mat-icon>{{ colorSchemeOption.selectedIcon }}</mat-icon>
-            <mat-icon class="order-2 !mr-0 ml-3">
+            <mat-icon
+              class="cv-common--feature-color-scheme--select-color-scheme__option-selected-icon"
+            >
+              {{ colorSchemeOption.selectedIcon }}
+            </mat-icon>
+            <mat-icon
+              class="cv-common--feature-color-scheme--select-color-scheme__option-value-icon order-2 !mr-0 ml-3"
+            >
               {{ colorSchemeOption.valueIcon }}
             </mat-icon>
             <!-- TODO: translate value -->
