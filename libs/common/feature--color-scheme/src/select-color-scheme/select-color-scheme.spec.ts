@@ -50,24 +50,6 @@ describe('[Component Test] SelectColorScheme', () => {
     return selectedMenuItems[0]!;
   };
 
-  const findMenuItemByColorScheme = async (
-    menu: MatMenuHarness,
-    colorScheme: ColorScheme,
-  ) => {
-    for (const menuItem of await menu.getItems()) {
-      if (
-        colorScheme ===
-        (await (await menuItem.host()).getAttribute('data-option'))
-      ) {
-        return menuItem;
-      }
-    }
-
-    throw new Error(
-      `Could not find menu item for color scheme: ${colorScheme}`,
-    );
-  };
-
   const findDeselectedMenuItems = async (menu: MatMenuHarness) => {
     const deselectedMenuItems: MatMenuItemHarness[] = [];
 
@@ -84,6 +66,24 @@ describe('[Component Test] SelectColorScheme', () => {
     }
 
     return deselectedMenuItems;
+  };
+
+  const findMenuItemByColorScheme = async (
+    menu: MatMenuHarness,
+    colorScheme: ColorScheme,
+  ) => {
+    for (const menuItem of await menu.getItems()) {
+      if (
+        colorScheme ===
+        (await (await menuItem.host()).getAttribute('data-option'))
+      ) {
+        return menuItem;
+      }
+    }
+
+    throw new Error(
+      `Could not find menu item for color scheme: ${colorScheme}`,
+    );
   };
 
   beforeEach(() => {
