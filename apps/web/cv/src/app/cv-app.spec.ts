@@ -34,6 +34,6 @@ describe('[Integration Test] CvApp', () => {
   it('should have no accessibility violations', async () => {
     const fixture = TestBed.createComponent(CvApp);
 
-    expect(() => assertA11y(fixture.nativeElement)).not.toThrow();
+    await expectAsync(assertA11y(fixture.nativeElement)).not.toBeRejected();
   });
 });
