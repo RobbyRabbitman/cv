@@ -285,6 +285,39 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/karma
 
+  libs/common/feature--color-scheme:
+    dependencies:
+      '@angular/cdk':
+        specifier: 19.0.3
+        version: 19.0.3(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
+      '@angular/core':
+        specifier: 19.0.4
+        version: 19.0.4(rxjs@7.8.1)(zone.js@0.15.0)
+      '@angular/material':
+        specifier: 19.0.3
+        version: 19.0.3(4oulajnvbzpfq774xnc3sy5q4y)
+      '@angular/platform-browser':
+        specifier: 19.0.4
+        version: 19.0.4(@angular/animations@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))
+      '@ngrx/signals':
+        specifier: 18.1.1
+        version: 18.1.1(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
+      '@robby-rabbitman/cv-libs-common-data':
+        specifier: workspace:*
+        version: link:../data
+      '@robby-rabbitman/cv-libs-common-testing':
+        specifier: workspace:*
+        version: link:../testing
+      '@robby-rabbitman/cv-libs-common-types':
+        specifier: workspace:*
+        version: link:../types
+      '@robby-rabbitman/cv-tools-eslint':
+        specifier: workspace:*
+        version: link:../../../tools/eslint
+      '@robby-rabbitman/cv-tools-karma':
+        specifier: workspace:*
+        version: link:../../../tools/karma
+
   libs/common/feature--shell:
     dependencies:
       '@angular/core':
@@ -296,6 +329,12 @@ importers:
       '@angular/platform-browser':
         specifier: 19.0.4
         version: 19.0.4(@angular/animations@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.0.4(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.0.4(rxjs@7.8.1)(zone.js@0.15.0))
+      '@robby-rabbitman/cv-libs-common-data':
+        specifier: workspace:*
+        version: link:../data
+      '@robby-rabbitman/cv-libs-common-feature--color-scheme':
+        specifier: workspace:*
+        version: link:../feature--color-scheme
       '@robby-rabbitman/cv-libs-common-testing':
         specifier: workspace:*
         version: link:../testing
