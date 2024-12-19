@@ -6,8 +6,13 @@ import {
 
 /** @see {@link CommonStore} */
 export interface CommonState {
+  /** The name of the application. */
   appName: string;
+
+  /** The preferred color scheme of the user for the application. */
   colorScheme: ColorScheme;
+
+  /** The available color schemes for the application. */
   colorSchemes: typeof COLOR_SCHEMES;
 }
 
@@ -24,6 +29,7 @@ export const CommonStore = signalStore(
 
   withMethods((store) => {
     return {
+      /** Sets the preferred color scheme of the user for the application. */
       setColorScheme: (colorScheme: ColorScheme) => {
         patchState(store, { colorScheme });
       },

@@ -15,12 +15,15 @@
   },
   "peerDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-feature--color-scheme": "workspace:*",
     "@angular/core": "19.0.4",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
     "@robby-rabbitman/cv-libs-web-util": "workspace:*",
     "@robby-rabbitman/cv-libs-common-testing": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-data": "workspace:*",
     "@angular/material": "19.0.3",
-    "@angular/platform-browser": "19.0.4"
+    "@angular/platform-browser": "19.0.4",
+    "@angular/cdk": "19.0.3"
   },
   "nx": {
     "tags": [

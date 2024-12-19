@@ -7,9 +7,6 @@
   "exclude": [],
   "references": [
     {
-      "path": "../../web/util"
-    },
-    {
       "path": "../util"
     },
     {
@@ -20,9 +17,6 @@
     },
     {
       "path": "../data"
-    },
-    {
-      "path": "../feature--color-scheme"
     },
     {
       "path": "../../../tools/karma"
