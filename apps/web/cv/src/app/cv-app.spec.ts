@@ -1,5 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideCommonData } from '@robby-rabbitman/cv-libs-common-data';
+import { provideCommonStoreStub } from '@robby-rabbitman/cv-libs-common-data/testing';
 import { assertA11y } from '@robby-rabbitman/cv-libs-web-util';
 import { CvApp } from './cv-app';
 import { cvAppConfig } from './cv-app.config';
@@ -7,7 +9,11 @@ import { cvAppConfig } from './cv-app.config';
 describe('[Unit Test] CvApp', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [provideAnimationsAsync('noop')],
+      providers: [
+        provideAnimationsAsync('noop'),
+        provideCommonData(),
+        provideCommonStoreStub(),
+      ],
     });
   });
 
