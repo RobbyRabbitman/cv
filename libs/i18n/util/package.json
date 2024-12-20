@@ -21,12 +21,22 @@
     "ngxtension": "4.2.0",
     "@robby-rabbitman/cv-libs-i18n-types": "workspace:*",
     "@robby-rabbitman/cv-libs-js-util": "workspace:*",
-    "@robby-rabbitman/cv-libs-common-testing": "workspace:*"
+    "@robby-rabbitman/cv-libs-common-testing": "workspace:*",
+    "@nx/eslint-plugin": "20.2.2",
+    "jsonc-eslint-parser": "2.4.0"
   },
   "nx": {
     "tags": [
       "scope:angular",
       "type:util"
-    ]
+    ],
+    "targets": {
+      "eslint-issue": {
+        "command": "eslint -c eslint.config-issue.js .",
+        "options": {
+          "cwd": "{projectRoot}"
+        }
+      }
+    }
   }
 }
