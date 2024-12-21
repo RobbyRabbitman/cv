@@ -1,7 +1,6 @@
 {
   "extends": "../../../tools/typescript/src/tsconfig.vitest-node.json",
   "compilerOptions": {
-    "rootDir": ".",
     "outDir": "dist-spec",
     "tsBuildInfoFile": "node_modules/.cache/tsBuildInfo/tsconfig.spec.tsbuildinfo"
   },
