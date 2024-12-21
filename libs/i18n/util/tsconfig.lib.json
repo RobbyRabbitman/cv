@@ -1,6 +1,6 @@
 {
   "extends": "../../../tools/typescript/src/tsconfig.ng-lib.json",
-  "include": ["src/**/*"],
+  "include": ["src"],
   "exclude": ["*.config.*", "src/**/*.spec.*"],
   "references": [
     {
