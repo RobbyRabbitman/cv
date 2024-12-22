@@ -15,8 +15,8 @@
   },
   "peerDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
-    "@angular/core": "19.0.4",
-    "@angular/common": "19.0.4",
+    "@angular/core": "19.0.5",
+    "@angular/common": "19.0.5",
     "ngxtension": "4.2.0",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
     "@robby-rabbitman/cv-libs-common-types": "workspace:*",
