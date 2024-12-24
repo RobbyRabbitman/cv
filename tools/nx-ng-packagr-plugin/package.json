@@ -16,7 +16,7 @@
     "package.json"
   ],
   "peerDependencies": {
-    "@nx/devkit": "20.2.2",
+    "@nx/devkit": "20.3.0",
     "@robby-rabbitman/cv-tools-vitest": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "memfs": "4.15.0",
