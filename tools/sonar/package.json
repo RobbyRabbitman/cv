@@ -18,7 +18,7 @@
     "@robby-rabbitman/cv-tools-vitest": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-libs-node-util": "workspace:*",
-    "memfs": "4.15.2",
+    "memfs": "4.15.3",
     "vitest": "2.1.8"
   },
   "nx": {
