@@ -11,7 +11,7 @@
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
     "@robby-rabbitman/cv-libs-common-data": "workspace:*",
-    "@nx/devkit": "20.3.0",
+    "@nx/devkit": "20.3.1",
     "@robby-rabbitman/cv-libs-web-util": "workspace:*",
     "@robby-rabbitman/cv-libs-common-testing": "workspace:*"
   },
