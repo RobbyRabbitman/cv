@@ -20,14 +20,14 @@
   "peerDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
-    "@angular/core": "19.0.5",
+    "@angular/core": "19.0.6",
     "@angular/material": "19.0.4",
     "@ngrx/signals": "19.0.0",
     "@robby-rabbitman/cv-libs-common-data": "workspace:*",
     "@robby-rabbitman/cv-libs-common-types": "workspace:*",
     "@robby-rabbitman/cv-libs-common-testing": "workspace:*",
     "@angular/cdk": "19.0.4",
-    "@angular/platform-browser": "19.0.5"
+    "@angular/platform-browser": "19.0.6"
   },
   "nx": {
     "tags": [
