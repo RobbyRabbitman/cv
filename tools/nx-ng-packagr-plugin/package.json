@@ -19,7 +19,7 @@
     "@nx/devkit": "20.3.1",
     "@robby-rabbitman/cv-tools-vitest": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
-    "memfs": "4.15.3",
+    "memfs": "4.17.0",
     "minimatch": "10.0.1"
   },
   "nx": {
