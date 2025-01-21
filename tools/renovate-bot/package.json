@@ -2,7 +2,7 @@
   "name": "@robby-rabbitman/cv-tools-renovate-bot",
   "version": "0.0.0",
   "peerDependencies": {
-    "renovate": "39.115.4"
+    "renovate": "39.116.0"
   },
   "nx": {
     "tags": [
