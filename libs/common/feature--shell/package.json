@@ -16,13 +16,13 @@
   "peerDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-libs-common-feature--color-scheme": "workspace:*",
-    "@angular/core": "19.1.1",
+    "@angular/core": "19.1.2",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
     "@robby-rabbitman/cv-libs-web-util": "workspace:*",
     "@robby-rabbitman/cv-libs-common-testing": "workspace:*",
     "@robby-rabbitman/cv-libs-common-data": "workspace:*",
     "@angular/material": "19.1.0",
-    "@angular/platform-browser": "19.1.1",
+    "@angular/platform-browser": "19.1.2",
     "@angular/cdk": "19.1.0"
   },
   "nx": {
