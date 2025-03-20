@@ -17,7 +17,7 @@
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@angular/core": "19.1.4",
     "@angular/common": "19.1.4",
-    "ngxtension": "4.2.1",
+    "ngxtension": "4.5.0",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
     "@robby-rabbitman/cv-libs-common-types": "workspace:*",
     "@robby-rabbitman/cv-libs-common-testing": "workspace:*"
