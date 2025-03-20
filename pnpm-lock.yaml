@@ -117,8 +117,8 @@ importers:
         specifier: 10.4.20
         version: 10.4.20(postcss@8.5.1)
       axe-core:
-        specifier: 4.10.2
-        version: 4.10.2
+        specifier: 4.10.3
+        version: 4.10.3
       eslint:
         specifier: 9.19.0
         version: 9.19.0(jiti@2.4.2)
@@ -468,8 +468,8 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/eslint
       axe-core:
-        specifier: 4.10.2
-        version: 4.10.2
+        specifier: 4.10.3
+        version: 4.10.3
 
   tools/commitlint:
     dependencies:
@@ -4127,8 +4127,8 @@ packages:
   aws4@1.13.2:
     resolution: {integrity: sha512-lHe62zvbTB5eEABUVi/AwVh0ZKY9rMMDhmm+eeyuuUQbQ3+J+fONVQOZyj+DdrvD4BY33uYniyRJ4UJIaSKAfw==}
 
-  axe-core@4.10.2:
-    resolution: {integrity: sha512-RE3mdQ7P3FRSe7eqCWoeQ/Z9QXrtniSjp1wUjt5nRC3WIpz5rSCve6o3fsZ2aCpJtrZjSZgjwXAoTO5k4tEI0w==}
+  axe-core@4.10.3:
+    resolution: {integrity: sha512-Xm7bpRXnDSX2YE2YFfBk2FnF0ep6tmG7xPh8iHee8MIcrgq762Nkce856dYtJYLkuIoYZvGfTs/PbZhideTcEg==}
     engines: {node: '>=4'}
 
   axios@1.7.7:
@@ -13416,7 +13416,7 @@ snapshots:
 
   aws4@1.13.2: {}
 
-  axe-core@4.10.2: {}
+  axe-core@4.10.3: {}
 
   axios@1.7.7:
     dependencies:
