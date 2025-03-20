@@ -21,7 +21,7 @@
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
     "@angular/core": "19.1.4",
-    "@ngrx/signals": "19.0.0",
+    "@ngrx/signals": "19.0.1",
     "@angular/common": "19.1.4",
     "@robby-rabbitman/cv-libs-common-types": "workspace:*",
     "@robby-rabbitman/cv-libs-common-util": "workspace:*",
