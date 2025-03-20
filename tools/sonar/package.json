@@ -19,7 +19,7 @@
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-libs-node-util": "workspace:*",
     "memfs": "4.17.0",
-    "vitest": "2.1.8"
+    "vitest": "2.1.9"
   },
   "nx": {
     "tags": [
