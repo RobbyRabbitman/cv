@@ -21,9 +21,9 @@
     "@robby-rabbitman/cv-libs-web-util": "workspace:*",
     "@robby-rabbitman/cv-libs-common-testing": "workspace:*",
     "@robby-rabbitman/cv-libs-common-data": "workspace:*",
-    "@angular/material": "19.1.2",
+    "@angular/material": "19.2.3",
     "@angular/platform-browser": "19.1.4",
-    "@angular/cdk": "19.1.2"
+    "@angular/cdk": "19.2.3"
   },
   "nx": {
     "tags": [
