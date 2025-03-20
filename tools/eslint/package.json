@@ -7,10 +7,10 @@
   "peerDependencies": {
     "typescript-eslint": "8.18.2",
     "angular-eslint": "19.0.2",
-    "@eslint/js": "9.19.0",
+    "@eslint/js": "9.22.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-chai-friendly": "1.0.1",
-    "eslint": "9.19.0",
+    "eslint": "9.22.0",
     "eslint-plugin-n": "17.15.1",
     "@nx/eslint-plugin": "20.3.1",
     "globals": "15.14.0",
