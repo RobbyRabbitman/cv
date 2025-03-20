@@ -38,7 +38,7 @@
     "@robby-rabbitman/cv-tools-nx-ng-packagr-plugin": "workspace:*",
     "@robby-rabbitman/cv-tools-nx-sonar-scan-plugin": "workspace:*",
     "@types/eslint-config-prettier": "6.11.3",
-    "@types/jasmine": "5.1.5",
+    "@types/jasmine": "5.1.7",
     "@types/karma": "6.3.9",
     "@types/node": "22.10.5",
     "@types/yargs": "17.0.33",
