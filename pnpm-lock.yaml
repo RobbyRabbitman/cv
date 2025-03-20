@@ -189,8 +189,8 @@ importers:
         specifier: 0.6.11
         version: 0.6.11(prettier-plugin-jsdoc@1.3.2(prettier@3.4.2))(prettier-plugin-organize-imports@4.1.0(prettier@3.4.2)(typescript@5.7.3))(prettier@3.4.2)
       renovate:
-        specifier: 39.202.0
-        version: 39.202.0(encoding@0.1.13)(typanion@3.14.0)
+        specifier: 39.205.1
+        version: 39.205.1(encoding@0.1.13)(typanion@3.14.0)
       rxjs:
         specifier: 7.8.1
         version: 7.8.1
@@ -606,8 +606,8 @@ importers:
   tools/renovate-bot:
     dependencies:
       renovate:
-        specifier: 39.202.0
-        version: 39.202.0(encoding@0.1.13)(typanion@3.14.0)
+        specifier: 39.205.1
+        version: 39.205.1(encoding@0.1.13)(typanion@3.14.0)
 
   tools/sonar:
     dependencies:
@@ -2614,10 +2614,6 @@ packages:
   '@one-ini/wasm@0.2.0':
     resolution: {integrity: sha512-n+L/BvrwKUn7q5O3wHGo+CJZAqfewh38+37sk+eBzv/39lM9pPgPRd4sOZRvSRzo0ukLxzyXso4WlGj2oKZ5hA==}
 
-  '@opentelemetry/api-logs@0.57.1':
-    resolution: {integrity: sha512-I4PHczeujhQAQv6ZBzqHYEUiggZL4IdSMixtVD3EYqbdrjujE7kRfI5QohjlPoJm8BvenoW5YaTMWRrbpot6tg==}
-    engines: {node: '>=14'}
-
   '@opentelemetry/api-logs@0.57.2':
     resolution: {integrity: sha512-uIX52NnTM0iBh84MShlpouI7UKqkZ7MrUszTmaypHBu4r7NofznSnQRfJ+uUeDtQDj6w8eFGg5KBLDAwAPz1+A==}
     engines: {node: '>=14'}
@@ -3368,10 +3364,6 @@ packages:
 
   '@smithy/middleware-retry@4.0.7':
     resolution: {integrity: sha512-58j9XbUPLkqAcV1kHzVX/kAR16GT+j7DUZJqwzsxh1jtz7G82caZiGyyFgUvogVfNTg3TeAOIJepGc8TXF4AVQ==}
-    engines: {node: '>=18.0.0'}
-
-  '@smithy/middleware-serde@4.0.1':
-    resolution: {integrity: sha512-Fh0E2SOF+S+P1+CsgKyiBInAt3o2b6Qk7YOp2W0Qx2XnfTdfMuSDKUEcnrtpxCzgKJnqXeLUZYqtThaP0VGqtA==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/middleware-serde@4.0.2':
@@ -7524,8 +7516,8 @@ packages:
   remark@13.0.0:
     resolution: {integrity: sha512-HDz1+IKGtOyWN+QgBiAT0kn+2s6ovOxHyPAFGKVE81VSzJ+mq7RwHFledEvB5F1p4iJvOah/LOKdFuzvRnNLCA==}
 
-  renovate@39.202.0:
-    resolution: {integrity: sha512-K8J8YRdVQJqEQ2+bRvLnoGq6Z2Khsq2iid7VVnIv0F1mPGo0/dcqRMQQMl1yng9WfzJEF0npMkHZ6vwUeO4EUA==}
+  renovate@39.205.1:
+    resolution: {integrity: sha512-b295iGAxxa68gDtR2NI467CurMZy+mbwJUfFrtoYBxDBBHWDI9xzPccajQX9kvyPdaVtQs5ZCzsMKMm20tbagQ==}
     engines: {node: ^20.15.1 || ^22.11.0, pnpm: ^10.0.0}
     hasBin: true
 
@@ -9328,7 +9320,7 @@ snapshots:
       '@smithy/middleware-content-length': 4.0.1
       '@smithy/middleware-endpoint': 4.0.6
       '@smithy/middleware-retry': 4.0.7
-      '@smithy/middleware-serde': 4.0.1
+      '@smithy/middleware-serde': 4.0.2
       '@smithy/middleware-stack': 4.0.1
       '@smithy/node-config-provider': 4.0.1
       '@smithy/node-http-handler': 4.0.3
@@ -9374,7 +9366,7 @@ snapshots:
       '@smithy/middleware-content-length': 4.0.1
       '@smithy/middleware-endpoint': 4.0.6
       '@smithy/middleware-retry': 4.0.7
-      '@smithy/middleware-serde': 4.0.1
+      '@smithy/middleware-serde': 4.0.2
       '@smithy/middleware-stack': 4.0.1
       '@smithy/node-config-provider': 4.0.1
       '@smithy/node-http-handler': 4.0.3
@@ -9419,7 +9411,7 @@ snapshots:
       '@smithy/middleware-content-length': 4.0.1
       '@smithy/middleware-endpoint': 4.0.6
       '@smithy/middleware-retry': 4.0.7
-      '@smithy/middleware-serde': 4.0.1
+      '@smithy/middleware-serde': 4.0.2
       '@smithy/middleware-stack': 4.0.1
       '@smithy/node-config-provider': 4.0.1
       '@smithy/node-http-handler': 4.0.3
@@ -9466,7 +9458,7 @@ snapshots:
       '@smithy/middleware-content-length': 4.0.1
       '@smithy/middleware-endpoint': 4.0.6
       '@smithy/middleware-retry': 4.0.7
-      '@smithy/middleware-serde': 4.0.1
+      '@smithy/middleware-serde': 4.0.2
       '@smithy/middleware-stack': 4.0.1
       '@smithy/node-config-provider': 4.0.1
       '@smithy/node-http-handler': 4.0.3
@@ -9512,7 +9504,7 @@ snapshots:
       '@smithy/middleware-content-length': 4.0.1
       '@smithy/middleware-endpoint': 4.0.6
       '@smithy/middleware-retry': 4.0.7
-      '@smithy/middleware-serde': 4.0.1
+      '@smithy/middleware-serde': 4.0.2
       '@smithy/middleware-stack': 4.0.1
       '@smithy/node-config-provider': 4.0.1
       '@smithy/node-http-handler': 4.0.3
@@ -9572,7 +9564,7 @@ snapshots:
       '@smithy/middleware-content-length': 4.0.1
       '@smithy/middleware-endpoint': 4.0.6
       '@smithy/middleware-retry': 4.0.7
-      '@smithy/middleware-serde': 4.0.1
+      '@smithy/middleware-serde': 4.0.2
       '@smithy/middleware-stack': 4.0.1
       '@smithy/node-config-provider': 4.0.1
       '@smithy/node-http-handler': 4.0.3
@@ -9617,7 +9609,7 @@ snapshots:
       '@smithy/middleware-content-length': 4.0.1
       '@smithy/middleware-endpoint': 4.0.6
       '@smithy/middleware-retry': 4.0.7
-      '@smithy/middleware-serde': 4.0.1
+      '@smithy/middleware-serde': 4.0.2
       '@smithy/middleware-stack': 4.0.1
       '@smithy/node-config-provider': 4.0.1
       '@smithy/node-http-handler': 4.0.3
@@ -9908,7 +9900,7 @@ snapshots:
       '@smithy/middleware-content-length': 4.0.1
       '@smithy/middleware-endpoint': 4.0.6
       '@smithy/middleware-retry': 4.0.7
-      '@smithy/middleware-serde': 4.0.1
+      '@smithy/middleware-serde': 4.0.2
       '@smithy/middleware-stack': 4.0.1
       '@smithy/node-config-provider': 4.0.1
       '@smithy/node-http-handler': 4.0.3
@@ -10763,7 +10755,7 @@ snapshots:
   '@commitlint/is-ignored@19.6.0':
     dependencies:
       '@commitlint/types': 19.5.0
-      semver: 7.6.3
+      semver: 7.7.1
 
   '@commitlint/lint@19.6.0':
     dependencies:
@@ -11438,7 +11430,7 @@ snapshots:
       proc-log: 5.0.0
       promise-inflight: 1.0.1
       promise-retry: 2.0.1
-      semver: 7.6.3
+      semver: 7.7.1
       which: 5.0.0
     transitivePeerDependencies:
       - bluebird
@@ -11458,7 +11450,7 @@ snapshots:
       json-parse-even-better-errors: 4.0.0
       normalize-package-data: 7.0.0
       proc-log: 5.0.0
-      semver: 7.6.3
+      semver: 7.7.1
     transitivePeerDependencies:
       - bluebird
 
@@ -11695,10 +11687,6 @@ snapshots:
 
   '@one-ini/wasm@0.2.0': {}
 
-  '@opentelemetry/api-logs@0.57.1':
-    dependencies:
-      '@opentelemetry/api': 1.9.0
-
   '@opentelemetry/api-logs@0.57.2':
     dependencies:
       '@opentelemetry/api': 1.9.0
@@ -11726,7 +11714,7 @@ snapshots:
   '@opentelemetry/instrumentation-bunyan@0.45.1(@opentelemetry/api@1.9.0)':
     dependencies:
       '@opentelemetry/api': 1.9.0
-      '@opentelemetry/api-logs': 0.57.1
+      '@opentelemetry/api-logs': 0.57.2
       '@opentelemetry/instrumentation': 0.57.2(@opentelemetry/api@1.9.0)
       '@types/bunyan': 1.8.11
     transitivePeerDependencies:
@@ -12440,11 +12428,6 @@ snapshots:
       tslib: 2.8.1
       uuid: 9.0.1
 
-  '@smithy/middleware-serde@4.0.1':
-    dependencies:
-      '@smithy/types': 4.1.0
-      tslib: 2.8.1
-
   '@smithy/middleware-serde@4.0.2':
     dependencies:
       '@smithy/types': 4.1.0
@@ -12953,7 +12936,7 @@ snapshots:
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.6.3
+      semver: 7.7.1
       ts-api-utils: 1.4.3(typescript@5.7.3)
       typescript: 5.7.3
     transitivePeerDependencies:
@@ -12967,7 +12950,7 @@ snapshots:
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.6.3
+      semver: 7.7.1
       ts-api-utils: 1.4.3(typescript@5.7.3)
       typescript: 5.7.3
     transitivePeerDependencies:
@@ -13998,7 +13981,7 @@ snapshots:
       postcss-modules-scope: 3.2.1(postcss@8.5.1)
       postcss-modules-values: 4.0.0(postcss@8.5.1)
       postcss-value-parser: 4.2.0
-      semver: 7.6.3
+      semver: 7.7.1
     optionalDependencies:
       '@rspack/core': 1.1.6(@swc/helpers@0.5.15)
       webpack: 5.97.1(esbuild@0.24.2)
@@ -14366,7 +14349,7 @@ snapshots:
   eslint-compat-utils@0.5.1(eslint@9.19.0(jiti@2.4.2)):
     dependencies:
       eslint: 9.19.0(jiti@2.4.2)
-      semver: 7.6.3
+      semver: 7.7.1
 
   eslint-config-prettier@9.1.0(eslint@9.19.0(jiti@2.4.2)):
     dependencies:
@@ -15341,7 +15324,7 @@ snapshots:
       '@babel/parser': 7.26.3
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.2.2
-      semver: 7.6.3
+      semver: 7.7.1
     transitivePeerDependencies:
       - supports-color
 
@@ -15776,7 +15759,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.6.3
+      semver: 7.7.1
 
   make-error@1.3.6: {}
 
@@ -16383,7 +16366,7 @@ snapshots:
       make-fetch-happen: 14.0.3
       nopt: 8.0.0
       proc-log: 5.0.0
-      semver: 7.6.3
+      semver: 7.7.1
       tar: 7.4.3
       which: 5.0.0
     transitivePeerDependencies:
@@ -16424,7 +16407,7 @@ snapshots:
   normalize-package-data@7.0.0:
     dependencies:
       hosted-git-info: 8.0.2
-      semver: 7.6.3
+      semver: 7.7.1
       validate-npm-package-license: 3.0.4
 
   normalize-path@3.0.0: {}
@@ -16439,7 +16422,7 @@ snapshots:
 
   npm-install-checks@7.1.1:
     dependencies:
-      semver: 7.6.3
+      semver: 7.7.1
 
   npm-normalize-package-bin@4.0.0: {}
 
@@ -16447,14 +16430,14 @@ snapshots:
     dependencies:
       hosted-git-info: 7.0.2
       proc-log: 3.0.0
-      semver: 7.6.3
+      semver: 7.7.1
       validate-npm-package-name: 5.0.1
 
   npm-package-arg@12.0.1:
     dependencies:
       hosted-git-info: 8.0.2
       proc-log: 5.0.0
-      semver: 7.6.3
+      semver: 7.7.1
       validate-npm-package-name: 6.0.0
 
   npm-packlist@9.0.0:
@@ -16466,7 +16449,7 @@ snapshots:
       npm-install-checks: 7.1.1
       npm-normalize-package-bin: 4.0.0
       npm-package-arg: 12.0.1
-      semver: 7.6.3
+      semver: 7.7.1
 
   npm-registry-fetch@18.0.2:
     dependencies:
@@ -16854,7 +16837,7 @@ snapshots:
       cosmiconfig: 9.0.0(typescript@5.7.3)
       jiti: 1.21.6
       postcss: 8.4.49
-      semver: 7.6.3
+      semver: 7.7.1
     optionalDependencies:
       '@rspack/core': 1.1.6(@swc/helpers@0.5.15)
       webpack: 5.97.1(esbuild@0.24.2)
@@ -16903,7 +16886,7 @@ snapshots:
 
   postcss@8.4.49:
     dependencies:
-      nanoid: 3.3.8
+      nanoid: 3.3.9
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
@@ -17191,7 +17174,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@39.202.0(encoding@0.1.13)(typanion@3.14.0):
+  renovate@39.205.1(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.738.0
       '@aws-sdk/client-ec2': 3.738.0
