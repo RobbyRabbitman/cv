@@ -1,0 +1,22 @@
+{
+  // the base tsconfig for all angular projects of this repository
+  "extends": "./tsconfig.web.json",
+  "compilerOptions": {
+    // https://github.com/angular/angular/issues/57850#issuecomment-2376411680
+    "composite": false,
+    // https://github.com/angular/angular-cli/issues/25936#issuecomment-1752967341
+    "allowJs": false,
+    "checkJs": false,
+
+    "moduleResolution": "bundler",
+    "experimentalDecorators": true
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "strictinjectionparameters": true,
+    "strictstandalone": true
+  }
+}

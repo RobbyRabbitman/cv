@@ -1,0 +1,9 @@
+{
+  "name": "@robby-rabbitman/cv-tools-typescript",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "src/configs",
+    "package.json"
+  ]
+}

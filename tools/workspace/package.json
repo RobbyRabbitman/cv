@@ -1,0 +1,22 @@
+{
+  "name": "@robby-rabbitman/cv-tools-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "src",
+    "package.json"
+  ],
+  "nx": {
+    "targets": {
+      "ci": {
+        "command": "sh {projectRoot}/src/ci/ci.sh"
+      },
+      "delete-all-local-git-branches": {
+        "command": "sh {projectRoot}/src/git/delete-all-local-git-branches.sh"
+      },
+      "format": {
+        "command": "sh {projectRoot}/src/format/format-all.sh"
+      }
+    }
+  }
+}

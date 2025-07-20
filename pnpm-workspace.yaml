@@ -1,0 +1,11 @@
+packages:
+  [
+    'tools/**',
+    'libs/**',
+    'apps/**',
+    'e2e/**',
+    '!**/dist/**',
+    '!**/dist-spec/**',
+    '!**/build/**',
+    '!**/tmp/**',
+  ]

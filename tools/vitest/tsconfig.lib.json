@@ -1,0 +1,8 @@
+{
+  "extends": "./node_modules/@robby-rabbitman/cv-tools-typescript/src/configs/tsconfig.node.json",
+  "references": [
+    {
+      "path": "../eslint/tsconfig.lib.json"
+    }
+  ]
+}

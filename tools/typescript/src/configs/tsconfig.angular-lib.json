@@ -1,0 +1,13 @@
+{
+  // the base tsconfig for all ts projects in this repository based on angular that are build with ng-packagr
+  "extends": "./tsconfig.angular.json",
+  "angularCompilerOptions": {
+    "compilationMode": "partial",
+
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "strictinjectionparameters": true,
+    "strictstandalone": true
+  }
+}

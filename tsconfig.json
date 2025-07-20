@@ -1,0 +1,27 @@
+{
+  // This file is kept in sync by 'nx sync' as part of the ts setup of this repository
+  // Run 'nx sync' to update this file instead of editing it manually
+  "references": [
+    {
+      "path": "./tools/eslint",
+    },
+    {
+      "path": "./tools/vitest",
+    },
+    {
+      "path": "./tools/ng-packagr-plugin",
+    },
+    {
+      "path": "./apps/web/cv",
+    },
+    {
+      "path": "./tools/karma",
+    },
+    {
+      "path": "./libs/angular/testing",
+    },
+    {
+      "path": "./tools/eslint-nx-dependency-checks-plugin",
+    },
+  ],
+}

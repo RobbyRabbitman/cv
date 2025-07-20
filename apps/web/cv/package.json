@@ -1,0 +1,70 @@
+{
+  "name": "@robby-rabbitman/cv-apps-web-cv",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "peerDependencies": {
+    "@angular/core": "20.0.0",
+    "@angular/common": "20.0.0",
+    "@angular/router": "20.0.0",
+    "@angular/platform-browser": "20.0.0"
+  },
+  "devDependencies": {
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@robby-rabbitman/cv-tools-karma": "workspace:*",
+    "@robby-rabbitman/cv-libs-angular-testing": "workspace:*",
+    "@robby-rabbitman/cv-tools-typescript": "workspace:*"
+  },
+  "nx": {
+    "tags": [
+      "runtime:web"
+    ],
+    "targets": {
+      "build-angular": {
+        "command": "ng build",
+        "cache": true,
+        "inputs": [
+          "targets-build-angular",
+          "^targets-build-angular"
+        ],
+        "outputs": [
+          "{projectRoot}/dist"
+        ],
+        "options": {
+          "cwd": "{projectRoot}"
+        }
+      },
+      "serve": {
+        "command": "ng serve",
+        "options": {
+          "cwd": "{projectRoot}"
+        },
+        "dependsOn": [
+          "^build*"
+        ]
+      },
+      "test-angular": {
+        "command": "ng test",
+        "cache": true,
+        "inputs": [
+          "targets-test-angular",
+          "^targets-test-angular"
+        ],
+        "outputs": [
+          "{projectRoot}/coverage"
+        ],
+        "options": {
+          "cwd": "{projectRoot}",
+          "code-coverage": true
+        },
+        "configurations": {
+          "ci": {
+            "watch": false,
+            "progress": false,
+            "browsers": "ChromeHeadlessNoSandbox"
+          }
+        }
+      }
+    }
+  }
+}

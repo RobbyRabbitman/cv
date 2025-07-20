@@ -1,0 +1,4 @@
+{
+  // the base tsconfig for all angular apps of this repository
+  "extends": "./tsconfig.angular.json"
+}

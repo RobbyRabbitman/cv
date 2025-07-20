@@ -1,0 +1,8 @@
+{
+  // the base tsconfig for all ts projects of this repository that run in the web platform
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext"
+  }
+}

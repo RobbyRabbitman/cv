@@ -1,0 +1,11 @@
+{
+  "extends": "./node_modules/@robby-rabbitman/cv-tools-typescript/src/configs/tsconfig.node-cjs.json",
+  "references": [
+    {
+      "path": "../vitest/tsconfig.lib.json"
+    },
+    {
+      "path": "../eslint/tsconfig.lib.json"
+    }
+  ]
+}

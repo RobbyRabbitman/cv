@@ -1,0 +1,10 @@
+{
+  // the base tsconfig for all ts projects in this repository based on angular that test with jasmine and run with karma
+  "extends": "./tsconfig.angular.json",
+  "compilerOptions": {
+    "outDir": "${configDir}/dist-spec",
+    "tsBuildInfoFile": "${configDir}/node_modules/.cache/tsBuildInfo/tsconfig.spec.tsbuildinfo",
+    "types": ["jasmine"]
+  },
+  "exclude": ["${configDir}/*.config.*"]
+}
