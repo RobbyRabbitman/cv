@@ -1,0 +1,34 @@
+{
+  "name": "@robby-rabbitman/cv-libs-cv-types",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-cv-types.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-cv-types.mjs"
+    }
+  },
+  "dependencies": {
+    "@robby-rabbitman/cv-libs-common-types": "workspace:*"
+  },
+  "devDependencies": {
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@robby-rabbitman/cv-tools-karma": "workspace:*",
+    "@robby-rabbitman/cv-tools-typescript": "workspace:*"
+  },
+  "nx": {
+    "tags": [
+      "runtime:web"
+    ]
+  }
+}
