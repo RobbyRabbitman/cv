@@ -1,0 +1,45 @@
+{
+  "name": "@robby-rabbitman/cv-tools-renovate-bot",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "src/renovate.json",
+    "package.json"
+  ],
+  "nx": {
+    "targets": {
+      "lint": {
+        "inputs": [
+          "{projectRoot}/src/renovate.json"
+        ],
+        "cache": true,
+        "command": "renovate-config-validator --strict",
+        "options": {
+          "env": {
+            "RENOVATE_CONFIG_FILE": "{projectRoot}/src/renovate.json"
+          }
+        }
+      },
+      "renovate": {
+        "command": "renovate",
+        "options": {
+          "env": {
+            "RENOVATE_CONFIG_FILE": "{projectRoot}/src/renovate.json",
+            "LOG_LEVEL": "debug"
+          }
+        },
+        "configurations": {
+          "ci": {},
+          "local": {
+            "env": {
+              "RENOVATE_PLATFORM": "local",
+              "RENOVATE_REPOSITORY_CACHE": "reset",
+              "RENOVATE_DRY_RUN": "full"
+            }
+          }
+        },
+        "defaultConfiguration": "ci"
+      }
+    }
+  }
+}
