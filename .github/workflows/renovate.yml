@@ -53,6 +53,8 @@ jobs:
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
 
+      - uses: nrwl/nx-set-shas@v4
+
       - run: pnpm i
 
       - run: echo "NX_VERBOSE_LOGGING=${{ runner.debug && true || false }}" >> "$GITHUB_ENV"
