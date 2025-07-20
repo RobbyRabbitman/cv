@@ -23,5 +23,11 @@
     {
       "path": "./tools/eslint-nx-dependency-checks-plugin",
     },
+    {
+      "path": "./libs/common/types",
+    },
+    {
+      "path": "./libs/cv/types",
+    },
   ],
 }
