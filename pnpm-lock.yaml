@@ -147,8 +147,8 @@ importers:
         specifier: 4.17.2
         version: 4.17.2
       minimatch:
-        specifier: 10.0.1
-        version: 10.0.1
+        specifier: 10.0.3
+        version: 10.0.3
       ng-packagr:
         specifier: 20.0.0
         version: 20.0.0(@angular/compiler-cli@20.0.0(@angular/compiler@20.0.0)(typescript@5.8.3))(tailwindcss@4.1.8)(tslib@2.8.1)(typescript@5.8.3)
