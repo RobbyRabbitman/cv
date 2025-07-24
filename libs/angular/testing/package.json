@@ -19,8 +19,8 @@
     }
   },
   "peerDependencies": {
-    "@angular/core": "20.0.0",
-    "@angular/platform-browser": "20.0.0"
+    "@angular/core": "20.1.2",
+    "@angular/platform-browser": "20.1.2"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
