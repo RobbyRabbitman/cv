@@ -17,7 +17,7 @@
     "@nx/eslint-plugin": "21.3.2",
     "jsonc-eslint-parser": "2.4.0",
     "typescript-eslint": "8.29.0",
-    "angular-eslint": "19.3.0"
+    "angular-eslint": "19.8.1"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-typescript": "workspace:*"
