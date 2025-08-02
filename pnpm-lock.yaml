@@ -168,8 +168,8 @@ importers:
         specifier: 0.16.0
         version: 0.16.0(prettier@3.2.4)
       renovate:
-        specifier: 41.40.0
-        version: 41.40.0(encoding@0.1.13)(typanion@3.14.0)
+        specifier: 41.45.0
+        version: 41.45.0(encoding@0.1.13)(typanion@3.14.0)
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
@@ -6552,8 +6552,8 @@ packages:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
 
-  openpgp@6.1.1:
-    resolution: {integrity: sha512-V/DXZ5AGCz3q4X8psUSc3q4SxnH/bfICaTSpNcla7wvBFhrxa9/ajm31rtMwZ1qj7Fu2oMpfX6ZcxKmTBlb6Yg==}
+  openpgp@6.2.0:
+    resolution: {integrity: sha512-zKbgazxMeGrTqUEWicKufbdcjv2E0om3YVxw+I3hRykp8ODp+yQOJIDqIr1UXJjP8vR2fky3bNQwYoQXyFkYMA==}
     engines: {node: '>= 18.0.0'}
 
   optionator@0.9.4:
@@ -7034,8 +7034,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  renovate@41.40.0:
-    resolution: {integrity: sha512-YBH71W5mBc1ckGdmlJO6CbBvYiP7jD/zXAgw0qXc7+HmMXSgzA0KfGHwN68PniukazyqmIPCkQUfPzH58BAYcQ==}
+  renovate@41.45.0:
+    resolution: {integrity: sha512-2pwXo9GBVLAUwVzni7QQgP2jdoZRu7uSKX83XVURjQQyGHOlMgk98w+C6z9kTYqy+QYpP8c71iC/Y2Rrqq1/Iw==}
     engines: {node: ^22.13.0, pnpm: ^10.0.0}
     hasBin: true
 
@@ -7894,6 +7894,10 @@ packages:
 
   validate-npm-package-name@6.0.1:
     resolution: {integrity: sha512-OaI//3H0J7ZkR1OqlhGA8cA+Cbk/2xFOQpJOt5+s27/ta9eZwpeervh4Mxh4w0im/kdgktowaqVNR7QOrUd7Yg==}
+    engines: {node: ^18.17.0 || >=20.5.0}
+
+  validate-npm-package-name@6.0.2:
+    resolution: {integrity: sha512-IUoow1YUtvoBBC06dXs8bR8B9vuA3aJfmQNKMoaPG/OFsPmoQvw8xh+6Ye25Gx9DQhoEom3Pcu9MKHerm/NpUQ==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
   vary@1.1.2:
@@ -16417,7 +16421,7 @@ snapshots:
       is-docker: 2.2.1
       is-wsl: 2.2.0
 
-  openpgp@6.1.1:
+  openpgp@6.2.0:
     optional: true
 
   optionator@0.9.4:
@@ -16962,7 +16966,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@41.40.0(encoding@0.1.13)(typanion@3.14.0):
+  renovate@41.45.0(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.840.0
       '@aws-sdk/client-ec2': 3.840.0
@@ -17076,14 +17080,14 @@ snapshots:
       tslib: 2.8.1
       upath: 2.0.1
       url-join: 5.0.0
-      validate-npm-package-name: 6.0.1
+      validate-npm-package-name: 6.0.2
       vuln-vects: 1.1.0
       xmldoc: 2.0.2
       yaml: 2.8.0
       zod: 3.25.76
     optionalDependencies:
       better-sqlite3: 12.2.0
-      openpgp: 6.1.1
+      openpgp: 6.2.0
       re2: 1.22.1
     transitivePeerDependencies:
       - aws-crt
@@ -17920,7 +17924,7 @@ snapshots:
     dependencies:
       des.js: 1.1.0
       js-md4: 0.3.2
-      qs: 6.13.0
+      qs: 6.14.0
       tunnel: 0.0.6
       underscore: 1.13.7
 
@@ -18050,6 +18054,8 @@ snapshots:
   validate-npm-package-name@5.0.1: {}
 
   validate-npm-package-name@6.0.1: {}
+
+  validate-npm-package-name@6.0.2: {}
 
   vary@1.1.2: {}
 
