@@ -57,7 +57,7 @@
     "karma-coverage": "2.2.1",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
-    "memfs": "4.17.2",
+    "memfs": "4.23.0",
     "minimatch": "10.0.3",
     "ng-packagr": "20.1.0",
     "nx": "21.3.9",
