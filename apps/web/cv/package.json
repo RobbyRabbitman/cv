@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "peerDependencies": {
-    "@angular/core": "20.1.4",
-    "@angular/common": "20.1.4",
-    "@angular/router": "20.1.4",
-    "@angular/platform-browser": "20.1.4"
+    "@angular/core": "20.1.6",
+    "@angular/common": "20.1.6",
+    "@angular/router": "20.1.6",
+    "@angular/platform-browser": "20.1.6"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
