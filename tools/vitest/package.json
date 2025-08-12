@@ -10,7 +10,7 @@
   ],
   "peerDependencies": {
     "@nx/devkit": "21.3.11",
-    "vitest": "3.1.1"
+    "vitest": "3.2.4"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
