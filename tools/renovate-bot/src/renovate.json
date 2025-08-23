@@ -46,18 +46,7 @@
       "schedule": ["* * * * 1"]
     },
     {
-      "description": "Separate node update from the `@types/node`, since `pnpm i` fails because the node version changed.",
-      "matchFileNames": ["package.json"],
-      "matchDepTypes": ["engines"],
-      "groupName": "node"
-    },
-    {
-      "description": "Separate node update from the `@types/node`, since `pnpm i` fails because the node version changed.",
-      "matchManagers": ["nvm"],
-      "groupName": "node"
-    },
-    {
-      "description": "Keep @types/node in its own branch, see above.",
+      "description": "Separate node update from the `@types/node`, since renovates `pnpm i` fails because the node version changed, resulting in a outdated lockfile.",
       "matchPackageNames": ["@types/node"],
       "groupName": "@types/node"
     }
