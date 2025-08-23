@@ -251,6 +251,18 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/typescript
 
+  libs/cv/data:
+    devDependencies:
+      '@robby-rabbitman/cv-tools-eslint':
+        specifier: workspace:*
+        version: link:../../../tools/eslint
+      '@robby-rabbitman/cv-tools-karma':
+        specifier: workspace:*
+        version: link:../../../tools/karma
+      '@robby-rabbitman/cv-tools-typescript':
+        specifier: workspace:*
+        version: link:../../../tools/typescript
+
   libs/cv/types:
     dependencies:
       '@robby-rabbitman/cv-libs-common-types':

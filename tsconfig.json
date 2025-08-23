@@ -28,6 +28,9 @@
     },
     {
       "path": "./libs/cv/types"
+    },
+    {
+      "path": "./libs/cv/data"
     }
   ]
 }
