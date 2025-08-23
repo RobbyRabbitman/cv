@@ -30,6 +30,12 @@ export const angularEslintConfig = [
       ],
     },
   ),
+  {
+    files: ['**/src/testing/**/*.ts'],
+    rules: {
+      '@nx/enforce-module-boundaries': 'off',
+    },
+  },
 ] as Linter.Config[];
 
 export default angularEslintConfig;

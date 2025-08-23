@@ -14,7 +14,4 @@ export interface Cv extends Block, Partial<Labeled>, HasChildren<Section> {
 
   /** The associated user id of this CV */
   userId: UUID;
-
-  /** The template this was built from. */
-  templateId: UUID;
 }
