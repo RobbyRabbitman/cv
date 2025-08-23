@@ -47,10 +47,14 @@
     },
     {
       "description": "Separate node update from the `@types/node`, since `pnpm i` fails because the node version changed.",
-      "matchFileNames": [".nvmrc", "package.json"],
+      "matchFileNames": ["package.json"],
       "matchDepTypes": ["engines"],
-      "groupName": "node",
-      "postUpdateOptions": ["skipInstalls"]
+      "groupName": "node"
+    },
+    {
+      "description": "Separate node update from the `@types/node`, since `pnpm i` fails because the node version changed.",
+      "matchManagers": ["nvm"],
+      "groupName": "node"
     },
     {
       "description": "Keep @types/node in its own branch, see above.",
