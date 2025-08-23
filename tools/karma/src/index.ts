@@ -1,1 +1,1 @@
-export * from './angular-config.js';
+export * from './angular-karma-config.js';
