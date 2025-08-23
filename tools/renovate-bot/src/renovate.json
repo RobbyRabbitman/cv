@@ -47,7 +47,7 @@
     },
     {
       "description": "Separate node update from the `@types/node`, since `pnpm i` fails because the node version changed.",
-      "matchFiles": [".nvmrc", "package.json"],
+      "matchFileNames": [".nvmrc", "package.json"],
       "matchDepTypes": ["engines"],
       "groupName": "node",
       "postUpdateOptions": ["skipInstalls"]
