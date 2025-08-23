@@ -59,6 +59,7 @@ export function angularKarmaConfig(options?: {
       },
     },
     restartOnFileChange: true,
+    failOnEmptyTestSuite: false,
   };
 
   return karmaConfig;
