@@ -44,6 +44,18 @@
       "matchManagers": ["npm"],
       "matchPackageNames": ["renovate"],
       "schedule": ["* * * * 1"]
+    },
+    {
+      "description": "Separate node update from the `@types/node`, since `pnpm i` fails because the node version changed.",
+      "matchFiles": [".nvmrc", "package.json"],
+      "matchDepTypes": ["engines"],
+      "groupName": "node",
+      "postUpdateOptions": ["skipInstalls"]
+    },
+    {
+      "description": "Keep @types/node in its own branch, see above.",
+      "matchPackageNames": ["@types/node"],
+      "groupName": "@types/node"
     }
   ],
   "customManagers": [
