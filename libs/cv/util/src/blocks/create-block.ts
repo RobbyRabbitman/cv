@@ -10,8 +10,6 @@ import {
  * Creates a block from its prototype. When it has children, those prototypes
  * have to be provided aswell - the set is expected to be complete, meaning it
  * contains all (transitive) prototypes.
- *
- * TODO: check for circular dependencies in prototypes.
  */
 export function createBlock<TBlock extends Block>(
   prototype: BlockPrototype<TBlock>,
@@ -26,22 +24,11 @@ export function createBlock<TBlock extends Block>(
     ...options,
   };
 
-  const buildLeaf = (prototype: BlockPrototype<TBlock>) => {
-    if (hasTemplateChildren(prototype.template)) {
-      throw new Error(
-        `[createBlock]: expected a block prototype without children.`,
-      );
-    }
-
-    return Object.assign(
-      {
-        prototypeId: prototype.id,
-        type: prototype.type,
-        id: idGenerator(),
-      } satisfies Block,
-      prototype.template as unknown as TBlock,
-    );
-  };
+  const blockBase = {
+    prototypeId: prototype.id,
+    type: prototype.type,
+    id: idGenerator(),
+  } satisfies Block;
 
   if (hasTemplateChildren(prototype.template)) {
     const children: Block[] = [];
@@ -65,11 +52,10 @@ export function createBlock<TBlock extends Block>(
       );
     }
 
-    return buildLeaf({
+    return Object.assign(blockBase, template as unknown as TBlock, {
       children,
-      ...template,
-    } as unknown as BlockPrototype<TBlock>);
+    });
   } else {
-    return buildLeaf(prototype);
+    return Object.assign(blockBase, prototype.template as unknown as TBlock);
   }
 }
