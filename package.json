@@ -8,6 +8,7 @@
     "node": "22.14.0"
   },
   "scripts": {
+    "watch:ng-packagr": "nx watch --all -- nx run \\$NX_PROJECT_NAME:build-ng-packagr --excludeTaskDependencies",
     "clean": "git clean -dfX && pnpm i && pnpm nx reset && pnpm nx sync",
     "postinstall": "sh tools/workspace/src/npm-life-cycle/post-install.sh"
   },
@@ -30,6 +31,7 @@
     "@angular/platform-browser-dynamic": "20.1.7",
     "@angular/router": "20.1.7",
     "@eslint/js": "9.33.0",
+    "@ngrx/signals": "20.0.0",
     "@nx/devkit": "21.4.0",
     "@nx/eslint": "21.4.0",
     "@nx/eslint-plugin": "21.4.0",
@@ -49,6 +51,7 @@
     "eslint": "9.33.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-n": "17.21.3",
+    "firebase": "12.1.0",
     "globals": "16.3.0",
     "jasmine-core": "5.9.0",
     "jsonc-eslint-parser": "2.4.0",

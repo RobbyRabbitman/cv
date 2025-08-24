@@ -1,5 +1,5 @@
 {
-  "name": "@robby-rabbitman/cv-libs-cv-data",
+  "name": "@robby-rabbitman/cv-libs-common-util",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,7 @@
     "dist",
     "package.json"
   ],
-  "module": "dist/fesm2022/robby-rabbitman-cv-libs-cv-data.mjs",
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-common-util.mjs",
   "typings": "index.d.ts",
   "exports": {
     "./package.json": {
@@ -15,14 +15,8 @@
     },
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-cv-data.mjs"
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-common-util.mjs"
     }
-  },
-  "dependencies": {
-    "@robby-rabbitman/cv-libs-cv-types": "workspace:*",
-    "@robby-rabbitman/cv-libs-cv-util": "workspace:*",
-    "@robby-rabbitman/cv-libs-common-util": "workspace:*",
-    "@robby-rabbitman/cv-libs-common-types": "workspace:*"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",

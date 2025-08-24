@@ -5,13 +5,13 @@
   "files": [],
   "references": [
     {
-      "path": "../../common/types"
-    },
-    {
       "path": "../../common/util"
     },
     {
       "path": "../types"
+    },
+    {
+      "path": "../../common/types"
     },
     {
       "path": "../../../tools/karma"

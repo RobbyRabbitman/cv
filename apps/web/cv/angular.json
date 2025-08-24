@@ -29,7 +29,24 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/web/cv/src/environments/environment.ts",
+                  "with": "apps/web/cv/src/environments/environment.development.ts"
+                }
+              ]
+            },
+            "local": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/web/cv/src/environments/environment.ts",
+                  "with": "apps/web/cv/src/environments/environment.local.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"

@@ -31,6 +31,12 @@
     },
     {
       "path": "./libs/cv/data"
+    },
+    {
+      "path": "./libs/common/util"
+    },
+    {
+      "path": "./libs/cv/util"
     }
   ]
 }

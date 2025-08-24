@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "dependencies": {
+    "@robby-rabbitman/cv-libs-cv-data": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-util": "workspace:*"
+  },
   "peerDependencies": {
     "@angular/core": "20.1.7",
     "@angular/common": "20.1.7",

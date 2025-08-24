@@ -10,7 +10,10 @@ import {
   withComponentInputBinding,
   withDebugTracing,
 } from '@angular/router';
-import { CV_APP_ROUTES } from './routes';
+import { provideFirebase } from '@robby-rabbitman/cv-libs-common-util';
+import { provideCvData } from '@robby-rabbitman/cv-libs-cv-data';
+import { environment } from '../environments/environment';
+import { CV_APP_ROUTES } from './cv.routes';
 
 export const CV_APP_CONFIG = {
   providers: [
@@ -32,5 +35,11 @@ export const CV_APP_CONFIG = {
 
     /** Animations */
     provideAnimationsAsync('animations'),
+
+    /** Firebase */
+    provideFirebase(environment.firebase),
+
+    /** CV Data */
+    provideCvData(),
   ],
 } satisfies ApplicationConfig;
