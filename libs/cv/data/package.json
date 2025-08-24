@@ -24,6 +24,11 @@
     "@robby-rabbitman/cv-libs-common-util": "workspace:*",
     "@robby-rabbitman/cv-libs-common-types": "workspace:*"
   },
+  "peerDependencies": {
+    "@angular/core": "20.1.7",
+    "firebase": "12.1.0",
+    "@ngrx/signals": "20.0.0"
+  },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",

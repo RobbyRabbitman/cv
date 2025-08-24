@@ -18,6 +18,10 @@
       "default": "./dist/fesm2022/robby-rabbitman-cv-libs-common-util.mjs"
     }
   },
+  "peerDependencies": {
+    "@angular/core": "20.1.7",
+    "firebase": "12.1.0"
+  },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-tools-karma": "workspace:*",
@@ -25,7 +29,8 @@
   },
   "nx": {
     "tags": [
-      "runtime:web"
+      "runtime:web",
+      "domain:common"
     ]
   }
 }

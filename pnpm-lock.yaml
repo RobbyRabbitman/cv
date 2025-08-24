@@ -203,9 +203,6 @@ importers:
 
   apps/web/cv:
     dependencies:
-      '@angular/common':
-        specifier: 20.1.7
-        version: 20.1.7(@angular/core@20.1.7(@angular/compiler@20.1.7)(rxjs@7.8.2))(rxjs@7.8.2)
       '@angular/core':
         specifier: 20.1.7
         version: 20.1.7(@angular/compiler@20.1.7)(rxjs@7.8.2)
@@ -259,18 +256,21 @@ importers:
 
   libs/auth/data:
     dependencies:
-      '@robby-rabbitman/cv-libs-common-types':
-        specifier: workspace:*
-        version: link:../../common/types
+      '@angular/core':
+        specifier: 20.1.7
+        version: 20.1.7(@angular/compiler@20.1.7)(rxjs@7.8.2)
+      '@ngrx/signals':
+        specifier: 20.0.0
+        version: 20.0.0(@angular/core@20.1.7(@angular/compiler@20.1.7)(rxjs@7.8.2))(rxjs@7.8.2)
       '@robby-rabbitman/cv-libs-common-util':
         specifier: workspace:*
         version: link:../../common/util
-      '@robby-rabbitman/cv-libs-cv-types':
-        specifier: workspace:*
-        version: link:../../cv/types
-      '@robby-rabbitman/cv-libs-cv-util':
-        specifier: workspace:*
-        version: link:../../cv/util
+      firebase:
+        specifier: 12.1.0
+        version: 12.1.0
+      rxjs:
+        specifier: 7.8.2
+        version: 7.8.2
     devDependencies:
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
@@ -295,6 +295,13 @@ importers:
         version: link:../../../tools/typescript
 
   libs/common/util:
+    dependencies:
+      '@angular/core':
+        specifier: 20.1.7
+        version: 20.1.7(@angular/compiler@20.1.7)(rxjs@7.8.2)
+      firebase:
+        specifier: 12.1.0
+        version: 12.1.0
     devDependencies:
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
@@ -308,6 +315,12 @@ importers:
 
   libs/cv/data:
     dependencies:
+      '@angular/core':
+        specifier: 20.1.7
+        version: 20.1.7(@angular/compiler@20.1.7)(rxjs@7.8.2)
+      '@ngrx/signals':
+        specifier: 20.0.0
+        version: 20.0.0(@angular/core@20.1.7(@angular/compiler@20.1.7)(rxjs@7.8.2))(rxjs@7.8.2)
       '@robby-rabbitman/cv-libs-common-types':
         specifier: workspace:*
         version: link:../../common/types
@@ -320,6 +333,9 @@ importers:
       '@robby-rabbitman/cv-libs-cv-util':
         specifier: workspace:*
         version: link:../util
+      firebase:
+        specifier: 12.1.0
+        version: 12.1.0
     devDependencies:
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*

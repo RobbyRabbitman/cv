@@ -25,7 +25,8 @@
   },
   "nx": {
     "tags": [
-      "runtime:web"
+      "runtime:web",
+      "domain:common"
     ]
   }
 }
