@@ -5,16 +5,16 @@
   "files": [],
   "references": [
     {
-      "path": "../../../libs/common/util"
+      "path": "../../common/types"
     },
     {
-      "path": "../../../libs/auth/data"
+      "path": "../../common/util"
     },
     {
-      "path": "../../../libs/cv/data"
+      "path": "../../cv/util"
     },
     {
-      "path": "../../../libs/angular/testing"
+      "path": "../../cv/types"
     },
     {
       "path": "../../../tools/karma"
@@ -23,7 +23,7 @@
       "path": "../../../tools/eslint"
     },
     {
-      "path": "./tsconfig.app.json"
+      "path": "./tsconfig.lib.json"
     },
     {
       "path": "./tsconfig.spec.json"

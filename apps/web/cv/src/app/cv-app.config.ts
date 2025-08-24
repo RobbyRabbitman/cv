@@ -10,6 +10,7 @@ import {
   withComponentInputBinding,
   withDebugTracing,
 } from '@angular/router';
+import { provideAuthData } from '@robby-rabbitman/cv-libs-auth-data';
 import { provideFirebase } from '@robby-rabbitman/cv-libs-common-util';
 import { provideCvData } from '@robby-rabbitman/cv-libs-cv-data';
 import { environment } from '../environments/environment';
@@ -39,7 +40,10 @@ export const CV_APP_CONFIG = {
     /** Firebase */
     provideFirebase(environment.firebase),
 
-    /** CV Data */
+    /** Auth */
+    provideAuthData(),
+
+    /** CV */
     provideCvData(),
   ],
 } satisfies ApplicationConfig;

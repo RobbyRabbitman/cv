@@ -1,0 +1,37 @@
+{
+  "name": "@robby-rabbitman/cv-libs-auth-data",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-auth-data.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-auth-data.mjs"
+    }
+  },
+  "dependencies": {
+    "@robby-rabbitman/cv-libs-cv-types": "workspace:*",
+    "@robby-rabbitman/cv-libs-cv-util": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-util": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-types": "workspace:*"
+  },
+  "devDependencies": {
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@robby-rabbitman/cv-tools-karma": "workspace:*",
+    "@robby-rabbitman/cv-tools-typescript": "workspace:*"
+  },
+  "nx": {
+    "tags": [
+      "runtime:web"
+    ]
+  }
+}

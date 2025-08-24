@@ -5,6 +5,9 @@
       "path": "../../../libs/common/util"
     },
     {
+      "path": "../../../libs/auth/data"
+    },
+    {
       "path": "../../../libs/cv/data"
     },
     {
