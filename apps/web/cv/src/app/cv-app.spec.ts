@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { CvApp } from './cv-app';
-import { CV_APP_CONFIG } from './cv-app.config';
+import { CV_APP_CONFIG } from './cv-app-config';
 
 describe('[Integration Test] CvApp', () => {
   beforeEach(() => {
