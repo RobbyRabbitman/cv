@@ -11,6 +11,9 @@
       "path": "../../common/util"
     },
     {
+      "path": "../util"
+    },
+    {
       "path": "../types"
     },
     {

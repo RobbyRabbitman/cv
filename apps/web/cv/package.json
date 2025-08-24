@@ -41,10 +41,17 @@
       "serve": {
         "command": "ng serve",
         "options": {
-          "cwd": "{projectRoot}"
+          "cwd": "{projectRoot}",
+          "configuration": "local"
         },
         "dependsOn": [
-          "^build*"
+          "^build*",
+          {
+            "projects": [
+              "@robby-rabbitman/cv-tools-firebase"
+            ],
+            "target": "serve"
+          }
         ]
       },
       "test-angular": {

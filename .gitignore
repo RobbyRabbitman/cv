@@ -6,3 +6,5 @@ coverage
 .nx
 **/*.timestamp-*
 .angular
+firestore-debug.log
+firebase-debug.log

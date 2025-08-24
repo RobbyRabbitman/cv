@@ -32,8 +32,8 @@
               "sourceMap": true,
               "fileReplacements": [
                 {
-                  "replace": "apps/web/cv/src/environments/environment.ts",
-                  "with": "apps/web/cv/src/environments/environment.development.ts"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
                 }
               ]
             },
@@ -43,8 +43,8 @@
               "sourceMap": true,
               "fileReplacements": [
                 {
-                  "replace": "apps/web/cv/src/environments/environment.ts",
-                  "with": "apps/web/cv/src/environments/environment.local.ts"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
                 }
               ]
             }
@@ -60,6 +60,9 @@
             },
             "development": {
               "buildTarget": "app:build:development"
+            },
+            "local": {
+              "buildTarget": "app:build:local"
             }
           }
         },

@@ -1,6 +1,6 @@
 import { type Environment } from './type';
 
-export const environment: Environment = {
+export const environment = {
   stage: 'prod',
   firebase: {
     options: {
@@ -13,4 +13,4 @@ export const environment: Environment = {
       measurementId: '',
     },
   },
-};
+} as const satisfies Environment;
