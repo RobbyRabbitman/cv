@@ -1,5 +1,5 @@
 {
-  "name": "@robby-rabbitman/cv-libs-common-types",
+  "name": "@robby-rabbitman/cv-libs-common-util",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,7 @@
     "dist",
     "package.json"
   ],
-  "module": "dist/fesm2022/robby-rabbitman-cv-libs-common-types.mjs",
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-common-util.mjs",
   "typings": "index.d.ts",
   "exports": {
     "./package.json": {
@@ -15,8 +15,12 @@
     },
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-common-types.mjs"
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-common-util.mjs"
     }
+  },
+  "peerDependencies": {
+    "@angular/core": "20.2.0",
+    "firebase": "12.1.0"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",

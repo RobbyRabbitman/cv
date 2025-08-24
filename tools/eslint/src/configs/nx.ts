@@ -74,6 +74,23 @@ export const nxEslintConfig = [
               sourceTag: 'runtime:web',
               onlyDependOnLibsWithTags: ['runtime:js', 'runtime:web'],
             },
+            /** Domain */
+            {
+              sourceTag: 'domain:common',
+              onlyDependOnLibsWithTags: ['domain:common'],
+            },
+            {
+              sourceTag: 'domain:auth',
+              onlyDependOnLibsWithTags: ['domain:auth', 'domain:common'],
+            },
+            {
+              sourceTag: 'domain:cv',
+              onlyDependOnLibsWithTags: [
+                'domain:cv',
+                'domain:auth',
+                'domain:common',
+              ],
+            },
           ],
         },
       ],

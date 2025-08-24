@@ -1,0 +1,28 @@
+{
+  "name": "@robby-rabbitman/cv-tools-firebase",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "package.json"
+  ],
+  "nx": {
+    "targets": {
+      "serve": {
+        "command": "firebase emulators:start",
+        "options": {
+          "cwd": "{projectRoot}",
+          "config": "src/firebase.json"
+        },
+        "configurations": {
+          "local": {
+            "project": "local",
+            "only": "auth,firestore"
+          }
+        },
+        "defaultConfiguration": "local",
+        "continuous": true
+      }
+    }
+  }
+}

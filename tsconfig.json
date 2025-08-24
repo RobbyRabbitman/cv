@@ -28,6 +28,18 @@
     },
     {
       "path": "./libs/cv/types"
+    },
+    {
+      "path": "./libs/cv/data"
+    },
+    {
+      "path": "./libs/common/util"
+    },
+    {
+      "path": "./libs/cv/util"
+    },
+    {
+      "path": "./libs/auth/data"
     }
   ]
 }

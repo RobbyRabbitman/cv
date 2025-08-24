@@ -10,17 +10,19 @@ import type {
 } from './template/block-template';
 
 /** A prototype for creating blocks in a CV. */
-export interface BlockPrototype<TBlock extends Block = Block>
-  extends Identifiable,
+export interface BlockPrototype<
+  TBlock extends Block = Block,
+  TBlockTemplate extends BlockTemplate = BlockTemplate<
+    TBlock extends HasChildren<TBlock extends HasChildren<infer C> ? C : never>
+      ? BlockTemplateWithChildren<TBlock>
+      : TBlock
+  >,
+> extends Identifiable,
     Labeled,
     Deletable,
     Movable {
   /** A template for creating a block. */
-  template: BlockTemplate<
-    TBlock extends HasChildren<TBlock extends HasChildren<infer C> ? C : never>
-      ? BlockTemplateWithChildren<TBlock>
-      : TBlock
-  >;
+  template: TBlockTemplate;
 
   /** The cv template this block prototype is associated with. */
   cvTemplateId: UUID;
