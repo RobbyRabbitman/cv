@@ -8,6 +8,7 @@
     "app": {
       "projectType": "application",
       "root": "",
+      "sourceRoot": "src",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -50,7 +51,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "defaultConfiguration": "development",
+          "defaultConfiguration": "local",
           "configurations": {
             "production": {
               "buildTarget": "app:build:production"
