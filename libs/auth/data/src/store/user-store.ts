@@ -19,7 +19,7 @@ export const UserStore = signalStore(
        * The user if logged in, else null. Undefined while the auth process has
        * not been resovled yet.
        */
-      user: auth.user,
+      value: auth.user,
     };
   }),
 );

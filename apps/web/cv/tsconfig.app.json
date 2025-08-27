@@ -2,6 +2,9 @@
   "extends": "./node_modules/@robby-rabbitman/cv-tools-typescript/src/configs/tsconfig.angular-app.json",
   "references": [
     {
+      "path": "../../../libs/common/features/shell"
+    },
+    {
       "path": "../../../libs/common/util"
     },
     {

@@ -77,7 +77,7 @@ export const nxEslintConfig = [
             /** Domain */
             {
               sourceTag: 'domain:common',
-              onlyDependOnLibsWithTags: ['domain:common'],
+              onlyDependOnLibsWithTags: ['domain:common', 'domain:auth'],
             },
             {
               sourceTag: 'domain:auth',

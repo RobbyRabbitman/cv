@@ -40,6 +40,9 @@
     },
     {
       "path": "./libs/auth/data"
+    },
+    {
+      "path": "./libs/common/features/shell"
     }
   ]
 }
