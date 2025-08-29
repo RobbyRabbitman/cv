@@ -266,6 +266,34 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/typescript
 
+  libs/auth/components:
+    dependencies:
+      '@angular/core':
+        specifier: 20.2.0
+        version: 20.2.0(@angular/compiler@20.2.0)(rxjs@7.8.2)
+      '@ngrx/signals':
+        specifier: 20.0.0
+        version: 20.0.0(@angular/core@20.2.0(@angular/compiler@20.2.0)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@robby-rabbitman/cv-libs-auth-data':
+        specifier: workspace:*
+        version: link:../data
+      firebase:
+        specifier: 12.1.0
+        version: 12.1.0
+      rxjs:
+        specifier: 7.8.2
+        version: 7.8.2
+    devDependencies:
+      '@robby-rabbitman/cv-tools-eslint':
+        specifier: workspace:*
+        version: link:../../../tools/eslint
+      '@robby-rabbitman/cv-tools-karma':
+        specifier: workspace:*
+        version: link:../../../tools/karma
+      '@robby-rabbitman/cv-tools-typescript':
+        specifier: workspace:*
+        version: link:../../../tools/typescript
+
   libs/auth/data:
     dependencies:
       '@angular/core':
@@ -296,6 +324,18 @@ importers:
 
   libs/common/features/shell:
     dependencies:
+      '@angular/core':
+        specifier: 20.2.0
+        version: 20.2.0(@angular/compiler@20.2.0)(rxjs@7.8.2)
+      '@angular/material':
+        specifier: 20.2.0
+        version: 20.2.0(8963c86039a4b9eb474d8d6a484b829a)
+      '@angular/router':
+        specifier: 20.2.0
+        version: 20.2.0(@angular/common@20.2.0(@angular/core@20.2.0(@angular/compiler@20.2.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.0(@angular/compiler@20.2.0)(rxjs@7.8.2))(@angular/platform-browser@20.2.0(@angular/animations@20.2.0(@angular/common@20.2.0(@angular/core@20.2.0(@angular/compiler@20.2.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.0(@angular/compiler@20.2.0)(rxjs@7.8.2)))(@angular/common@20.2.0(@angular/core@20.2.0(@angular/compiler@20.2.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.0(@angular/compiler@20.2.0)(rxjs@7.8.2)))(rxjs@7.8.2)
+      '@robby-rabbitman/cv-libs-auth-components':
+        specifier: workspace:*
+        version: link:../../../auth/components
       '@robby-rabbitman/cv-libs-auth-data':
         specifier: workspace:*
         version: link:../../../auth/data

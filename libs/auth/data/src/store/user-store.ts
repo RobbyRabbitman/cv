@@ -10,10 +10,10 @@ export const UserStore = signalStore(
 
     return {
       /** Signs out the current user. */
-      signOut: rxMethod(pipe(exhaustMap(() => auth.signOut()))),
+      signOut: rxMethod<void>(pipe(exhaustMap(() => auth.signOut()))),
 
       /** Sign in. */
-      signIn: rxMethod(pipe(exhaustMap(() => auth.signIn()))),
+      signIn: rxMethod<void>(pipe(exhaustMap(() => auth.signIn()))),
 
       /**
        * The user if logged in, else null. Undefined while the auth process has

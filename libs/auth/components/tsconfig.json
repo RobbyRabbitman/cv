@@ -5,16 +5,13 @@
   "files": [],
   "references": [
     {
-      "path": "../../../auth/components"
+      "path": "../data"
     },
     {
-      "path": "../../../auth/data"
+      "path": "../../../tools/karma"
     },
     {
-      "path": "../../../../tools/karma"
-    },
-    {
-      "path": "../../../../tools/eslint"
+      "path": "../../../tools/eslint"
     },
     {
       "path": "./tsconfig.lib.json"

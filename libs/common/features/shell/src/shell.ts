@@ -5,22 +5,26 @@ import {
   inject,
 } from '@angular/core';
 import { MatToolbar } from '@angular/material/toolbar';
+import {
+  SignInButton,
+  SignOutButton,
+} from '@robby-rabbitman/cv-libs-auth-components';
 import { UserStore } from '@robby-rabbitman/cv-libs-auth-data';
 import { Logo } from './logo';
 
 @Component({
   selector: 'cv-common--shell',
-  imports: [MatToolbar, Logo],
+  imports: [MatToolbar, Logo, SignInButton, SignOutButton],
   host: {
     class: 'cv-common--shell h-full flex flex-col items-center',
   },
   template: `<mat-toolbar role="heading">
-      <span class="container mx-auto">
-        <cv-common--shell-logo />
+      <span class="container mx-auto flex items-center">
+        <cv-common--shell-logo class="me-auto" />
         @if (user.value()) {
-          <button cv-auth--sign-out-button></button>
+          <cv-auth--sign-out-button />
         } @else {
-          <button cv-auth--sign-in-button></button>
+          <cv-auth--sign-in-button />
         }
       </span>
     </mat-toolbar>
