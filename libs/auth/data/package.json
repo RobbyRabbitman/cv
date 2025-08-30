@@ -16,6 +16,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/fesm2022/robby-rabbitman-cv-libs-auth-data.mjs"
+    },
+    "./testing": {
+      "types": "./dist/src/testing/index.d.ts",
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-auth-data-src-testing.mjs"
     }
   },
   "dependencies": {
