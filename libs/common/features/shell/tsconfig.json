@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "composite": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "../../../auth/components"
+    },
+    {
+      "path": "../../../auth/data"
+    },
+    {
+      "path": "../../../../tools/karma"
+    },
+    {
+      "path": "../../../../tools/eslint"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

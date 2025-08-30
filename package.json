@@ -5,7 +5,7 @@
   "private": true,
   "packageManager": "pnpm@10.15.0",
   "engines": {
-    "node": "22.18.0"
+    "node": "22.19.0"
   },
   "scripts": {
     "watch:ng-packagr": "nx watch --all -- nx run \\$NX_PROJECT_NAME:build-ng-packagr --excludeTaskDependencies",
@@ -20,6 +20,7 @@
     "@angular-eslint/eslint-plugin-template": "20.2.0",
     "@angular-eslint/template-parser": "20.2.0",
     "@angular/animations": "20.2.1",
+    "@angular/cdk": "20.2.1",
     "@angular/cli": "20.2.0",
     "@angular/common": "20.2.1",
     "@angular/compiler": "20.2.1",
@@ -27,6 +28,7 @@
     "@angular/core": "20.2.1",
     "@angular/forms": "20.2.1",
     "@angular/language-service": "20.2.1",
+    "@angular/material": "20.2.1",
     "@angular/platform-browser": "20.2.1",
     "@angular/platform-browser-dynamic": "20.2.1",
     "@angular/router": "20.2.1",

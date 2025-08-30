@@ -4,7 +4,6 @@ import {
   provideCheckNoChangesConfig,
   provideZonelessChangeDetection,
 } from '@angular/core';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {
   provideRouter,
   withComponentInputBinding,
@@ -33,9 +32,6 @@ export const CV_APP_CONFIG = {
 
     /** Http client */
     provideHttpClient(),
-
-    /** Animations */
-    provideAnimationsAsync('animations'),
 
     /** Firebase */
     provideFirebase(environment.firebase),

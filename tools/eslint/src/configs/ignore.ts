@@ -9,6 +9,7 @@ export const ignoreEslintConfig = [
       'tmp/',
       '.storage/',
       'coverage/',
+      '.angular/',
       '**/*.timestamp-*',
     ],
   },

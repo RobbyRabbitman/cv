@@ -13,6 +13,10 @@ export const tsEslintConfig = [
         ({
           ...tsEslintConfig,
           files: ['**/*.ts', '**/*.mts', '**/*.cts', '**/*.tsx'],
+          rules: {
+            ...tsEslintConfig.rules,
+            '@typescript-eslint/no-invalid-void-type': 'off',
+          },
         }) as Linter.Config, // TODO: Check why types are incompatible
     ),
   {

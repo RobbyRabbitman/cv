@@ -1,0 +1,41 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewEncapsulation,
+  inject,
+} from '@angular/core';
+import { MatToolbar } from '@angular/material/toolbar';
+import {
+  SignInButton,
+  SignOutButton,
+} from '@robby-rabbitman/cv-libs-auth-components';
+import { UserStore } from '@robby-rabbitman/cv-libs-auth-data';
+import { Logo } from './logo';
+
+@Component({
+  selector: 'cv-common--shell',
+  imports: [MatToolbar, Logo, SignInButton, SignOutButton],
+  host: {
+    class: 'cv-common--shell h-full flex flex-col items-center',
+  },
+  template: `<mat-toolbar role="heading">
+      <span class="container mx-auto flex items-center">
+        <cv-common--shell-logo class="me-auto" />
+        @if (user.value()) {
+          <cv-auth--sign-out-button />
+        } @else {
+          <cv-auth--sign-in-button />
+        }
+      </span>
+    </mat-toolbar>
+    <main class="container">
+      <ng-content />
+    </main>
+    <footer role="contentinfo"></footer>`,
+  styleUrl: './shell.scss',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class Shell {
+  protected readonly user = inject(UserStore);
+}

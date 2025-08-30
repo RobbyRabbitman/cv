@@ -1,5 +1,5 @@
 {
-  "name": "@robby-rabbitman/cv-libs-auth-data",
+  "name": "@robby-rabbitman/cv-libs-common-features-shell",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,7 @@
     "dist",
     "package.json"
   ],
-  "module": "dist/fesm2022/robby-rabbitman-cv-libs-auth-data.mjs",
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-common-features-shell.mjs",
   "typings": "index.d.ts",
   "exports": {
     "./package.json": {
@@ -15,21 +15,17 @@
     },
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-auth-data.mjs"
-    },
-    "./testing": {
-      "types": "./dist/src/testing/index.d.ts",
-      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-auth-data-src-testing.mjs"
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-common-features-shell.mjs"
     }
   },
   "dependencies": {
-    "@robby-rabbitman/cv-libs-common-util": "workspace:*"
+    "@robby-rabbitman/cv-libs-auth-data": "workspace:*",
+    "@robby-rabbitman/cv-libs-auth-components": "workspace:*"
   },
   "peerDependencies": {
-    "rxjs": "7.8.2",
     "@angular/core": "20.2.1",
-    "firebase": "12.1.0",
-    "@ngrx/signals": "20.0.1"
+    "@angular/material": "20.2.1",
+    "@angular/router": "20.2.1"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
@@ -39,7 +35,7 @@
   "nx": {
     "tags": [
       "runtime:web",
-      "domain:auth"
+      "domain:common"
     ]
   }
 }

@@ -6,7 +6,8 @@
   "dependencies": {
     "@robby-rabbitman/cv-libs-cv-data": "workspace:*",
     "@robby-rabbitman/cv-libs-auth-data": "workspace:*",
-    "@robby-rabbitman/cv-libs-common-util": "workspace:*"
+    "@robby-rabbitman/cv-libs-common-util": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-features-shell": "workspace:*"
   },
   "peerDependencies": {
     "@angular/core": "20.2.1",
@@ -43,9 +44,11 @@
         "command": "ng serve",
         "options": {
           "cwd": "{projectRoot}",
-          "configuration": "local"
+          "configuration": "local",
+          "hmr": false
         },
         "dependsOn": [
+          "^build*",
           "watch-deps",
           {
             "projects": [
@@ -56,7 +59,7 @@
         ]
       },
       "watch-deps": {
-        "command": "nx watch --p {projectName} --includeDependentProjects --initialRun -- \"nx run \\$NX_PROJECT_NAME:build-ng-packagr || nx run \\$NX_PROJECT_NAME:build-tsc || true\"",
+        "command": "nx watch --p {projectName} --includeDependentProjects -- \"nx run-many -t build-tsc build-ng-packagr -p \\$NX_PROJECT_NAME --exclude {projectName} && find {projectRoot}/src/app -type f -not -name '*.spec.*' -exec touch {} +\"",
         "continuous": true
       },
       "test-angular": {

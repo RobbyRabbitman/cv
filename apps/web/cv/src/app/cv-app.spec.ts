@@ -1,11 +1,18 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { provideAuthData } from '@robby-rabbitman/cv-libs-auth-data';
+import { provideAuthDataTesting } from '@robby-rabbitman/cv-libs-auth-data/testing';
 import { CvApp } from './cv-app';
-import { CV_APP_CONFIG } from './cv-app-config';
+import { CV_APP_ROUTES } from './cv-routes';
 
 describe('[Integration Test] CvApp', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CV_APP_CONFIG.providers],
+      providers: [
+        provideAuthData(),
+        provideRouter(CV_APP_ROUTES),
+        provideAuthDataTesting(),
+      ],
     });
   });
 

@@ -29,6 +29,9 @@ importers:
       '@angular/animations':
         specifier: 20.2.1
         version: 20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))
+      '@angular/cdk':
+        specifier: 20.2.1
+        version: 20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2)
       '@angular/cli':
         specifier: 20.2.0
         version: 20.2.0(@types/node@22.18.0)(chokidar@4.0.3)
@@ -50,6 +53,9 @@ importers:
       '@angular/language-service':
         specifier: 20.2.1
         version: 20.2.1
+      '@angular/material':
+        specifier: 20.2.1
+        version: 20.2.1(dba8399c187e0abf97eaf0804eb4120a)
       '@angular/platform-browser':
         specifier: 20.2.1
         version: 20.2.1(@angular/animations@20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)))(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))
@@ -218,6 +224,9 @@ importers:
       '@robby-rabbitman/cv-libs-auth-data':
         specifier: workspace:*
         version: link:../../../libs/auth/data
+      '@robby-rabbitman/cv-libs-common-features-shell':
+        specifier: workspace:*
+        version: link:../../../libs/common/features/shell
       '@robby-rabbitman/cv-libs-common-util':
         specifier: workspace:*
         version: link:../../../libs/common/util
@@ -257,6 +266,28 @@ importers:
         specifier: workspace:*
         version: link:../../../tools/typescript
 
+  libs/auth/components:
+    dependencies:
+      '@angular/core':
+        specifier: 20.2.1
+        version: 20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)
+      '@angular/material':
+        specifier: 20.2.1
+        version: 20.2.1(dba8399c187e0abf97eaf0804eb4120a)
+      '@robby-rabbitman/cv-libs-auth-data':
+        specifier: workspace:*
+        version: link:../data
+    devDependencies:
+      '@robby-rabbitman/cv-tools-eslint':
+        specifier: workspace:*
+        version: link:../../../tools/eslint
+      '@robby-rabbitman/cv-tools-karma':
+        specifier: workspace:*
+        version: link:../../../tools/karma
+      '@robby-rabbitman/cv-tools-typescript':
+        specifier: workspace:*
+        version: link:../../../tools/typescript
+
   libs/auth/data:
     dependencies:
       '@angular/core':
@@ -284,6 +315,34 @@ importers:
       '@robby-rabbitman/cv-tools-typescript':
         specifier: workspace:*
         version: link:../../../tools/typescript
+
+  libs/common/features/shell:
+    dependencies:
+      '@angular/core':
+        specifier: 20.2.1
+        version: 20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)
+      '@angular/material':
+        specifier: 20.2.1
+        version: 20.2.1(dba8399c187e0abf97eaf0804eb4120a)
+      '@angular/router':
+        specifier: 20.2.1
+        version: 20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(@angular/platform-browser@20.2.1(@angular/animations@20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)))(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)))(rxjs@7.8.2)
+      '@robby-rabbitman/cv-libs-auth-components':
+        specifier: workspace:*
+        version: link:../../../auth/components
+      '@robby-rabbitman/cv-libs-auth-data':
+        specifier: workspace:*
+        version: link:../../../auth/data
+    devDependencies:
+      '@robby-rabbitman/cv-tools-eslint':
+        specifier: workspace:*
+        version: link:../../../../tools/eslint
+      '@robby-rabbitman/cv-tools-karma':
+        specifier: workspace:*
+        version: link:../../../../tools/karma
+      '@robby-rabbitman/cv-tools-typescript':
+        specifier: workspace:*
+        version: link:../../../../tools/typescript
 
   libs/common/types:
     devDependencies:
@@ -725,6 +784,13 @@ packages:
       vitest:
         optional: true
 
+  '@angular/cdk@20.2.1':
+    resolution: {integrity: sha512-yEPh5hr9LZW4ey/HxtaGdSBDIkNzziLo0Dr1RP8JcxhOQ2Bzv2PZ+g8jC6aPGD7NPV8FtDf0FhTEzQr+m+gBXQ==}
+    peerDependencies:
+      '@angular/common': ^20.0.0 || ^21.0.0
+      '@angular/core': ^20.0.0 || ^21.0.0
+      rxjs: ^6.5.3 || ^7.4.0
+
   '@angular/cli@20.2.0':
     resolution: {integrity: sha512-p62hkuQOxf5kJsVq6AT7B1MHYo1uPGoZV4lf47qOrLjl0WANwfxEgLvyuVgL47ylnINbPnITeeUdoadVn4t1sw==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -777,6 +843,16 @@ packages:
   '@angular/language-service@20.2.1':
     resolution: {integrity: sha512-sXTm56QSPBXiSRYSPk1uHKmdDp94rNcUd6fqjgnbP2qz8IX0CrdQS/06JiXg1wB9Cg2YaiuuO/JyYjRazJDKQg==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
+
+  '@angular/material@20.2.1':
+    resolution: {integrity: sha512-Zv1ay/eSwO9e2xUrPKOQFSKscb0+0bhZmDwy9etQhder0FBh380iizP+PaZnJGGy87zYDmauv0fjKcDfdWCJYA==}
+    peerDependencies:
+      '@angular/cdk': 20.2.1
+      '@angular/common': ^20.0.0 || ^21.0.0
+      '@angular/core': ^20.0.0 || ^21.0.0
+      '@angular/forms': ^20.0.0 || ^21.0.0
+      '@angular/platform-browser': ^20.0.0 || ^21.0.0
+      rxjs: ^6.5.3 || ^7.4.0
 
   '@angular/platform-browser-dynamic@20.2.1':
     resolution: {integrity: sha512-bzBeDnRZFzlA5w5q5GskuKhLgAeJ3pU0B3Ch7V2fhfaAZDOTEczBFvL7I1pcXhDg8Y/8aoz4/OwqnilKLO3FUg==}
@@ -9809,6 +9885,14 @@ snapshots:
       - tsx
       - yaml
 
+  '@angular/cdk@20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2)':
+    dependencies:
+      '@angular/common': 20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@angular/core': 20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)
+      parse5: 8.0.0
+      rxjs: 7.8.2
+      tslib: 2.8.1
+
   '@angular/cli@20.2.0(@types/node@22.18.0)(chokidar@4.0.3)':
     dependencies:
       '@angular-devkit/architect': 0.2002.0(chokidar@4.0.3)
@@ -9876,6 +9960,16 @@ snapshots:
       tslib: 2.8.1
 
   '@angular/language-service@20.2.1': {}
+
+  '@angular/material@20.2.1(dba8399c187e0abf97eaf0804eb4120a)':
+    dependencies:
+      '@angular/cdk': 20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@angular/common': 20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@angular/core': 20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)
+      '@angular/forms': 20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(@angular/platform-browser@20.2.1(@angular/animations@20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)))(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)))(rxjs@7.8.2)
+      '@angular/platform-browser': 20.2.1(@angular/animations@20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)))(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))
+      rxjs: 7.8.2
+      tslib: 2.8.1
 
   '@angular/platform-browser-dynamic@20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/compiler@20.2.1)(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(@angular/platform-browser@20.2.1(@angular/animations@20.2.1(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)))(@angular/common@20.2.1(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.1(@angular/compiler@20.2.1)(rxjs@7.8.2)))':
     dependencies:
