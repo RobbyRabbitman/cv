@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "composite": true,
+    "composite": true
   },
   "files": [],
   "references": [
     {
-      "path": "../eslint",
+      "path": "../eslint"
     },
     {
-      "path": "./tsconfig.lib.json",
-    },
-  ],
+      "path": "./tsconfig.lib.json"
+    }
+  ]
 }
