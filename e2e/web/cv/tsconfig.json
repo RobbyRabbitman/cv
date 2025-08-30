@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "composite": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "../../../tools/eslint"
+    },
+    {
+      "path": "../../../tools/playwright"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@robby-rabbitman/cv-tools-playwright",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "peerDependencies": {
+    "@playwright/test": "1.55.0"
+  },
+  "devDependencies": {
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@robby-rabbitman/cv-tools-typescript": "workspace:*"
+  },
+  "nx": {
+    "tags": [
+      "runtime:node"
+    ]
+  }
+}

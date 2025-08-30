@@ -1,0 +1,4 @@
+{
+  // the base tsconfig for all ts projects of this repository that run playwright
+  "extends": "./tsconfig.node.json"
+}

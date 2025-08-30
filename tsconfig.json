@@ -46,6 +46,12 @@
     },
     {
       "path": "./libs/auth/components"
+    },
+    {
+      "path": "./tools/playwright"
+    },
+    {
+      "path": "./e2e/web/cv"
     }
   ]
 }

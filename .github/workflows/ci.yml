@@ -33,6 +33,8 @@ jobs:
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
 
+      - uses: ./.github/actions/install-playwright
+
       - uses: nrwl/nx-set-shas@v4
 
       - run: pnpm i
@@ -62,3 +64,9 @@ jobs:
           test
           test-vitest
           test-angular
+
+
+      - run: >
+          pnpm nx affected -c ci -t
+          e2e
+          e2e-pw
