@@ -22,8 +22,8 @@
     "@robby-rabbitman/cv-libs-auth-data": "workspace:*"
   },
   "peerDependencies": {
-    "@angular/material": "20.2.0",
-    "@angular/core": "20.2.0"
+    "@angular/material": "20.2.1",
+    "@angular/core": "20.2.1"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
