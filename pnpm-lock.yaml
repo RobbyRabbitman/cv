@@ -183,8 +183,8 @@ importers:
         specifier: 0.18.0
         version: 0.18.0(prettier@3.6.2)
       renovate:
-        specifier: 41.82.7
-        version: 41.82.7(encoding@0.1.13)(typanion@3.14.0)
+        specifier: 41.91.0
+        version: 41.91.0(encoding@0.1.13)(typanion@3.14.0)
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
@@ -4047,8 +4047,8 @@ packages:
   '@xtuc/long@4.2.2':
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
 
-  '@yarnpkg/core@4.4.2':
-    resolution: {integrity: sha512-Gf2p9WUygkcT8GobVjrQpFGE7A/GWXPXjDSIFTnZKTiq/W8giN3jqhWpIrpVa2XfPMguXzdEvb2brNYeW3IwdQ==}
+  '@yarnpkg/core@4.4.3':
+    resolution: {integrity: sha512-PMyCPTsA39Mw4WApfoIpAPnYjSDki7uMGPVYjvTtF5fTKoqxWTJN1toBzxmrFmqonC3sL33e55wgaCrerkzakQ==}
     engines: {node: '>=18.12.0'}
 
   '@yarnpkg/fslib@3.1.2':
@@ -4506,8 +4506,8 @@ packages:
     resolution: {integrity: sha512-hdsUxulXCi5STId78vRVYEtDAjq99ICAUktLTeTYsLoTE6Z8dS0c8pWNCxwdrk9YfJeobDZc2Y186hD/5ZQgFQ==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  cacache@20.0.0:
-    resolution: {integrity: sha512-2Js2sNgHK36Fdu3ItpQqJjwUXAURb0uyo9i83Tr2wUQINU4tPl4AtQYh6mCqwVFV5W8+Vgcna+bSTQeyPLG/sQ==}
+  cacache@20.0.1:
+    resolution: {integrity: sha512-+7LYcYGBYoNqTp1Rv7Ny1YjUo5E0/ftkQtraH3vkfAGgVHc+ouWdC8okAwQgQR7EVIdW6JTzTmhKFwzb+4okAQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
   cacheable-lookup@5.0.4:
@@ -5283,6 +5283,9 @@ packages:
   es-set-tostringtag@2.1.0:
     resolution: {integrity: sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==}
     engines: {node: '>= 0.4'}
+
+  es-toolkit@1.39.10:
+    resolution: {integrity: sha512-E0iGnTtbDhkeczB0T+mxmoVlT4YNweEKBLq7oaU4p11mecdsZpNWOglI4895Vh4usbQ+LsJiuLuI2L0Vdmfm2w==}
 
   es6-error@4.1.1:
     resolution: {integrity: sha512-Um/+FxMr9CISWh0bi5Zv0iOD+4cFh5qLeks1qhAopKVAJw3drgKbKySikp7wGhDL0HPeaja0P5ULZrxLkniUVg==}
@@ -8156,8 +8159,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  renovate@41.82.7:
-    resolution: {integrity: sha512-eoyGYcWPzfIdg51CPt/9zKmNXTLJvTyc/rJTGrMScPGIgGXhCk+uIkvXcAk6Ea0yHlmOCjWRBNq6tZ+u4ySBVA==}
+  renovate@41.91.0:
+    resolution: {integrity: sha512-s11qeaNWGRxBTucExxTSRBIy4j7fdxFKWLT2GFdOsGLerX8a+g5ni78bG0cu4Q0eKS/u/IZjKvdCksy76/0FpA==}
     engines: {node: ^22.13.0, pnpm: ^10.0.0}
     hasBin: true
 
@@ -14246,7 +14249,7 @@ snapshots:
 
   '@xtuc/long@4.2.2': {}
 
-  '@yarnpkg/core@4.4.2(typanion@3.14.0)':
+  '@yarnpkg/core@4.4.3(typanion@3.14.0)':
     dependencies:
       '@arcanis/slice-ansi': 1.1.1
       '@types/semver': 7.7.0
@@ -14262,10 +14265,10 @@ snapshots:
       cross-spawn: 7.0.6
       diff: 5.2.0
       dotenv: 16.6.1
+      es-toolkit: 1.39.10
       fast-glob: 3.3.3
       got: 11.8.6
       hpagent: 1.2.0
-      lodash: 4.17.21
       micromatch: 4.0.8
       p-limit: 2.3.0
       semver: 7.7.2
@@ -14801,7 +14804,7 @@ snapshots:
       tar: 7.4.3
       unique-filename: 4.0.0
 
-  cacache@20.0.0:
+  cacache@20.0.1:
     dependencies:
       '@npmcli/fs': 4.0.0
       fs-minipass: 3.0.3
@@ -14813,7 +14816,6 @@ snapshots:
       minipass-pipeline: 1.2.4
       p-map: 7.0.3
       ssri: 12.0.0
-      tar: 7.4.3
       unique-filename: 4.0.0
 
   cacheable-lookup@5.0.4: {}
@@ -15548,6 +15550,8 @@ snapshots:
       get-intrinsic: 1.3.0
       has-tostringtag: 1.0.2
       hasown: 2.0.2
+
+  es-toolkit@1.39.10: {}
 
   es6-error@4.1.1: {}
 
@@ -19115,7 +19119,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@41.82.7(encoding@0.1.13)(typanion@3.14.0):
+  renovate@41.91.0(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.858.0
       '@aws-sdk/client-ec2': 3.858.0
@@ -19149,7 +19153,7 @@ snapshots:
       '@renovatebot/pep440': 4.2.0
       '@renovatebot/ruby-semver': 4.1.0
       '@sindresorhus/is': 7.0.2
-      '@yarnpkg/core': 4.4.2(typanion@3.14.0)
+      '@yarnpkg/core': 4.4.3(typanion@3.14.0)
       '@yarnpkg/parsers': 3.0.3
       agentkeepalive: 4.6.0
       async-mutex: 0.5.0
@@ -19157,7 +19161,7 @@ snapshots:
       aws4: 1.13.2
       azure-devops-node-api: 15.1.1
       bunyan: 1.8.15
-      cacache: 20.0.0
+      cacache: 20.0.1
       chalk: 5.6.0
       changelog-filename-regex: 2.0.1
       clean-git-ref: 2.0.1
