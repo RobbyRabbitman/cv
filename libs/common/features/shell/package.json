@@ -16,6 +16,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/fesm2022/robby-rabbitman-cv-libs-common-features-shell.mjs"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "default": "./dist/fesm2022/testing/robby-rabbitman-cv-libs-common-features-shell-testing.mjs"
     }
   },
   "dependencies": {
@@ -23,6 +27,7 @@
     "@robby-rabbitman/cv-libs-auth-components": "workspace:*"
   },
   "peerDependencies": {
+    "@angular/cdk": "20.2.1",
     "@angular/core": "20.2.1",
     "@angular/material": "20.2.1",
     "@angular/router": "20.2.1"
