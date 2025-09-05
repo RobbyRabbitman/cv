@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "dependencies": {
+    "@robby-rabbitman/cv-apps-web-cv": "workspace:*"
+  },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-playwright": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
@@ -11,6 +14,19 @@
   "nx": {
     "tags": [
       "runtime:web"
-    ]
+    ],
+    "targets": {
+      "e2e-pw": {
+        "dependsOn": [
+          {
+            "projects": [
+              "@robby-rabbitman/cv-apps-web-cv"
+            ],
+            "target": "serve",
+            "params": "ignore"
+          }
+        ]
+      }
+    }
   }
 }

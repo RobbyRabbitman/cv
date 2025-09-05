@@ -1,4 +1,15 @@
 {
   // the base tsconfig for all ts projects of this repository that run playwright
-  "extends": "./tsconfig.node.json"
+  "extends": "./tsconfig.node.json",
+  "include": [
+    "${configDir}/src/**/*",
+    "${configDir}/src/**/*.json",
+    "${configDir}/package.json",
+    "${configDir}/playwright.config.ts"
+  ],
+  "exclude": [],
+  "compilerOptions": {
+    "outDir": "${configDir}/dist-spec",
+    "tsBuildInfoFile": "${configDir}/node_modules/.cache/tsBuildInfo/tsconfig.spec.tsbuildinfo"
+  }
 }

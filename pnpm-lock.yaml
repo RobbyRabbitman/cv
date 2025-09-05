@@ -257,6 +257,10 @@ importers:
         version: link:../../../tools/typescript
 
   e2e/web/cv:
+    dependencies:
+      '@robby-rabbitman/cv-apps-web-cv':
+        specifier: workspace:*
+        version: link:../../../apps/web/cv
     devDependencies:
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*

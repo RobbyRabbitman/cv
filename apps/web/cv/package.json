@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "exports": {
+    "./package.json": "./package.json"
+  },
   "dependencies": {
     "@robby-rabbitman/cv-libs-cv-data": "workspace:*",
     "@robby-rabbitman/cv-libs-auth-data": "workspace:*",
@@ -43,6 +46,7 @@
       "serve": {
         "command": "ng serve",
         "options": {
+          "port": 4200,
           "cwd": "{projectRoot}",
           "configuration": "local",
           "hmr": false

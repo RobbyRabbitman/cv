@@ -2,6 +2,9 @@
   "extends": "./node_modules/@robby-rabbitman/cv-tools-typescript/src/configs/tsconfig.playwright.json",
   "references": [
     {
+      "path": "../../../apps/web/cv"
+    },
+    {
       "path": "../../../tools/eslint/tsconfig.lib.json"
     },
     {
