@@ -1,7 +1,11 @@
-import { defineConfig, devices } from '@playwright/test';
+import {
+  defineConfig,
+  devices,
+  type PlaywrightTestConfig,
+} from '@playwright/test';
 
-export const playwrightConfig = () => {
-  const isCI = !!process.env.CI;
+export function playwrightConfig(config?: Partial<PlaywrightTestConfig>) {
+  const CI = !!process.env.CI;
 
   return defineConfig({
     testDir: 'src',
@@ -10,8 +14,9 @@ export const playwrightConfig = () => {
     reporter: [['html', { outputFolder: '.test-reports' }]],
     use: {
       trace: 'on-first-retry',
+      ...config?.use,
     },
-    forbidOnly: isCI,
+    forbidOnly: CI,
     tsconfig: 'tsconfig.lib.json',
     projects: [
       {
@@ -27,5 +32,6 @@ export const playwrightConfig = () => {
         use: { ...devices['Desktop Safari'] },
       },
     ],
+    ...config,
   });
-};
+}

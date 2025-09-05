@@ -47,6 +47,7 @@
           "configuration": "local",
           "hmr": false
         },
+        "continuous": true,
         "dependsOn": [
           "^build*",
           "watch-deps",
