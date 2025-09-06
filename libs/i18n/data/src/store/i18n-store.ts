@@ -15,23 +15,24 @@ import {
   withEntities,
 } from '@ngrx/signals/entities';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
+import type { Locale, Translations } from '@robby-rabbitman/cv-libs-i18n-types';
 import { exhaustMap, from, pipe, switchMap } from 'rxjs';
 import { I18nApi } from '../api/i18n-api';
 
 interface I18nState {
   /** The current locale. */
-  locale: Intl.UnicodeBCP47LocaleIdentifier;
+  locale: Locale;
 
   /** Available locales. */
-  locales: Intl.UnicodeBCP47LocaleIdentifier[];
+  locales: Locale[];
 }
 
 export interface TranslationEntity {
   /** The locale of the translations. */
-  locale: I18nState['locale'];
+  locale: Locale;
 
   /** The actual translations. */
-  value: Record<string, unknown>;
+  value: Translations;
 }
 
 const translationEntity = entityConfig({
@@ -49,7 +50,7 @@ export const I18n = signalStore(
   withMethods((store) => {
     const i18nApi = inject(I18nApi);
 
-    const getTranslations = rxMethod<Intl.UnicodeBCP47LocaleIdentifier>(
+    const getTranslations = rxMethod<Locale>(
       pipe(
         /**
          * We use switchMap here, to cancel any ongoing requests, when a new
@@ -96,7 +97,7 @@ export const I18n = signalStore(
     );
 
     return {
-      setLocale: (locale: Intl.UnicodeBCP47LocaleIdentifier) => {
+      setLocale: (locale: Locale) => {
         /**
          * Optimistic update
          *

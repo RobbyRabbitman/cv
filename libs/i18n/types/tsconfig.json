@@ -5,10 +5,7 @@
   "files": [],
   "references": [
     {
-      "path": "../types"
-    },
-    {
-      "path": "../../common/util"
+      "path": "../../common/types"
     },
     {
       "path": "../../../tools/karma"

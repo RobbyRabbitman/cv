@@ -1,38 +1,43 @@
 import { inject, Injectable } from '@angular/core';
-import { FIRESTORE } from '@robby-rabbitman/cv-libs-common-util';
 import {
-  collection,
-  CollectionReference,
-  doc,
-  DocumentReference,
-  getDoc,
-} from 'firebase/firestore';
+  FIRESTORE,
+  typedCollection,
+  typedDoc,
+} from '@robby-rabbitman/cv-libs-common-util';
+import type { Locale, Translations } from '@robby-rabbitman/cv-libs-i18n-types';
+import { collection, doc, getDoc } from 'firebase/firestore';
 
 @Injectable()
 export class I18nApi {
   protected readonly firestore = inject(FIRESTORE);
 
   protected readonly collections = {
-    translation: collection(
-      this.firestore,
-      'translation',
-    ) as TranslationCollection,
+    translation: typedCollection<Translations>(
+      collection(this.firestore, 'translation'),
+    ),
     i18n: collection(this.firestore, 'i18n'),
   };
 
-  async getLocales(): Promise<Intl.UnicodeBCP47LocaleIdentifier[]> {
-    const translation = (
-      await getDoc(doc(this.collections.i18n, 'translation'))
-    ).data() as {
-      locales: Record<Intl.UnicodeBCP47LocaleIdentifier, DocumentReference>;
-    };
+  protected readonly docs = {
+    i18n: {
+      /** Information about translations. */
+      translation: typedDoc<{ locales: Record<Locale, string> }>(
+        doc(this.collections.i18n, 'translation'),
+      ),
+    },
+  };
+
+  async getLocales(): Promise<Locale[]> {
+    const translation = (await getDoc(this.docs.i18n.translation)).data();
+
+    if (!translation) {
+      throw new Error(`[I18nApi]: translation information missing.`);
+    }
 
     return Object.keys(translation.locales);
   }
 
-  async getTranslations(
-    locale: Intl.UnicodeBCP47LocaleIdentifier,
-  ): Promise<Record<string, unknown>> {
+  async getTranslations(locale: Locale): Promise<Record<string, unknown>> {
     const translations = await getDoc(
       doc(this.collections.translation, locale),
     );
@@ -46,8 +51,3 @@ export class I18nApi {
     return translations.data();
   }
 }
-
-type TranslationCollection = CollectionReference<
-  Record<string, unknown>,
-  Record<string, unknown>
->;
