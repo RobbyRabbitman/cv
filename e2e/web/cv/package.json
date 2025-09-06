@@ -3,12 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "dependencies": {
+  "devDependencies": {
     "@robby-rabbitman/cv-apps-web-cv": "workspace:*",
     "@robby-rabbitman/cv-libs-common-features-shell": "workspace:*",
-    "@robby-rabbitman/cv-libs-angular-testing": "workspace:*"
-  },
-  "devDependencies": {
+    "@robby-rabbitman/cv-libs-angular-testing": "workspace:*",
     "@robby-rabbitman/cv-tools-playwright": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-tools-typescript": "workspace:*"

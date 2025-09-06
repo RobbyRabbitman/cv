@@ -1,2 +1,3 @@
-export * from './playwright-harness-environment';
-export * from './playwright-test-element';
+export * from './harness-environment';
+export * from './harness-fixture';
+export * from './test-element';

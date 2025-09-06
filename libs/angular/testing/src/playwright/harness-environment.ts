@@ -1,6 +1,6 @@
 import { HarnessEnvironment } from '@angular/cdk/testing';
 import type { Locator, Page } from 'playwright';
-import { PlaywrightTestElement } from './playwright-test-element';
+import { PlaywrightTestElement } from './test-element';
 
 export class PlaywrightHarnessEnvironment extends HarnessEnvironment<
   () => Locator

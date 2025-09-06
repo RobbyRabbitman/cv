@@ -54,6 +54,7 @@ export const nxEslintConfig = [
       '**/eslint.config.*',
       '**/karma.config.*',
       '**/tailwind.js',
+      '**/playwright.config.*',
     ],
     rules: {
       '@nx/enforce-module-boundaries': [
