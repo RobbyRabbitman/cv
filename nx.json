@@ -180,7 +180,7 @@
       "options": {
         "build": false,
         "typecheck": {
-          "targetName": "typecheck-e2e"
+          "targetName": "typecheck-tsc"
         }
       },
       "include": ["e2e/**/*"]
