@@ -5,6 +5,12 @@
   "files": [],
   "references": [
     {
+      "path": "../../../libs/angular/testing"
+    },
+    {
+      "path": "../../../libs/common/features/shell"
+    },
+    {
       "path": "../../../apps/web/cv"
     },
     {

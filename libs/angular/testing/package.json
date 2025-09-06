@@ -16,11 +16,17 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/fesm2022/robby-rabbitman-cv-libs-angular-testing.mjs"
+    },
+    "./playwright": {
+      "types": "./dist/src/playwright/index.d.ts",
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-angular-testing-src-playwright.mjs"
     }
   },
   "peerDependencies": {
     "@angular/core": "20.2.1",
-    "@angular/platform-browser": "20.2.1"
+    "@angular/platform-browser": "20.2.1",
+    "@angular/cdk": "20.2.1",
+    "playwright": "1.55.0"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",

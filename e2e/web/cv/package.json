@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@robby-rabbitman/cv-apps-web-cv": "workspace:*"
+    "@robby-rabbitman/cv-apps-web-cv": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-features-shell": "workspace:*",
+    "@robby-rabbitman/cv-libs-angular-testing": "workspace:*"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-playwright": "workspace:*",
