@@ -1,0 +1,17 @@
+{
+  "extends": "./node_modules/@robby-rabbitman/cv-tools-typescript/src/configs/tsconfig.playwright.json",
+  "references": [
+    {
+      "path": "../../../tools/playwright-harness/tsconfig.lib.json"
+    },
+    {
+      "path": "../../../tools/playwright/tsconfig.lib.json"
+    },
+    {
+      "path": "../../../apps/web/cv"
+    },
+    {
+      "path": "../../../tools/eslint/tsconfig.lib.json"
+    }
+  ]
+}

@@ -4,6 +4,7 @@ export const ignoreEslintConfig = [
   {
     ignores: [
       'dist/',
+      'dist-spec/',
       'build/',
       'node_modules/',
       'tmp/',
@@ -11,6 +12,7 @@ export const ignoreEslintConfig = [
       'coverage/',
       '.angular/',
       '**/*.timestamp-*',
+      '.test-reports/',
     ],
   },
 ] satisfies Linter.Config[];

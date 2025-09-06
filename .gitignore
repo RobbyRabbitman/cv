@@ -8,3 +8,5 @@ coverage
 .angular
 firestore-debug.log
 firebase-debug.log
+.test-results
+.test-reports

@@ -5,7 +5,12 @@
     "${configDir}/src/**/*.json",
     "${configDir}/package.json"
   ],
-  "exclude": ["${configDir}/*.config.*", "${configDir}/src/**/*.spec.*"],
+  "exclude": [
+    "${configDir}/*.config.*",
+    "${configDir}/src/**/*.spec.*",
+    "${configDir}/dist",
+    "${configDir}/dist-spec"
+  ],
   "compilerOptions": {
     // per default the tsc should use incremental builds
     "composite": true,

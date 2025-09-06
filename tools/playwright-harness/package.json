@@ -1,5 +1,5 @@
 {
-  "name": "@robby-rabbitman/cv-tools-karma",
+  "name": "@robby-rabbitman/cv-tools-playwright-harness",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -9,7 +9,9 @@
     "package.json"
   ],
   "peerDependencies": {
-    "karma": "6.4.4"
+    "playwright": "1.55.0",
+    "@angular/cdk": "20.2.1",
+    "@playwright/test": "1.55.0"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
@@ -17,7 +19,7 @@
   },
   "nx": {
     "tags": [
-      "runtime:node",
+      "runtime:js-mixed",
       "domain:common"
     ]
   }

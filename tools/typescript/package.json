@@ -5,5 +5,10 @@
   "files": [
     "src/configs",
     "package.json"
-  ]
+  ],
+  "nx": {
+    "tags": [
+      "domain:common"
+    ]
+  }
 }

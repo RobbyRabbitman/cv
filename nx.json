@@ -126,6 +126,11 @@
       }
     ],
 
+    "globals-playwright": [
+      "{workspaceRoot}/tools/playwright/**/*",
+      { "externalDependencies": ["playwright", "@playwright/test"] }
+    ],
+
     "targets-lint-eslint": ["default", "globals-eslint"],
 
     "targets-test-vitest": ["default", "globals-vitest", "globals-vite"],
@@ -143,7 +148,9 @@
       "globals-angular",
       "globals-karma",
       "globals-jasmine"
-    ]
+    ],
+
+    "targets-e2e-pw": ["default", "globals-playwright"]
   },
   "sync": {
     "applyChanges": true
@@ -162,15 +169,35 @@
         "build": {
           "targetName": "build-tsc",
           "configName": "tsconfig.lib.json"
-        }
+        },
+        "typecheck": false
       },
       "include": ["tools/**/*"]
+    },
+
+    {
+      "plugin": "@nx/js/typescript",
+      "options": {
+        "build": false,
+        "typecheck": {
+          "targetName": "typecheck-tsc"
+        }
+      },
+      "include": ["e2e/**/*"]
     },
 
     {
       "plugin": "@nx/vite/plugin",
       "options": {
         "testTargetName": "test-vitest"
+      }
+    },
+
+    {
+      "plugin": "@nx/playwright/plugin",
+      "options": {
+        "targetName": "e2e-pw",
+        "ciTargetName": false
       }
     },
 
@@ -210,6 +237,10 @@
       "dependsOn": ["^build*"]
     },
 
+    "typecheck*": {
+      "dependsOn": ["^build*"]
+    },
+
     "test*": {
       "dependsOn": ["build*"]
     },
@@ -231,6 +262,20 @@
         }
       },
       "dependsOn": ["build*"]
+    },
+
+    "e2e-pw": {
+      "defaultConfiguration": "local",
+      "inputs": ["targets-e2e-pw", "^targets-e2e-pw"],
+      "configurations": {
+        "local": {
+          "project": "chromium"
+        },
+        "ci": {
+          "retries": 2,
+          "workers": 1
+        }
+      }
     }
   }
 }

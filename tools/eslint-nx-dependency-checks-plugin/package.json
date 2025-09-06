@@ -18,7 +18,8 @@
   },
   "nx": {
     "tags": [
-      "runtime:node"
+      "runtime:node",
+      "domain:common"
     ]
   }
 }

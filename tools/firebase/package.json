@@ -7,6 +7,10 @@
     "package.json"
   ],
   "nx": {
+    "tags": [
+      "runtime:node",
+      "domain:common"
+    ],
     "targets": {
       "serve": {
         "command": "firebase emulators:start",

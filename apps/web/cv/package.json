@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "exports": {
+    "./package.json": "./package.json"
+  },
   "dependencies": {
     "@robby-rabbitman/cv-libs-cv-data": "workspace:*",
     "@robby-rabbitman/cv-libs-auth-data": "workspace:*",
@@ -43,10 +46,12 @@
       "serve": {
         "command": "ng serve",
         "options": {
+          "port": 4200,
           "cwd": "{projectRoot}",
           "configuration": "local",
           "hmr": false
         },
+        "continuous": true,
         "dependsOn": [
           "^build*",
           "watch-deps",
@@ -59,7 +64,7 @@
         ]
       },
       "watch-deps": {
-        "command": "nx watch --p {projectName} --includeDependentProjects -- \"nx run-many -t build-tsc build-ng-packagr -p \\$NX_PROJECT_NAME --exclude {projectName} && find {projectRoot}/src/app -type f -not -name '*.spec.*' -exec touch {} +\"",
+        "command": "[ -n \"${CI:-}\" ] || nx watch --p {projectName} --includeDependentProjects -- \"nx run-many -t build-tsc build-ng-packagr -p \\$NX_PROJECT_NAME --exclude {projectName} && find {projectRoot}/src/app -type f -not -name '*.spec.*' -exec touch {} +\"",
         "continuous": true
       },
       "test-angular": {

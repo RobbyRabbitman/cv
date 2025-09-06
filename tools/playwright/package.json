@@ -1,5 +1,5 @@
 {
-  "name": "@robby-rabbitman/cv-tools-karma",
+  "name": "@robby-rabbitman/cv-tools-playwright",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -9,7 +9,7 @@
     "package.json"
   ],
   "peerDependencies": {
-    "karma": "6.4.4"
+    "@playwright/test": "1.55.0"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
