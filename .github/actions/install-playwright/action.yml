@@ -15,4 +15,4 @@ runs:
 
     - shell: bash
       if: steps.playwright-cache.outputs.cache-hit == 'false'
-      run: pnpm playwright install --with-deps --only-shell
+      run: pnpm playwright install --with-deps
