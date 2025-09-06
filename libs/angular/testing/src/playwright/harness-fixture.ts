@@ -10,16 +10,17 @@ interface HarnessFixture {
 }
 
 /**
- * A Playwright test with a preconfigured `PlaywrightHarnessEnvironment` and
- * root harness loader. Also expects a `baseURL` to be configured.
+ * A Playwright test with
+ *
+ * - A page that navigates to the `baseURL` before each test
+ * - A `harness` environment and root loader
  */
 export const test = base.extend<HarnessFixture>({
   page: async ({ baseURL, page }, use) => {
-    if (!baseURL) {
-      throw new Error('When using this fixture you must specify a baseURL');
+    if (baseURL) {
+      await page.goto(baseURL);
     }
 
-    await page.goto(baseURL);
     await use(page);
   },
 
