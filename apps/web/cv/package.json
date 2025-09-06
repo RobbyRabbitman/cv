@@ -65,7 +65,12 @@
       },
       "watch-deps": {
         "command": "nx watch --p {projectName} --includeDependentProjects -- \"nx run-many -t build-tsc build-ng-packagr -p \\$NX_PROJECT_NAME --exclude {projectName} && find {projectRoot}/src/app -type f -not -name '*.spec.*' -exec touch {} +\"",
-        "continuous": true
+        "continuous": true,
+        "configurations": {
+          "ci": {
+            "command": "echo 'Skipping watch-deps in CI'"
+          }
+        }
       },
       "test-angular": {
         "command": "ng test",
