@@ -51,7 +51,7 @@ export class PlaywrightTestElement implements TestElement {
 
   constructor(
     readonly locator: () => Locator,
-    private whenStable: () => Promise<void>,
+    private readonly whenStable: () => Promise<void>,
   ) {}
 
   async blur() {
