@@ -14,5 +14,5 @@ runs:
         key: playwright-${{ runner.os }}-${{ env.PLAYWRIGHT_VERSION }}
 
     - shell: bash
-      if: steps.playwright-cache.outputs.cache-hit == 'false'
+      if: steps.playwright-cache.outputs.cache-hit != 'true'
       run: pnpm playwright install --with-deps
