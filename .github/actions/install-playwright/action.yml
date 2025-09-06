@@ -1,5 +1,5 @@
 name: install playwright
-description: expects playwright to be locally installed and gets cached
+description: installs and caches playwright
 
 runs:
   using: composite
