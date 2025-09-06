@@ -15,12 +15,15 @@ import {
   withEntities,
 } from '@ngrx/signals/entities';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { from, pipe, switchMap } from 'rxjs';
+import { exhaustMap, from, pipe, switchMap } from 'rxjs';
 import { I18nApi } from '../api/i18n-api';
 
 interface I18nState {
   /** The current locale. */
   locale: Intl.UnicodeBCP47LocaleIdentifier;
+
+  /** Available locales. */
+  locales: Intl.UnicodeBCP47LocaleIdentifier[];
 }
 
 export interface TranslationEntity {
@@ -38,10 +41,10 @@ const translationEntity = entityConfig({
 });
 
 export const I18n = signalStore(
-  withState<I18nState>({ locale: 'en' }),
+  withState<I18nState>({ locale: 'en', locales: ['en'] }),
   withEntities(translationEntity),
   withLinkedState(({ locale, translationEntityMap }) => ({
-    translations: () => translationEntityMap()[locale()],
+    translations: () => translationEntityMap()[locale()]?.value,
   })),
   withMethods((store) => {
     const i18nApi = inject(I18nApi);
@@ -79,6 +82,19 @@ export const I18n = signalStore(
       ),
     );
 
+    const getLocales = rxMethod<void>(
+      pipe(
+        exhaustMap(() =>
+          from(i18nApi.getLocales()).pipe(
+            tapResponse({
+              next: (locales) => patchState(store, { locales }),
+              error: () => {},
+            }),
+          ),
+        ),
+      ),
+    );
+
     return {
       setLocale: (locale: Intl.UnicodeBCP47LocaleIdentifier) => {
         /**
@@ -91,10 +107,12 @@ export const I18n = signalStore(
         getTranslations(locale);
       },
       getTranslations,
+      getLocales,
     };
   }),
   withHooks({
     onInit: (store) => {
+      store.getLocales();
       store.getTranslations(store.locale());
     },
   }),

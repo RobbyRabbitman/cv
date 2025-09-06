@@ -16,7 +16,7 @@ export function i18nToNgxTranslate() {
         ngxTranslations.use(locale.language);
         ngxTranslations.setTranslation(
           locale.language,
-          translations.value as TranslationObject,
+          translations as TranslationObject,
         );
       }
     });
