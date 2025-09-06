@@ -26,7 +26,8 @@
     "@angular/cdk": "20.2.1",
     "playwright": "1.55.0",
     "@angular/core": "20.2.3",
-    "@angular/platform-browser": "20.2.3"
+    "@angular/platform-browser": "20.2.3",
+    "@playwright/test": "1.55.0"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
@@ -35,7 +36,8 @@
   },
   "nx": {
     "tags": [
-      "runtime:web"
+      "runtime:web",
+      "domain:common"
     ]
   }
 }

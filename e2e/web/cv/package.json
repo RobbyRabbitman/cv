@@ -13,7 +13,7 @@
   },
   "nx": {
     "tags": [
-      "runtime:node"
+      "domain:cv"
     ],
     "targets": {
       "e2e-pw": {
