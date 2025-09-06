@@ -208,7 +208,7 @@ export class PlaywrightTestElement implements TestElement {
     };
   }
 
-  async getProperty<T>(name: string): Promise<T> {
+  async getProperty<T>(name: string) {
     await this.whenStable();
     return this.locator().evaluate(
       (element, name) =>
