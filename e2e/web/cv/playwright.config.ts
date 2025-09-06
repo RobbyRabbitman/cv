@@ -2,9 +2,9 @@ import cvWebApp from '@robby-rabbitman/cv-apps-web-cv/package.json' with { type:
 import { playwrightConfig } from '@robby-rabbitman/cv-tools-playwright';
 
 const CI = !!process.env.CI;
-const baseURL = !CI
-  ? `http://localhost:${cvWebApp.nx.targets.serve.options.port}/`
-  : undefined;
+const baseURL =
+  process.env.CV_E2E_WEB_URL ??
+  `http://localhost:${cvWebApp.nx.targets.serve.options.port}/`;
 
 export default playwrightConfig({
   use: {
