@@ -10,7 +10,7 @@
   "exclude": [],
   "compilerOptions": {
     "rootDir": "${configDir}",
-    "outDir": "${configDir}/dist-spec",
-    "tsBuildInfoFile": "${configDir}/node_modules/.cache/tsBuildInfo/tsconfig.spec.tsbuildinfo"
+    "outDir": "${configDir}/dist",
+    "tsBuildInfoFile": "${configDir}/node_modules/.cache/tsBuildInfo/tsconfig.lib.tsbuildinfo"
   }
 }
