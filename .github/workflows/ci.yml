@@ -43,6 +43,11 @@ jobs:
 
       - run: echo "NX_VERBOSE_LOGGING=${{ runner.debug && true || false }}" >> "$GITHUB_ENV"
 
+      - run: >
+          pnpm nx affected -c ci -t
+          e2e
+          e2e-pw
+
       - run: pnpm nx report
 
       - run: pnpm nx sync:check
