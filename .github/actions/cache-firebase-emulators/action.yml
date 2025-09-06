@@ -5,7 +5,7 @@ runs:
   using: composite
   steps:
     - shell: bash
-      run: echo "FIREBASE_TOOLS_VERSION=$(jq -r '.devDependencies.firebase-tools' package.json)" >> $GITHUB_ENV
+      run: echo "FIREBASE_TOOLS_VERSION=$(jq -r '.devDependencies["firebase-tools"' package.json)" >> $GITHUB_ENV
 
     - uses: actions/cache@v4
       with:
