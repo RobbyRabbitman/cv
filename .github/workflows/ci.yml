@@ -39,6 +39,8 @@ jobs:
 
       - uses: ./.github/actions/install-playwright
 
+      - uses: ./.github/actions/cache-firebase-emulators
+
       - run: echo "NX_VERBOSE_LOGGING=${{ runner.debug && true || false }}" >> "$GITHUB_ENV"
 
       - run: pnpm nx report
