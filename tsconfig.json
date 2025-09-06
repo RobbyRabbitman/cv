@@ -52,6 +52,9 @@
     },
     {
       "path": "./e2e/web/cv"
+    },
+    {
+      "path": "./tools/playwright-harness"
     }
   ]
 }

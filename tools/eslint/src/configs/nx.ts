@@ -68,12 +68,29 @@ export const nxEslintConfig = [
               onlyDependOnLibsWithTags: ['runtime:js'],
             },
             {
+              sourceTag: 'runtime:js-mixed',
+              onlyDependOnLibsWithTags: [
+                'runtime:js-mixed',
+                'runtime:js',
+                'runtime:node',
+                'runtime:web',
+              ],
+            },
+            {
               sourceTag: 'runtime:node',
-              onlyDependOnLibsWithTags: ['runtime:js', 'runtime:node'],
+              onlyDependOnLibsWithTags: [
+                'runtime:js',
+                'runtime:node',
+                'runtime:js-mixed',
+              ],
             },
             {
               sourceTag: 'runtime:web',
-              onlyDependOnLibsWithTags: ['runtime:js', 'runtime:web'],
+              onlyDependOnLibsWithTags: [
+                'runtime:js',
+                'runtime:web',
+                'runtime:js-mixed',
+              ],
             },
             /** Domain */
             {

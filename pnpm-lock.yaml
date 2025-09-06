@@ -264,9 +264,6 @@ importers:
       '@robby-rabbitman/cv-apps-web-cv':
         specifier: workspace:*
         version: link:../../../apps/web/cv
-      '@robby-rabbitman/cv-libs-angular-testing':
-        specifier: workspace:*
-        version: link:../../../libs/angular/testing
       '@robby-rabbitman/cv-libs-common-features-shell':
         specifier: workspace:*
         version: link:../../../libs/common/features/shell
@@ -276,24 +273,21 @@ importers:
       '@robby-rabbitman/cv-tools-playwright':
         specifier: workspace:*
         version: link:../../../tools/playwright
+      '@robby-rabbitman/cv-tools-playwright-harness':
+        specifier: workspace:*
+        version: link:../../../tools/playwright-harness
       '@robby-rabbitman/cv-tools-typescript':
         specifier: workspace:*
         version: link:../../../tools/typescript
 
   libs/angular/testing:
     dependencies:
-      '@angular/cdk':
-        specifier: 20.2.1
-        version: 20.2.1(@angular/common@20.2.3(@angular/core@20.2.3(@angular/compiler@20.2.3)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.3(@angular/compiler@20.2.3)(rxjs@7.8.2))(rxjs@7.8.2)
       '@angular/core':
         specifier: 20.2.3
         version: 20.2.3(@angular/compiler@20.2.3)(rxjs@7.8.2)
       '@angular/platform-browser':
         specifier: 20.2.3
         version: 20.2.3(@angular/animations@20.2.3(@angular/common@20.2.3(@angular/core@20.2.3(@angular/compiler@20.2.3)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.3(@angular/compiler@20.2.3)(rxjs@7.8.2)))(@angular/common@20.2.3(@angular/core@20.2.3(@angular/compiler@20.2.3)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.3(@angular/compiler@20.2.3)(rxjs@7.8.2))
-      playwright:
-        specifier: 1.55.0
-        version: 1.55.0
     devDependencies:
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
@@ -576,6 +570,25 @@ importers:
   tools/playwright:
     dependencies:
       '@playwright/test':
+        specifier: 1.55.0
+        version: 1.55.0
+    devDependencies:
+      '@robby-rabbitman/cv-tools-eslint':
+        specifier: workspace:*
+        version: link:../eslint
+      '@robby-rabbitman/cv-tools-typescript':
+        specifier: workspace:*
+        version: link:../typescript
+
+  tools/playwright-harness:
+    dependencies:
+      '@angular/cdk':
+        specifier: 20.2.1
+        version: 20.2.1(@angular/common@20.2.3(@angular/core@20.2.3(@angular/compiler@20.2.3)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.2.3(@angular/compiler@20.2.3)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@playwright/test':
+        specifier: 1.55.0
+        version: 1.55.0
+      playwright:
         specifier: 1.55.0
         version: 1.55.0
     devDependencies:

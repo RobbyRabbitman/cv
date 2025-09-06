@@ -1,6 +1,6 @@
 import type { HarnessLoader } from '@angular/cdk/testing';
 import { test as base } from '@playwright/test';
-import { PlaywrightHarnessEnvironment } from './harness-environment';
+import { PlaywrightHarnessEnvironment } from './harness-environment.js';
 
 interface HarnessFixture {
   harness: {

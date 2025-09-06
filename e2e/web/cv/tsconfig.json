@@ -5,7 +5,10 @@
   "files": [],
   "references": [
     {
-      "path": "../../../libs/angular/testing"
+      "path": "../../../tools/playwright-harness"
+    },
+    {
+      "path": "../../../tools/playwright"
     },
     {
       "path": "../../../libs/common/features/shell"
@@ -15,9 +18,6 @@
     },
     {
       "path": "../../../tools/eslint"
-    },
-    {
-      "path": "../../../tools/playwright"
     },
     {
       "path": "./tsconfig.lib.json"

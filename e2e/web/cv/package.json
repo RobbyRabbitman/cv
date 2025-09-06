@@ -6,14 +6,15 @@
   "devDependencies": {
     "@robby-rabbitman/cv-apps-web-cv": "workspace:*",
     "@robby-rabbitman/cv-libs-common-features-shell": "workspace:*",
-    "@robby-rabbitman/cv-libs-angular-testing": "workspace:*",
     "@robby-rabbitman/cv-tools-playwright": "workspace:*",
+    "@robby-rabbitman/cv-tools-playwright-harness": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-tools-typescript": "workspace:*"
   },
   "nx": {
     "tags": [
-      "domain:cv"
+      "domain:cv",
+      "runtime:js-mixed"
     ],
     "targets": {
       "e2e-pw": {
