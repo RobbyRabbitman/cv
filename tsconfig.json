@@ -55,6 +55,12 @@
     },
     {
       "path": "./tools/playwright-harness"
+    },
+    {
+      "path": "./libs/i18n/data"
+    },
+    {
+      "path": "./libs/i18n/features/translation"
     }
   ]
 }

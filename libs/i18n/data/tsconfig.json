@@ -5,10 +5,7 @@
   "files": [],
   "references": [
     {
-      "path": "../../i18n/features/translation"
-    },
-    {
-      "path": "../data"
+      "path": "../../common/util"
     },
     {
       "path": "../../../tools/karma"

@@ -1,5 +1,5 @@
 {
-  "name": "@robby-rabbitman/cv-libs-auth-components",
+  "name": "@robby-rabbitman/cv-libs-i18n-features-translation",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,7 @@
     "dist",
     "package.json"
   ],
-  "module": "dist/fesm2022/robby-rabbitman-cv-libs-auth-components.mjs",
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-i18n-features-translation.mjs",
   "typings": "index.d.ts",
   "exports": {
     "./package.json": {
@@ -15,12 +15,11 @@
     },
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-auth-components.mjs"
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-i18n-features-translation.mjs"
     }
   },
   "dependencies": {
-    "@robby-rabbitman/cv-libs-auth-data": "workspace:*",
-    "@robby-rabbitman/cv-libs-i18n-features-translation": "workspace:*"
+    "@robby-rabbitman/cv-libs-i18n-data": "workspace:*"
   },
   "peerDependencies": {
     "@angular/material": "20.2.1",
@@ -34,7 +33,7 @@
   "nx": {
     "tags": [
       "runtime:web",
-      "domain:auth"
+      "domain:common"
     ]
   }
 }
