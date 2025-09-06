@@ -27,16 +27,11 @@ interface I18nState {
   locales: Locale[];
 }
 
-export interface TranslationEntity {
-  /** The locale of the translations. */
-  locale: Locale;
-
-  /** The actual translations. */
-  value: Translations;
-}
-
 const translationEntity = entityConfig({
-  entity: type<TranslationEntity>(),
+  entity: type<{
+    locale: Locale;
+    value: Translations;
+  }>(),
   collection: 'translation',
   selectId: (translation) => translation.locale,
 });
