@@ -19,7 +19,7 @@
     }
   },
   "peerDependencies": {
-    "@angular/core": "20.2.3",
+    "@angular/core": "20.2.4",
     "firebase": "12.2.1"
   },
   "devDependencies": {
