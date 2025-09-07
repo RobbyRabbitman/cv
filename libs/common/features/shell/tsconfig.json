@@ -8,6 +8,9 @@
       "path": "../../../auth/components"
     },
     {
+      "path": "../../../i18n/components"
+    },
+    {
       "path": "../../../auth/data"
     },
     {

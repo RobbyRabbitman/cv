@@ -1,5 +1,5 @@
 {
-  "name": "@robby-rabbitman/cv-libs-i18n-types",
+  "name": "@robby-rabbitman/cv-libs-i18n-components",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,7 @@
     "dist",
     "package.json"
   ],
-  "module": "dist/fesm2022/robby-rabbitman-cv-libs-i18n-types.mjs",
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-i18n-components.mjs",
   "typings": "index.d.ts",
   "exports": {
     "./package.json": {
@@ -15,15 +15,20 @@
     },
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-i18n-types.mjs"
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-i18n-components.mjs"
     },
     "./testing": {
       "types": "./dist/src/testing/index.d.ts",
-      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-i18n-types-src-testing.mjs"
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-i18n-components-src-testing.mjs"
     }
   },
   "dependencies": {
-    "@robby-rabbitman/cv-libs-common-types": "workspace:*"
+    "@robby-rabbitman/cv-libs-i18n-data": "workspace:*",
+    "@robby-rabbitman/cv-libs-i18n-features-translation": "workspace:*"
+  },
+  "peerDependencies": {
+    "@angular/core": "20.2.3",
+    "@angular/material": "20.2.1"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",

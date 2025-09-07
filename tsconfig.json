@@ -64,6 +64,9 @@
     },
     {
       "path": "./libs/i18n/types"
+    },
+    {
+      "path": "./libs/i18n/components"
     }
   ]
 }

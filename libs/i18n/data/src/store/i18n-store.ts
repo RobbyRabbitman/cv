@@ -1,4 +1,4 @@
-import { inject } from '@angular/core';
+import { effect, inject } from '@angular/core';
 import { tapResponse } from '@ngrx/operators';
 import {
   patchState,
@@ -11,59 +11,74 @@ import {
 } from '@ngrx/signals';
 import {
   entityConfig,
+  setAllEntities,
   upsertEntity,
   withEntities,
 } from '@ngrx/signals/entities';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import type { Locale, Translations } from '@robby-rabbitman/cv-libs-i18n-types';
+import type {
+  Locale,
+  LocaleId,
+  Translations,
+} from '@robby-rabbitman/cv-libs-i18n-types';
 import { exhaustMap, from, pipe, switchMap } from 'rxjs';
 import { I18nApi } from '../api/i18n-api';
 
 interface I18nState {
   /** The current locale. */
-  locale: Locale;
-
-  /** Available locales. */
-  locales: Locale[];
+  _localeId: LocaleId;
 }
 
-const translationEntity = entityConfig({
+const TranslationEntity = entityConfig({
   entity: type<{
-    locale: Locale;
+    localeId: LocaleId;
     value: Translations;
   }>(),
   collection: 'translation',
-  selectId: (translation) => translation.locale,
+  selectId: (translation) => translation.localeId,
+});
+
+const LocaleEntity = entityConfig({
+  entity: type<Locale>(),
+  collection: 'locale',
+  selectId: (locale) => locale.id,
 });
 
 export const I18n = signalStore(
-  withState<I18nState>({ locale: 'en', locales: ['en'] }),
-  withEntities(translationEntity),
-  withLinkedState(({ locale, translationEntityMap }) => ({
-    translations: () => translationEntityMap()[locale()]?.value,
+  withState<I18nState>({ _localeId: 'en' }),
+  withEntities(LocaleEntity),
+  withEntities(TranslationEntity),
+  withLinkedState(({ _localeId, translationEntityMap, localeEntityMap }) => ({
+    locale: () =>
+      localeEntityMap()[_localeId()] ?? {
+        id: 'en',
+        text: 'English',
+        translationId: 'en',
+      },
+    translations: () => translationEntityMap()[_localeId()]?.value,
   })),
   withMethods((store) => {
     const i18nApi = inject(I18nApi);
 
-    const getTranslations = rxMethod<Locale>(
+    const getTranslations = rxMethod<LocaleId>(
       pipe(
         /**
          * We use switchMap here, to cancel any ongoing requests, when a new
          * locale is set, since only the translations of the active locale are
          * relevant.
          */
-        switchMap((locale) => {
-          return from(i18nApi.getTranslations(locale)).pipe(
+        switchMap((localeId) => {
+          return from(i18nApi.getTranslations(localeId)).pipe(
             tapResponse({
               next: (translations) =>
                 patchState(
                   store,
                   upsertEntity(
                     {
-                      locale,
+                      localeId,
                       value: translations,
                     },
-                    translationEntity,
+                    TranslationEntity,
                   ),
                 ),
               error: () => {
@@ -83,8 +98,11 @@ export const I18n = signalStore(
         exhaustMap(() =>
           from(i18nApi.getLocales()).pipe(
             tapResponse({
-              next: (locales) => patchState(store, { locales }),
-              error: () => {},
+              next: (locales) =>
+                patchState(store, setAllEntities(locales, LocaleEntity)),
+              error: () => {
+                // TODO: handle no locales available
+              },
             }),
           ),
         ),
@@ -92,13 +110,13 @@ export const I18n = signalStore(
     );
 
     return {
-      setLocale: (locale: Locale) => {
+      setLocale: (locale: LocaleId) => {
         /**
          * Optimistic update
          *
          * TODO: how to indicate loading state?
          */
-        patchState(store, { locale });
+        patchState(store, { _localeId: locale });
 
         getTranslations(locale);
       },
@@ -109,7 +127,8 @@ export const I18n = signalStore(
   withHooks({
     onInit: (store) => {
       store.getLocales();
-      store.getTranslations(store.locale());
+      store.getTranslations(store._localeId());
+      effect(() => console.log(store.localeEntities()));
     },
   }),
 );

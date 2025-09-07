@@ -29,7 +29,7 @@
         "continuous": true
       },
       "export-emulator-data": {
-        "command": "firebase emulators:export src/emulator-data",
+        "command": "firebase emulators:export src/emulator-data --force",
         "options": {
           "cwd": "{projectRoot}",
           "config": "src/firebase.json",

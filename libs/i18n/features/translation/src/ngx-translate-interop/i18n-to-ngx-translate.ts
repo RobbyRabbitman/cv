@@ -8,7 +8,7 @@ export function i18nToNgxTranslate() {
 
   /** Reflect locale changes and set translations. */
   effect(() => {
-    const locale = new Intl.Locale(i18n.locale());
+    const locale = new Intl.Locale(i18n.locale().id);
     const translations = i18n.translations();
 
     untracked(() => {
