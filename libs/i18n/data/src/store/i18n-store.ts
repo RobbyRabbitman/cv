@@ -1,4 +1,4 @@
-import { effect, inject } from '@angular/core';
+import { inject } from '@angular/core';
 import { tapResponse } from '@ngrx/operators';
 import {
   patchState,
@@ -48,15 +48,22 @@ export const I18n = signalStore(
   withState<I18nState>({ _localeId: 'en' }),
   withEntities(LocaleEntity),
   withEntities(TranslationEntity),
-  withLinkedState(({ _localeId, translationEntityMap, localeEntityMap }) => ({
-    locale: () =>
-      localeEntityMap()[_localeId()] ?? {
-        id: 'en',
-        text: 'English',
-        translationId: 'en',
-      },
-    translations: () => translationEntityMap()[_localeId()]?.value,
-  })),
+  withLinkedState(
+    ({ _localeId, translationEntityMap, localeEntityMap, localeEntities }) => ({
+      locale: () =>
+        localeEntityMap()[_localeId()] ?? {
+          id: 'en',
+          text: 'English',
+          translationId: 'en',
+        },
+      locales: () =>
+        localeEntities().map((locale) => ({
+          ...locale,
+          active: locale.id === _localeId(),
+        })),
+      translations: () => translationEntityMap()[_localeId()]?.value,
+    }),
+  ),
   withMethods((store) => {
     const i18nApi = inject(I18nApi);
 
@@ -128,7 +135,6 @@ export const I18n = signalStore(
     onInit: (store) => {
       store.getLocales();
       store.getTranslations(store._localeId());
-      effect(() => console.log(store.localeEntities()));
     },
   }),
 );

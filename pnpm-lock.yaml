@@ -279,6 +279,9 @@ importers:
       '@robby-rabbitman/cv-libs-common-features-shell':
         specifier: workspace:*
         version: link:../../../libs/common/features/shell
+      '@robby-rabbitman/cv-libs-i18n-components':
+        specifier: workspace:*
+        version: link:../../../libs/i18n/components
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
         version: link:../../../tools/eslint

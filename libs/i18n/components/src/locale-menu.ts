@@ -5,17 +5,21 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { I18n } from '@robby-rabbitman/cv-libs-i18n-data';
 
 @Component({
-  selector: 'cv-i18n--select-locale',
+  selector: 'cv-i18n--locale-menu',
   imports: [MatIcon, MatMenu, MatMenuItem, MatMenuTrigger, MatButton],
-  template: `<button mat-button [mat-menu-trigger-for]="localesMenu">
+  host: {
+    'data-testid': 'locale-menu',
+  },
+  template: `<button mat-button [mat-menu-trigger-for]="localeMenu">
       <mat-icon>translate</mat-icon>
       {{ i18n.locale().text }}
     </button>
-    <mat-menu #localesMenu>
-      @for (locale of i18n.localeEntities(); track locale) {
+    <mat-menu #localeMenu hasBackdrop="false">
+      @for (locale of i18n.locales(); track locale) {
         <button
-          mat-menu-item="locale"
-          [attr.aria-current]="locale.id === i18n.locale().id"
+          mat-menu-item
+          [attr.aria-current]="locale.active || null"
+          [attr.data-testid]="'locale-menu-item-' + locale.id"
           (click)="i18n.setLocale(locale.id)"
         >
           {{ locale.text }}
@@ -24,6 +28,6 @@ import { I18n } from '@robby-rabbitman/cv-libs-i18n-data';
     </mat-menu>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectLocale {
+export class LocaleMenu {
   protected readonly i18n = inject(I18n);
 }

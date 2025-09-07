@@ -10,19 +10,19 @@ import {
   SignOutButton,
 } from '@robby-rabbitman/cv-libs-auth-components';
 import { UserStore } from '@robby-rabbitman/cv-libs-auth-data';
-import { SelectLocale } from '@robby-rabbitman/cv-libs-i18n-components';
+import { LocaleMenu } from '@robby-rabbitman/cv-libs-i18n-components';
 import { Logo } from './logo';
 
 @Component({
   selector: 'cv-common--shell',
-  imports: [MatToolbar, Logo, SignInButton, SignOutButton, SelectLocale],
+  imports: [MatToolbar, Logo, SignInButton, SignOutButton, LocaleMenu],
   host: {
     class: 'cv-common--shell h-full flex flex-col items-center',
   },
   template: `<mat-toolbar role="heading">
       <span class="container mx-auto flex items-center">
         <cv-common--shell-logo class="me-auto" />
-        <cv-i18n--select-locale />
+        <cv-i18n--locale-menu />
         @if (user.value()) {
           <cv-auth--sign-out-button />
         } @else {
