@@ -15,7 +15,7 @@ import { I18n } from '@robby-rabbitman/cv-libs-i18n-data';
       {{ i18n.locale().text }}
     </button>
     <mat-menu #localeMenu hasBackdrop="false">
-      @for (locale of i18n.locales(); track locale) {
+      @for (locale of i18n.locales(); track locale.id) {
         <button
           mat-menu-item
           [attr.aria-current]="locale.active || null"
