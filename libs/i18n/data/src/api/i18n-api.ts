@@ -1,8 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import {
-  FIRESTORE,
-  typedCollection,
-} from '@robby-rabbitman/cv-libs-common-util';
+import { applyDocId, FIRESTORE } from '@robby-rabbitman/cv-libs-common-util';
 import type {
   Locale,
   LocaleId,
@@ -15,10 +12,10 @@ export class I18nApi {
   protected readonly firestore = inject(FIRESTORE);
 
   protected readonly collections = {
-    translation: typedCollection<Translations>(
+    translation: applyDocId<Translations>(
       collection(this.firestore, 'translation'),
     ),
-    locale: typedCollection<Locale>(collection(this.firestore, 'locale')),
+    locale: applyDocId<Locale>(collection(this.firestore, 'locale')),
   };
 
   async getLocales() {
