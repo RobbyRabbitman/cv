@@ -28,7 +28,8 @@
   },
   "nx": {
     "tags": [
-      "runtime:web"
+      "runtime:web",
+      "type:app"
     ],
     "targets": {
       "build-angular": {

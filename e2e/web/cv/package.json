@@ -15,7 +15,8 @@
   "nx": {
     "tags": [
       "domain:cv",
-      "runtime:js-mixed"
+      "runtime:js-mixed",
+      "type:e2e"
     ],
     "targets": {
       "e2e-pw": {
