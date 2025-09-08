@@ -112,7 +112,7 @@ export const nxEslintConfig = [
             /** Type */
             {
               sourceTag: 'type:tool',
-              onlyDependOnLibsWithTags: ['type:*'],
+              onlyDependOnLibsWithTags: ['type:tool'],
             },
             {
               sourceTag: 'type:app',
