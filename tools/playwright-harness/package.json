@@ -21,7 +21,7 @@
     "tags": [
       "runtime:js-mixed",
       "domain:common",
-      "type:tool"
+      "type:util"
     ]
   }
 }

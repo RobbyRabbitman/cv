@@ -116,7 +116,12 @@ export const nxEslintConfig = [
             },
             {
               sourceTag: 'type:app',
-              onlyDependOnLibsWithTags: ['type:feature', 'type:data'],
+              onlyDependOnLibsWithTags: [
+                'type:feature',
+                'type:util',
+                'type:types',
+                'type:data',
+              ],
             },
             {
               sourceTag: 'type:e2e',
@@ -124,6 +129,7 @@ export const nxEslintConfig = [
                 'type:app',
                 'type:feature',
                 'type:component',
+                'type:util',
               ],
             },
             {
