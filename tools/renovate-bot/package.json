@@ -8,7 +8,8 @@
   ],
   "nx": {
     "tags": [
-      "domain:common"
+      "domain:common",
+      "type:tool"
     ],
     "targets": {
       "lint": {

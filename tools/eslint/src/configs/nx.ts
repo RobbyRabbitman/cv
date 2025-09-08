@@ -109,6 +109,11 @@ export const nxEslintConfig = [
                 'domain:common',
               ],
             },
+            /** Type */
+            {
+              sourceTag: 'type:tool',
+              onlyDependOnLibsWithTags: ['type:*'],
+            },
           ],
         },
       ],

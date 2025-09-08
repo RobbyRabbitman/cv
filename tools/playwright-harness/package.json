@@ -20,7 +20,8 @@
   "nx": {
     "tags": [
       "runtime:js-mixed",
-      "domain:common"
+      "domain:common",
+      "type:tool"
     ]
   }
 }
