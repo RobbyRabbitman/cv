@@ -21,11 +21,20 @@
         "configurations": {
           "local": {
             "project": "local",
-            "only": "auth,firestore"
+            "only": "auth,firestore",
+            "import": "src/emulator-data"
           }
         },
         "defaultConfiguration": "local",
         "continuous": true
+      },
+      "export-emulator-data": {
+        "command": "firebase emulators:export src/emulator-data --force",
+        "options": {
+          "cwd": "{projectRoot}",
+          "config": "src/firebase.json",
+          "project": "local"
+        }
       }
     }
   }

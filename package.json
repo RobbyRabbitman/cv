@@ -10,6 +10,7 @@
   "scripts": {
     "watch:ng-packagr": "nx watch --all -- nx run \\$NX_PROJECT_NAME:build-ng-packagr --excludeTaskDependencies",
     "clean": "git clean -dfX && pnpm i && pnpm nx reset && pnpm nx sync",
+    "sync": "pnpm i --ignore-scripts && nx sync",
     "postinstall": "sh tools/workspace/src/npm-life-cycle/post-install.sh"
   },
   "devDependencies": {
@@ -33,7 +34,9 @@
     "@angular/platform-browser-dynamic": "20.2.4",
     "@angular/router": "20.2.4",
     "@eslint/js": "9.34.0",
+    "@ngrx/operators": "20.0.1",
     "@ngrx/signals": "20.0.1",
+    "@ngx-translate/core": "17.0.0",
     "@nx/devkit": "21.4.1",
     "@nx/eslint": "21.4.1",
     "@nx/eslint-plugin": "21.4.1",
