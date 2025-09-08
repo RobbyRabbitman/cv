@@ -12,9 +12,15 @@ export class I18nApi {
   protected readonly firestore = inject(FIRESTORE);
 
   protected readonly collections = {
-    translation: applyDocId<Translations>(
+    translation: applyDocId<Translations['value']>(
       collection(this.firestore, 'translation'),
-    ),
+    ).withConverter<Translations>({
+      toFirestore: (entity) => entity.value ?? {},
+      fromFirestore: (snapshot, options) => ({
+        localeId: snapshot.id,
+        value: snapshot.data(options),
+      }),
+    }),
     locale: applyDocId<Locale>(collection(this.firestore, 'locale')),
   };
 

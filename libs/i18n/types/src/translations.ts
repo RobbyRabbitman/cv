@@ -1,2 +1,7 @@
+import type { LocaleId } from './locale';
+
 /** Translations of a certain locale. */
-export type Translations = Record<string, unknown>;
+export interface Translations {
+  localeId: LocaleId;
+  value: Record<string, unknown>;
+}

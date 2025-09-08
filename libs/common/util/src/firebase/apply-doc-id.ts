@@ -3,23 +3,32 @@ import {
   CollectionReference,
   DocumentReference,
   type DocumentData,
+  type FirestoreDataConverter,
 } from 'firebase/firestore';
 
 export function applyDocId<T extends DocumentData>(
-  collectionOrDoc: CollectionReference | DocumentReference,
+  doc: DocumentReference,
+): DocumentReference<T & Identifiable, T>;
+export function applyDocId<T extends DocumentData>(
+  collection: CollectionReference,
+): CollectionReference<T & Identifiable, T>;
+export function applyDocId<T extends DocumentData>(
+  collectionOrDoc: CollectionReference<T, T> | DocumentReference<T, T>,
 ) {
-  /**
-   * TODO: Seems like a type issue (?) - both CollectionReference and
-   * DocumentReference can be extended with the exact same converter below
-   */
-  return (collectionOrDoc as CollectionReference).withConverter({
-    toFirestore(data: T): DocumentData {
+  const converter = {
+    toFirestore(data) {
+      data = structuredClone(data);
+      delete data.id;
       return data;
     },
-    fromFirestore(snapshot): T & Identifiable {
-      return Object.assign(snapshot.data(), {
+    fromFirestore(snapshot, options) {
+      return Object.assign(snapshot.data(options), {
         id: snapshot.id,
-      }) as T & Identifiable;
+      });
     },
-  });
+  } as FirestoreDataConverter<T & Identifiable, T>;
+
+  return collectionOrDoc instanceof CollectionReference
+    ? collectionOrDoc.withConverter(converter)
+    : collectionOrDoc.withConverter(converter);
 }

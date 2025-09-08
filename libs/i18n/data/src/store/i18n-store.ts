@@ -30,10 +30,7 @@ interface I18nState {
 }
 
 const TranslationEntity = entityConfig({
-  entity: type<{
-    localeId: LocaleId;
-    value: Translations;
-  }>(),
+  entity: type<Translations>(),
   collection: 'translation',
   selectId: (translation) => translation.localeId,
 });
@@ -61,7 +58,7 @@ export const I18n = signalStore(
           ...locale,
           active: locale.id === _localeId(),
         })),
-      translations: () => translationEntityMap()[_localeId()]?.value,
+      translations: () => translationEntityMap()[_localeId()],
     }),
   ),
   withMethods((store) => {
@@ -80,13 +77,7 @@ export const I18n = signalStore(
               next: (translations) =>
                 patchState(
                   store,
-                  upsertEntity(
-                    {
-                      localeId,
-                      value: translations,
-                    },
-                    TranslationEntity,
-                  ),
+                  upsertEntity(translations, TranslationEntity),
                 ),
               error: () => {
                 /**
