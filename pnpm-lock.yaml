@@ -537,6 +537,9 @@ importers:
       '@angular/core':
         specifier: 20.2.3
         version: 20.2.3(@angular/compiler@20.2.3)(rxjs@7.8.2)
+      '@ngrx/operators':
+        specifier: 20.0.1
+        version: 20.0.1(rxjs@7.8.2)
       '@ngrx/signals':
         specifier: 20.0.1
         version: 20.0.1(@angular/core@20.2.3(@angular/compiler@20.2.3)(rxjs@7.8.2))(rxjs@7.8.2)
