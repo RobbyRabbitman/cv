@@ -37,12 +37,14 @@ export class I18nApi {
     ),
   };
 
+  /** Gets all available locales. */
   async getLocales() {
     const localesQuery = await getDocs(this.collections.locale);
 
     return localesQuery.docs.map((doc) => doc.data());
   }
 
+  /** Gets the translations for a certain locale. */
   async getTranslations(locale: LocaleId) {
     const translations = await getDoc(
       doc(this.collections.translation, locale),

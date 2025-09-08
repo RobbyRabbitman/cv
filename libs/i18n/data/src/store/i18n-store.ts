@@ -1,4 +1,4 @@
-import { inject } from '@angular/core';
+import { effect, inject, untracked } from '@angular/core';
 import { tapResponse } from '@ngrx/operators';
 import {
   patchState,
@@ -75,6 +75,7 @@ export const I18n = signalStore(
   withMethods((store) => {
     const i18nApi = inject(I18nApi);
 
+    /** Gets the translations for a certain locale. */
     const getTranslations = rxMethod<LocaleId>(
       pipe(
         /**
@@ -106,6 +107,7 @@ export const I18n = signalStore(
       ),
     );
 
+    /** Gets all available locales. */
     const getLocales = rxMethod<void>(
       pipe(
         exhaustMap(() =>
@@ -122,25 +124,38 @@ export const I18n = signalStore(
       ),
     );
 
-    return {
-      setLocale: (locale: LocaleId) => {
-        /**
-         * Optimistic update
-         *
-         * TODO: how to indicate loading state?
-         */
-        patchState(store, { _localeId: locale });
+    /** Sets the current locale, and loads its translations. */
+    const setLocale = (locale: LocaleId) => {
+      /**
+       * Optimistic update
+       *
+       * TODO: how to indicate loading state?
+       */
+      patchState(store, { _localeId: locale });
+    };
 
-        getTranslations(locale);
-      },
+    return {
+      setLocale,
       getTranslations,
       getLocales,
     };
   }),
   withHooks({
     onInit: (store) => {
+      /**
+       * Initially get all available locales and the translations for the active
+       * locale.
+       */
       store.getLocales();
-      store.getTranslations(store.locale().id);
+
+      /** Whenever the locale changes, get its translations. */
+      effect(() => {
+        const locale = store.locale();
+
+        untracked(() => {
+          store.getTranslations(locale.id);
+        });
+      });
     },
   }),
 );
