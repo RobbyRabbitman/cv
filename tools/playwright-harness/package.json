@@ -10,7 +10,7 @@
   ],
   "peerDependencies": {
     "playwright": "1.55.0",
-    "@angular/cdk": "20.2.1",
+    "@angular/cdk": "20.2.2",
     "@playwright/test": "1.55.0"
   },
   "devDependencies": {
