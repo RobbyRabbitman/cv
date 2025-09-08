@@ -163,8 +163,8 @@ export const nxEslintConfig = [
               onlyDependOnLibsWithTags: [
                 'type:util',
                 'type:types',
-                'type:feature',
                 'type:data',
+                'type:feature',
                 'type:component',
               ],
             },
