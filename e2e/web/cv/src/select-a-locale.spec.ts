@@ -8,9 +8,9 @@ test('select a locale', async ({ page }) => {
 
   await trigger.click();
   await german.click();
-  await expect(trigger).toHaveAccessibleName('Deutsch');
+  await expect(trigger).toHaveAccessibleName('Sprache wählen');
 
   await trigger.click();
   await english.click();
-  await expect(trigger).toHaveAccessibleName('English');
+  await expect(trigger).toHaveAccessibleName('Select language');
 });
