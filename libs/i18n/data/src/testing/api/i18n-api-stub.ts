@@ -6,12 +6,12 @@ const LOCALES = [
   {
     id: 'en',
     translationId: 'en',
-    text: 'English',
+    name: 'English',
   },
   {
     id: 'de',
     translationId: 'de',
-    text: 'Deutsch',
+    name: 'Deutsch',
   },
 ] as const satisfies Locale[];
 

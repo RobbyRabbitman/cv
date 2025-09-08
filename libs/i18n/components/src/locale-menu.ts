@@ -12,7 +12,7 @@ import { I18n } from '@robby-rabbitman/cv-libs-i18n-data';
   },
   template: `<button mat-button [mat-menu-trigger-for]="localeMenu">
       <mat-icon>translate</mat-icon>
-      {{ i18n.locale().text }}
+      {{ i18n.locale().name }}
     </button>
     <mat-menu #localeMenu hasBackdrop="false">
       @for (locale of i18n.locales(); track locale.id) {
@@ -22,7 +22,7 @@ import { I18n } from '@robby-rabbitman/cv-libs-i18n-data';
           [attr.data-testid]="'locale-menu-item-' + locale.id"
           (click)="i18n.setLocale(locale.id)"
         >
-          {{ locale.text }}
+          {{ locale.name }}
         </button>
       }
     </mat-menu>`,

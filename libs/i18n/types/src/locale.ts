@@ -8,7 +8,7 @@ export interface Locale {
    * The human-readable name of the locale in its own language (e.g., "Deutsch"
    * for German).
    */
-  text: string;
+  name: string;
 
   /** The id of the translation object associated with this locale. */
   translationId: string;

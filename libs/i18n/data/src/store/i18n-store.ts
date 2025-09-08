@@ -56,7 +56,7 @@ export const I18n = signalStore(
       locale: () =>
         localeEntityMap()[localeId()] ?? {
           id: 'en',
-          text: 'English',
+          name: 'English',
           translationId: 'en',
         },
       /** All available locales. */
