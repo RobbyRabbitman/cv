@@ -8,6 +8,12 @@
       "path": "../../../libs/common/features/shell"
     },
     {
+      "path": "../../../libs/i18n/features/translation"
+    },
+    {
+      "path": "../../../libs/i18n/data"
+    },
+    {
       "path": "../../../libs/common/util"
     },
     {

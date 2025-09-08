@@ -18,6 +18,9 @@
       "default": "./dist/fesm2022/robby-rabbitman-cv-libs-common-util.mjs"
     }
   },
+  "dependencies": {
+    "@robby-rabbitman/cv-libs-common-types": "workspace:*"
+  },
   "peerDependencies": {
     "@angular/core": "20.2.4",
     "firebase": "12.2.1"

@@ -1,0 +1,11 @@
+{
+  "extends": "./node_modules/@robby-rabbitman/cv-tools-typescript/src/configs/tsconfig.angular-lib.json",
+  "references": [
+    {
+      "path": "../../../tools/karma/tsconfig.lib.json"
+    },
+    {
+      "path": "../../../tools/eslint/tsconfig.lib.json"
+    }
+  ]
+}

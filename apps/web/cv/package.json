@@ -10,6 +10,8 @@
     "@robby-rabbitman/cv-libs-cv-data": "workspace:*",
     "@robby-rabbitman/cv-libs-auth-data": "workspace:*",
     "@robby-rabbitman/cv-libs-common-util": "workspace:*",
+    "@robby-rabbitman/cv-libs-i18n-data": "workspace:*",
+    "@robby-rabbitman/cv-libs-i18n-features-translation": "workspace:*",
     "@robby-rabbitman/cv-libs-common-features-shell": "workspace:*"
   },
   "peerDependencies": {
@@ -64,7 +66,7 @@
         ]
       },
       "watch-deps": {
-        "command": "[ -n \"${CI:-}\" ] || nx watch --p {projectName} --includeDependentProjects -- \"nx run-many -t build-tsc build-ng-packagr -p \\$NX_PROJECT_NAME --exclude {projectName} && find {projectRoot}/src/app -type f -not -name '*.spec.*' -exec touch {} +\"",
+        "command": "[ -n \"${CI:-}\" ] || nx watch --p {projectName} --includeDependentProjects -- \"nx run-many -t build-tsc build-ng-packagr -p \\$NX_PROJECT_NAME --exclude {projectName} && [ \"\\$NX_PROJECT_NAME\" != \"{projectName}\" ] && find {projectRoot}/src/app -type f -not -name '*.spec.*' -exec touch {} +\"",
         "continuous": true
       },
       "test-angular": {

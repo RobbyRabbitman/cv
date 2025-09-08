@@ -1,4 +1,4 @@
-import { HarnessEnvironment } from '@angular/cdk/testing';
+import { ComponentHarness, HarnessEnvironment } from '@angular/cdk/testing';
 import type { Locator, Page } from 'playwright';
 import { PlaywrightTestElement } from './test-element.js';
 
@@ -10,6 +10,16 @@ export class PlaywrightHarnessEnvironment extends HarnessEnvironment<
     protected readonly root: () => Locator = () => page.locator(':root'),
   ) {
     super(root);
+  }
+
+  async getPlaywrightLocator(harness: ComponentHarness) {
+    const host = await harness.host();
+
+    if (!(host instanceof PlaywrightTestElement)) {
+      throw Error('This harness is not from a PlaywrightHarnessEnvironment');
+    }
+
+    return host.locator();
   }
 
   override async forceStabilize() {
