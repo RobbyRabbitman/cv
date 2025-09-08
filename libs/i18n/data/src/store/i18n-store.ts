@@ -32,7 +32,7 @@ interface I18nState {
 const TranslationEntity = entityConfig({
   entity: type<Translations>(),
   collection: 'translation',
-  selectId: (translation) => translation.localeId,
+  selectId: (translation) => translation.id,
 });
 
 const LocaleEntity = entityConfig({
@@ -46,19 +46,30 @@ export const I18n = signalStore(
   withEntities(LocaleEntity),
   withEntities(TranslationEntity),
   withLinkedState(
-    ({ _localeId, translationEntityMap, localeEntityMap, localeEntities }) => ({
+    ({
+      _localeId: localeId,
+      translationEntities,
+      localeEntityMap,
+      localeEntities,
+    }) => ({
+      /** The current locale. */
       locale: () =>
-        localeEntityMap()[_localeId()] ?? {
+        localeEntityMap()[localeId()] ?? {
           id: 'en',
           text: 'English',
           translationId: 'en',
         },
+      /** All available locales. */
       locales: () =>
         localeEntities().map((locale) => ({
           ...locale,
-          active: locale.id === _localeId(),
+          active: locale.id === localeId(),
         })),
-      translations: () => translationEntityMap()[_localeId()],
+      /** The translations for the current locale. */
+      translations: () =>
+        translationEntities().find(
+          (translations) => translations.localeId === localeId(),
+        ),
     }),
   ),
   withMethods((store) => {
@@ -125,7 +136,7 @@ export const I18n = signalStore(
   withHooks({
     onInit: (store) => {
       store.getLocales();
-      store.getTranslations(store._localeId());
+      store.getTranslations(store.locale().id);
     },
   }),
 );
