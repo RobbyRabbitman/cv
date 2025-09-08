@@ -109,6 +109,65 @@ export const nxEslintConfig = [
                 'domain:common',
               ],
             },
+            /** Type */
+            {
+              sourceTag: 'type:tool',
+              onlyDependOnLibsWithTags: ['type:tool'],
+            },
+            {
+              sourceTag: 'type:app',
+              onlyDependOnLibsWithTags: [
+                'type:feature',
+                'type:util',
+                'type:types',
+                'type:data',
+              ],
+            },
+            {
+              sourceTag: 'type:e2e',
+              onlyDependOnLibsWithTags: [
+                'type:app',
+                'type:feature',
+                'type:component',
+                'type:util',
+              ],
+            },
+            {
+              sourceTag: 'type:types',
+              onlyDependOnLibsWithTags: ['type:util', 'type:types'],
+            },
+            {
+              sourceTag: 'type:util',
+              onlyDependOnLibsWithTags: ['type:util', 'type:types'],
+            },
+            {
+              sourceTag: 'type:data',
+              onlyDependOnLibsWithTags: [
+                'type:data',
+                'type:util',
+                'type:types',
+              ],
+            },
+            {
+              sourceTag: 'type:component',
+              onlyDependOnLibsWithTags: [
+                'type:util',
+                'type:types',
+                'type:data',
+                'type:feature',
+                'type:component',
+              ],
+            },
+            {
+              sourceTag: 'type:feature',
+              onlyDependOnLibsWithTags: [
+                'type:util',
+                'type:types',
+                'type:data',
+                'type:feature',
+                'type:component',
+              ],
+            },
           ],
         },
       ],

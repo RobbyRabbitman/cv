@@ -39,7 +39,8 @@
   "nx": {
     "tags": [
       "runtime:web",
-      "domain:common"
+      "domain:common",
+      "type:component"
     ]
   }
 }
