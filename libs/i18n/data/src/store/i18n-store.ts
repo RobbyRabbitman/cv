@@ -88,6 +88,10 @@ export const I18n = signalStore(
               next: (translations) =>
                 patchState(
                   store,
+                  /**
+                   * We upsert here, because we lazily load translations for
+                   * different cv prototypes.
+                   */
                   upsertEntity(translations, TranslationEntity),
                 ),
               error: () => {
