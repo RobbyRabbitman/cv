@@ -11,6 +11,7 @@
     "watch:ng-packagr": "nx watch --all -- nx run \\$NX_PROJECT_NAME:build-ng-packagr --excludeTaskDependencies",
     "clean": "git clean -dfX && pnpm i && pnpm nx reset && pnpm nx sync",
     "sync": "pnpm i --ignore-scripts && nx sync",
+    "lint:all:fix": "nx run-many -t lint-eslint --fix",
     "postinstall": "sh tools/workspace/src/npm-life-cycle/post-install.sh"
   },
   "devDependencies": {
