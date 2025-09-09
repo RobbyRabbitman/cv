@@ -17,6 +17,9 @@
       "path": "../types"
     },
     {
+      "path": "../../auth/data"
+    },
+    {
       "path": "../../../tools/karma"
     },
     {

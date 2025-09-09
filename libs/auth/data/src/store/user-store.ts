@@ -15,8 +15,8 @@ export const UserStore = signalStore(
        */
       value: auth.user,
 
-      /** Whether the auth state has been resolved. */
-      authResolved: auth.resolved,
+      /** A promise that resolves once the auth state has been resolved. */
+      waitForResolvedValue: auth.waitForResolved,
     };
   }),
 

@@ -1,6 +1,11 @@
 import { inject, Injectable } from '@angular/core';
+import { UserStore } from '@robby-rabbitman/cv-libs-auth-data';
 import type { Identifiable, UUID } from '@robby-rabbitman/cv-libs-common-types';
-import { FIRESTORE } from '@robby-rabbitman/cv-libs-common-util';
+import {
+  FIRESTORE,
+  idConverter,
+  type InferDbModelType,
+} from '@robby-rabbitman/cv-libs-common-util';
 import type {
   Block,
   BlockPrototype,
@@ -10,10 +15,8 @@ import type {
 import { createCv } from '@robby-rabbitman/cv-libs-cv-util';
 import {
   collection,
-  CollectionReference,
   deleteDoc,
   doc,
-  type DocumentData,
   getDoc,
   getDocs,
   query,
@@ -25,14 +28,16 @@ import {
 @Injectable()
 export class CvApi {
   protected readonly firestore = inject(FIRESTORE);
+  protected readonly user = inject(UserStore);
 
   protected readonly collections = {
-    cv: collection(this.firestore, 'cv') as CvCollection,
-    template: collection(this.firestore, 'cvTemplate') as CvTemplateCollection,
-    blockPrototype: collection(
-      this.firestore,
-      'blockPrototype',
-    ) as BlockPrototypeCollection,
+    cv: collection(this.firestore, 'cv').withConverter(idConverter<Cv>()),
+    template: collection(this.firestore, 'cvTemplate').withConverter(
+      idConverter<CvTemplate>(),
+    ),
+    blockPrototype: collection(this.firestore, 'blockPrototype').withConverter(
+      idConverter<BlockPrototype>(),
+    ),
   };
 
   async getCvTemplate(cvTemplateId: UUID): Promise<CvTemplate> {
@@ -72,9 +77,9 @@ export class CvApi {
         query(
           this.collections.cv,
           where(
-            'userId' satisfies InferCollectionModel<CvCollection>,
+            'userId' satisfies InferDbModelType<typeof this.collections.cv>,
             '==',
-            this.userId(),
+            await this.userId(),
           ),
         ),
       )
@@ -88,7 +93,7 @@ export class CvApi {
   }
 
   async createCv(cvTemplateId: UUID, cvId: UUID): Promise<Cv> {
-    const userId = this.userId();
+    const userId = await this.userId();
 
     const blockPrototypes =
       await this.getBlockPrototypesOfCvTemplate(cvTemplateId);
@@ -116,7 +121,9 @@ export class CvApi {
         query(
           this.collections.blockPrototype,
           where(
-            'cvTemplateId' satisfies InferCollectionModel<BlockPrototypeCollection>,
+            'cvTemplateId' satisfies InferDbModelType<
+              typeof this.collections.blockPrototype
+            >,
             '==',
             cvTemplateId,
           ),
@@ -145,26 +152,13 @@ export class CvApi {
     return { cv, blockPrototypes };
   }
 
-  /** @returns The id of the signed in user, throws if user is not signed in, */
-  protected userId() {
-    return 'TODO';
+  protected async userId() {
+    await this.user.waitForResolvedValue;
 
-    // const user = this.user.value();
+    const user = this.user.value();
 
-    // if (!user) throw new Error(`[CvApi]: no user.`);
+    if (!user) throw new Error(`[CvApi]: unauthenticated user.`);
 
-    // return user.uid;
+    return user.uid;
   }
 }
-
-type InferCollectionModel<C> =
-  C extends CollectionReference<DocumentData, infer T> ? keyof T : never;
-
-type CvCollection = CollectionReference<Cv, Cv>;
-
-type CvTemplateCollection = CollectionReference<CvTemplate, CvTemplate>;
-
-type BlockPrototypeCollection = CollectionReference<
-  BlockPrototype,
-  BlockPrototype
->;
