@@ -36,7 +36,9 @@
   },
   "nx": {
     "tags": [
-      "runtime:web"
+      "domain:cv",
+      "runtime:web",
+      "type:data"
     ]
   }
 }
