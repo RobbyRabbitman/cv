@@ -67,6 +67,9 @@
     },
     {
       "path": "./libs/i18n/components"
+    },
+    {
+      "path": "./libs/cv/features/documents"
     }
   ]
 }

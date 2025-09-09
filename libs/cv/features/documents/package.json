@@ -1,5 +1,5 @@
 {
-  "name": "@robby-rabbitman/cv-libs-auth-components",
+  "name": "@robby-rabbitman/cv-libs-cv-features-documents",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,7 @@
     "dist",
     "package.json"
   ],
-  "module": "dist/fesm2022/robby-rabbitman-cv-libs-auth-components.mjs",
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-cv-features-documents.mjs",
   "typings": "index.d.ts",
   "exports": {
     "./package.json": {
@@ -15,17 +15,16 @@
     },
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-auth-components.mjs"
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-cv-features-documents.mjs"
     }
   },
   "dependencies": {
-    "@robby-rabbitman/cv-libs-auth-data": "workspace:*",
-    "@robby-rabbitman/cv-libs-i18n-features-translation": "workspace:*"
+    "@robby-rabbitman/cv-libs-auth-components": "workspace:*",
+    "@robby-rabbitman/cv-libs-cv-types": "workspace:*",
+    "@robby-rabbitman/cv-libs-cv-data": "workspace:*"
   },
   "peerDependencies": {
     "@angular/router": "20.2.4",
-    "rxjs": "7.8.2",
-    "@angular/material": "20.2.1",
     "@angular/core": "20.2.4"
   },
   "devDependencies": {
@@ -35,9 +34,9 @@
   },
   "nx": {
     "tags": [
+      "domain:cv",
       "runtime:web",
-      "domain:auth",
-      "type:component"
+      "type:feature"
     ]
   }
 }

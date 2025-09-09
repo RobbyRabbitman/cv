@@ -1,4 +1,10 @@
-import { DestroyRef, Injectable, inject, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
 import { FIREBASE_AUTH } from '@robby-rabbitman/cv-libs-common-util';
 import {
   GoogleAuthProvider,
@@ -22,6 +28,9 @@ export class AuthApi {
 
     return user.asReadonly();
   })();
+
+  /** Whether the auth state has been resolved. */
+  readonly resolved = computed(() => this.user() !== undefined);
 
   /** Signs out the current user. */
   async signOut() {

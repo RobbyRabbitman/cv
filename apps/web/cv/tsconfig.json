@@ -8,6 +8,9 @@
       "path": "../../../libs/common/features/shell"
     },
     {
+      "path": "../../../libs/cv/features/documents"
+    },
+    {
       "path": "../../../libs/i18n/features/translation"
     },
     {
