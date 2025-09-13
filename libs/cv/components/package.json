@@ -1,5 +1,5 @@
 {
-  "name": "@robby-rabbitman/cv-libs-cv-features-documents",
+  "name": "@robby-rabbitman/cv-libs-cv-components",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,7 @@
     "dist",
     "package.json"
   ],
-  "module": "dist/fesm2022/robby-rabbitman-cv-libs-cv-features-documents.mjs",
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-cv-components.mjs",
   "typings": "index.d.ts",
   "exports": {
     "./package.json": {
@@ -15,19 +15,15 @@
     },
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-cv-features-documents.mjs"
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-cv-components.mjs"
     }
   },
   "dependencies": {
     "@robby-rabbitman/cv-libs-i18n-features-translation": "workspace:*",
-    "@robby-rabbitman/cv-libs-auth-components": "workspace:*",
-    "@robby-rabbitman/cv-libs-cv-components": "workspace:*",
     "@robby-rabbitman/cv-libs-cv-data": "workspace:*"
   },
   "peerDependencies": {
     "@angular/material": "20.2.1",
-    "@angular/common": "20.2.4",
-    "@angular/router": "20.2.4",
     "@angular/core": "20.2.4"
   },
   "devDependencies": {
@@ -39,7 +35,7 @@
     "tags": [
       "domain:cv",
       "runtime:web",
-      "type:feature"
+      "type:component"
     ]
   }
 }

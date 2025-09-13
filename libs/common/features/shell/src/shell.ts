@@ -30,7 +30,7 @@ import { Logo } from './logo';
         }
       </span>
     </mat-toolbar>
-    <main class="container">
+    <main class="container px-4 sm:px-0">
       <ng-content />
     </main>
     <footer role="contentinfo"></footer>`,

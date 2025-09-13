@@ -5,22 +5,19 @@
   "files": [],
   "references": [
     {
-      "path": "../../data"
+      "path": "../data"
     },
     {
-      "path": "../../components"
+      "path": "../types"
     },
     {
-      "path": "../../../auth/components"
+      "path": "../../i18n/features/translation"
     },
     {
-      "path": "../../../i18n/features/translation"
+      "path": "../../../tools/karma"
     },
     {
-      "path": "../../../../tools/karma"
-    },
-    {
-      "path": "../../../../tools/eslint"
+      "path": "../../../tools/eslint"
     },
     {
       "path": "./tsconfig.lib.json"

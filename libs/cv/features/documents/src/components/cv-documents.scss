@@ -1,0 +1,16 @@
+@use '@angular/material' as mat;
+
+cv--documents {
+  .mdc-button__label {
+    width: 100%;
+    height: 100%;
+  }
+
+  @include mat.button-overrides(
+    (
+      outlined-container-height: fit-content,
+      outlined-touch-target-size: 100%,
+      outlined-container-shape: var(--mat-sys-corner-large),
+    )
+  );
+}

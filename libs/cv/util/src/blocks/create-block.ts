@@ -18,11 +18,7 @@ export function createBlock<TBlock extends Block>(
     idGenerator?: () => UUID;
   },
 ): TBlock {
-  const { idGenerator, prototypes } = {
-    idGenerator: uuid,
-    prototypes: {},
-    ...options,
-  };
+  const { idGenerator = uuid, prototypes = {} } = options ?? {};
 
   const blockBase = {
     prototypeId: prototype.id,

@@ -92,17 +92,24 @@ export class CvApi {
     await updateDoc(cvRef, { ...cv, lastModifiedAt: Date.now() });
   }
 
-  async createCv(cvTemplateId: UUID, cvId: UUID): Promise<Cv> {
+  async createCv(args: {
+    templateId: UUID;
+    id: UUID;
+    label: string;
+  }): Promise<Cv> {
+    const { templateId, id, label } = args;
+
     const userId = await this.userId();
 
     const blockPrototypes =
-      await this.getBlockPrototypesOfCvTemplate(cvTemplateId);
+      await this.getBlockPrototypesOfCvTemplate(templateId);
 
-    const cvDoc = doc(this.collections.cv, cvId);
+    const cvDoc = doc(this.collections.cv, id);
 
     const cv = {
       ...createCv(blockPrototypes),
-      id: cvId,
+      id,
+      label,
       userId,
       createdAt: Date.now(),
       lastModifiedAt: Date.now(),
