@@ -14,5 +14,5 @@ export type BlockTemplateWithChildren<TBlock extends Block = Block> =
 
 export type CvBlockTemplate = Omit<
   BlockTemplateWithChildren<Cv>,
-  'userId' | 'createdAt' | 'lastModifiedAt'
+  'userId' | 'createdAt' | 'lastModifiedAt' | 'label'
 >;
