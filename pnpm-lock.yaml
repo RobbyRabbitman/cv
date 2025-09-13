@@ -147,8 +147,8 @@ importers:
         specifier: 12.2.1
         version: 12.2.1
       firebase-tools:
-        specifier: 14.15.1
-        version: 14.15.1(@types/node@22.18.1)(encoding@0.1.13)
+        specifier: 14.15.2
+        version: 14.15.2(@types/node@22.18.1)(encoding@0.1.13)
       globals:
         specifier: 16.4.0
         version: 16.4.0
@@ -5878,8 +5878,8 @@ packages:
     resolution: {integrity: sha512-YyZM99iHrqLKjmt4LJDj58KI+fYyufRLBSYcqycxf//KpBk9FoewoGX0450m9nB44qrZnovzC2oeP5hUibxc/g==}
     engines: {node: '>=18'}
 
-  firebase-tools@14.15.1:
-    resolution: {integrity: sha512-GoBOnmo3+lXvIob4XuezFVCn6sKT3ZDvlYnmfSPFax4VuqrK6CXzbIjFdpjM4D1MD4rqpYm/VlcvlBtEiP0Z1w==}
+  firebase-tools@14.15.2:
+    resolution: {integrity: sha512-6wyA9F3tXToAKJR8IkDyHOlOwAOL6j9qoA1inF6psiC8lzMwJ9/t+Lc7HmvIgOb1KDdj82vxL3llX28wcHwonw==}
     engines: {node: '>=20.0.0 || >=22.0.0'}
     hasBin: true
 
@@ -16472,7 +16472,7 @@ snapshots:
       path-exists: 5.0.0
       unicorn-magic: 0.1.0
 
-  firebase-tools@14.15.1(@types/node@22.18.1)(encoding@0.1.13):
+  firebase-tools@14.15.2(@types/node@22.18.1)(encoding@0.1.13):
     dependencies:
       '@electric-sql/pglite': 0.3.7
       '@electric-sql/pglite-tools': 0.2.12(@electric-sql/pglite@0.3.7)
