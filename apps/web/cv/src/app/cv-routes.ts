@@ -8,4 +8,8 @@ export const CV_APP_ROUTES = [
     children: CV_DOCUMENTS_ROUTES,
     providers: [provideFeatureBasePath('documents')],
   },
+  {
+    path: '**',
+    redirectTo: 'documents',
+  },
 ] satisfies Routes;
