@@ -1,0 +1,45 @@
+{
+  "name": "@robby-rabbitman/cv-libs-cv-features-documents",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-cv-features-documents.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-cv-features-documents.mjs"
+    }
+  },
+  "dependencies": {
+    "@robby-rabbitman/cv-libs-i18n-features-translation": "workspace:*",
+    "@robby-rabbitman/cv-libs-i18n-components": "workspace:*",
+    "@robby-rabbitman/cv-libs-auth-components": "workspace:*",
+    "@robby-rabbitman/cv-libs-cv-components": "workspace:*",
+    "@robby-rabbitman/cv-libs-cv-data": "workspace:*"
+  },
+  "peerDependencies": {
+    "@angular/material": "20.2.1",
+    "@angular/router": "20.3.0",
+    "@angular/core": "20.3.0"
+  },
+  "devDependencies": {
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@robby-rabbitman/cv-tools-karma": "workspace:*",
+    "@robby-rabbitman/cv-tools-typescript": "workspace:*"
+  },
+  "nx": {
+    "tags": [
+      "domain:cv",
+      "runtime:web",
+      "type:feature"
+    ]
+  }
+}

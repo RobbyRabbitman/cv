@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "composite": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "../../data"
+    },
+    {
+      "path": "../../components"
+    },
+    {
+      "path": "../../../auth/components"
+    },
+    {
+      "path": "../../../i18n/components"
+    },
+    {
+      "path": "../../../i18n/features/translation"
+    },
+    {
+      "path": "../../../../tools/karma"
+    },
+    {
+      "path": "../../../../tools/eslint"
+    },
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

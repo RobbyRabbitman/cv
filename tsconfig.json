@@ -54,9 +54,6 @@
       "path": "./e2e/web/cv"
     },
     {
-      "path": "./tools/playwright-harness"
-    },
-    {
       "path": "./libs/i18n/data"
     },
     {
@@ -67,6 +64,12 @@
     },
     {
       "path": "./libs/i18n/components"
+    },
+    {
+      "path": "./libs/cv/features/documents"
+    },
+    {
+      "path": "./libs/cv/components"
     }
   ]
 }

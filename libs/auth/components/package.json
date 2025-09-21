@@ -23,6 +23,7 @@
     "@robby-rabbitman/cv-libs-i18n-features-translation": "workspace:*"
   },
   "peerDependencies": {
+    "@angular/router": "20.3.0",
     "@angular/material": "20.2.1",
     "@angular/core": "20.3.0"
   },

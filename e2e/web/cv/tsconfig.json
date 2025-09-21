@@ -5,16 +5,7 @@
   "files": [],
   "references": [
     {
-      "path": "../../../tools/playwright-harness"
-    },
-    {
       "path": "../../../tools/playwright"
-    },
-    {
-      "path": "../../../libs/i18n/components"
-    },
-    {
-      "path": "../../../libs/common/features/shell"
     },
     {
       "path": "../../../apps/web/cv"

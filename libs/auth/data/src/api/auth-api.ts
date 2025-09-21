@@ -1,4 +1,11 @@
-import { DestroyRef, Injectable, inject, signal } from '@angular/core';
+import {
+  DestroyRef,
+  Injectable,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
+import { toObservable } from '@angular/core/rxjs-interop';
 import { FIREBASE_AUTH } from '@robby-rabbitman/cv-libs-common-util';
 import {
   GoogleAuthProvider,
@@ -6,6 +13,7 @@ import {
   onAuthStateChanged,
   signInWithPopup,
 } from 'firebase/auth';
+import { first, firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class AuthApi {
@@ -22,6 +30,14 @@ export class AuthApi {
 
     return user.asReadonly();
   })();
+
+  /** Whether the auth state has been resolved. */
+  readonly resolved = computed(() => this.user() !== undefined);
+
+  /** A promise that resolves once the auth state has been resolved. */
+  readonly waitForResolved = firstValueFrom(
+    toObservable(this.resolved).pipe(first(Boolean)),
+  );
 
   /** Signs out the current user. */
   async signOut() {

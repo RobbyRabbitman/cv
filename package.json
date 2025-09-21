@@ -9,6 +9,7 @@
   },
   "scripts": {
     "watch:ng-packagr": "nx watch --all -- nx run \\$NX_PROJECT_NAME:build-ng-packagr --excludeTaskDependencies",
+    "eslint:all:fix": "nx run-many -t lint-eslint --fix",
     "clean": "git clean -dfX && pnpm i && pnpm nx reset && pnpm nx sync",
     "sync": "pnpm i --ignore-scripts && nx sync",
     "postinstall": "sh tools/workspace/src/npm-life-cycle/post-install.sh"

@@ -8,19 +8,23 @@ import { createBlock } from './create-block';
  */
 export function createCv(
   prototypes: Record<UUID, BlockPrototype>,
-  options?: { idFactory?: () => UUID },
-): Cv {
+  options?: { idGenerator?: () => UUID },
+): Pick<Cv, 'id' | 'prototypeId' | 'type' | 'children'> {
+  const { idGenerator } = options ?? {};
+
   const cvPrototypes = Object.values(prototypes).filter(
     ({ type }) => type === 'cv',
   );
 
   if (cvPrototypes.length !== 1)
     throw new Error(
-      `[createCv]: need exactly 1 cv prototype, when creating a cv from a list of prototypes. Found '${cvPrototypes.length}'.`,
+      `[createCv]: need exactly 1 cv prototype, when creating a cv from a list of prototypes. Found ${cvPrototypes.length}.`,
     );
 
-  return createBlock(cvPrototypes[0] as BlockPrototype<Cv>, {
-    ...options,
+  const cv = createBlock(cvPrototypes[0] as BlockPrototype<Cv>, {
+    idGenerator,
     prototypes,
   });
+
+  return cv;
 }

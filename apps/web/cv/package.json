@@ -12,6 +12,7 @@
     "@robby-rabbitman/cv-libs-common-util": "workspace:*",
     "@robby-rabbitman/cv-libs-i18n-data": "workspace:*",
     "@robby-rabbitman/cv-libs-i18n-features-translation": "workspace:*",
+    "@robby-rabbitman/cv-libs-cv-features-documents": "workspace:*",
     "@robby-rabbitman/cv-libs-common-features-shell": "workspace:*"
   },
   "peerDependencies": {
@@ -27,6 +28,9 @@
     "@robby-rabbitman/cv-tools-typescript": "workspace:*"
   },
   "nx": {
+    "implicitDependencies": [
+      "@robby-rabbitman/cv-tools-firebase"
+    ],
     "tags": [
       "runtime:web",
       "type:app"
@@ -62,12 +66,18 @@
             "projects": [
               "@robby-rabbitman/cv-tools-firebase"
             ],
-            "target": "serve"
+            "target": "serve",
+            "params": "ignore"
           }
         ]
       },
+      "build-deps": {
+        "dependsOn": [
+          "^build*"
+        ]
+      },
       "watch-deps": {
-        "command": "[ -n \"${CI:-}\" ] || nx watch --p {projectName} --includeDependentProjects -- \"nx run-many -t build-tsc build-ng-packagr -p \\$NX_PROJECT_NAME --exclude {projectName} && [ \"\\$NX_PROJECT_NAME\" != \"{projectName}\" ] && find {projectRoot}/src/app -type f -not -name '*.spec.*' -exec touch {} +\"",
+        "command": "[ -n \"${CI:-}\" ] || nx watch --p {projectName} --includeDependentProjects -- \"nx run {projectName}:build-deps && [ \"\\$NX_PROJECT_NAME\" != \"{projectName}\" ] && find {projectRoot}/src/app -type f -not -name '*.spec.*' -exec touch {} +\"",
         "continuous": true
       },
       "test-angular": {
