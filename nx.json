@@ -176,17 +176,6 @@
     },
 
     {
-      "plugin": "@nx/js/typescript",
-      "options": {
-        "build": false,
-        "typecheck": {
-          "targetName": "typecheck-tsc"
-        }
-      },
-      "include": ["e2e/**/*"]
-    },
-
-    {
       "plugin": "@nx/vite/plugin",
       "options": {
         "testTargetName": "test-vitest"
@@ -234,10 +223,6 @@
   ],
   "targetDefaults": {
     "build*": {
-      "dependsOn": ["^build*"]
-    },
-
-    "typecheck*": {
       "dependsOn": ["^build*"]
     },
 

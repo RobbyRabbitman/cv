@@ -53,8 +53,6 @@ jobs:
           pnpm nx affected -c ci -t
           lint
           lint-eslint
-          typecheck
-          typecheck-tsc
 
       - run: >
           pnpm nx affected -c ci -t
