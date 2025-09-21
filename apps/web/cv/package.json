@@ -28,6 +28,9 @@
     "@robby-rabbitman/cv-tools-typescript": "workspace:*"
   },
   "nx": {
+    "implicitDependencies": [
+      "@robby-rabbitman/cv-tools-firebase"
+    ],
     "tags": [
       "runtime:web",
       "type:app"
