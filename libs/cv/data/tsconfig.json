@@ -20,6 +20,9 @@
       "path": "../../auth/data"
     },
     {
+      "path": "../../i18n/features/translation"
+    },
+    {
       "path": "../../../tools/karma"
     },
     {

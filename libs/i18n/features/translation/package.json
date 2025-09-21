@@ -19,6 +19,7 @@
     }
   },
   "dependencies": {
+    "@robby-rabbitman/cv-libs-i18n-types": "workspace:*",
     "@robby-rabbitman/cv-libs-i18n-data": "workspace:*"
   },
   "peerDependencies": {

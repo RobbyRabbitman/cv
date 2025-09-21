@@ -10,6 +10,7 @@ import {
 } from '@ngrx/signals';
 import type { UUID } from '@robby-rabbitman/cv-libs-common-types';
 import { uuid } from '@robby-rabbitman/cv-libs-common-util';
+import { Translate } from '@robby-rabbitman/cv-libs-i18n-features-translation';
 import { CvApi } from '../api/cv-api';
 
 interface CvState {
@@ -65,6 +66,7 @@ export const CvStore = signalStore(
   }),
   withMethods((store) => {
     const cvApi = inject(CvApi);
+    const translate = inject(Translate);
 
     /** Sets the active CV. */
     const setActiveCv = (cvId: UUID | null) => {
@@ -83,8 +85,7 @@ export const CvStore = signalStore(
       await cvApi.createCv({
         templateId,
         id,
-        /** TODO: use translated label for a new CV */
-        label: 'New CV',
+        label: translate.instant('cv.new_document.name'),
       });
 
       if (activate) {

@@ -8,6 +8,9 @@
       "path": "../../data"
     },
     {
+      "path": "../../types"
+    },
+    {
       "path": "../../../../tools/karma"
     },
     {
