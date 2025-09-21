@@ -32,15 +32,11 @@ export class Auth {
 
     if (!user) {
       /** TODO: This only exists with firebase emulators. */
-      await authPage
-        .getByRole('button', { name: 'Add new account' })
-        .click({ timeout: 5_000 });
+      await authPage.getByRole('button', { name: 'Add new account' }).click();
       await authPage
         .getByRole('button', { name: 'Auto-generate user information' })
-        .click({ timeout: 5_000 });
-      await authPage
-        .getByRole('button', { name: /Sign in/ })
-        .click({ timeout: 5_000 });
+        .click();
+      await authPage.getByRole('button', { name: /Sign in/ }).click();
     } else {
       await authPage.getByText(user).click();
     }
