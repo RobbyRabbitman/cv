@@ -10,6 +10,7 @@ import {
 } from '@ngrx/signals';
 import type { UUID } from '@robby-rabbitman/cv-libs-common-types';
 import { uuid } from '@robby-rabbitman/cv-libs-common-util';
+// eslint-disable-next-line @nx/enforce-module-boundaries -- TODO: make util
 import { Translate } from '@robby-rabbitman/cv-libs-i18n-features-translation';
 import { CvApi } from '../api/cv-api';
 

@@ -19,12 +19,11 @@
     }
   },
   "dependencies": {
-    "@robby-rabbitman/cv-libs-i18n-types": "workspace:*",
     "@robby-rabbitman/cv-libs-i18n-data": "workspace:*"
   },
   "peerDependencies": {
     "@ngx-translate/core": "17.0.0",
-    "@angular/core": "20.2.4"
+    "@angular/core": "20.3.0"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",

@@ -24,11 +24,12 @@
   },
   "dependencies": {
     "@robby-rabbitman/cv-libs-i18n-data": "workspace:*",
-    "@robby-rabbitman/cv-libs-i18n-features-translation": "workspace:*"
+    "@robby-rabbitman/cv-libs-i18n-features-translation": "workspace:*",
+    "rxjs": "7.8.2"
   },
   "peerDependencies": {
     "@angular/cdk": "20.2.1",
-    "@angular/core": "20.2.4",
+    "@angular/core": "20.3.0",
     "@angular/material": "20.2.1"
   },
   "devDependencies": {
