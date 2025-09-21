@@ -14,4 +14,22 @@ describe('createCv', () => {
       children: [],
     });
   });
+
+  it("should throw if there's not exactly one cv prototype", () => {
+    expect(() => createCv({})).toThrowError(
+      '[createCv]: need exactly 1 cv prototype, when creating a cv from a list of prototypes. Found 0.',
+    );
+
+    expect(() =>
+      createCv({
+        ...MOCK_BLOCK_PROTOTYPES,
+        anotherCvPrototype: {
+          ...MOCK_BLOCK_PROTOTYPES.cvPrototype,
+          id: 'anotherCvPrototype',
+        },
+      }),
+    ).toThrowError(
+      '[createCv]: need exactly 1 cv prototype, when creating a cv from a list of prototypes. Found 2.',
+    );
+  });
 });

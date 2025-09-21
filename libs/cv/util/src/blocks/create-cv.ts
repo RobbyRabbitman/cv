@@ -18,7 +18,7 @@ export function createCv(
 
   if (cvPrototypes.length !== 1)
     throw new Error(
-      `[createCv]: need exactly 1 cv prototype, when creating a cv from a list of prototypes. Found '${cvPrototypes.length}'.`,
+      `[createCv]: need exactly 1 cv prototype, when creating a cv from a list of prototypes. Found ${cvPrototypes.length}.`,
     );
 
   const cv = createBlock(cvPrototypes[0] as BlockPrototype<Cv>, {
