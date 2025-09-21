@@ -63,7 +63,8 @@
             "projects": [
               "@robby-rabbitman/cv-tools-firebase"
             ],
-            "target": "serve"
+            "target": "serve",
+            "params": "ignore"
           }
         ]
       },
