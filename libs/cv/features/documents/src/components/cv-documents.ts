@@ -19,15 +19,20 @@ import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-features-translatio
   },
   styleUrl: './cv-documents.scss',
   template: `@for (cv of cv.all.value(); track cv.id) {
-    <button matButton="outlined" class="aspect-square">
+    @let descriptionId = 'cv--documents__description--' + cv.id;
+    <button
+      matButton="outlined"
+      class="aspect-square"
+      [attr.aria-describedby]="descriptionId"
+    >
       <span class="h-full flex flex-col gap-2 py-4">
-        <span class="flex-1">
+        <span class="flex-1" aria-hidden="true">
           <!-- cv thumb here -->
         </span>
         <mat-divider />
         <span class="flex flex-col gap-2">
           <span>{{ cv.label }}</span>
-          <span>
+          <span aria-hidden="true" [id]="descriptionId">
             {{
               'cv.documents.last_modified_at'
                 | translate
