@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@robby-rabbitman/cv-libs-i18n-features-translation": "workspace:*",
+    "@robby-rabbitman/cv-libs-i18n-components": "workspace:*",
     "@robby-rabbitman/cv-libs-auth-components": "workspace:*",
     "@robby-rabbitman/cv-libs-cv-components": "workspace:*",
     "@robby-rabbitman/cv-libs-cv-data": "workspace:*"

@@ -449,12 +449,12 @@ importers:
       '@angular/core':
         specifier: 20.2.4
         version: 20.2.4(@angular/compiler@20.2.4)(rxjs@7.8.2)
+      '@angular/material':
+        specifier: 20.2.1
+        version: 20.2.1(8784810cdf7db9fd22c76fc010044f22)
       '@robby-rabbitman/cv-libs-cv-data':
         specifier: workspace:*
         version: link:../data
-      '@robby-rabbitman/cv-libs-cv-types':
-        specifier: workspace:*
-        version: link:../types
       '@robby-rabbitman/cv-libs-i18n-features-translation':
         specifier: workspace:*
         version: link:../../i18n/features/translation
@@ -529,6 +529,9 @@ importers:
       '@robby-rabbitman/cv-libs-cv-data':
         specifier: workspace:*
         version: link:../../data
+      '@robby-rabbitman/cv-libs-i18n-components':
+        specifier: workspace:*
+        version: link:../../../i18n/components
       '@robby-rabbitman/cv-libs-i18n-features-translation':
         specifier: workspace:*
         version: link:../../../i18n/features/translation
