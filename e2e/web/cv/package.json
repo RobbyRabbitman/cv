@@ -5,12 +5,12 @@
   "type": "module",
   "devDependencies": {
     "@robby-rabbitman/cv-apps-web-cv": "workspace:*",
-    "@robby-rabbitman/cv-libs-common-features-shell": "workspace:*",
-    "@robby-rabbitman/cv-libs-i18n-components": "workspace:*",
     "@robby-rabbitman/cv-tools-playwright": "workspace:*",
-    "@robby-rabbitman/cv-tools-playwright-harness": "workspace:*",
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
     "@robby-rabbitman/cv-tools-typescript": "workspace:*"
+  },
+  "peerDependencies": {
+    "@playwright/test": "1.55.0"
   },
   "nx": {
     "tags": [
