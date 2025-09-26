@@ -142,6 +142,8 @@ export const I18n = signalStore(
   }),
   withHooks({
     onInit: (store) => {
+      /** TODO: get the locale of the user agent and set it if supported. */
+
       /**
        * Initially get all available locales and the translations for the active
        * locale.

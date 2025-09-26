@@ -254,6 +254,9 @@ importers:
       '@robby-rabbitman/cv-libs-cv-features-documents':
         specifier: workspace:*
         version: link:../../../libs/cv/features/documents
+      '@robby-rabbitman/cv-libs-i18n-components':
+        specifier: workspace:*
+        version: link:../../../libs/i18n/components
       '@robby-rabbitman/cv-libs-i18n-data':
         specifier: workspace:*
         version: link:../../../libs/i18n/data

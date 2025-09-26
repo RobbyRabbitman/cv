@@ -11,6 +11,7 @@
     "@robby-rabbitman/cv-libs-auth-data": "workspace:*",
     "@robby-rabbitman/cv-libs-common-util": "workspace:*",
     "@robby-rabbitman/cv-libs-i18n-data": "workspace:*",
+    "@robby-rabbitman/cv-libs-i18n-components": "workspace:*",
     "@robby-rabbitman/cv-libs-i18n-features-translation": "workspace:*",
     "@robby-rabbitman/cv-libs-cv-features-documents": "workspace:*",
     "@robby-rabbitman/cv-libs-common-features-shell": "workspace:*"
