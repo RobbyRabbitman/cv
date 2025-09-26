@@ -19,7 +19,7 @@
   "onboarding": false,
   "requireConfig": "ignored",
   "autoApprove": true,
-  "enabledManagers": ["npm", "nvm"],
+  "enabledManagers": ["npm", "nvm", "custom.regex"],
   "packageRules": [
     {
       "description": "ignore '@robby-rabbitman/cv-*' packages since we are using the pnpm 'workspace:*' protocol",
@@ -46,9 +46,11 @@
       "schedule": ["* * * * 1"]
     },
     {
-      "description": "Separate node update from the `@types/node`, since renovates `pnpm i` fails because the node version changed, resulting in a outdated lockfile.",
+      "groupName": "Node.js version updates",
       "matchPackageNames": ["@types/node"],
-      "groupName": "@types/node"
+      "matchManagers": ["npm", "nvm"],
+      "matchDepTypes": ["engines"],
+      "matchFileNames": [".nvmrc", "package.json"]
     }
   ],
   "customManagers": [
