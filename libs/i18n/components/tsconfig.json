@@ -5,7 +5,7 @@
   "files": [],
   "references": [
     {
-      "path": "../features/translation"
+      "path": "../translation"
     },
     {
       "path": "../data"

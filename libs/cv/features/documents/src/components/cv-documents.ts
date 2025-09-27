@@ -8,7 +8,7 @@ import { MatButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { CvStore } from '@robby-rabbitman/cv-libs-cv-data';
 import { DatePipe } from '@robby-rabbitman/cv-libs-i18n-components';
-import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-features-translation';
+import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
 
 @Component({
   selector: 'cv--documents',

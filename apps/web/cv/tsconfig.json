@@ -5,16 +5,10 @@
   "files": [],
   "references": [
     {
-      "path": "../../../libs/i18n/features/translation"
-    },
-    {
       "path": "../../../libs/common/features/shell"
     },
     {
       "path": "../../../libs/cv/features/documents"
-    },
-    {
-      "path": "../../../libs/i18n/translation"
     },
     {
       "path": "../../../libs/i18n/components"

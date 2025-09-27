@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CreateCvButton } from '@robby-rabbitman/cv-libs-cv-components';
 import { CvStore } from '@robby-rabbitman/cv-libs-cv-data';
-import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-features-translation';
+import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
 import { CvDocuments } from '../components/cv-documents';
 
 /**

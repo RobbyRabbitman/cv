@@ -3,7 +3,7 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { I18n } from '@robby-rabbitman/cv-libs-i18n-data';
-import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-features-translation';
+import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
 
 @Component({
   selector: 'cv-i18n--locale-menu',
