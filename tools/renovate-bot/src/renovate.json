@@ -48,7 +48,8 @@
     {
       "groupName": "Node.js version updates",
       "matchManagers": ["npm", "nvm"],
-      "matchDepTypes": ["engines"]
+      "matchDepTypes": ["engines"],
+      "matchFileNames": [".nvmrc", "package.json"]
     }
   ],
   "customManagers": [
