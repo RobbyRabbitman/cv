@@ -22,7 +22,7 @@
     "@robby-rabbitman/cv-libs-common-types": "workspace:*"
   },
   "peerDependencies": {
-    "@angular/core": "20.3.1",
+    "@angular/core": "20.3.2",
     "firebase": "12.2.1"
   },
   "devDependencies": {
