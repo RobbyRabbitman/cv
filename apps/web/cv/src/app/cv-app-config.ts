@@ -14,7 +14,6 @@ import { provideFirebase } from '@robby-rabbitman/cv-libs-common-util';
 import { provideCvData } from '@robby-rabbitman/cv-libs-cv-data';
 import { reflectLocaleInDocument } from '@robby-rabbitman/cv-libs-i18n-components';
 import { provideI18nData } from '@robby-rabbitman/cv-libs-i18n-data';
-import { provideTranslation } from '@robby-rabbitman/cv-libs-i18n-features-translation';
 import { environment } from '../environments/environment';
 import { CV_APP_ROUTES } from './cv-routes';
 
@@ -44,7 +43,6 @@ export const CV_APP_CONFIG = {
 
     /** I18n */
     provideI18nData(),
-    provideTranslation(),
     reflectLocaleInDocument(),
 
     /** CV */

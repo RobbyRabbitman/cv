@@ -8,7 +8,7 @@
       "path": "../data"
     },
     {
-      "path": "../../i18n/features/translation"
+      "path": "../../i18n/translation"
     },
     {
       "path": "../../../tools/karma"
