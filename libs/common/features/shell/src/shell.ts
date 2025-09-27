@@ -19,7 +19,7 @@ import { Logo } from './logo';
   host: {
     class: 'cv-common--shell h-full flex flex-col items-center',
   },
-  template: `<mat-toolbar role="heading">
+  template: `<mat-toolbar role="banner">
       <span class="container mx-auto flex items-center">
         <cv-common--shell-logo class="me-auto" />
         <cv-i18n--locale-menu />

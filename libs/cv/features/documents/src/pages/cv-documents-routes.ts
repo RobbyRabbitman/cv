@@ -6,6 +6,7 @@ export const CV_DOCUMENTS_ROUTES: Routes = [
     path: '',
     loadComponent: () => import('./cv-documents-page'),
     canActivate: [authGuard],
+    title: 'cv.documents.page.title',
   },
   {
     path: '**',
