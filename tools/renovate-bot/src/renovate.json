@@ -47,10 +47,8 @@
     },
     {
       "groupName": "Node.js version updates",
-      "matchPackageNames": ["@types/node"],
       "matchManagers": ["npm", "nvm"],
-      "matchDepTypes": ["engines"],
-      "matchFileNames": [".nvmrc", "package.json"]
+      "matchDepTypes": ["engines"]
     }
   ],
   "customManagers": [
