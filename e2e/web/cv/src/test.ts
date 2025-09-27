@@ -2,8 +2,10 @@ import { test as base } from '@playwright/test';
 import { Auth } from './fixtures/auth.js';
 import { CvDocumentsPage } from './fixtures/cv-documents-page.js';
 import { LocaleMenu } from './fixtures/locale-menu.js';
+import { Shell } from './fixtures/shell.js';
 
 export const test = base.extend<{
+  shell: Shell;
   localeMenu: LocaleMenu;
   auth: Auth;
   cvDocumentsPage: CvDocumentsPage;
@@ -19,8 +21,14 @@ export const test = base.extend<{
     await use(page);
   },
 
-  localeMenu: async ({ page }, use) => {
-    const localeMenu = new LocaleMenu(page);
+  shell: async ({ page }, use) => {
+    const shell = new Shell(page);
+
+    await use(shell);
+  },
+
+  localeMenu: async ({ shell }, use) => {
+    const localeMenu = new LocaleMenu(shell);
 
     await use(localeMenu);
 
@@ -28,8 +36,8 @@ export const test = base.extend<{
     await localeMenu.switchLocale('English');
   },
 
-  auth: async ({ page }, use) => {
-    const auth = new Auth(page);
+  auth: async ({ shell }, use) => {
+    const auth = new Auth(shell);
 
     await use(auth);
 
@@ -38,8 +46,8 @@ export const test = base.extend<{
     }
   },
 
-  cvDocumentsPage: async ({ page }, use) => {
-    const cvDocumentsPage = new CvDocumentsPage(page);
+  cvDocumentsPage: async ({ shell }, use) => {
+    const cvDocumentsPage = new CvDocumentsPage(shell);
 
     await use(cvDocumentsPage);
 

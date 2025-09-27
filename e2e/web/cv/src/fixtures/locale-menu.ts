@@ -1,16 +1,21 @@
-import { type Locator, type Page } from '@playwright/test';
+import { type Locator } from '@playwright/test';
+import type { Shell } from './shell.js';
 
 export class LocaleMenu {
   readonly trigger: Locator;
   protected readonly item: Locator;
 
-  constructor(protected readonly page: Page) {
-    this.trigger = page.getByTestId('locale-menu').getByRole('button');
-    this.item = page.getByTestId(/^locale-menu-item-/);
+  constructor(protected readonly shell: Shell) {
+    this.trigger = shell.header.getByTestId('locale-menu').getByRole('button');
+
+    /** We cannot use the header locator because of cdk-overlay */
+    this.item = shell.page.getByTestId(/^locale-menu-item-/);
   }
 
   getItem(locale: string) {
-    return this.item.and(this.page.getByRole('menuitem', { name: locale }));
+    return this.item.and(
+      this.shell.page.getByRole('menuitem', { name: locale }),
+    );
   }
 
   async switchLocale(locale: string) {

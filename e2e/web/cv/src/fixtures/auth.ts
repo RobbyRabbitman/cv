@@ -1,12 +1,13 @@
-import { type Locator, type Page } from '@playwright/test';
+import { type Locator } from '@playwright/test';
+import type { Shell } from './shell.js';
 
 export class Auth {
   readonly signInButton: Locator;
   readonly signOutButton: Locator;
 
-  constructor(protected readonly page: Page) {
-    this.signInButton = page.getByRole('button', { name: 'Sign in' });
-    this.signOutButton = page.getByRole('button', { name: 'Sign out' });
+  constructor(protected readonly shell: Shell) {
+    this.signInButton = shell.header.getByRole('button', { name: 'Sign in' });
+    this.signOutButton = shell.header.getByRole('button', { name: 'Sign out' });
   }
 
   async isSignedIn() {
@@ -26,7 +27,7 @@ export class Auth {
     }
 
     const [authPage] = await Promise.all([
-      this.page.waitForEvent('popup'),
+      this.shell.page.waitForEvent('popup'),
       this.signInButton.click(),
     ]);
 
