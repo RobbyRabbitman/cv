@@ -60,7 +60,7 @@
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-n": "17.21.3",
     "eslint-plugin-playwright": "2.2.2",
-    "firebase": "12.2.1",
+    "firebase": "12.3.0",
     "firebase-tools": "14.15.1",
     "globals": "16.4.0",
     "jasmine-core": "5.10.0",
