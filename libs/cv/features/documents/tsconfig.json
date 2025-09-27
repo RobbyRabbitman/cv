@@ -17,7 +17,7 @@
       "path": "../../../i18n/components"
     },
     {
-      "path": "../../../i18n/features/translation"
+      "path": "../../../i18n/translation"
     },
     {
       "path": "../../../../tools/karma"

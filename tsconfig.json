@@ -57,9 +57,6 @@
       "path": "./libs/i18n/data"
     },
     {
-      "path": "./libs/i18n/features/translation"
-    },
-    {
       "path": "./libs/i18n/types"
     },
     {
@@ -70,6 +67,9 @@
     },
     {
       "path": "./libs/cv/components"
+    },
+    {
+      "path": "./libs/i18n/translation"
     }
   ]
 }

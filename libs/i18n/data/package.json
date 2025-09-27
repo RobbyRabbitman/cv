@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@robby-rabbitman/cv-libs-common-util": "workspace:*",
+    "@robby-rabbitman/cv-libs-i18n-translation": "workspace:*",
     "@robby-rabbitman/cv-libs-i18n-types": "workspace:*"
   },
   "peerDependencies": {
