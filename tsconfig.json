@@ -70,6 +70,9 @@
     },
     {
       "path": "./libs/cv/components"
+    },
+    {
+      "path": "./libs/i18n/translation"
     }
   ]
 }

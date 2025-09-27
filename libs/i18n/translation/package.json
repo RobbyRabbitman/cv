@@ -1,0 +1,43 @@
+{
+  "name": "@robby-rabbitman/cv-libs-i18n-translation",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-i18n-translation.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-i18n-translation.mjs"
+    }
+  },
+  "dependencies": {
+    "@robby-rabbitman/cv-libs-i18n-types": "workspace:*"
+  },
+  "peerDependencies": {
+    "rxjs": "7.8.2",
+    "@angular/router": "20.3.1",
+    "@angular/platform-browser": "20.3.1",
+    "@ngx-translate/core": "17.0.0",
+    "@angular/core": "20.3.1"
+  },
+  "devDependencies": {
+    "@robby-rabbitman/cv-tools-eslint": "workspace:*",
+    "@robby-rabbitman/cv-tools-karma": "workspace:*",
+    "@robby-rabbitman/cv-tools-typescript": "workspace:*"
+  },
+  "nx": {
+    "tags": [
+      "runtime:web",
+      "domain:common",
+      "type:util"
+    ]
+  }
+}
