@@ -53,7 +53,7 @@ import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
       <cv--delete-cv-fab
         [cvId]="cv.id"
         (click)="$event.stopPropagation()"
-        class="opacity-0 group-focus-within:opacity-100 group-hover:opacity-100 absolute right-4 top-4 z-1"
+        class="invisible group-focus-within:visible group-hover:visible absolute right-4 top-4 z-1"
       />
     </li>
   }`,

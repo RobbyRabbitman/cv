@@ -459,6 +459,9 @@ importers:
       '@robby-rabbitman/cv-libs-cv-data':
         specifier: workspace:*
         version: link:../data
+      '@robby-rabbitman/cv-libs-cv-types':
+        specifier: workspace:*
+        version: link:../types
       '@robby-rabbitman/cv-libs-i18n-translation':
         specifier: workspace:*
         version: link:../../i18n/translation

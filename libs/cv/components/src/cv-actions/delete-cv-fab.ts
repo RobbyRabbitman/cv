@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  inject,
   ViewEncapsulation,
 } from '@angular/core';
 import { MatMiniFabButton } from '@angular/material/button';
@@ -17,11 +18,18 @@ import { DeleteCv } from './delete-cv';
       inputs: ['cvId'],
     },
   ],
-  template: `<button mat-mini-fab aria-label="{{ 'cv.document' | translate }}">
+  template: `<button
+    mat-mini-fab
+    aria-label="{{
+      'cv.delete_cv_button.text' | translate: { name: cv().label }
+    }}"
+  >
     <mat-icon>delete</mat-icon>
   </button>`,
   styleUrl: './delete-cv-fab.scss',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DeleteCvFab {}
+export class DeleteCvFab {
+  protected readonly cv = inject(DeleteCv).cv;
+}

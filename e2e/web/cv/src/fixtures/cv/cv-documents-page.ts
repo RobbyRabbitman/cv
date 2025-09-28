@@ -12,8 +12,20 @@ export class CvDocumentsPage {
     this.cv = this.cvList.getByRole('listitem');
   }
 
-  getCv(name: string | RegExp) {
-    return this.cv.getByRole('button', { name });
+  getEditCvButton(name: string | RegExp) {
+    return this.cv.getByRole('button', {
+      name: new RegExp(
+        'Edit document: ' + (typeof name === 'string' ? name : name.source),
+      ),
+    });
+  }
+
+  getDeleteCvButton(name: string | RegExp) {
+    return this.cv.getByRole('button', {
+      name: new RegExp(
+        'Delete document: ' + (typeof name === 'string' ? name : name.source),
+      ),
+    });
   }
 
   async goTo() {
@@ -23,5 +35,13 @@ export class CvDocumentsPage {
 
   async createCv() {
     await this.createButton.click();
+  }
+
+  async deleteCv(name: string | RegExp) {
+    const cv = this.getEditCvButton(name);
+
+    await cv.hover();
+
+    await this.getDeleteCvButton(name).click();
   }
 }

@@ -1,6 +1,6 @@
 import { expect, test } from '../test.js';
 
-test('create a new cv', async ({ auth, cvDocumentsPage }) => {
+test('delete a cv', async ({ auth, cvDocumentsPage }) => {
   await auth.signIn();
 
   await cvDocumentsPage.goTo();
@@ -9,6 +9,6 @@ test('create a new cv', async ({ auth, cvDocumentsPage }) => {
   await cvDocumentsPage.createCv();
   await expect(cvDocumentsPage.getEditCvButton(/New CV/)).toHaveCount(1);
 
-  await cvDocumentsPage.createCv();
-  await expect(cvDocumentsPage.getEditCvButton(/New CV/)).toHaveCount(2);
+  await cvDocumentsPage.deleteCv(/New CV/);
+  await expect(cvDocumentsPage.getEditCvButton(/New CV/)).toHaveCount(0);
 });

@@ -1,4 +1,4 @@
-import { inject, resource } from '@angular/core';
+import { computed, inject, resource } from '@angular/core';
 
 import {
   patchState,
@@ -43,11 +43,18 @@ export const CvStore = signalStore(
       }),
     };
   }),
-  withProps(({ _activeCv, _allTemplates, _all }) => ({
-    active: _activeCv.asReadonly(),
-    allTemplates: _allTemplates.asReadonly(),
-    all: _all.asReadonly(),
-  })),
+  withProps(({ _activeCv, _allTemplates, _all }) => {
+    const all = _all.asReadonly();
+
+    return {
+      active: _activeCv.asReadonly(),
+      allTemplates: _allTemplates.asReadonly(),
+      all,
+      allMap: computed(() =>
+        Object.fromEntries(all.value().map((cv) => [cv.id, cv])),
+      ),
+    };
+  }),
   withLinkedState(({ allTemplates }) => {
     const defaultTemplate = () => {
       if (!allTemplates.hasValue()) {
