@@ -1,5 +1,5 @@
 import { type Locator } from '@playwright/test';
-import type { Shell } from './shell.js';
+import type { Shell } from '../common/shell.js';
 
 export class LocaleMenu {
   readonly trigger: Locator;
