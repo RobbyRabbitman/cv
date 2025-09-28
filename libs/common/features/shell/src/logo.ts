@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { APP_NAME } from '@robby-rabbitman/cv-libs-common-types';
 import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
 
 @Component({
@@ -14,10 +15,11 @@ import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
     routerLink="/"
     mat-button
     aria-label="{{ 'common.shell.logo.text' | translate }}"
-  >
-    EasyCv
-  </a>`,
+    >{{ appName }}</a
+  >`,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Logo {}
+export class Logo {
+  protected readonly appName = APP_NAME;
+}

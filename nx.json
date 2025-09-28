@@ -231,7 +231,10 @@
     },
 
     "lint-eslint": {
-      "inputs": ["targets-lint-eslint"]
+      "inputs": ["targets-lint-eslint"],
+      "options": {
+        "report-unused-disable-directives": true
+      }
     },
 
     "test-vitest": {

@@ -2,6 +2,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { Title } from '@angular/platform-browser';
 import { RouterStateSnapshot, TitleStrategy } from '@angular/router';
+import { APP_NAME } from '@robby-rabbitman/cv-libs-common-types';
 import { of, switchMap, tap } from 'rxjs';
 import { Translate } from './ngx-translate-interop/translate';
 
@@ -13,12 +14,8 @@ export class TranslatedTitle extends TitleStrategy {
 
   protected readonly translateTitle = toObservable(this.value)
     .pipe(
-      /**
-       * TODO: provide default title? store app name somewhere, because its used
-       * in multiple places e.g. in the logo aswell.
-       */
       switchMap((title) =>
-        title ? this.translate.stream(title) : of('EasyCV'),
+        title ? this.translate.stream(title) : of(APP_NAME),
       ),
       tap((title) => this.title.setTitle(title)),
       takeUntilDestroyed(),

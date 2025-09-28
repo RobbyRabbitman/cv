@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@robby-rabbitman/cv-libs-auth-data": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-types": "workspace:*",
     "@robby-rabbitman/cv-libs-i18n-translation": "workspace:*",
     "@robby-rabbitman/cv-libs-i18n-components": "workspace:*",
     "@robby-rabbitman/cv-libs-auth-components": "workspace:*"

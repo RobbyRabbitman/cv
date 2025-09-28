@@ -388,6 +388,9 @@ importers:
       '@robby-rabbitman/cv-libs-auth-data':
         specifier: workspace:*
         version: link:../../../auth/data
+      '@robby-rabbitman/cv-libs-common-types':
+        specifier: workspace:*
+        version: link:../../types
       '@robby-rabbitman/cv-libs-i18n-components':
         specifier: workspace:*
         version: link:../../../i18n/components
@@ -661,6 +664,9 @@ importers:
       '@ngx-translate/core':
         specifier: 17.0.0
         version: 17.0.0(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))
+      '@robby-rabbitman/cv-libs-common-types':
+        specifier: workspace:*
+        version: link:../../common/types
       '@robby-rabbitman/cv-libs-i18n-types':
         specifier: workspace:*
         version: link:../types
