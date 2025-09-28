@@ -92,14 +92,29 @@ export const CvStore = signalStore(
         setActiveCv(id);
       }
 
+      /**
+       * TODO: do we need to call api or can we just update the state
+       * client-side?
+       */
       store._all.reload();
 
       return id;
     };
 
+    const deleteCv = async (cvId: UUID) => {
+      await cvApi.deleteCv(cvId);
+
+      /**
+       * TODO: do we need to call api or can we just update the state
+       * client-side?
+       */
+      store._all.reload();
+    };
+
     return {
       create,
       setActiveCv,
+      delete: deleteCv,
     };
   }),
 );

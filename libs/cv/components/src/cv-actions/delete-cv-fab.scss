@@ -1,0 +1,10 @@
+@use '@angular/material' as mat;
+
+cv--delete-cv-fab {
+  @include mat.fab-overrides(
+    (
+      small-container-color: var(--mat-sys-surface-container-high),
+      small-foreground-color: var(--mat-sys-on-surface),
+    )
+  );
+}

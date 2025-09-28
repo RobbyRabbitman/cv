@@ -453,6 +453,9 @@ importers:
       '@angular/material':
         specifier: 20.2.5
         version: 20.2.5(e4903f3d15f5330cb54f09701bb9a4a0)
+      '@robby-rabbitman/cv-libs-common-types':
+        specifier: workspace:*
+        version: link:../../common/types
       '@robby-rabbitman/cv-libs-cv-data':
         specifier: workspace:*
         version: link:../data

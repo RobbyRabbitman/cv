@@ -9,7 +9,7 @@ import { CvDocuments } from '../components/cv-documents';
  * bottom corner?
  */
 @Component({
-  selector: 'cv--documents-page',
+  selector: 'cv--documents--page',
   imports: [CreateCvButton, CvDocuments, TranslatePipe],
   host: { class: 'flex flex-col py-8 gap-8' },
   template: `<h1>{{ 'cv.documents.page.title' | translate }}</h1>
