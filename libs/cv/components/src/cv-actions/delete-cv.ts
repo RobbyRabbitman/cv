@@ -6,7 +6,7 @@ import type { Cv } from '@robby-rabbitman/cv-libs-cv-types';
 @Directive({
   selector: '[cv--delete-cv]',
   host: {
-    '(click)': 'cvId() && cvStore.delete(cvId())',
+    '(click)': 'cvStore.delete(cvId())',
   },
 })
 export class DeleteCv {
