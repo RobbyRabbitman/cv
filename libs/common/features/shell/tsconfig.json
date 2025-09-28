@@ -11,6 +11,9 @@
       "path": "../../../i18n/components"
     },
     {
+      "path": "../../../i18n/translation"
+    },
+    {
       "path": "../../../auth/data"
     },
     {

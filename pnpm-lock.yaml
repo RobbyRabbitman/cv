@@ -391,6 +391,9 @@ importers:
       '@robby-rabbitman/cv-libs-i18n-components':
         specifier: workspace:*
         version: link:../../../i18n/components
+      '@robby-rabbitman/cv-libs-i18n-translation':
+        specifier: workspace:*
+        version: link:../../../i18n/translation
     devDependencies:
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
