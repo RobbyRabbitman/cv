@@ -1,8 +1,18 @@
 import { inject } from '@angular/core';
-import { signalStore, withMethods, withProps } from '@ngrx/signals';
+import { signalStore, type, withMethods, withProps } from '@ngrx/signals';
+import { eventGroup, injectDispatch } from '@ngrx/signals/events';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { exhaustMap, pipe } from 'rxjs';
+import { exhaustMap, pipe, tap } from 'rxjs';
 import { AuthApi } from '../api/auth-api';
+
+export const userEvents = eventGroup({
+  source: 'User',
+  events: {
+    signInSuccess: type<void>(),
+    signInFailure: type<void>(),
+    signOut: type<void>(),
+  },
+});
 
 export const UserStore = signalStore(
   withProps(() => {
@@ -22,13 +32,30 @@ export const UserStore = signalStore(
 
   withMethods(() => {
     const auth = inject(AuthApi);
+    const userEventDispatcher = injectDispatch(userEvents);
 
     return {
       /** Signs out the current user. */
-      signOut: rxMethod<void>(pipe(exhaustMap(() => auth.signOut()))),
+      signOut: rxMethod<void>(
+        pipe(
+          exhaustMap(() => auth.signOut()),
+          tap(() => userEventDispatcher.signOut()),
+        ),
+      ),
 
       /** Sign in. */
-      signIn: rxMethod<void>(pipe(exhaustMap(() => auth.signIn()))),
+      signIn: rxMethod<void>(
+        pipe(
+          exhaustMap(() => auth.signIn()),
+          tap((signInSuccess) => {
+            if (signInSuccess) {
+              userEventDispatcher.signInSuccess();
+            } else {
+              userEventDispatcher.signInFailure();
+            }
+          }),
+        ),
+      ),
     };
   }),
 );

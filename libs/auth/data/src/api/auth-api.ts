@@ -50,6 +50,11 @@ export class AuthApi {
    * TODO: make provider injectable.
    */
   async signIn() {
-    await signInWithPopup(this.auth, new GoogleAuthProvider());
+    try {
+      await signInWithPopup(this.auth, new GoogleAuthProvider());
+      return true;
+    } catch {
+      return false;
+    }
   }
 }
