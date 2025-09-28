@@ -23,7 +23,7 @@
     "@robby-rabbitman/cv-libs-cv-data": "workspace:*"
   },
   "peerDependencies": {
-    "@angular/material": "20.2.4",
+    "@angular/material": "20.2.5",
     "@angular/core": "20.3.2"
   },
   "devDependencies": {
