@@ -1,9 +1,9 @@
 import { test as base } from '@playwright/test';
-import { Auth } from './fixtures/auth.js';
-import { CvDocumentsPage } from './fixtures/cv-documents-page.js';
-import { GlobalMenu } from './fixtures/global-menu.js';
-import { LocaleMenu } from './fixtures/locale-menu.js';
-import { Shell } from './fixtures/shell.js';
+import { Auth } from './fixtures/auth/auth.js';
+import { GlobalMenu } from './fixtures/common/global-menu.js';
+import { Shell } from './fixtures/common/shell.js';
+import { CvDocumentsPage } from './fixtures/cv/cv-documents-page.js';
+import { LocaleMenu } from './fixtures/i18n/locale-menu.js';
 
 export const test = base.extend<{
   shell: Shell;
