@@ -9,7 +9,11 @@ import {
   withComponentInputBinding,
   withDebugTracing,
 } from '@angular/router';
-import { provideAuthData } from '@robby-rabbitman/cv-libs-auth-data';
+import {
+  provideAuthData,
+  redirectOnSignIn,
+  redirectOnSignOut,
+} from '@robby-rabbitman/cv-libs-auth-data';
 import { provideFirebase } from '@robby-rabbitman/cv-libs-common-util';
 import { provideCvData } from '@robby-rabbitman/cv-libs-cv-data';
 import { reflectLocaleInDocument } from '@robby-rabbitman/cv-libs-i18n-components';
@@ -40,6 +44,8 @@ export const CV_APP_CONFIG = {
 
     /** Auth */
     provideAuthData(),
+    redirectOnSignIn(CV_APP_ROUTES[0].path),
+    redirectOnSignOut('/'),
 
     /** I18n */
     provideI18nData(),

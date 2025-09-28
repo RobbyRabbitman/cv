@@ -26,6 +26,7 @@ export class AuthApiStub implements Partial<AuthApi> {
 
   async signIn() {
     this.user.set(USERS.chickenPanda as User);
+    return true;
   }
 
   protected async simulateAuthInitialization() {
