@@ -19,7 +19,8 @@
     }
   },
   "dependencies": {
-    "@robby-rabbitman/cv-libs-i18n-types": "workspace:*"
+    "@robby-rabbitman/cv-libs-i18n-types": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-types": "workspace:*"
   },
   "peerDependencies": {
     "rxjs": "7.8.2",
