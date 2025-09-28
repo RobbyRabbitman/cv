@@ -52,7 +52,6 @@ import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
       </button>
       <cv--delete-cv-fab
         [cvId]="cv.id"
-        (click)="$event.stopPropagation()"
         class="invisible group-focus-within:visible group-hover:visible absolute right-4 top-4 z-1"
       />
     </li>
