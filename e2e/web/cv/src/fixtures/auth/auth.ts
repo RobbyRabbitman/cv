@@ -11,9 +11,13 @@ export class Auth {
   }
 
   async isSignedIn() {
-    return Promise.any([
-      this.signInButton.waitFor({ state: 'visible' }).then(() => false),
-      this.signOutButton.waitFor({ state: 'visible' }).then(() => true),
+    return Promise.race([
+      this.signInButton
+        .waitFor({ state: 'visible', timeout: 5_000 })
+        .then(() => false),
+      this.signOutButton
+        .waitFor({ state: 'visible', timeout: 5_000 })
+        .then(() => true),
     ]);
   }
 
