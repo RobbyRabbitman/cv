@@ -14,4 +14,4 @@ runs:
         key: playwright-${{ runner.os }}-${{ env.PLAYWRIGHT_VERSION }}
 
     - shell: bash
-      run: pnpm playwright install --with-deps
+      run: pnpm playwright install --with-deps chromium
