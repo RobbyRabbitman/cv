@@ -253,12 +253,11 @@
     },
 
     "e2e-pw": {
-      "defaultConfiguration": "local",
       "inputs": ["targets-e2e-pw", "^targets-e2e-pw"],
+      "options": {
+        "project": "chromium"
+      },
       "configurations": {
-        "local": {
-          "project": "chromium"
-        },
         "ci": {
           "retries": 2,
           "workers": 1

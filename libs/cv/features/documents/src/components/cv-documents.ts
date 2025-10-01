@@ -6,13 +6,14 @@ import {
 } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
+import { DeleteCvFab } from '@robby-rabbitman/cv-libs-cv-components';
 import { CvStore } from '@robby-rabbitman/cv-libs-cv-data';
 import { DatePipe } from '@robby-rabbitman/cv-libs-i18n-components';
 import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
 
 @Component({
   selector: 'cv--documents',
-  imports: [MatButton, MatDivider, DatePipe, TranslatePipe],
+  imports: [MatButton, MatDivider, DatePipe, TranslatePipe, DeleteCvFab],
   host: {
     role: 'list',
     class:
@@ -21,10 +22,10 @@ import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
   styleUrl: './cv-documents.scss',
   template: `@for (cv of cv.all.value(); track cv.id) {
     @let descriptionId = 'cv--documents__description--' + cv.id;
-    <li>
+    <li class="relative group">
       <button
         matButton="outlined"
-        class="aspect-square w-full"
+        class="cv--documents__edit-button aspect-square w-full"
         [attr.aria-label]="
           'cv.documents.edit_button.text' | translate: { name: cv.label }
         "
@@ -49,6 +50,10 @@ import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
           </span>
         </span>
       </button>
+      <cv--delete-cv-fab
+        [cvId]="cv.id"
+        class="invisible group-focus-within:visible group-hover:visible absolute right-4 top-4 z-1"
+      />
     </li>
   }`,
   changeDetection: ChangeDetectionStrategy.OnPush,

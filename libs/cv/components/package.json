@@ -20,7 +20,9 @@
   },
   "dependencies": {
     "@robby-rabbitman/cv-libs-i18n-translation": "workspace:*",
-    "@robby-rabbitman/cv-libs-cv-data": "workspace:*"
+    "@robby-rabbitman/cv-libs-cv-data": "workspace:*",
+    "@robby-rabbitman/cv-libs-common-types": "workspace:*",
+    "@robby-rabbitman/cv-libs-cv-types": "workspace:*"
   },
   "peerDependencies": {
     "@angular/material": "20.2.5",

@@ -4,3 +4,7 @@
 @theme {
   --breakpoint-sm: 37.5rem;
 }
+
+@utility z-1 {
+  z-index: 1;
+}

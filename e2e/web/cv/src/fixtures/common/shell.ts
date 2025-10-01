@@ -1,13 +1,16 @@
 import type { Locator, Page } from '@playwright/test';
 
 export class Shell {
-  public readonly header: Locator;
-  public readonly main: Locator;
-  public readonly footer: Locator;
+  readonly header: Locator;
+  readonly main: Locator;
+  readonly footer: Locator;
+  readonly logo: Locator;
 
-  constructor(public readonly page: Page) {
+  constructor(readonly page: Page) {
     this.header = page.getByRole('banner');
     this.main = page.getByRole('main');
     this.footer = page.getByRole('contentinfo');
+
+    this.logo = this.header.getByRole('link', { name: 'Homepage' });
   }
 }

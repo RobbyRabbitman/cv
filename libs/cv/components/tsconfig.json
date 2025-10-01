@@ -5,6 +5,12 @@
   "files": [],
   "references": [
     {
+      "path": "../types"
+    },
+    {
+      "path": "../../common/types"
+    },
+    {
       "path": "../data"
     },
     {

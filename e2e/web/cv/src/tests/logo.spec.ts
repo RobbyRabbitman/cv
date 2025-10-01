@@ -1,7 +1,10 @@
 import { expect, test } from '../test.js';
 
-test('has logo', async ({ shell }) => {
-  const logo = shell.header.getByRole('link', { name: 'Homepage' });
+test('logo', async ({ page, shell, auth, cvDocumentsPage }) => {
+  await auth.signIn();
+  await cvDocumentsPage.goTo();
+  await expect(page).not.toHaveURL('/');
 
-  await expect(logo).toBeVisible();
+  await shell.logo.click();
+  await expect(page).toHaveURL('/');
 });
