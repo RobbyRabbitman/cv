@@ -1,4 +1,4 @@
-import { type Locator } from '@playwright/test';
+import { expect, type Locator } from '@playwright/test';
 import type { Shell } from '../common/shell.js';
 
 export class Auth {
@@ -26,8 +26,10 @@ export class Auth {
   }
 
   async signIn(user?: string | RegExp) {
+    user ??= /Mountain Olive/;
+
     if (await this.isSignedIn()) {
-      throw new Error('Already signed in');
+      return;
     }
 
     const [authPage] = await Promise.all([
@@ -46,15 +48,18 @@ export class Auth {
       await authPage.getByText(user).click();
     }
 
-    await this.signOutButton.waitFor({ state: 'visible' });
+    await expect(this.signInButton).toBeHidden();
+    await expect(this.signOutButton).toBeVisible();
   }
 
   async signOut() {
     if (await this.isSignedOut()) {
-      throw new Error('Already signed out');
+      return;
     }
 
     await this.signOutButton.click();
-    await this.signInButton.waitFor({ state: 'visible' });
+
+    await expect(this.signInButton).toBeVisible();
+    await expect(this.signOutButton).toBeHidden();
   }
 }
