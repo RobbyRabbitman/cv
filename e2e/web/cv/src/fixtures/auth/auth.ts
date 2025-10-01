@@ -26,8 +26,6 @@ export class Auth {
   }
 
   async signIn(user?: string | RegExp) {
-    user ??= /Mountain Olive/;
-
     if (await this.isSignedIn()) {
       return;
     }
