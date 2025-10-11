@@ -9,7 +9,7 @@
     "package.json"
   ],
   "peerDependencies": {
-    "@nx/devkit": "21.5.3",
+    "@nx/devkit": "21.6.3",
     "vitest": "3.2.4"
   },
   "devDependencies": {
