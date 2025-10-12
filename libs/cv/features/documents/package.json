@@ -27,8 +27,8 @@
   },
   "peerDependencies": {
     "@angular/material": "20.2.7",
-    "@angular/router": "20.3.3",
-    "@angular/core": "20.3.3"
+    "@angular/router": "20.3.4",
+    "@angular/core": "20.3.4"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",

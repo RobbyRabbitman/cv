@@ -16,10 +16,10 @@
     "@robby-rabbitman/cv-libs-common-features-shell": "workspace:*"
   },
   "peerDependencies": {
-    "@angular/core": "20.3.3",
-    "@angular/common": "20.3.3",
-    "@angular/router": "20.3.3",
-    "@angular/platform-browser": "20.3.3"
+    "@angular/core": "20.3.4",
+    "@angular/common": "20.3.4",
+    "@angular/router": "20.3.4",
+    "@angular/platform-browser": "20.3.4"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
