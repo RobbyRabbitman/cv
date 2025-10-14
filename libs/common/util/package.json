@@ -23,7 +23,7 @@
   },
   "peerDependencies": {
     "@angular/core": "20.3.4",
-    "firebase": "12.3.0"
+    "firebase": "12.4.0"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
