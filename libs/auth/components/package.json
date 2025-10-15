@@ -24,7 +24,7 @@
   },
   "peerDependencies": {
     "@angular/router": "20.3.4",
-    "@angular/material": "20.2.7",
+    "@angular/material": "20.2.8",
     "@angular/core": "20.3.4"
   },
   "devDependencies": {
