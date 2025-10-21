@@ -1,5 +1,5 @@
 {
-  "name": "@robby-rabbitman/cv-libs-cv-features-documents",
+  "name": "@robby-rabbitman/cv-libs-cv-features-editor",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,7 +7,7 @@
     "dist",
     "package.json"
   ],
-  "module": "dist/fesm2022/robby-rabbitman-cv-libs-cv-features-documents.mjs",
+  "module": "dist/fesm2022/robby-rabbitman-cv-libs-cv-features-editor.mjs",
   "typings": "index.d.ts",
   "exports": {
     "./package.json": {
@@ -15,7 +15,7 @@
     },
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-cv-features-documents.mjs"
+      "default": "./dist/fesm2022/robby-rabbitman-cv-libs-cv-features-editor.mjs"
     }
   },
   "dependencies": {
@@ -24,7 +24,6 @@
     "@robby-rabbitman/cv-libs-auth-components": "workspace:*",
     "@robby-rabbitman/cv-libs-cv-components": "workspace:*",
     "@robby-rabbitman/cv-libs-cv-data": "workspace:*",
-    "@robby-rabbitman/cv-libs-cv-features-editor": "workspace:*",
     "@robby-rabbitman/cv-libs-common-util": "workspace:*",
     "@robby-rabbitman/cv-libs-cv-types": "workspace:*"
   },

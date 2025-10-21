@@ -11,9 +11,6 @@
       "path": "../../../common/util"
     },
     {
-      "path": "../editor"
-    },
-    {
       "path": "../../data"
     },
     {

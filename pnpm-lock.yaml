@@ -530,12 +530,64 @@ importers:
       '@robby-rabbitman/cv-libs-auth-components':
         specifier: workspace:*
         version: link:../../../auth/components
+      '@robby-rabbitman/cv-libs-common-util':
+        specifier: workspace:*
+        version: link:../../../common/util
       '@robby-rabbitman/cv-libs-cv-components':
         specifier: workspace:*
         version: link:../../components
       '@robby-rabbitman/cv-libs-cv-data':
         specifier: workspace:*
         version: link:../../data
+      '@robby-rabbitman/cv-libs-cv-features-editor':
+        specifier: workspace:*
+        version: link:../editor
+      '@robby-rabbitman/cv-libs-cv-types':
+        specifier: workspace:*
+        version: link:../../types
+      '@robby-rabbitman/cv-libs-i18n-components':
+        specifier: workspace:*
+        version: link:../../../i18n/components
+      '@robby-rabbitman/cv-libs-i18n-translation':
+        specifier: workspace:*
+        version: link:../../../i18n/translation
+    devDependencies:
+      '@robby-rabbitman/cv-tools-eslint':
+        specifier: workspace:*
+        version: link:../../../../tools/eslint
+      '@robby-rabbitman/cv-tools-karma':
+        specifier: workspace:*
+        version: link:../../../../tools/karma
+      '@robby-rabbitman/cv-tools-typescript':
+        specifier: workspace:*
+        version: link:../../../../tools/typescript
+
+  libs/cv/features/editor:
+    dependencies:
+      '@angular/core':
+        specifier: 20.3.2
+        version: 20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)
+      '@angular/material':
+        specifier: 20.2.5
+        version: 20.2.5(e4903f3d15f5330cb54f09701bb9a4a0)
+      '@angular/router':
+        specifier: 20.3.2
+        version: 20.3.2(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(@angular/platform-browser@20.3.2(@angular/animations@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)))(@angular/common@20.3.2(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.2(@angular/compiler@20.3.2)(rxjs@7.8.2)))(rxjs@7.8.2)
+      '@robby-rabbitman/cv-libs-auth-components':
+        specifier: workspace:*
+        version: link:../../../auth/components
+      '@robby-rabbitman/cv-libs-common-util':
+        specifier: workspace:*
+        version: link:../../../common/util
+      '@robby-rabbitman/cv-libs-cv-components':
+        specifier: workspace:*
+        version: link:../../components
+      '@robby-rabbitman/cv-libs-cv-data':
+        specifier: workspace:*
+        version: link:../../data
+      '@robby-rabbitman/cv-libs-cv-types':
+        specifier: workspace:*
+        version: link:../../types
       '@robby-rabbitman/cv-libs-i18n-components':
         specifier: workspace:*
         version: link:../../../i18n/components

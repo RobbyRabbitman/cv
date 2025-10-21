@@ -4,6 +4,7 @@ import type {
   CvBlockTemplate,
   CvTemplate,
   Paragraph,
+  Section,
   TextField,
 } from '@robby-rabbitman/cv-libs-cv-types';
 
@@ -76,6 +77,24 @@ const paragraph = {
   children: [textField],
 } as const satisfies Paragraph;
 
+const sectionPrototype = {
+  id: 'sectionPrototype',
+  type: 'section',
+  canBeDeleted: true,
+  canBeMoved: true,
+  multiple: true,
+  cvTemplateId: cvTemplate.id,
+  label: 'block.prototype.sectionPrototype.label',
+  template: { childPrototypeIds: [paragraphPrototype.id] },
+} as const satisfies BlockPrototype<Section>;
+
+const section = {
+  id: 'section',
+  type: sectionPrototype.type,
+  prototypeId: sectionPrototype.id,
+  children: [paragraph],
+} as const satisfies Section;
+
 export const MOCK_CV_TEMPLATES = {
   cvTemplate,
 };
@@ -84,6 +103,7 @@ export const MOCK_BLOCK_PROTOTYPES = {
   cvPrototype,
   textFieldPrototype,
   paragraphPrototype,
+  sectionPrototype,
 };
 
 export const MOCK_CVS = {
@@ -98,8 +118,13 @@ export const MOCK_PARAGRAPHS = {
   paragraph,
 };
 
+export const MOCK_SECTIONS = {
+  section,
+};
+
 export const MOCK_BLOCKS = {
   ...MOCK_CVS,
   ...MOCK_PARAGRAPHS,
+  ...MOCK_SECTIONS,
   ...MOCK_FIELDS,
 };

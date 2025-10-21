@@ -40,7 +40,7 @@ import { Logo } from './logo';
   host: {
     class: 'cv-common--shell absolute inset-0 flex flex-col',
   },
-  template: `<mat-toolbar class="fixed z-[2]" role="banner">
+  template: `<mat-toolbar class="sticky z-[2]" role="banner">
       <span class="container mx-auto flex items-center">
         <button
           mat-icon-button

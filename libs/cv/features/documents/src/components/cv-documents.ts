@@ -6,8 +6,10 @@ import {
 } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteCvFab } from '@robby-rabbitman/cv-libs-cv-components';
 import { CvStore } from '@robby-rabbitman/cv-libs-cv-data';
+import type { Cv } from '@robby-rabbitman/cv-libs-cv-types';
 import { DatePipe } from '@robby-rabbitman/cv-libs-i18n-components';
 import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
 
@@ -30,6 +32,7 @@ import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
           'cv.documents.edit_button.text' | translate: { name: cv.label }
         "
         [attr.aria-describedby]="descriptionId"
+        (click)="editCv(cv)"
       >
         <span aria-hidden="true" class="h-full flex flex-col gap-2 py-4">
           <span class="flex-1">
@@ -60,5 +63,13 @@ import { TranslatePipe } from '@robby-rabbitman/cv-libs-i18n-translation';
   encapsulation: ViewEncapsulation.None,
 })
 export class CvDocuments {
-  protected cv = inject(CvStore);
+  protected readonly cv = inject(CvStore);
+  protected readonly router = inject(Router);
+  protected readonly activeRoute = inject(ActivatedRoute);
+
+  protected async editCv(cv: Cv) {
+    await this.router.navigate(['edit', cv.id], {
+      relativeTo: this.activeRoute,
+    });
+  }
 }
