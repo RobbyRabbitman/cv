@@ -5,7 +5,7 @@
   "private": true,
   "packageManager": "pnpm@10.18.3",
   "engines": {
-    "node": "22.20.0"
+    "node": "22.21.0"
   },
   "scripts": {
     "watch:ng-packagr": "nx watch --all -- nx run \\$NX_PROJECT_NAME:build-ng-packagr --excludeTaskDependencies",
