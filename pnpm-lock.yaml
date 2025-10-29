@@ -201,8 +201,8 @@ importers:
         specifier: 0.18.0
         version: 0.18.0(prettier@3.6.2)
       renovate:
-        specifier: 41.157.0
-        version: 41.157.0(encoding@0.1.13)(typanion@3.14.0)
+        specifier: 41.159.4
+        version: 41.159.4(encoding@0.1.13)(typanion@3.14.0)
       rxjs:
         specifier: 7.8.2
         version: 7.8.2
@@ -6175,6 +6175,10 @@ packages:
     resolution: {integrity: sha512-UcO3kefx6dCcZkgcTGgVOTFb7b1LlQ02hY1omMjjrrBzkajRMCFgYOjs7J71WqnuG1k2b+9ppGL7FsOfhZMQKQ==}
     engines: {node: '>=18'}
 
+  gcp-metadata@8.1.1:
+    resolution: {integrity: sha512-dTCcAe9fRQf06ELwel6lWWFrEbstwjUBYEhr5VRGoC+iPDZQucHppCowaIp8b8v92tU1G4X4H3b/Y6zXZxkMsQ==}
+    engines: {node: '>=18'}
+
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
@@ -6300,6 +6304,10 @@ packages:
 
   google-auth-library@10.4.0:
     resolution: {integrity: sha512-CmIrSy1bqMQUsPmA9+hcSbAXL80cFhu40cGMUjCaLpNKVzzvi+0uAHq8GNZxkoGYIsTX4ZQ7e4aInAqWxgn4fg==}
+    engines: {node: '>=18'}
+
+  google-auth-library@10.4.1:
+    resolution: {integrity: sha512-VlvZ+QDWng3aPh++0BSQlSJyjn4qgLLTmqylAR3as0dr6YwPkZpHcZAngAFr68TDVCUSQVRTkV73K/D3m7vEIg==}
     engines: {node: '>=18'}
 
   google-auth-library@9.15.1:
@@ -8649,8 +8657,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  renovate@41.157.0:
-    resolution: {integrity: sha512-/E9+7t3Db/0MXuOUgQ8RPY1Wcae2bOMbxH3Z4xR03eq4fnouzZdWlFpCpvoSkhJLXJJ9O7YRcZXYDqJXu9FnQg==}
+  renovate@41.159.4:
+    resolution: {integrity: sha512-3c8AlclJE/T+RZMNQl6fnYFcJzBrag0zcCei7dUiudvksA9TZP999MZzBSA9o3zjcR7/WXI00vQocjpQwRym4Q==}
     engines: {node: ^22.13.0, pnpm: ^10.0.0}
     hasBin: true
 
@@ -17014,6 +17022,14 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  gcp-metadata@8.1.1:
+    dependencies:
+      gaxios: 7.1.1
+      google-logging-utils: 1.1.1
+      json-bigint: 1.0.0
+    transitivePeerDependencies:
+      - supports-color
+
   gensync@1.0.0-beta.2: {}
 
   get-caller-file@2.0.5: {}
@@ -17177,6 +17193,18 @@ snapshots:
       ecdsa-sig-formatter: 1.0.11
       gaxios: 7.1.1
       gcp-metadata: 7.0.1
+      google-logging-utils: 1.1.1
+      gtoken: 8.0.0
+      jws: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
+
+  google-auth-library@10.4.1:
+    dependencies:
+      base64-js: 1.5.1
+      ecdsa-sig-formatter: 1.0.11
+      gaxios: 7.1.1
+      gcp-metadata: 8.1.1
       google-logging-utils: 1.1.1
       gtoken: 8.0.0
       jws: 4.0.0
@@ -19923,7 +19951,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  renovate@41.157.0(encoding@0.1.13)(typanion@3.14.0):
+  renovate@41.159.4(encoding@0.1.13)(typanion@3.14.0):
     dependencies:
       '@aws-sdk/client-codecommit': 3.899.0
       '@aws-sdk/client-ec2': 3.899.0
@@ -19992,7 +20020,7 @@ snapshots:
       glob: 11.0.3
       global-agent: 3.0.0
       good-enough-parser: 1.1.23
-      google-auth-library: 10.4.0
+      google-auth-library: 10.4.1
       got: 11.8.6
       graph-data-structure: 4.5.0
       handlebars: 4.7.8
