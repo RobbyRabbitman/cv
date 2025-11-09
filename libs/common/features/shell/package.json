@@ -30,9 +30,9 @@
     "@robby-rabbitman/cv-libs-auth-components": "workspace:*"
   },
   "peerDependencies": {
-    "@angular/cdk": "20.2.10",
+    "@angular/cdk": "20.2.11",
     "@angular/core": "20.3.9",
-    "@angular/material": "20.2.10",
+    "@angular/material": "20.2.11",
     "@angular/router": "20.3.9"
   },
   "devDependencies": {
