@@ -24,10 +24,10 @@
   },
   "peerDependencies": {
     "rxjs": "7.8.2",
-    "@angular/router": "20.3.9",
-    "@angular/platform-browser": "20.3.9",
+    "@angular/router": "20.3.10",
+    "@angular/platform-browser": "20.3.10",
     "@ngx-translate/core": "17.0.0",
-    "@angular/core": "20.3.9"
+    "@angular/core": "20.3.10"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
