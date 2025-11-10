@@ -23,9 +23,9 @@
     "@robby-rabbitman/cv-libs-i18n-translation": "workspace:*"
   },
   "peerDependencies": {
-    "@angular/router": "20.3.9",
+    "@angular/router": "20.3.10",
     "@angular/material": "20.2.11",
-    "@angular/core": "20.3.9"
+    "@angular/core": "20.3.10"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
