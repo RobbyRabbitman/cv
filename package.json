@@ -61,7 +61,7 @@
     "eslint-plugin-n": "17.23.1",
     "eslint-plugin-playwright": "2.3.0",
     "firebase": "12.5.0",
-    "firebase-tools": "14.24.1",
+    "firebase-tools": "14.24.2",
     "globals": "16.5.0",
     "jasmine-core": "5.12.1",
     "jsonc-eslint-parser": "2.4.1",

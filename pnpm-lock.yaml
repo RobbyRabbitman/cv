@@ -147,8 +147,8 @@ importers:
         specifier: 12.5.0
         version: 12.5.0
       firebase-tools:
-        specifier: 14.24.1
-        version: 14.24.1(@types/node@22.19.0)(encoding@0.1.13)(typescript@5.9.3)
+        specifier: 14.24.2
+        version: 14.24.2(@types/node@22.19.0)(encoding@0.1.13)(typescript@5.9.3)
       globals:
         specifier: 16.5.0
         version: 16.5.0
@@ -6028,8 +6028,8 @@ packages:
     resolution: {integrity: sha512-YyZM99iHrqLKjmt4LJDj58KI+fYyufRLBSYcqycxf//KpBk9FoewoGX0450m9nB44qrZnovzC2oeP5hUibxc/g==}
     engines: {node: '>=18'}
 
-  firebase-tools@14.24.1:
-    resolution: {integrity: sha512-jYiD58SEZcVuiJSB6eZSFYObiPA5XHrou7YkNYkTl1JkbKafCZgFnl3R88TD7F8p8U8naT0ES5H1mt04kaFUag==}
+  firebase-tools@14.24.2:
+    resolution: {integrity: sha512-e4uMTFqWtDL+G1JfJ4iS/7gillSORSgihaej3ooah/h8DCdbAlB5idXZHOz82RjWMuZG+RwyCnMH7IyeI9FNFQ==}
     engines: {node: '>=20.0.0 || >=22.0.0'}
     hasBin: true
 
@@ -16699,7 +16699,7 @@ snapshots:
       path-exists: 5.0.0
       unicorn-magic: 0.1.0
 
-  firebase-tools@14.24.1(@types/node@22.19.0)(encoding@0.1.13)(typescript@5.9.3):
+  firebase-tools@14.24.2(@types/node@22.19.0)(encoding@0.1.13)(typescript@5.9.3):
     dependencies:
       '@apphosting/build': 0.1.6(@types/node@22.19.0)(typescript@5.9.3)
       '@apphosting/common': 0.0.8
