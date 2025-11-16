@@ -94,7 +94,7 @@ importers:
         version: 21.6.8(@babel/traverse@7.28.3)(@playwright/test@1.56.1)(@zkochan/js-yaml@0.0.7)(eslint@9.34.0(jiti@2.6.1))(nx@21.6.8)(typescript@5.9.3)
       '@nx/vite':
         specifier: 21.6.8
-        version: 21.6.8(@babel/traverse@7.28.3)(nx@21.6.8)(typescript@5.9.3)(vite@6.4.1(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4)
+        version: 21.6.8(@babel/traverse@7.28.3)(nx@21.6.8)(typescript@5.9.3)(vite@7.2.2(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4)
       '@playwright/test':
         specifier: 1.56.1
         version: 1.56.1
@@ -219,8 +219,8 @@ importers:
         specifier: 8.46.3
         version: 8.46.3(eslint@9.34.0(jiti@2.6.1))(typescript@5.9.3)
       vite:
-        specifier: 6.4.1
-        version: 6.4.1(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1)
+        specifier: 7.2.2
+        version: 7.2.2(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1)
       vitest:
         specifier: 3.2.4
         version: 3.2.4(@types/debug@4.1.12)(@types/node@22.19.0)(@vitest/ui@3.2.4)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1)
@@ -9716,19 +9716,19 @@ packages:
       yaml:
         optional: true
 
-  vite@6.4.1:
-    resolution: {integrity: sha512-+Oxm7q9hDoLMyJOYfUYBuHQo+dkAloi33apOPP56pzj+vsdJDzr+j1NISE5pyaAuKL4A3UD34qd0lx5+kfKp2g==}
-    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
+  vite@7.1.11:
+    resolution: {integrity: sha512-uzcxnSDVjAopEUjljkWh8EIrg6tlzrjFUfMcR1EVsRDGwf/ccef0qQPRyOrROwhrTDaApueq+ja+KLPlzR/zdg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
-      '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
+      '@types/node': ^20.19.0 || >=22.12.0
       jiti: '>=1.21.0'
-      less: '*'
+      less: ^4.0.0
       lightningcss: ^1.21.0
-      sass: '*'
-      sass-embedded: '*'
-      stylus: '*'
-      sugarss: '*'
+      sass: ^1.70.0
+      sass-embedded: ^1.70.0
+      stylus: '>=0.54.8'
+      sugarss: ^5.0.0
       terser: ^5.16.0
       tsx: ^4.8.1
       yaml: ^2.4.2
@@ -9756,8 +9756,8 @@ packages:
       yaml:
         optional: true
 
-  vite@7.1.11:
-    resolution: {integrity: sha512-uzcxnSDVjAopEUjljkWh8EIrg6tlzrjFUfMcR1EVsRDGwf/ccef0qQPRyOrROwhrTDaApueq+ja+KLPlzR/zdg==}
+  vite@7.2.2:
+    resolution: {integrity: sha512-BxAKBWmIbrDgrokdGZH1IgkIk/5mMHDreLDmCJ0qpyJaAteP8NvMhkwr/ZCQNqNH97bw/dANTE9PDzqwJghfMQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -13354,7 +13354,7 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nx/vite@21.6.8(@babel/traverse@7.28.3)(nx@21.6.8)(typescript@5.9.3)(vite@6.4.1(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4)':
+  '@nx/vite@21.6.8(@babel/traverse@7.28.3)(nx@21.6.8)(typescript@5.9.3)(vite@7.2.2(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4)':
     dependencies:
       '@nx/devkit': 21.6.8(nx@21.6.8)
       '@nx/js': 21.6.8(@babel/traverse@7.28.3)(nx@21.6.8)
@@ -13365,7 +13365,7 @@ snapshots:
       semver: 7.7.3
       tsconfig-paths: 4.2.0
       tslib: 2.8.1
-      vite: 6.4.1(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1)
+      vite: 7.2.2(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1)
       vitest: 3.2.4(@types/debug@4.1.12)(@types/node@22.19.0)(@vitest/ui@3.2.4)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1)
     transitivePeerDependencies:
       - '@babel/traverse'
@@ -21206,7 +21206,7 @@ snapshots:
       debug: 4.4.1
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 6.4.1(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1)
+      vite: 7.2.2(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -21227,7 +21227,7 @@ snapshots:
       debug: 4.4.1
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 6.4.1(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.1)(lightningcss@1.30.2)(sass@1.92.0)(terser@5.43.1)(yaml@2.8.1)
+      vite: 7.2.2(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.1)(lightningcss@1.30.2)(sass@1.92.0)(terser@5.43.1)(yaml@2.8.1)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -21278,42 +21278,6 @@ snapshots:
       terser: 5.43.1
       yaml: 2.8.1
 
-  vite@6.4.1(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1):
-    dependencies:
-      esbuild: 0.25.9
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
-      postcss: 8.5.6
-      rollup: 4.52.3
-      tinyglobby: 0.2.15
-    optionalDependencies:
-      '@types/node': 22.19.0
-      fsevents: 2.3.3
-      jiti: 2.6.1
-      less: 4.4.0
-      lightningcss: 1.30.2
-      sass: 1.90.0
-      terser: 5.43.1
-      yaml: 2.8.1
-
-  vite@6.4.1(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.1)(lightningcss@1.30.2)(sass@1.92.0)(terser@5.43.1)(yaml@2.8.1):
-    dependencies:
-      esbuild: 0.25.9
-      fdir: 6.5.0(picomatch@4.0.3)
-      picomatch: 4.0.3
-      postcss: 8.5.6
-      rollup: 4.52.3
-      tinyglobby: 0.2.15
-    optionalDependencies:
-      '@types/node': 22.19.0
-      fsevents: 2.3.3
-      jiti: 2.6.1
-      less: 4.4.1
-      lightningcss: 1.30.2
-      sass: 1.92.0
-      terser: 5.43.1
-      yaml: 2.8.1
-
   vite@7.1.11(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1):
     dependencies:
       esbuild: 0.25.9
@@ -21329,6 +21293,42 @@ snapshots:
       less: 4.4.0
       lightningcss: 1.30.2
       sass: 1.90.0
+      terser: 5.43.1
+      yaml: 2.8.1
+
+  vite@7.2.2(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1):
+    dependencies:
+      esbuild: 0.25.9
+      fdir: 6.5.0(picomatch@4.0.3)
+      picomatch: 4.0.3
+      postcss: 8.5.6
+      rollup: 4.52.3
+      tinyglobby: 0.2.15
+    optionalDependencies:
+      '@types/node': 22.19.0
+      fsevents: 2.3.3
+      jiti: 2.6.1
+      less: 4.4.0
+      lightningcss: 1.30.2
+      sass: 1.90.0
+      terser: 5.43.1
+      yaml: 2.8.1
+
+  vite@7.2.2(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.1)(lightningcss@1.30.2)(sass@1.92.0)(terser@5.43.1)(yaml@2.8.1):
+    dependencies:
+      esbuild: 0.25.9
+      fdir: 6.5.0(picomatch@4.0.3)
+      picomatch: 4.0.3
+      postcss: 8.5.6
+      rollup: 4.52.3
+      tinyglobby: 0.2.15
+    optionalDependencies:
+      '@types/node': 22.19.0
+      fsevents: 2.3.3
+      jiti: 2.6.1
+      less: 4.4.1
+      lightningcss: 1.30.2
+      sass: 1.92.0
       terser: 5.43.1
       yaml: 2.8.1
 
