@@ -114,8 +114,8 @@ importers:
         specifier: 6.11.3
         version: 6.11.3
       '@types/jasmine':
-        specifier: 5.1.12
-        version: 5.1.12
+        specifier: 5.1.13
+        version: 5.1.13
       '@types/karma':
         specifier: 6.3.9
         version: 6.3.9
@@ -3964,6 +3964,7 @@ packages:
   '@smithy/core@3.18.4':
     resolution: {integrity: sha512-o5tMqPZILBvvROfC8vC+dSVnWJl9a0u9ax1i1+Bq8515eYjUJqqk5XjjEsDLoeL5dSqGSh6WGdVx1eJ1E/Nwhw==}
     engines: {node: '>=18.0.0'}
+    deprecated: Please upgrade your lockfile to use the latest 3.x version of @smithy/core for various fixes, see https://github.com/smithy-lang/smithy-typescript/blob/main/packages/core/CHANGELOG.md
 
   '@smithy/credential-provider-imds@4.2.5':
     resolution: {integrity: sha512-BZwotjoZWn9+36nimwm/OLIcVe+KYRwzMjfhd4QT7QxPm9WY0HiOV8t/Wlh+HVUif0SBVV7ksq8//hPaBC/okQ==}
@@ -4376,8 +4377,8 @@ packages:
   '@types/http-proxy@1.17.17':
     resolution: {integrity: sha512-ED6LB+Z1AVylNTu7hdzuBqOgMnvG/ld6wGCG8wFnAzKX5uyW2K3WD52v0gnLCTK/VLpXtKckgWuyScYK6cSPaw==}
 
-  '@types/jasmine@5.1.12':
-    resolution: {integrity: sha512-1BzPxNsFDLDfj9InVR3IeY0ZVf4o9XV+4mDqoCfyPkbsA7dYyKAPAb2co6wLFlHcvxPlt1wShm7zQdV7uTfLGA==}
+  '@types/jasmine@5.1.13':
+    resolution: {integrity: sha512-MYCcDkruFc92LeYZux5BC0dmqo2jk+M5UIZ4/oFnAPCXN9mCcQhLyj7F3/Za7rocVyt5YRr1MmqJqFlvQ9LVcg==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -15413,7 +15414,7 @@ snapshots:
     dependencies:
       '@types/node': 22.19.0
 
-  '@types/jasmine@5.1.12': {}
+  '@types/jasmine@5.1.13': {}
 
   '@types/json-schema@7.0.15': {}
 
