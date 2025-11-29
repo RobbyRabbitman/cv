@@ -10,7 +10,7 @@
     "@robby-rabbitman/cv-tools-typescript": "workspace:*"
   },
   "peerDependencies": {
-    "@playwright/test": "1.56.1"
+    "@playwright/test": "1.57.0"
   },
   "nx": {
     "tags": [

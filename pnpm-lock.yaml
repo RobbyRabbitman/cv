@@ -91,13 +91,13 @@ importers:
         version: 21.6.8(@babel/traverse@7.28.5)(nx@21.6.8)
       '@nx/playwright':
         specifier: 21.6.8
-        version: 21.6.8(@babel/traverse@7.28.5)(@playwright/test@1.56.1)(@zkochan/js-yaml@0.0.7)(eslint@9.34.0(jiti@2.6.1))(nx@21.6.8)(typescript@5.9.3)
+        version: 21.6.8(@babel/traverse@7.28.5)(@playwright/test@1.57.0)(@zkochan/js-yaml@0.0.7)(eslint@9.34.0(jiti@2.6.1))(nx@21.6.8)(typescript@5.9.3)
       '@nx/vite':
         specifier: 21.6.8
         version: 21.6.8(@babel/traverse@7.28.5)(nx@21.6.8)(typescript@5.9.3)(vite@7.2.2(@types/node@22.19.0)(jiti@2.6.1)(less@4.4.0)(lightningcss@1.30.2)(sass@1.90.0)(terser@5.43.1)(yaml@2.8.1))(vitest@3.2.4)
       '@playwright/test':
-        specifier: 1.56.1
-        version: 1.56.1
+        specifier: 1.57.0
+        version: 1.57.0
       '@robby-rabbitman/cv-tools-eslint-nx-dependency-checks-plugin':
         specifier: workspace:*
         version: link:tools/eslint-nx-dependency-checks-plugin
@@ -186,8 +186,8 @@ importers:
         specifier: 21.6.8
         version: 21.6.8
       playwright:
-        specifier: 1.56.1
-        version: 1.56.1
+        specifier: 1.57.0
+        version: 1.57.0
       postcss:
         specifier: 8.5.6
         version: 8.5.6
@@ -277,8 +277,8 @@ importers:
   e2e/web/cv:
     dependencies:
       '@playwright/test':
-        specifier: 1.56.1
-        version: 1.56.1
+        specifier: 1.57.0
+        version: 1.57.0
     devDependencies:
       '@robby-rabbitman/cv-apps-web-cv':
         specifier: workspace:*
@@ -796,8 +796,8 @@ importers:
   tools/playwright:
     dependencies:
       '@playwright/test':
-        specifier: 1.56.1
-        version: 1.56.1
+        specifier: 1.57.0
+        version: 1.57.0
     devDependencies:
       '@robby-rabbitman/cv-tools-eslint':
         specifier: workspace:*
@@ -3488,8 +3488,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@playwright/test@1.56.1':
-    resolution: {integrity: sha512-vSMYtL/zOcFpvJCW71Q/OEGQb7KYBPAdKh35WNSkaZA75JlAO8ED8UN6GUNTm3drWomcbcqRPFqQbLae8yBTdg==}
+  '@playwright/test@1.57.0':
+    resolution: {integrity: sha512-6TyEnHgd6SArQO8UO2OMTxshln3QMWBtPGrOCgs3wVEmQmwyuNtB10IZMfmYDE0riwNR1cu4q+pPcxMVtaG3TA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -3964,6 +3964,7 @@ packages:
   '@smithy/core@3.18.4':
     resolution: {integrity: sha512-o5tMqPZILBvvROfC8vC+dSVnWJl9a0u9ax1i1+Bq8515eYjUJqqk5XjjEsDLoeL5dSqGSh6WGdVx1eJ1E/Nwhw==}
     engines: {node: '>=18.0.0'}
+    deprecated: Please upgrade your lockfile to use the latest 3.x version of @smithy/core for various fixes, see https://github.com/smithy-lang/smithy-typescript/blob/main/packages/core/CHANGELOG.md
 
   '@smithy/credential-provider-imds@4.2.5':
     resolution: {integrity: sha512-BZwotjoZWn9+36nimwm/OLIcVe+KYRwzMjfhd4QT7QxPm9WY0HiOV8t/Wlh+HVUif0SBVV7ksq8//hPaBC/okQ==}
@@ -8490,13 +8491,13 @@ packages:
     resolution: {integrity: sha512-4peoBq4Wks0riS0z8741NVv+/8IiTvqnZAr8QGgtdifrtpdXbNw/FxRS1l6NFqm4EMzuS0EDqNNx4XGaz8cuyQ==}
     engines: {node: '>=18'}
 
-  playwright-core@1.56.1:
-    resolution: {integrity: sha512-hutraynyn31F+Bifme+Ps9Vq59hKuUCz7H1kDOcBs+2oGguKkWTU50bBWrtz34OUWmIwpBTWDxaRPXrIXkgvmQ==}
+  playwright-core@1.57.0:
+    resolution: {integrity: sha512-agTcKlMw/mjBWOnD6kFZttAAGHgi/Nw0CZ2o6JqWSbMlI219lAFLZZCyqByTsvVAJq5XA5H8cA6PrvBRpBWEuQ==}
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright@1.56.1:
-    resolution: {integrity: sha512-aFi5B0WovBHTEvpM3DzXTUaeN6eN0qWnTkKx4NQaH4Wvcmc153PdaY2UBdSYKaGYw+UyWXSVyxDUg5DoPEttjw==}
+  playwright@1.57.0:
+    resolution: {integrity: sha512-ilYQj1s8sr2ppEJ2YVadYBN0Mb3mdo9J0wQ+UuDhzYqURwSoW4n1Xs5vs7ORwgDGmyEh33tRMeS8KhdkMoLXQw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -14200,7 +14201,7 @@ snapshots:
   '@nx/nx-win32-x64-msvc@21.6.8':
     optional: true
 
-  '@nx/playwright@21.6.8(@babel/traverse@7.28.5)(@playwright/test@1.56.1)(@zkochan/js-yaml@0.0.7)(eslint@9.34.0(jiti@2.6.1))(nx@21.6.8)(typescript@5.9.3)':
+  '@nx/playwright@21.6.8(@babel/traverse@7.28.5)(@playwright/test@1.57.0)(@zkochan/js-yaml@0.0.7)(eslint@9.34.0(jiti@2.6.1))(nx@21.6.8)(typescript@5.9.3)':
     dependencies:
       '@nx/devkit': 21.6.8(nx@21.6.8)
       '@nx/eslint': 21.6.8(@babel/traverse@7.28.5)(@zkochan/js-yaml@0.0.7)(eslint@9.34.0(jiti@2.6.1))(nx@21.6.8)
@@ -14209,7 +14210,7 @@ snapshots:
       minimatch: 9.0.3
       tslib: 2.8.1
     optionalDependencies:
-      '@playwright/test': 1.56.1
+      '@playwright/test': 1.57.0
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -14474,9 +14475,9 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@playwright/test@1.56.1':
+  '@playwright/test@1.57.0':
     dependencies:
-      playwright: 1.56.1
+      playwright: 1.57.0
 
   '@pnpm/catalogs.protocol-parser@1001.0.0': {}
 
@@ -20366,11 +20367,11 @@ snapshots:
     dependencies:
       find-up-simple: 1.0.1
 
-  playwright-core@1.56.1: {}
+  playwright-core@1.57.0: {}
 
-  playwright@1.56.1:
+  playwright@1.57.0:
     dependencies:
-      playwright-core: 1.56.1
+      playwright-core: 1.57.0
     optionalDependencies:
       fsevents: 2.3.2
 

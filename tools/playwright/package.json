@@ -9,7 +9,7 @@
     "package.json"
   ],
   "peerDependencies": {
-    "@playwright/test": "1.56.1"
+    "@playwright/test": "1.57.0"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
