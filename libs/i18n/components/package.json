@@ -29,7 +29,7 @@
   },
   "peerDependencies": {
     "@angular/cdk": "20.2.12",
-    "@angular/core": "20.3.10",
+    "@angular/core": "20.3.15",
     "@angular/material": "20.2.12"
   },
   "devDependencies": {
