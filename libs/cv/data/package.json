@@ -28,7 +28,7 @@
   },
   "peerDependencies": {
     "@angular/core": "20.3.10",
-    "firebase": "12.5.0",
+    "firebase": "12.7.0",
     "@ngrx/signals": "20.1.0"
   },
   "devDependencies": {
