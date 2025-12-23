@@ -9,7 +9,7 @@
     "package.json"
   ],
   "peerDependencies": {
-    "@nx/devkit": "21.6.8"
+    "@nx/devkit": "22.3.3"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
