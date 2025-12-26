@@ -29,7 +29,7 @@
   "peerDependencies": {
     "@angular/core": "20.3.10",
     "firebase": "12.5.0",
-    "@ngrx/signals": "20.1.0"
+    "@ngrx/signals": "21.0.1"
   },
   "devDependencies": {
     "@robby-rabbitman/cv-tools-eslint": "workspace:*",
